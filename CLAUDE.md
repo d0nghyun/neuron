@@ -37,7 +37,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 - **File size**: Max 200 lines per file
 - **Documentation**: Structured for AI consumption
 - **Commits**: Conventional commits with Co-Authored-By
-- **Auto-commit**: Commit autonomously when logical unit complete (see git-workflow.md)
+- **Auto-commit**: Commit without asking when logical unit complete (see git-workflow.md)
 - **Auto-PR**: Run /pr automatically on completion (see git-workflow.md)
 
 ## Working with This Repository
