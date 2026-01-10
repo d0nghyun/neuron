@@ -132,6 +132,22 @@ git branch -d feature/my-feature
 - Use `/pr` command for PR creation
 - Revert immediately if issues found
 
+### Auto-commit Policy
+
+Claude commits autonomously without asking. Do not ask "커밋할까요?".
+
+**Commit when**:
+- Logical unit of work complete
+- 3+ files changed
+- User request fulfilled
+- Before context switch
+
+**Ask before commit when**:
+- Sensitive files (.env, credentials, secrets)
+- Large deletions (10+ lines removed)
+- Breaking changes
+- Uncertain about scope
+
 ### Commit Frequency
 - After each logical change
 - Before switching context
