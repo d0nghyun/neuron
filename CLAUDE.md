@@ -10,6 +10,7 @@ Neuron is the central hub for personal project management. It orchestrates multi
 - **Policy**: Defines conventions, philosophy, and standards
 - **Registry**: Manages MCP tools, skills, and configurations
 - **Coordination**: Handles cross-project concerns
+- **Immune System**: Self-healing through reviewer + self-improve agents
 
 ## Key Files
 
@@ -19,7 +20,9 @@ Neuron is the central hub for personal project management. It orchestrates multi
 | `CLAUDE.md` | This file - AI entry point |
 | `knowledge/` | Core policies and detailed philosophy |
 | `modules/` | Git submodules (external projects) |
-| `.claude/` | Claude Code configuration |
+| `.claude/agents/` | Immune system (reviewer, self-improve) |
+| `.claude/commands/` | Custom slash commands |
+| `.claude/skills/` | Skill definitions |
 
 ## Philosophy
 
@@ -48,7 +51,12 @@ When adding new functionality:
 neuron/
 ├── README.md
 ├── CLAUDE.md
-├── knowledge/
-├── modules/
+├── knowledge/          # Policies & philosophy
+├── modules/            # Submodules
 └── .claude/
+    ├── agents/         # Immune system
+    │   ├── reviewer.md
+    │   └── self-improve.md
+    ├── commands/       # Slash commands
+    └── skills/         # Skills
 ```

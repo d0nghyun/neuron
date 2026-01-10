@@ -20,6 +20,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 | refactor | Code change without feature/fix |
 | test | Adding/updating tests |
 | chore | Maintenance tasks |
+| improve | System self-improvement |
 
 ### Rules
 - Lowercase type and description
@@ -39,6 +40,7 @@ feature/<name>   # New features
 fix/<name>       # Bug fixes
 chore/<name>     # Maintenance
 docs/<name>      # Documentation
+improve/<name>   # System improvements (self-improve agent)
 ```
 
 ### Naming

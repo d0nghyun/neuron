@@ -120,6 +120,29 @@ Read `docs/releasenotes/UNRELEASED.md` and append changes:
 - Content: <what was added>
 ```
 
+### Step 7: Improvement Detection
+
+After review, check if findings suggest systemic improvement:
+
+| Signal | Indicates |
+|--------|-----------|
+| Same issue in 3+ reviews | Policy needs clarification |
+| Missing guideline caused issue | Knowledge gap |
+| Ambiguous rule interpretation | Needs clarification |
+
+If detected, append to report:
+
+```
+### Improvement Opportunity
+
+[IMPROVE] <category>: <description>
+- Pattern: <what keeps happening>
+- Root Cause Hypothesis: <why>
+- Suggested Target: <file to improve>
+```
+
+Categories: `convention`, `workflow`, `review`, `knowledge`
+
 ## Approval Criteria
 
 | Status | Condition |
