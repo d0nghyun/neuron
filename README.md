@@ -17,14 +17,24 @@ When a new capability is needed (database, web service, etc.), a new repository 
 
 ## Philosophy
 
-See [knowledge/philosophy.md](knowledge/philosophy.md) for our 10 core principles.
+See [knowledge/philosophy.md](knowledge/philosophy.md) for our 11 core principles.
+
+## Documentation
+
+| File | Audience | Purpose |
+|------|----------|---------|
+| `README.md` | Human | Project overview and usage guide |
+| `diagram.md` | Human | Visual system architecture |
+| `CLAUDE.md` | AI Agent | Entry point and context for AI |
+| `knowledge/` | Both | Core policies and philosophy |
 
 ## Structure
 
 ```
 neuron/
-├── README.md           # This file
-├── CLAUDE.md           # AI entry point
+├── README.md           # Human: Project overview
+├── CLAUDE.md           # AI: Agent entry point
+├── diagram.md          # Human: Visual architecture
 ├── knowledge/          # Core policies and conventions
 │   └── philosophy.md   # Detailed philosophy
 ├── modules/            # Submodules (other repositories)

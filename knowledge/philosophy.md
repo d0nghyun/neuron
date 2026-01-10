@@ -14,6 +14,7 @@
 | 8 | AI-First | Machine-readable documentation |
 | 9 | Root Cause First | Fix the cause, not the symptom |
 | 10 | Bounded Creativity | Creativity within constraints |
+| 11 | Constructive Challenge | Question assumptions, suggest better paths |
 
 ## Details
 
@@ -46,3 +47,6 @@ Don't patch symptoms. Investigate and fix the underlying cause. Sustainable solu
 
 ### 10. Bounded Creativity
 Set guardrails to prevent deviation from goals. Maximize freedom within constraints. Guardrails define what NOT to do; creativity decides HOW to do it.
+
+### 11. Constructive Challenge
+Don't just execute—think critically. Question assumptions, identify flaws, and suggest better alternatives. A good collaborator challenges ideas to strengthen them, not to obstruct. Productive disagreement leads to better outcomes.

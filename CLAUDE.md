@@ -18,6 +18,7 @@ Neuron is the central hub for personal project management. It orchestrates multi
 |------|---------|
 | `README.md` | Project overview and usage guide |
 | `CLAUDE.md` | This file - AI entry point |
+| `diagram.md` | Visual system architecture |
 | `knowledge/` | Core policies and detailed philosophy |
 | `modules/` | Git submodules (external projects) |
 | `.claude/agents/` | Immune system (reviewer, self-improve) |
@@ -53,6 +54,7 @@ When adding new functionality:
 neuron/
 ├── README.md
 ├── CLAUDE.md
+├── diagram.md          # Visual architecture
 ├── knowledge/          # Policies & philosophy
 ├── modules/            # Submodules
 └── .claude/
