@@ -45,14 +45,17 @@ Claude Code executes:
 | changes-requested | Non-critical warnings | Proceed with caution |
 | approve | All checks pass | Create PR |
 
-### 4. Release (Manual)
+### 4. Run /release Command
 
-When ready to release:
+When ready to release, run `/release`:
 
-1. Rename `UNRELEASED.md` → `v{X.Y.Z}.md`
-2. Create new empty `UNRELEASED.md`
-3. Tag the release: `git tag v{X.Y.Z}`
-4. Push tag: `git push origin v{X.Y.Z}`
+1. Check UNRELEASED.md has content
+2. Determine version (MAJOR/MINOR/PATCH)
+3. Convert `UNRELEASED.md` → `v{X.Y.Z}.md`
+4. Reset `UNRELEASED.md` for next cycle
+5. Commit, tag, and push
+
+Tags can trigger GitHub Actions for automation.
 
 ## Review Categories
 
@@ -69,5 +72,6 @@ When ready to release:
 |------|---------|
 | `.claude/agents/reviewer.md` | Subagent definition |
 | `.claude/commands/pr.md` | PR workflow entry |
+| `.claude/commands/release.md` | Release workflow entry |
 | `docs/releasenotes/UNRELEASED.md` | Pending changes |
 | `docs/releasenotes/v*.md` | Released versions |
