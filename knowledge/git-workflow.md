@@ -152,3 +152,22 @@ Claude commits autonomously without asking. Do not ask "커밋할까요?".
 - After each logical change
 - Before switching context
 - After successful test run
+
+### Auto-PR Policy
+
+Development complete → run `/pr` automatically.
+
+**Trigger conditions (ALL must be met)**:
+- User request fulfilled
+- Code compiles/runs without error
+- Commits made
+
+**Skip auto-PR when**:
+- Exploratory work (research, prototyping)
+- User explicitly says "don't create PR"
+- Working on existing PR branch (just push)
+
+**Flow**:
+1. Development complete
+2. Final commit
+3. Run `/pr` → reviewer → PR creation

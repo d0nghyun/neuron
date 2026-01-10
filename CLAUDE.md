@@ -28,7 +28,7 @@ Neuron is the central hub for personal project management. It orchestrates multi
 
 See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
-**Principles**: SSOT, MECE, Simplicity First, Incremental, Modularity, Agile, Test-First, AI-First, Root Cause First, Bounded Creativity
+**Principles**: SSOT, MECE, Simplicity First, Incremental, Modularity, Agile, Test-First, AI-First, Root Cause First, Bounded Creativity, Constructive Challenge
 
 ## Conventions
 
@@ -37,6 +37,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 - **Documentation**: Structured for AI consumption
 - **Commits**: Conventional commits with Co-Authored-By
 - **Auto-commit**: Commit autonomously when logical unit complete (see git-workflow.md)
+- **Auto-PR**: Run /pr automatically on completion (see git-workflow.md)
 
 ## Working with This Repository
 
