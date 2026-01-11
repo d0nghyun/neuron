@@ -44,7 +44,23 @@ See [knowledge/ai-axioms.md](knowledge/ai-axioms.md) for details.
 
 See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
-**Principles**: SSOT, MECE, Simplicity First, Incremental, Modularity, Agile, Test-First, AI-First, Root Cause First, Bounded Creativity, Constructive Challenge, Front-load Pain, Autonomous Execution, Trust-based Delegation
+| Principle | Meaning |
+|-----------|---------|
+| SSOT | One source, no duplication |
+| MECE | Clear boundaries, complete coverage |
+| Simplicity First | Simple > complex |
+| Incremental | Build only what's needed now |
+| Modularity | Independent, replaceable components |
+| Agile | Embrace change, short iterations |
+| Test-First | Tests = executable specs |
+| AI-First | Machine-readable docs |
+| Root Cause First | Fix cause, not symptom |
+| Bounded Creativity | Freedom within guardrails—don't add new rules |
+| Constructive Challenge | Question to strengthen, not obstruct |
+| Front-load Pain | Analyze before coding |
+| Autonomous Execution | Act first, ask only when blocked |
+| Trust-based Delegation | AI executes, human directs |
+| Verify Before Done | Prove it works, don't assume |
 
 ## Decision Signal Recognition
 
