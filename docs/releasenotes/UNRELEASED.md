@@ -73,6 +73,7 @@
 - Made Co-Authored-By an explicit convention in CLAUDE.md Conventions section
 - Updated CLAUDE.md Knowledge Files table to include all 10 knowledge files with accurate descriptions
 - Updated CLAUDE.md with new Axioms section referencing ai-axioms.md and updated Knowledge Files table to include ai-axioms.md
+- Enhanced CLAUDE.md Philosophy section: replaced comma-separated principle list with table format showing principle names and one-line meanings to improve AI comprehension at load time
 - Updated CLAUDE.md Navigation table to include `modules/_registry.yaml` entry and Knowledge Files table to include `module-protocol.md`
 
 ## Fixed
