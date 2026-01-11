@@ -25,6 +25,17 @@ Neuron is the central hub for personal project management. It orchestrates multi
 | `.claude/commands/` | Custom slash commands |
 | `.claude/skills/` | Skill definitions |
 
+## Knowledge Files
+
+| File | Purpose |
+|------|---------|
+| `philosophy.md` | Core principles (SSOT, MECE, etc.) |
+| `decision-guide.md` | Where to build (neuron vs submodule, MCP placement) |
+| `extension-mechanisms.md` | When to use skills/mcp/agent/command/hook |
+| `spec-process.md` | How to develop specs via scenarios |
+| `git-workflow.md` | Git conventions and auto-commit policy |
+| `self-improve-policy.md` | Self-healing agent constraints |
+
 ## Philosophy
 
 See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
