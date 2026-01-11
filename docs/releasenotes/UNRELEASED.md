@@ -26,6 +26,16 @@
 - Auto-PR policy in git-workflow.md defining when to automatically run /pr after completing work
 - Visual system architecture diagram (diagram.md) with ASCII art showing hub structure, immune system, and data flow
 - 11th core principle: Constructive Challenge - encouraging critical thinking and productive disagreement
+- Refactor agent (.claude/agents/refactor.md) for judging when and how to refactor code with:
+  - Need assessment preventing unnecessary refactoring
+  - Anti-pattern detection (premature abstraction, speculative generality, etc.)
+  - Scope control (surgical → module → cross-cutting → architectural)
+  - Incremental planning with atomic steps
+  - Strong guardrails against big bang rewrites and untested changes
+- Retrospective documentation system (`docs/retrospectives/`) with:
+  - UNRETROSPECTIVE.md for accumulating learnings (Patterns, Insights, Improvements)
+  - Flush mechanism to retro-vX.Y.Z.md on release
+  - Machine-readable table format for future pattern detection
 
 ## Changed
 
