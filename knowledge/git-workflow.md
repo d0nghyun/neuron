@@ -156,7 +156,7 @@ git branch -d feature/my-feature
 
 ### Auto-commit Policy
 
-Claude commits autonomously without asking. Do not ask "커밋할까요?".
+Claude commits autonomously without asking. Do not ask "Should I commit?".
 
 **Commit when**:
 - Logical unit of work complete
