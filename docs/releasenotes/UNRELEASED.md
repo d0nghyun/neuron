@@ -59,6 +59,12 @@
 - Changed neuron-knowledge skill to use relative path instead of absolute path for better portability
 - Added modules/README.md with naming convention table and task management guidance
 - Updated retrospectives with insights from Notion integration work
+- Split git-workflow.md into focused files: core workflows (116 lines) + git-advanced.md (85 lines) for worktree, revert strategy, and PR workflow details
+- Standardized command metadata format: changed `allowed-tools:` to `tools:` for consistency with agent format
+- Consolidated release.md templates (158→85 lines): now references README files instead of duplicating template content (SSOT principle)
+- Added cross-references between knowledge files (decision-guide.md, extension-mechanisms.md, spec-process.md) for better navigation
+- Made Co-Authored-By an explicit convention in CLAUDE.md Conventions section
+- Updated CLAUDE.md Knowledge Files table to include all 10 knowledge files with accurate descriptions
 
 ## Fixed
 
