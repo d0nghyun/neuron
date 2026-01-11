@@ -26,6 +26,16 @@
 - Auto-PR policy in git-workflow.md defining when to automatically run /pr after completing work
 - Visual system architecture diagram (diagram.md) with ASCII art showing hub structure, immune system, and data flow
 - 11th core principle: Constructive Challenge - encouraging critical thinking and productive disagreement
+- Refactor agent (.claude/agents/refactor.md) for judging when and how to refactor code with:
+  - Need assessment preventing unnecessary refactoring
+  - Anti-pattern detection (premature abstraction, speculative generality, etc.)
+  - Scope control (surgical → module → cross-cutting → architectural)
+  - Incremental planning with atomic steps
+  - Strong guardrails against big bang rewrites and untested changes
+- Retrospective documentation system (`docs/retrospectives/`) with:
+  - UNRETROSPECTIVE.md for accumulating learnings (Patterns, Insights, Improvements)
+  - Flush mechanism to retro-vX.Y.Z.md on release
+  - Machine-readable table format for future pattern detection
 
 ## Changed
 
@@ -35,6 +45,10 @@
 - Updated philosophy count from 10 to 11 principles in README.md and CLAUDE.md
 - Enhanced extension-mechanisms.md with detailed MCP configuration documentation including .mcp.json file location, structure, format example, and activation settings via .claude/settings.local.json
 - Added auto-branch policy to git-workflow.md for automatic branch naming without user prompts
+- Updated reviewer agent with Step 7b for logging patterns and insights to UNRETROSPECTIVE.md
+- Updated self-improve agent with Step 8b for logging improvements to UNRETROSPECTIVE.md
+- Updated release command with Step 4b for flushing retrospectives on release
+- Deprecated improvement-log.md in favor of retrospectives system
 
 ## Fixed
 
