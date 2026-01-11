@@ -26,6 +26,7 @@
 - Auto-PR policy in git-workflow.md defining when to automatically run /pr after completing work
 - Visual system architecture diagram (diagram.md) with ASCII art showing hub structure, immune system, and data flow
 - 11th core principle: Constructive Challenge - encouraging critical thinking and productive disagreement
+- 15th core principle: Verify Before Done - require actual execution and multi-source verification, prevent "looks right" trap
 - Refactor agent (.claude/agents/refactor.md) for judging when and how to refactor code with:
   - Need assessment preventing unnecessary refactoring
   - Anti-pattern detection (premature abstraction, speculative generality, etc.)
@@ -50,7 +51,7 @@
 - Updated release command with Step 4b for flushing retrospectives on release
 - Deprecated improvement-log.md in favor of retrospectives system
 - Applied SSOT principle to documentation structure: consolidated all directory structure references to diagram.md (removed duplicates from README.md and CLAUDE.md)
-- Corrected principle count to 14 in CLAUDE.md (added missing "Autonomous Execution" and "Trust-based Delegation")
+- Corrected principle count to 15 in CLAUDE.md (now includes "Verify Before Done")
 - Changed neuron-knowledge skill to use relative path instead of absolute path for better portability
 
 ## Fixed
