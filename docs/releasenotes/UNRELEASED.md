@@ -11,6 +11,9 @@
   - `knowledge/git-workflow.md` - Commit conventions, branch strategy, worktree usage
   - `knowledge/github-settings.md` - Branch protection, PR settings, review policy
   - `knowledge/release-workflow.md` - Semantic versioning and release process
+  - `knowledge/decision-guide.md` - Project scope and MCP placement decision frameworks
+  - `knowledge/extension-mechanisms.md` - When to use skills/MCP/subagent/command/hook
+  - `knowledge/spec-process.md` - Scenario-based specification development methodology
 - Claude Code configuration:
   - `/pr` command for automated PR creation workflow
   - Reviewer subagent for code review automation
@@ -22,7 +25,7 @@
 
 ## Changed
 
--
+- Enhanced CLAUDE.md with Knowledge Files section providing overview of all knowledge base files
 
 ## Fixed
 
