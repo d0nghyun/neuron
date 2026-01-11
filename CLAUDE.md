@@ -1,16 +1,8 @@
-# Neuron - Project Index
+# Neuron - AI Entry Point
 
 ## Overview
 
-Neuron is the central hub for personal project management. It orchestrates multiple repositories through git submodules, maintaining core policies and shared knowledge.
-
-## Purpose
-
-- **Hub**: Connects all personal projects as submodules
-- **Policy**: Defines conventions, philosophy, and standards
-- **Registry**: Manages MCP tools, skills, and configurations
-- **Coordination**: Handles cross-project concerns
-- **Immune System**: Self-healing through reviewer + self-improve agents
+See [README.md](README.md) for project overview and purpose.
 
 ## Key Files
 
