@@ -48,6 +48,28 @@ improve/<name>   # System improvements (self-improve agent)
 - Short but descriptive
 - Example: `feature/user-auth`, `fix/login-timeout`
 
+### Auto-branch Policy
+
+Claude creates branch names automatically. Do not ask user.
+
+**Format**: `<type>/<short-description>`
+
+**Type mapping** (from commit type):
+| Commit Type | Branch Prefix |
+|-------------|---------------|
+| feat | feature/ |
+| fix | fix/ |
+| docs | docs/ |
+| refactor, chore | chore/ |
+| improve | improve/ |
+
+**Description**: 2-4 words from change summary, hyphenated.
+
+**Examples**:
+- "docs: add MCP configuration guide" → `docs/mcp-config-guide`
+- "feat: add user authentication" → `feature/user-auth`
+- "fix: resolve login timeout" → `fix/login-timeout`
+
 ## Git Worktree
 
 Use worktrees for parallel work without stashing.

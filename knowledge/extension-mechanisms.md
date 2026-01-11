@@ -37,7 +37,25 @@ Examples:
 - Slack notifications
 ```
 
-**Location**: MCP server configuration (see decision-guide.md for placement)
+**Location**: `.mcp.json` (project root, Git shared)
+
+**Format**:
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_KEY": "${NOTION_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+See decision-guide.md for placement decisions (neuron vs project-specific).
 
 ## Subagent
 
