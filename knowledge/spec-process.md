@@ -52,7 +52,7 @@ Compare expected behavior with current capabilities.
 
 ### Step 4: Document/Structure Derivation
 
-List concrete deliverables to fill gaps.
+List concrete deliverables to fill gaps. Use [decision-guide.md](decision-guide.md) to determine where each deliverable should live.
 
 ```
 knowledge/

@@ -139,3 +139,8 @@ Need to extend Claude Code?
 | Auto-format on save | Hook |
 | Generate PDF report | Skill |
 | Create PR with template | Command |
+
+## Related
+
+- [decision-guide.md](decision-guide.md) - Where to place components (neuron vs project)
+- [spec-process.md](spec-process.md) - How to develop specifications before building
