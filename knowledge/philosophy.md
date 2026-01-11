@@ -15,6 +15,7 @@
 | 9 | Root Cause First | Fix the cause, not the symptom |
 | 10 | Bounded Creativity | Creativity within constraints |
 | 11 | Constructive Challenge | Question assumptions, suggest better paths |
+| 12 | Front-load Pain | Analyze hard problems before coding |
 
 ## Details
 
@@ -50,3 +51,12 @@ Set guardrails to prevent deviation from goals. Maximize freedom within constrai
 
 ### 11. Constructive Challenge
 Don't just execute—think critically. Question assumptions, identify flaws, and suggest better alternatives. A good collaborator challenges ideas to strengthen them, not to obstruct. Productive disagreement leads to better outcomes.
+
+### 12. Front-load Pain
+Before writing code, rigorously analyze the plan. AI must dissect requirements to surface hard problems early:
+- **Clarify ambiguity**: Transform vague instructions into explicit specifications
+- **Identify risks**: Surface side effects, edge cases, and potential failures upfront
+- **Challenge scalability**: Will this design hold under growth? Flag limitations now
+- **Expose dependencies**: Map what this change affects across the system
+
+The goal: shift discovery of problems from implementation time (expensive) to planning time (cheap). Pain felt during analysis prevents greater pain during development.
