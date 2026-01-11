@@ -49,6 +49,9 @@
 - Updated self-improve agent with Step 8b for logging improvements to UNRETROSPECTIVE.md
 - Updated release command with Step 4b for flushing retrospectives on release
 - Deprecated improvement-log.md in favor of retrospectives system
+- Applied SSOT principle to documentation structure: consolidated all directory structure references to diagram.md (removed duplicates from README.md and CLAUDE.md)
+- Corrected principle count to 14 in CLAUDE.md (added missing "Autonomous Execution" and "Trust-based Delegation")
+- Changed neuron-knowledge skill to use relative path instead of absolute path for better portability
 
 ## Fixed
 
@@ -56,7 +59,7 @@
 
 ## Removed
 
--
+- Deleted deprecated docs/improvement-log.md (replaced by retrospectives system)
 
 ## Security
 
