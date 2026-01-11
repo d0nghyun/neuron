@@ -22,10 +22,19 @@
   - Pull request template with summary, changes, test plan, checklist
 - Release notes infrastructure in `docs/releasenotes/`
 - Submodule structure with `modules/` directory placeholder
+- Auto-commit policy in git-workflow.md defining when Claude commits autonomously vs asking first
+- Auto-PR policy in git-workflow.md defining when to automatically run /pr after completing work
+- Visual system architecture diagram (diagram.md) with ASCII art showing hub structure, immune system, and data flow
+- 11th core principle: Constructive Challenge - encouraging critical thinking and productive disagreement
 
 ## Changed
 
 - Enhanced CLAUDE.md with Knowledge Files section providing overview of all knowledge base files
+- Updated README.md with documentation table clarifying audience (Human vs AI) and purpose for each file
+- Updated CLAUDE.md with references to auto-commit and auto-PR policies
+- Updated philosophy count from 10 to 11 principles in README.md and CLAUDE.md
+- Enhanced extension-mechanisms.md with detailed MCP configuration documentation including .mcp.json file location, structure, format example, and activation settings via .claude/settings.local.json
+- Added auto-branch policy to git-workflow.md for automatic branch naming without user prompts
 
 ## Fixed
 
