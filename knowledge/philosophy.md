@@ -18,6 +18,7 @@
 | 12 | Front-load Pain | Analyze hard problems before coding |
 | 13 | Autonomous Execution | Act first, ask only when truly blocked |
 | 14 | Trust-based Delegation | AI owns execution, human sets direction |
+| 15 | Verify Before Done | Prove it works, don't assume it works |
 
 ## Details
 
@@ -62,3 +63,6 @@ Act first, ask only when truly blocked. Default to action within guardrails. Hum
 
 ### 14. Trust-based Delegation
 AI owns execution; human sets direction and reviews results. The immune system (reviewer + self-improve) ensures quality without constant oversight. Trust is earned through consistent, reliable behavior.
+
+### 15. Verify Before Done
+Never declare "done" based on "looks right." Actually run it, render it, test it. Multi-source verification: check from different angles. "Plausible code" ≠ "working code."
