@@ -42,6 +42,12 @@
 - Knowledge file `knowledge/github-api-patterns.md` for GitHub API operations in sandbox environments
 - Brain-themed naming convention for submodules (hippo = hippocampus for memory/docs)
 - Knowledge file `knowledge/ai-axioms.md` defining foundational axioms (Curiosity, Truth, Beauty) for autonomous AI judgment with conflict resolution hierarchy
+- Module management protocol (`knowledge/module-protocol.md`) with:
+  - USB-C philosophy for standardized module interface
+  - YAML registry (`modules/_registry.yaml`) for machine-readable module tracking
+  - Standard procedures: register, archive, re-register
+  - Dashboard-ready schema with status (active/maintenance/archived) and domain (tools/personal/work/experimental) categorization
+  - Module interface standard (README.md, CLAUDE.md, .claude/)
 
 ## Changed
 
@@ -68,6 +74,7 @@
 - Updated CLAUDE.md Knowledge Files table to include all 10 knowledge files with accurate descriptions
 - Updated CLAUDE.md with new Axioms section referencing ai-axioms.md and updated Knowledge Files table to include ai-axioms.md
 - Enhanced CLAUDE.md Philosophy section: replaced comma-separated principle list with table format showing principle names and one-line meanings to improve AI comprehension at load time
+- Updated CLAUDE.md Navigation table to include `modules/_registry.yaml` entry and Knowledge Files table to include `module-protocol.md`
 
 ## Fixed
 

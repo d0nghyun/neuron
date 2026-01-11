@@ -1,0 +1,25 @@
+# Module Registry
+# Schema: see knowledge/module-protocol.md
+#
+# Dashboard-ready format for tracking all modules
+
+modules:
+  hippo:
+    repo: github.com/d0nghyun/hippo
+    domain: tools
+    status: active
+    description: Memory and context management system
+    registered_at: "2026-01-11"
+    tags:
+      - ai
+      - memory
+      - context
+
+# Archived modules (removed from submodules but tracked)
+archived: {}
+
+# Registry metadata
+_meta:
+  version: 1
+  updated_at: "2026-01-11"
+  schema: knowledge/module-protocol.md
