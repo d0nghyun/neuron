@@ -71,4 +71,4 @@ git revert <commit-hash>
 
 ## History
 
-Track all improvements in `docs/improvement-log.md`.
+Track improvements in `docs/retrospectives/UNRETROSPECTIVE.md` (active) and `docs/retrospectives/retro-v*.md` (released).
