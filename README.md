@@ -25,7 +25,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for core principles.
 |------|----------|---------|
 | `README.md` | Human | Project overview and usage guide |
 | `diagram.md` | Human | Visual system architecture |
-| `CLAUDE.md` | AI Agent | Entry point and context for AI |
+| `CLAUDE.md` | AI Agent | Entry point, conventions, and context |
 | `knowledge/` | Both | Core policies and philosophy |
 
 ## Structure
@@ -67,15 +67,6 @@ git clone --recurse-submodules <neuron-url>
 git submodule init
 git submodule update
 ```
-
-## Conventions
-
-| Aspect | Convention |
-|--------|------------|
-| Language | English (token efficiency) |
-| File size | Max 200 lines |
-| Naming | kebab-case for files, PascalCase for classes |
-| Commits | Conventional commits format |
 
 ## Getting Started
 
