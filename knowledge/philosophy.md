@@ -15,6 +15,7 @@
 | 9 | Root Cause First | Fix the cause, not the symptom |
 | 10 | Bounded Creativity | Creativity within constraints |
 | 11 | Constructive Challenge | Question assumptions, suggest better paths |
+| 12 | Front-load Pain | Analyze hard problems before coding |
 
 ## Details
 
@@ -50,3 +51,6 @@ Set guardrails to prevent deviation from goals. Maximize freedom within constrai
 
 ### 11. Constructive Challenge
 Don't just execute—think critically. Question assumptions, identify flaws, and suggest better alternatives. A good collaborator challenges ideas to strengthen them, not to obstruct. Productive disagreement leads to better outcomes.
+
+### 12. Front-load Pain
+Rigorously analyze plans before coding. Surface ambiguities, risks, scalability issues, and dependencies upfront. Cheap pain during planning prevents expensive pain during implementation.
