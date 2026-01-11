@@ -38,7 +38,9 @@
   - Flush mechanism to retro-vX.Y.Z.md on release
   - Machine-readable table format for future pattern detection
 - Notion MCP server configuration in `.mcp.json` for resume management integration
-- Docs submodule (modules/docs) for career documentation with structure: resume/, projects/, exports/
+- Hippo submodule (modules/hippo) for career documentation as SSOT with structure: resume/, projects/, exports/
+- Knowledge file `knowledge/github-api-patterns.md` for GitHub API operations in sandbox environments
+- Brain-themed naming convention for submodules (hippo = hippocampus for memory/docs)
 
 ## Changed
 
@@ -55,6 +57,8 @@
 - Applied SSOT principle to documentation structure: consolidated all directory structure references to diagram.md (removed duplicates from README.md and CLAUDE.md)
 - Corrected principle count to 15 in CLAUDE.md (now includes "Verify Before Done")
 - Changed neuron-knowledge skill to use relative path instead of absolute path for better portability
+- Added modules/README.md with naming convention table and task management guidance
+- Updated retrospectives with insights from Notion integration work
 
 ## Fixed
 
