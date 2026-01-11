@@ -20,6 +20,8 @@
 - 2026-01-11: SSOT refactoring demonstrates principle in action - eliminating 3 duplicate directory structures reduces maintenance burden and prevents drift
 - 2026-01-11: Decision-guide.md alignment verified - Notion MCP placement and docs submodule both follow documented decision frameworks perfectly
 - 2026-01-11: Small focused changes (2 files + submodule) demonstrate Incremental principle - adding only what's needed for Notion integration
+- 2026-01-11: Sandbox environment without gh CLI → GitHub API via curl patterns work well, documented in knowledge/github-api-patterns.md
+- 2026-01-11: Brain-themed naming convention (hippo=hippocampus for memory/docs) adds personality while maintaining semantic meaning
 
 ## Improvements
 
