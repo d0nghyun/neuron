@@ -21,6 +21,7 @@ Neuron is the central hub for personal project management. It orchestrates multi
 | `diagram.md` | Visual system architecture |
 | `knowledge/` | Core policies and detailed philosophy |
 | `modules/` | Git submodules (external projects) |
+| `docs/retrospectives/` | Learnings and insights (UNRETROSPECTIVE.md) |
 | `.claude/agents/` | Immune system (reviewer, self-improve) |
 | `.claude/commands/` | Custom slash commands |
 | `.claude/skills/` | Skill definitions |

@@ -1,13 +1,5 @@
-# Improvement Log
+# Improvement Log (Deprecated)
 
-History of self-improve agent changes.
+> **Note**: This file is deprecated. See `docs/retrospectives/UNRETROSPECTIVE.md` for active tracking.
 
-## Format
-
-| Date | PR | Target | Change | Pattern |
-|------|-----|--------|--------|---------|
-| YYYY-MM-DD | #N | file.md | Description | Trigger |
-
-## Log
-
-*No improvements yet.*
+Historical improvements are now captured in release retrospectives at `docs/retrospectives/retro-v*.md`.

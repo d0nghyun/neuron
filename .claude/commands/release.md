@@ -83,10 +83,67 @@ Write fresh template to UNRELEASED.md:
 *Auto-updated by reviewer agent on PR creation.*
 ```
 
+### Step 4b: Convert Retrospective
+
+1. Read `docs/retrospectives/UNRETROSPECTIVE.md`
+2. If has content beyond template (any entries in tables or insights):
+   - Create `docs/retrospectives/retro-vX.Y.Z.md` with header and content
+   - Reset UNRETROSPECTIVE.md to template
+
+Template for retro-vX.Y.Z.md:
+```markdown
+# Retrospective vX.Y.Z
+
+> Release: YYYY-MM-DD
+
+## Patterns
+
+<copy from UNRETROSPECTIVE.md>
+
+## Insights
+
+<copy from UNRETROSPECTIVE.md>
+
+## Improvements
+
+<copy from UNRETROSPECTIVE.md>
+```
+
+Reset UNRETROSPECTIVE.md template:
+```markdown
+# Unretrospective
+
+> Learnings pending for the next release
+
+## Patterns
+
+> Recurring issues detected by reviewer agent
+
+| Date | PR | Pattern | Status |
+|------|-----|---------|--------|
+
+## Insights
+
+> What worked well, lessons learned (updated by reviewer on each PR)
+
+-
+
+## Improvements
+
+> System fixes by self-improve agent
+
+| Date | PR | Target | Change | Root Cause |
+|------|-----|--------|--------|------------|
+
+---
+
+*Auto-updated by reviewer and self-improve agents.*
+```
+
 ### Step 5-7: Commit, Tag, Push
 
 ```bash
-git add docs/releasenotes/
+git add docs/releasenotes/ docs/retrospectives/
 git commit -m "chore: release vX.Y.Z
 
 Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
