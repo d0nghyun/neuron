@@ -45,6 +45,10 @@
 - Updated philosophy count from 10 to 11 principles in README.md and CLAUDE.md
 - Enhanced extension-mechanisms.md with detailed MCP configuration documentation including .mcp.json file location, structure, format example, and activation settings via .claude/settings.local.json
 - Added auto-branch policy to git-workflow.md for automatic branch naming without user prompts
+- Updated reviewer agent with Step 7b for logging patterns and insights to UNRETROSPECTIVE.md
+- Updated self-improve agent with Step 8b for logging improvements to UNRETROSPECTIVE.md
+- Updated release command with Step 4b for flushing retrospectives on release
+- Deprecated improvement-log.md in favor of retrospectives system
 
 ## Fixed
 
