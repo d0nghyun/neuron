@@ -1,0 +1,3 @@
+[submodule "modules/hippo"]
+	path = modules/hippo
+	url = https://github.com/d0nghyun/hippo.git
