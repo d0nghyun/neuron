@@ -9,7 +9,7 @@ modules:
     domain: tools
     status: active
     description: Memory and context management system
-    registered_at: "2025-01-11"
+    registered_at: "2026-01-11"
     tags:
       - ai
       - memory
@@ -21,5 +21,5 @@ archived: {}
 # Registry metadata
 _meta:
   version: 1
-  updated_at: "2025-01-11"
+  updated_at: "2026-01-11"
   schema: knowledge/module-protocol.md
