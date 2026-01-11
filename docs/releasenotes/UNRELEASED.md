@@ -37,6 +37,8 @@
   - UNRETROSPECTIVE.md for accumulating learnings (Patterns, Insights, Improvements)
   - Flush mechanism to retro-vX.Y.Z.md on release
   - Machine-readable table format for future pattern detection
+- Notion MCP server configuration in `.mcp.json` for resume management integration
+- Docs submodule (modules/docs) for career documentation with structure: resume/, projects/, exports/
 
 ## Changed
 
