@@ -92,24 +92,3 @@ Write the specs/guides identified above.
 | Abstract requirements | Use concrete examples |
 | Solve everything at once | Prioritize and separate |
 | Skip gap analysis | Compare expected vs current |
-
-## Example Session
-
-```
-User: "I want to manage resume with Notion"
-
-1. Scenario: Resume management via Notion
-2. Analysis:
-   - Notion integration needed → MCP
-   - Resume is independent domain → New repo
-   - PDF export needed → Skill
-3. Gaps:
-   - No decision guide for "where to build"
-   - No MCP placement guide
-4. Deliverables:
-   - decision-guide.md
-   - extension-mechanisms.md
-5. Priority:
-   - Decision guide first (blocks other decisions)
-6. Write docs
-```

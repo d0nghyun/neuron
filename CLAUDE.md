@@ -1,27 +1,17 @@
-# Neuron - Project Index
+# Neuron - AI Entry Point
 
 ## Overview
 
-Neuron is the central hub for personal project management. It orchestrates multiple repositories through git submodules, maintaining core policies and shared knowledge.
+See [README.md](README.md) for project overview and purpose.
+See [diagram.md](diagram.md) for visual structure.
 
-## Purpose
+## Navigation
 
-- **Hub**: Connects all personal projects as submodules
-- **Policy**: Defines conventions, philosophy, and standards
-- **Registry**: Manages MCP tools, skills, and configurations
-- **Coordination**: Handles cross-project concerns
-- **Immune System**: Self-healing through reviewer + self-improve agents
-
-## Key Files
-
-| File | Purpose |
-|------|---------|
-| `README.md` | Project overview and usage guide |
-| `CLAUDE.md` | This file - AI entry point |
-| `diagram.md` | Visual system architecture |
-| `knowledge/` | Core policies and detailed philosophy |
+| Location | Purpose |
+|----------|---------|
+| `knowledge/` | Core policies (philosophy, conventions, guides) |
 | `modules/` | Git submodules (external projects) |
-| `docs/retrospectives/` | Learnings and insights (UNRETROSPECTIVE.md) |
+| `docs/retrospectives/` | Learnings and insights |
 | `.claude/agents/` | Immune system (reviewer, self-improve) |
 | `.claude/commands/` | Custom slash commands |
 | `.claude/skills/` | Skill definitions |
@@ -59,7 +49,3 @@ When adding new functionality:
 2. If new module needed, create separate repo
 3. Register as submodule under `modules/`
 4. Document in relevant knowledge files
-
-## Current Structure
-
-See [diagram.md](diagram.md) for directory structure.
