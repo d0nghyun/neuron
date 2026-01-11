@@ -35,8 +35,12 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
 ## Decision Signal Recognition
 
+**Before executing location decisions, check architecture first:**
+- New functionality? -> Separate repo -> Submodule (see "Working with This Repository")
+- Location within neuron? -> Then execute location decision
+
 **Execute immediately when user states:**
-- Location: "put in docs", "store in X", "use Y folder"
+- Location: "put in docs", "store in X", "use Y folder" (after architecture check)
 - Tool: "use Notion", "with GitHub", "via MCP"
 - Approach: "I'll do X", "going to Y", "decided to Z"
 
