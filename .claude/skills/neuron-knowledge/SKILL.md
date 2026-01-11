@@ -16,7 +16,7 @@ This skill activates when the user asks about:
 
 ## Knowledge Location
 
-All documentation is in `/Users/dhlee/Git/personal/neuron/knowledge/`:
+All documentation is in `knowledge/`:
 - `git-workflow.md` - Git conventions, worktree, revert strategies
 - `github-settings.md` - Branch protection, PR settings, review policy
 

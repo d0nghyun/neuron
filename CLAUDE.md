@@ -41,7 +41,7 @@ Neuron is the central hub for personal project management. It orchestrates multi
 
 See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
-**Principles**: SSOT, MECE, Simplicity First, Incremental, Modularity, Agile, Test-First, AI-First, Root Cause First, Bounded Creativity, Constructive Challenge, Front-load Pain
+**Principles**: SSOT, MECE, Simplicity First, Incremental, Modularity, Agile, Test-First, AI-First, Root Cause First, Bounded Creativity, Constructive Challenge, Front-load Pain, Autonomous Execution, Trust-based Delegation
 
 ## Conventions
 
@@ -62,17 +62,4 @@ When adding new functionality:
 
 ## Current Structure
 
-```
-neuron/
-├── README.md
-├── CLAUDE.md
-├── diagram.md          # Visual architecture
-├── knowledge/          # Policies & philosophy
-├── modules/            # Submodules
-└── .claude/
-    ├── agents/         # Immune system
-    │   ├── reviewer.md
-    │   └── self-improve.md
-    ├── commands/       # Slash commands
-    └── skills/         # Skills
-```
+See [diagram.md](diagram.md) for directory structure.

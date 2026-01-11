@@ -17,7 +17,7 @@ When a new capability is needed (database, web service, etc.), a new repository 
 
 ## Philosophy
 
-See [knowledge/philosophy.md](knowledge/philosophy.md) for our 11 core principles.
+See [knowledge/philosophy.md](knowledge/philosophy.md) for core principles.
 
 ## Documentation
 
@@ -30,19 +30,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for our 11 core principle
 
 ## Structure
 
-```
-neuron/
-├── README.md           # Human: Project overview
-├── CLAUDE.md           # AI: Agent entry point
-├── diagram.md          # Human: Visual architecture
-├── knowledge/          # Core policies and conventions
-│   └── philosophy.md   # Detailed philosophy
-├── modules/            # Submodules (other repositories)
-│   └── .gitkeep
-└── .claude/
-    ├── settings.json   # Claude Code settings
-    └── commands/       # Custom slash commands
-```
+See [diagram.md](diagram.md) for directory structure.
 
 ## How It Works
 
