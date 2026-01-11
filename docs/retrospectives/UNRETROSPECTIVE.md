@@ -9,6 +9,7 @@
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
 | 2026-01-11 | #12 | Location decision vs architecture decision confusion | pending |
+| 2026-01-11 | #15 | Language convention violation - non-English content in knowledge files | pending |
 
 ## Insights
 
@@ -29,6 +30,9 @@
 - 2026-01-11: Standardization across agent/command formats (`allowed-tools:` → `tools:`) demonstrates consistency pattern - small changes compound into better UX
 - 2026-01-11: Cross-references between knowledge files improve discoverability without duplication - maintains SSOT while enabling multi-entry navigation
 - 2026-01-11: Single refactor commit with focused scope demonstrates Agile principle - small change, clear boundary, easy to review and revert
+- 2026-01-11: Language convention violation detected early by review process - English-only policy (CLAUDE.md line 67) critical for AI-First principle and machine-readability
+- 2026-01-11: Good conceptual work (AI axioms for judgment) can still be blocked by convention violations - foundation matters as much as content
+- 2026-01-11: Quick convention fix (Korean → English translation) demonstrates responsive correction - blocked status resolved in single commit, review-fix-approve cycle worked efficiently
 
 ## Improvements
 

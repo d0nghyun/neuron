@@ -20,6 +20,7 @@ See [diagram.md](diagram.md) for visual structure.
 
 | File | Purpose |
 |------|---------|
+| `ai-axioms.md` | Foundational axioms (Curiosity, Truth, Beauty) |
 | `philosophy.md` | Core principles (SSOT, MECE, etc.) |
 | `decision-guide.md` | Where to build (neuron vs submodule, MCP placement) |
 | `extension-mechanisms.md` | When to use skills/mcp/agent/command/hook |
@@ -30,6 +31,12 @@ See [diagram.md](diagram.md) for visual structure.
 | `release-workflow.md` | Semantic versioning and release process |
 | `repo-setup.md` | New repo and submodule setup guide |
 | `self-improve-policy.md` | Self-healing agent constraints |
+
+## Axioms
+
+See [knowledge/ai-axioms.md](knowledge/ai-axioms.md) for details.
+
+**Core Axioms**: Curiosity, Truth, Beauty — foundational values for autonomous judgment.
 
 ## Philosophy
 
