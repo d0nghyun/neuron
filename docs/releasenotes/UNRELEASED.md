@@ -33,6 +33,8 @@
 - Updated README.md with documentation table clarifying audience (Human vs AI) and purpose for each file
 - Updated CLAUDE.md with references to auto-commit and auto-PR policies
 - Updated philosophy count from 10 to 11 principles in README.md and CLAUDE.md
+- Enhanced extension-mechanisms.md with detailed MCP configuration documentation including .mcp.json file location, structure, format example, and activation settings via .claude/settings.local.json
+- Added auto-branch policy to git-workflow.md for automatic branch naming without user prompts
 
 ## Fixed
 
