@@ -37,7 +37,41 @@ Examples:
 - Slack notifications
 ```
 
-**Location**: MCP server configuration (see decision-guide.md for placement)
+**Location**: `.mcp.json` (project root)
+
+**Structure**:
+```
+project/
+├── .mcp.json                    # MCP server definitions (Git shared)
+└── .claude/
+    └── settings.local.json      # MCP enable/disable (personal)
+```
+
+**Format** (`.mcp.json`):
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_KEY": "${NOTION_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+**Activation** (`.claude/settings.local.json`):
+```json
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["notion"]
+}
+```
+
+See decision-guide.md for placement decisions (neuron vs project-specific).
 
 ## Subagent
 
