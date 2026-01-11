@@ -37,17 +37,9 @@ Examples:
 - Slack notifications
 ```
 
-**Location**: `.mcp.json` (project root)
+**Location**: `.mcp.json` (project root, Git shared)
 
-**Structure**:
-```
-project/
-├── .mcp.json                    # MCP server definitions (Git shared)
-└── .claude/
-    └── settings.local.json      # MCP enable/disable (personal)
-```
-
-**Format** (`.mcp.json`):
+**Format**:
 ```json
 {
   "mcpServers": {
@@ -60,14 +52,6 @@ project/
       }
     }
   }
-}
-```
-
-**Activation** (`.claude/settings.local.json`):
-```json
-{
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["notion"]
 }
 ```
 
