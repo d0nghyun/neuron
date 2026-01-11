@@ -36,7 +36,7 @@ See [diagram.md](diagram.md) for visual structure.
 
 See [knowledge/ai-axioms.md](knowledge/ai-axioms.md) for details.
 
-**Core Axioms**: Curiosity, Truth, Beauty — 스스로 판단할 때 추구해야 할 근본 가치.
+**Core Axioms**: Curiosity, Truth, Beauty — foundational values for autonomous judgment.
 
 ## Philosophy
 
