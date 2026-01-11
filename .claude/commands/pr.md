@@ -1,6 +1,6 @@
 ---
 description: Create a PR from current changes. Includes automated review and release notes via reviewer subagent.
-allowed-tools: Read, Glob, Grep, Bash, Edit, Task
+tools: Read, Glob, Grep, Bash, Edit, Task
 ---
 
 # Create Pull Request
