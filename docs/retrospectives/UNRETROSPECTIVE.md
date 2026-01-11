@@ -23,6 +23,7 @@
 
 | Date | PR | Target | Change | Root Cause |
 |------|-----|--------|--------|------------|
+| 2026-01-11 | #11 | CLAUDE.md | Add decision signal recognition section | AI lacked guidance to distinguish user decisions from genuine ambiguity |
 
 ---
 

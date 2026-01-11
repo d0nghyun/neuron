@@ -33,6 +33,20 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
 **Principles**: SSOT, MECE, Simplicity First, Incremental, Modularity, Agile, Test-First, AI-First, Root Cause First, Bounded Creativity, Constructive Challenge, Front-load Pain, Autonomous Execution, Trust-based Delegation
 
+## Decision Signal Recognition
+
+**Execute immediately when user states:**
+- Location: "put in docs", "store in X", "use Y folder"
+- Tool: "use Notion", "with GitHub", "via MCP"
+- Approach: "I'll do X", "going to Y", "decided to Z"
+
+**Confirm only when:**
+- Multiple valid approaches exist AND user hasn't chosen
+- Destructive action without explicit intent
+- Ambiguous scope (what vs where vs how unclear)
+
+**Default**: Trust user's stated decision. Act, don't ask.
+
 ## Conventions
 
 - **Language**: English for all repository content
