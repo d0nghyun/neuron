@@ -11,6 +11,7 @@ See [diagram.md](diagram.md) for visual structure.
 |----------|---------|
 | `knowledge/` | Core policies (philosophy, conventions, guides) |
 | `modules/` | Git submodules (external projects) |
+| `modules/_registry.yaml` | Module metadata registry |
 | `docs/retrospectives/` | Learnings and insights |
 | `.claude/agents/` | Immune system (reviewer, self-improve) |
 | `.claude/commands/` | Custom slash commands |
@@ -30,6 +31,7 @@ See [diagram.md](diagram.md) for visual structure.
 | `github-settings.md` | Branch protection, PR settings, review policy |
 | `release-workflow.md` | Semantic versioning and release process |
 | `repo-setup.md` | New repo and submodule setup guide |
+| `module-protocol.md` | Submodule management (register, archive, re-register) |
 | `self-improve-policy.md` | Self-healing agent constraints |
 
 ## Axioms
