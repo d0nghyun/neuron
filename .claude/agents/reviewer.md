@@ -143,6 +143,29 @@ If detected, append to report:
 
 Categories: `convention`, `workflow`, `review`, `knowledge`
 
+### Step 7b: Update Retrospective
+
+Update `docs/retrospectives/UNRETROSPECTIVE.md` with learnings from this review:
+
+**1. Patterns** (if [IMPROVE] tag was generated):
+
+Add row under `## Patterns`:
+```
+| <today> | #<PR> | <pattern description> | pending |
+```
+
+**2. Insights** (positive observations from review):
+
+Add entry under `## Insights`:
+```
+- <today>: <insight description>
+```
+
+Examples of insights:
+- Test-first approach caught edge case early
+- Small commits made review easier
+- Reusing existing pattern kept code simple
+
 ## Approval Criteria
 
 | Status | Condition |

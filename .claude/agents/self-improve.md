@@ -120,6 +120,15 @@ gh pr create \
 Next: Review and approve PR manually.
 ```
 
+## Step 8b: Log to Retrospective
+
+Append improvement to `docs/retrospectives/UNRETROSPECTIVE.md`:
+
+Under `## Improvements` section, add row:
+```
+| <today> | #<PR> | <target file> | <change summary> | <root cause> |
+```
+
 ## Guardrails (NEVER violate)
 
 | Limit | Value |
