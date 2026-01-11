@@ -24,7 +24,11 @@ See [diagram.md](diagram.md) for visual structure.
 | `decision-guide.md` | Where to build (neuron vs submodule, MCP placement) |
 | `extension-mechanisms.md` | When to use skills/mcp/agent/command/hook |
 | `spec-process.md` | How to develop specs via scenarios |
-| `git-workflow.md` | Git conventions and auto-commit policy |
+| `git-workflow.md` | Commit conventions, branch strategy, auto-commit/PR policies |
+| `git-advanced.md` | Worktree, revert strategy, PR workflow, collaboration tips |
+| `github-settings.md` | Branch protection, PR settings, review policy |
+| `release-workflow.md` | Semantic versioning and release process |
+| `repo-setup.md` | New repo and submodule setup guide |
 | `self-improve-policy.md` | Self-healing agent constraints |
 
 ## Philosophy
@@ -56,7 +60,8 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 - **Language**: English for all repository content
 - **File size**: Max 200 lines per file
 - **Documentation**: Structured for AI consumption
-- **Commits**: Conventional commits with Co-Authored-By
+- **Commits**: Conventional commits (see [git-workflow.md](knowledge/git-workflow.md))
+- **Co-Authored-By**: `Claude Opus 4.5 <noreply@anthropic.com>` (include in all AI commits)
 - **Auto-commit**: Commit without asking when logical unit complete (see git-workflow.md)
 - **Auto-PR**: Run /pr automatically on completion (see git-workflow.md)
 

@@ -54,3 +54,8 @@ Q2. Is it a general-purpose service?
 | Independent domain? | - | Yes | - |
 | General-purpose MCP? | Yes | - | No |
 | One-off script? | scripts/ | - | - |
+
+## Related
+
+- [extension-mechanisms.md](extension-mechanisms.md) - How to extend Claude Code (skills, MCP, agents, commands)
+- [spec-process.md](spec-process.md) - How to develop specifications through scenarios

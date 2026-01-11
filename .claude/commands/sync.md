@@ -1,6 +1,6 @@
 ---
 description: Sync local main branch after PR merge. Checkout main, pull latest, and clean up.
-allowed-tools: Bash
+tools: Bash
 ---
 
 # Sync Main Branch
