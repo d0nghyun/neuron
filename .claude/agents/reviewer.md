@@ -145,7 +145,7 @@ Categories: `convention`, `workflow`, `review`, `knowledge`
 
 ### Step 7b: Update Retrospective
 
-Update `docs/retrospectives/UNRETROSPECTIVE.md` with learnings from this review:
+Update `docs/retrospectives/UNRETROSPECTIVE.md` with learnings from this review (see [retrospectives README](../../docs/retrospectives/README.md) for structure):
 
 **1. Patterns** (if [IMPROVE] tag was generated):
 

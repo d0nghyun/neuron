@@ -1,6 +1,6 @@
 ---
 description: Create a release with version tag. Converts UNRELEASED.md to version file and creates git tag.
-allowed-tools: Read, Bash, Edit, Write, Task
+tools: Read, Bash, Edit, Write, Task
 ---
 
 # Create Release
@@ -47,98 +47,24 @@ Ask user to confirm version number.
 
 ### Step 4: Reset UNRELEASED.md
 
-Write fresh template to UNRELEASED.md:
-
-```markdown
-# Unreleased
-
-> Changes pending for the next release
-
-## Added
-
--
-
-## Changed
-
--
-
-## Fixed
-
--
-
-## Removed
-
--
-
-## Security
-
--
-
-## Breaking Changes
-
--
-
----
-
-*Auto-updated by reviewer agent on PR creation.*
-```
+Reset to empty template with sections from [releasenotes README](../../docs/releasenotes/README.md):
+- Header: `# Unreleased` with quote `> Changes pending for the next release`
+- Sections: Added, Changed, Fixed, Removed, Security, Breaking Changes (each with `-` placeholder)
+- Footer: `*Auto-updated by reviewer agent on PR creation.*`
 
 ### Step 4b: Convert Retrospective
 
 1. Read `docs/retrospectives/UNRETROSPECTIVE.md`
 2. If has content beyond template (any entries in tables or insights):
-   - Create `docs/retrospectives/retro-vX.Y.Z.md` with header and content
-   - Reset UNRETROSPECTIVE.md to template
+   - Create `docs/retrospectives/retro-vX.Y.Z.md` with version header, release date, and content
+   - Reset UNRETROSPECTIVE.md to empty template
 
-Template for retro-vX.Y.Z.md:
-```markdown
-# Retrospective vX.Y.Z
-
-> Release: YYYY-MM-DD
-
-## Patterns
-
-<copy from UNRETROSPECTIVE.md>
-
-## Insights
-
-<copy from UNRETROSPECTIVE.md>
-
-## Improvements
-
-<copy from UNRETROSPECTIVE.md>
-```
-
-Reset UNRETROSPECTIVE.md template:
-```markdown
-# Unretrospective
-
-> Learnings pending for the next release
-
-## Patterns
-
-> Recurring issues detected by reviewer agent
-
-| Date | PR | Pattern | Status |
-|------|-----|---------|--------|
-
-## Insights
-
-> What worked well, lessons learned (updated by reviewer on each PR)
-
--
-
-## Improvements
-
-> System fixes by self-improve agent
-
-| Date | PR | Target | Change | Root Cause |
-|------|-----|--------|--------|------------|
-
----
-
-*Auto-updated by reviewer and self-improve agents.*
-```
+Reset template structure from [retrospectives README](../../docs/retrospectives/README.md):
+- Header: `# Unretrospective` with quote `> Learnings pending for the next release`
+- Patterns: empty table `| Date | PR | Pattern | Status |`
+- Insights: list with `-` placeholder
+- Improvements: empty table `| Date | PR | Target | Change | Root Cause |`
+- Footer: `*Auto-updated by reviewer and self-improve agents.*`
 
 ### Step 5-7: Commit, Tag, Push
 

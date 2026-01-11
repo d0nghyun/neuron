@@ -24,6 +24,11 @@
 - 2026-01-11: Brain-themed naming convention (hippo=hippocampus for memory/docs) adds personality while maintaining semantic meaning
 - 2026-01-11: Multiple small commits (5 atomic commits) made review easier - each change independently reviewable and revertible
 - 2026-01-11: Documentation-as-discovery pattern effective - github-api-patterns.md captured working solutions discovered during actual implementation
+- 2026-01-11: SSOT refactoring reduces net lines (177 deletions vs 123 additions = -54 lines) while improving organization - duplication removal achieved simplification goal
+- 2026-01-11: MECE principle in file splitting - clear boundary between git-workflow.md (basics, 116 lines) and git-advanced.md (advanced ops, 85 lines) prevents overlap
+- 2026-01-11: Standardization across agent/command formats (`allowed-tools:` → `tools:`) demonstrates consistency pattern - small changes compound into better UX
+- 2026-01-11: Cross-references between knowledge files improve discoverability without duplication - maintains SSOT while enabling multi-entry navigation
+- 2026-01-11: Single refactor commit with focused scope demonstrates Agile principle - small change, clear boundary, easy to review and revert
 
 ## Improvements
 
