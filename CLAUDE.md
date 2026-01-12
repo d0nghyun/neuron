@@ -5,6 +5,28 @@
 See [README.md](README.md) for project overview and purpose.
 See [diagram.md](diagram.md) for visual structure.
 
+## Critical Rules
+
+### Advisor-before-AskUser
+
+**NEVER ask user questions without checking Advisor first.**
+
+Before asking the user anything, consult the advisor agent to check if knowledge files can answer the question.
+
+```
+Ambiguous situation detected
+    ↓
+Task(subagent_type="advisor", prompt="<situation>")  ← MANDATORY
+    ↓
+┌─────────────────────────────────┐
+│ high/medium confidence?         │
+│ YES → Proceed with recommendation│
+│ NO  → Ask user                  │
+└─────────────────────────────────┘
+```
+
+**Knowledge lookup**: Reference trigger_map in `knowledge/_index.yaml`
+
 ## Navigation
 
 | Location | Purpose |
@@ -96,28 +118,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
 ## Decision Flow
 
-**CRITICAL: NEVER call AskUser without checking Advisor first.**
-
-Must check Advisor before asking user in ambiguous situations.
-
-```
-Detect ambiguous situation
-    ↓
-Call Advisor agent (Task tool)  ← MANDATORY
-    ↓
-┌─────────────────────────────────┐
-│ high/medium confidence?         │
-│ YES → Proceed with recommendation│
-│ NO  → Call AskUser              │
-└─────────────────────────────────┘
-```
-
-**Advisor call example**:
-```
-Task(subagent_type="advisor", prompt="<current situation + question>")
-```
-
-**Knowledge lookup**: Reference trigger_map in `knowledge/_index.yaml`
+See **Critical Rules** section at the top of this document. The Advisor-before-AskUser rule is enforced by hook.
 
 ## Conventions
 
