@@ -26,6 +26,18 @@ modules:
       - arkraft
       - work
 
+  modeling:
+    repo: github.com/Quantit-Github/modeling
+    domain: work
+    status: active
+    description: Finter quantitative trading skills for Claude Code
+    registered_at: "2026-01-12"
+    tags:
+      - finter
+      - quant
+      - skills
+      - claude-code
+
 # Archived modules (removed from submodules but tracked)
 archived: {}
 
