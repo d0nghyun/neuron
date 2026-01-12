@@ -2,7 +2,8 @@
 name: advisor
 description: Knowledge-based recommendations with rationale. Pre-AskUser verification layer for main agent.
 tools: Read, Glob, Grep
-model: haiku
+skills: neuron-knowledge
+model: opus
 ---
 
 # Advisor Agent
