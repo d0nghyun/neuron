@@ -4,6 +4,13 @@
 
 ## Added
 
+- API-based Skills for headless/CI automation (`.claude/skills/`):
+  - `github-api` - GitHub REST API with PAT authentication
+  - `jira-api` - Jira REST API with API token authentication
+  - `notion-api` - Notion REST API with integration token authentication
+- Environment variable template (`.env.example`) with token creation URLs and required scopes
+- `.gitignore` file for secret protection (.env, .mcp.json excluded from version control)
+- External Service Integration policy in CLAUDE.md (API Skills default, MCP manual only)
 - Initial project setup with hub architecture for personal project management
 - Core documentation: README.md with project overview and usage guide
 - CLAUDE.md as AI entry point with philosophy summary and conventions
@@ -81,6 +88,8 @@
 - Enhanced CLAUDE.md Philosophy section: replaced comma-separated principle list with table format showing principle names and one-line meanings to improve AI comprehension at load time
 - Updated CLAUDE.md Navigation table to include `modules/_registry.yaml` entry and Knowledge Files table to include `module-protocol.md`
 - Migrated Atlassian and Notion MCP servers from stdio/SSE to HTTP transport in `.mcp.json` for consistency
+- Refactored `knowledge/extension-mechanisms.md` MCP section to prioritize API Skills over MCP for automation scenarios with comparison table (MCP vs API Skills)
+- MCP configuration moved from shared (.mcp.json tracked) to user-specific (gitignored) to support personal OAuth flows
 
 ## Fixed
 
@@ -89,15 +98,21 @@
 ## Removed
 
 - Deleted deprecated docs/improvement-log.md (replaced by retrospectives system)
+- Removed `.mcp.json` from version control (OAuth-based MCP servers replaced by API token-based Skills)
 
 ## Security
 
 - No secrets or credentials detected in codebase
 - Security review checklist included in reviewer agent
+- Added `.gitignore` to protect sensitive files (.env, .mcp.json) from version control
+- Environment variable-based authentication replaces OAuth for better CI/CD security
+- `.env.example` provides safe template without exposing actual credentials
 
 ## Breaking Changes
 
--
+- `.mcp.json` removed from repository - users must migrate to API token-based authentication via `.env` file (see `.env.example` for template)
+- OAuth-based MCP servers (GitHub, Jira, Notion) replaced by API Skills requiring manual token generation
+- MCP configurations now user-specific and gitignored - shared configurations no longer supported
 
 ---
 

@@ -90,6 +90,16 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 - **Auto-commit**: Commit without asking when logical unit complete (see git-workflow.md)
 - **Auto-PR**: Run /pr automatically on completion (see git-workflow.md)
 
+## External Service Integration
+
+- **Default**: Use API-based Skills, not MCP
+- MCP only for manual user-added configurations
+- For external services, reference `.claude/skills/*-api/` Skills:
+  - GitHub → `github-api` skill
+  - Jira → `jira-api` skill
+  - Notion → `notion-api` skill
+- Environment variables for authentication (see `.env.example`)
+
 ## Working with This Repository
 
 When adding new functionality:

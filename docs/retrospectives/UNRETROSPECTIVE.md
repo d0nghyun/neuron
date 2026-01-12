@@ -43,6 +43,10 @@
 - 2026-01-12: HTTP transport migration demonstrates Simplicity First - removing stdio/SSE complexity unifies on single transport type with better compatibility
 - 2026-01-12: Web sandbox compatibility consideration shows forward-thinking - HTTP-first policy prevents future friction when using Claude Code in browser
 - 2026-01-12: Common MCP URLs reference table demonstrates AI-First - machine-readable format makes future MCP additions copy-paste easy
+- 2026-01-12: Strategic architecture pivot (OAuth MCP → API Skills) solves root cause - browser authentication incompatible with headless/CI environments, token-based approach enables automation
+- 2026-01-12: Consistent skill structure across services (github-api, jira-api, notion-api) demonstrates modularity - each skill independent, easily replaceable, follows same pattern
+- 2026-01-12: Moving secrets from tracked (.mcp.json) to gitignored (.env) demonstrates security-first thinking - prevents accidental credential exposure
+- 2026-01-12: Breaking change well-documented in release notes - migration path clear (see .env.example), rationale explicit (headless automation)
 
 ## Improvements
 
