@@ -107,6 +107,31 @@ git add .gitmodules modules/_registry.yaml modules/repo-name
 git commit -m "feat(modules): re-register repo-name"
 ```
 
+### Rename Module
+
+```bash
+# 1. Move submodule
+git mv modules/old-name modules/new-name
+
+# 2. Update .gitmodules path
+# Change [submodule "modules/old-name"] → [submodule "modules/new-name"]
+
+# 3. Update .git/config
+git submodule sync
+
+# 4. Update _registry.yaml (change key name)
+
+# 5. Commit
+git add .gitmodules modules/_registry.yaml
+git commit -m "refactor(modules): rename old-name to new-name"
+```
+
+**⚠️ Note for recipients**: After pulling a rename commit, run:
+```bash
+git submodule update --init modules/new-name
+```
+Git does not auto-initialize renamed submodules.
+
 ### Update All Submodules
 
 ```bash
