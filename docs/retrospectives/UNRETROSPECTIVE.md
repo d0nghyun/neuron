@@ -46,13 +46,17 @@
 - 2026-01-12: Common MCP URLs reference table demonstrates AI-First - machine-readable format makes future MCP additions copy-paste easy
 - 2026-01-12: Strategic architecture pivot (OAuth MCP → API Skills) solves root cause - browser authentication incompatible with headless/CI environments, token-based approach enables automation
 - 2026-01-12: Consistent skill structure across services (github-api, jira-api, notion-api) demonstrates modularity - each skill independent, easily replaceable, follows same pattern
-- 2026-01-12: Moving secrets from tracked (.mcp.json) to gitignored (.env) demonstrates security-first thinking - prevents accidental credential exposure
+- 2026-01-12: Moving secrets from tracked (.mcp.json) to gitignored (.env.local) demonstrates security-first thinking - prevents accidental credential exposure
 - 2026-01-12: Breaking change well-documented in release notes - migration path clear (see .env.example), rationale explicit (headless automation)
 - 2026-01-12: Comprehensive gh CLI replacement demonstrates thoroughness - all 5 documentation files updated consistently, no partial migration
 - 2026-01-12: Confluence API Skill follows established pattern - same structure as github-api, jira-api, notion-api ensures consistency and maintainability
 - 2026-01-12: Terminology alignment (MCP → API Skills) demonstrates SSOT principle - single consistent term across all documentation
 - 2026-01-12: ATLASSIAN_* variable consolidation demonstrates DRY - single set of credentials serves both Jira and Confluence APIs
 - 2026-01-12: Small documentation-only refactor (3 commits, 10 files) demonstrates Incremental principle - focused scope, clear intent, easy to review
+- 2026-01-12: GitLab API integration enables internal repo access - ark/arkraft group contains alpha-agent, arkraft-fe, pm-arkraft projects
+- 2026-01-12: Environment variable loading pattern (export $(grep -v '^#' .env.local | xargs)) enables API calls without sourcing
+- 2026-01-12: pm-arkraft as central hub connecting Confluence (docs), Jira (issues), GitLab (code) demonstrates integration-first approach
+- 2026-01-12: Capturing Confluence page IDs in CLAUDE.md enables programmatic access without URL parsing
 
 ## Improvements
 
