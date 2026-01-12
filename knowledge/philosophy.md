@@ -20,6 +20,7 @@
 | 14 | Trust-based Delegation | AI owns execution, human sets direction | Truth |
 | 15 | Verify Before Done | Prove it works, don't assume it works | Truth |
 | 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
+| 17 | Learn from Failure | Record failures, find patterns, improve the system | Truth, Curiosity |
 
 ## Details
 
@@ -70,3 +71,6 @@ Never declare "done" based on "looks right." Actually run it, render it, test it
 
 ### 16. Automate Repetition
 Repetition signals inefficiency. If something is done twice, it's a candidate for automation. Scripts, commands, and workflows should replace manual routines. Bottlenecks are improvement opportunities.
+
+### 17. Learn from Failure
+Failures are data, not shame. Record every failure, analyze patterns, and improve the system to prevent recurrence. The retrospective cycle (detect → record → analyze → fix) turns mistakes into system upgrades. See `docs/retrospectives/` for the learning mechanism and `knowledge/self-improve-policy.md` for improvement guardrails.

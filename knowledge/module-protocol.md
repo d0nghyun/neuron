@@ -7,6 +7,21 @@ Modules connect to neuron like USB-C devices:
 - **Plug and play**: Easy registration and removal
 - **Independence**: Each module is a standalone repository
 
+## Independence Requirement
+
+Submodules must work standalone when cloned independently.
+
+**DO NOT use parent-relative paths** like `../../knowledge/`.
+These create physical dependency on parent repo structure.
+
+**DO inline core policies** in submodule CLAUDE.md.
+Reference neuron conceptually (GitHub URL) but don't depend on it physically.
+
+| Pattern | Status | Why |
+|---------|--------|-----|
+| `[neuron-base.md](../../knowledge/neuron-base.md)` | WRONG | Breaks standalone |
+| Inline policies + GitHub URL reference | CORRECT | Works everywhere |
+
 ## Structure
 
 ```
@@ -144,23 +159,24 @@ git submodule foreach git pull origin main
 When registering or auditing a module:
 
 ```bash
-# Check CLAUDE.md has inheritance
-grep -A2 "## Inherits" modules/<repo>/CLAUDE.md
+# Check CLAUDE.md has inlined policies
+grep -A5 "## Inherited Policies" modules/<repo>/CLAUDE.md
 ```
 
 **Checklist:**
 - [ ] CLAUDE.md exists in module root
-- [ ] Contains `## Inherits` section
-- [ ] References `neuron-base.md` with correct path
-- [ ] Overrides documented with reasons (if any)
+- [ ] Contains `## Inherited Policies` section with inlined table
+- [ ] References neuron via GitHub URL (not relative path)
+- [ ] Works standalone when cloned independently
+- [ ] Configurable policy overrides documented with reasons
 
 **Common Issues:**
 
 | Issue | Fix |
 |-------|-----|
 | Missing CLAUDE.md | Create using repo-setup.md template |
-| Old "Inherits Neuron policies" | Update to reference neuron-base.md |
-| Undocumented override | Add to Overrides section |
+| Parent-relative path `../../` | Replace with inlined policies |
+| Undocumented override | Add to Configurable table with reason |
 
 ## Dashboard Integration
 
@@ -179,12 +195,12 @@ Each module MUST have:
 ```
 module/
   README.md           # Required: Purpose, setup, usage
-  CLAUDE.md           # Required: AI instructions with inheritance
+  CLAUDE.md           # Required: AI instructions with inlined policies
   .claude/            # Optional: Claude Code configuration
 ```
 
-CLAUDE.md must include `## Inherits` section referencing [neuron-base.md](neuron-base.md).
-See [repo-setup.md](repo-setup.md) for template.
+CLAUDE.md must include `## Inherited Policies` section with inlined policy table.
+Do NOT use parent-relative paths. See [repo-setup.md](repo-setup.md) for template.
 
 ## Related
 

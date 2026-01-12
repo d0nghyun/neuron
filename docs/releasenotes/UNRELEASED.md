@@ -58,7 +58,9 @@
   - Dashboard-ready schema with status (active/maintenance/archived) and domain (tools/personal/work/experimental) categorization
   - Module interface standard (README.md, CLAUDE.md, .claude/)
 - PM-arkraft submodule (modules/pm-arkraft) registered with work domain for arkraft project management
+- Modeling submodule (modules/modeling) registered with work domain for Finter quantitative trading skills
 - GitLab API support in `.env.example` with `GITLAB_BASE_URL` and `GITLAB_API_TOKEN` variables for internal GitLab access
+- Independence Requirement section in `knowledge/module-protocol.md` establishing submodule standalone principle
 - Atlassian MCP server configuration in `.mcp.json` using official endpoint (https://mcp.atlassian.com/v1/sse)
 - GitHub and Notion MCP servers in `.mcp.json` with HTTP transport for web sandbox compatibility
 - HTTP-first MCP configuration policy documented in `knowledge/extension-mechanisms.md` with transport comparison table (HTTP/SSE/stdio)
@@ -91,6 +93,11 @@
   - Configurable policies (Language, Test-First, AI-First docs) with documented override protocol
   - Explicit inheritance declaration via `## Inherits` section in submodule CLAUDE.md
   - Verification checklist and grep command for audit automation
+- 17th core principle "Learn from Failure" formalizing retrospective mechanism as philosophy:
+  - Record failures, find patterns, improve the system
+  - Axiom connection: Truth (admit failures), Curiosity (find patterns)
+  - Links existing retrospective cycle (docs/retrospectives/) to core philosophy
+  - References self-improve-policy.md for improvement guardrails
 
 ## Changed
 
@@ -145,10 +152,13 @@
 - Updated `knowledge/module-protocol.md` to make CLAUDE.md required (was recommended) with inheritance verification section
 - Updated `knowledge/repo-setup.md` CLAUDE.md template to include explicit inheritance and overrides sections
 - Updated `modules/pm-arkraft` as first implementation example with neuron-base.md reference and documented language override
+- Updated `knowledge/repo-setup.md` CLAUDE.md template to inline policies instead of parent-relative paths for submodule independence
+- Updated `knowledge/neuron-base.md` inheritance declaration to eliminate physical path dependency
+- Updated `knowledge/module-protocol.md` verification checklist to check for standalone compatibility
 
 ## Fixed
 
--
+- Submodule independence violation: parent-relative paths (../../knowledge/) in templates created physical dependency on parent repo structure, breaking standalone usage. Solution: inline policies in submodule CLAUDE.md with GitHub URL reference
 
 ## Removed
 

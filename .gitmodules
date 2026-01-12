@@ -4,3 +4,6 @@
 [submodule "modules/pm-arkraft"]
 	path = modules/pm-arkraft
 	url = ssh://git@gitlab.quantit.io:2222/ark/arkraft/pm-arkraft.git
+[submodule "modules/modeling"]
+	path = modules/modeling
+	url = https://github.com/Quantit-Github/modeling.git
