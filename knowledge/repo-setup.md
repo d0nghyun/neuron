@@ -24,30 +24,40 @@
 ## Overview
 Brief description of what this project does.
 
-## Inherits
+## Inherited Policies
 
-Neuron base: [neuron-base.md](../../knowledge/neuron-base.md)
+This project follows [neuron](https://github.com/d0nghyun/neuron) conventions.
 
-## Overrides
+### Required (cannot override)
 
-(Document any policy overrides with reasons, or remove this section if none)
+| Policy | Summary |
+|--------|---------|
+| 3 Axioms | Curiosity, Truth, Beauty |
+| SSOT | Single source of truth, no duplication |
+| Verify Before Done | Prove it works, don't assume |
+| Conventional Commits | `type(scope): description` |
+| Co-Authored-By | `Claude Opus 4.5 <noreply@anthropic.com>` |
+
+### Configurable
+
+| Policy | Default | This Project |
+|--------|---------|--------------|
+| Language | English only | (override or keep default) |
+| Test-First | Required | (override or keep default) |
 
 ## Commands
 | Command | Purpose |
 |---------|---------|
 | `npm test` | Run tests |
-| `npm run build` | Build project |
-
-## Project Rules
-- (Project-specific conventions)
-- (Tech stack notes)
 
 ## Key Files
 | File | Purpose |
 |------|---------|
 | `src/` | Source code |
-| `tests/` | Test files |
 ```
+
+**IMPORTANT**: Do NOT use parent-relative paths like `../../knowledge/`.
+Submodules must work standalone when cloned independently.
 
 ## Registering as Submodule
 
@@ -146,8 +156,9 @@ Commands: go test ./..., go build
 
 Before first PR:
 - [ ] CLAUDE.md has correct commands
-- [ ] CLAUDE.md has `## Inherits` referencing neuron-base.md
-- [ ] Overrides documented with reasons (if any)
+- [ ] CLAUDE.md has `## Inherited Policies` with inlined table
+- [ ] No parent-relative paths (works standalone)
+- [ ] Configurable policy overrides documented with reasons
 - [ ] README.md explains the project
 - [ ] .gitignore covers build artifacts
 - [ ] Branch protection enabled
