@@ -69,6 +69,10 @@
 - 2026-01-12: SSOT implementation in action - removing redundant YAML frontmatter (36 lines deleted) consolidates knowledge metadata into single _index.yaml source
 - 2026-01-12: Documentation consistency refactor demonstrates systematic thinking - fixing missing principle, documenting commands, and cleaning up SSOT violations in single logical commit
 - 2026-01-12: Two-commit structure (feature + refactor) shows good separation of concerns - new functionality isolated from cleanup work
+- 2026-01-12: Jira API endpoint change (/search → /search/jql) discovered during implementation - API deprecation caught and fixed in skill documentation immediately
+- 2026-01-12: /status command demonstrates On-Demand over Auto-Sync pattern - SSOT preserved (Confluence is source), no stale data risk, explicit user control
+- 2026-01-12: Confluence as status SSOT over git file - team sharing easier, version history built-in, no merge conflicts on status updates
+- 2026-01-12: Submodule-specific commands (.claude/commands/) enable project-local customization while inheriting parent policies
 
 ## Improvements
 

@@ -82,6 +82,10 @@
   - TodoWrite integration for task tracking
   - Priority categorization (blocking vs nice-to-have)
   - Clear execution workflow: scan → categorize → write todos
+- `/status` command in pm-arkraft submodule for dynamic project status management:
+  - Fetches data from Jira (In Progress, Done, Backlog) and GitLab (commits, MRs, pipelines)
+  - Updates Confluence Status page (ID: 4971692151) as SSOT
+  - On-demand execution preserves data freshness without auto-sync complexity
 
 ## Changed
 
@@ -128,6 +132,7 @@
 - Added 16th core principle "Automate Repetition" to CLAUDE.md philosophy table
 - Updated neuron-knowledge skill to reference `knowledge/_index.yaml` for knowledge discovery instead of listing individual files
 - Removed redundant YAML frontmatter from knowledge files (data-pipeline.md, decision-guide.md, git-workflow.md) implementing SSOT principle with _index.yaml as single source
+- Updated jira-api skill to use `/search/jql` endpoint (2026 API deprecation of `/search`)
 
 ## Fixed
 
