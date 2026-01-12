@@ -57,6 +57,8 @@
 - 2026-01-12: Environment variable loading pattern (export $(grep -v '^#' .env.local | xargs)) enables API calls without sourcing
 - 2026-01-12: pm-arkraft as central hub connecting Confluence (docs), Jira (issues), GitLab (code) demonstrates integration-first approach
 - 2026-01-12: Capturing Confluence page IDs in CLAUDE.md enables programmatic access without URL parsing
+- 2026-01-12: Documentation consistency fix (`.env` → `.env.local`) across 2 knowledge files demonstrates thoroughness - systematic correction prevents confusion
+- 2026-01-12: Configuration-only changes (no skill implementation yet) demonstrate Incremental principle - add environment variables first, implementation later when needed
 
 ## Improvements
 
