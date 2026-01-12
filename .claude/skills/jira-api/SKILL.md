@@ -39,10 +39,11 @@ curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
 
 ### Search Issues (JQL)
 ```bash
+# Note: Use /search/jql endpoint (2026+ API change)
 curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Accept: application/json" \
-  --data-urlencode "jql=project=PROJ AND status='In Progress'" \
-  "$ATLASSIAN_BASE_URL/rest/api/3/search"
+  -G --data-urlencode "jql=project=PROJ AND status='In Progress'" \
+  "$ATLASSIAN_BASE_URL/rest/api/3/search/jql"
 ```
 
 ### Get Issue
