@@ -86,26 +86,30 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 
 ## Step 7: Create PR
 
+Use GitHub API to create the PR:
+
 ```bash
-gh pr create \
-  --title "[IMPROVE] <description>" \
-  --label "self-improve,system-modification" \
-  --body "## System Modification
+curl -s -X POST \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "[IMPROVE] <description>",
+    "body": "## System Modification\n\n**Manual review required.**\n\n### Pattern\n<what kept happening>\n\n### Root Cause\n<5-whys summary>\n\n### Change\n- File: `<path>`\n- Lines: <N>\n\n### Rollback\n`git revert <commit>`",
+    "head": "improve/<category>-<description>",
+    "base": "main"
+  }' \
+  https://api.github.com/repos/{owner}/{repo}/pulls
+```
 
-**Manual review required.**
-
-### Pattern
-<what kept happening>
-
-### Root Cause
-<5-whys summary>
-
-### Change
-- File: \`<path>\`
-- Lines: <N>
-
-### Rollback
-\`git revert <commit>\`"
+Add labels via separate API call:
+```bash
+curl -s -X POST \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{"labels":["self-improve","system-modification"]}' \
+  https://api.github.com/repos/{owner}/{repo}/issues/{pr_number}/labels
 ```
 
 ## Step 8: Report

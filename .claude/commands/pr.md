@@ -13,7 +13,7 @@ tools: Read, Glob, Grep, Bash, Edit, Task
 4. **Create branch**: If on main, create feature branch
 5. **Commit**: Stage and commit with conventional format
 6. **Push**: Push branch to origin
-7. **Create PR**: Open PR via gh cli with review summary
+7. **Create PR**: Open PR via GitHub API with review summary
 
 ## Execution
 
@@ -57,17 +57,20 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 git push -u origin <branch-name>
 ```
 
-Create PR with review summary:
+Create PR with review summary (using GitHub API):
 
 ```bash
-gh pr create --title "<type>: <description>" --body "## Summary
-- <changes>
-
-## Review Result
-<reviewer subagent output>
-
-## Test Plan
-- [ ] <verification steps>"
+curl -s -X POST \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "<type>: <description>",
+    "body": "## Summary\n- <changes>\n\n## Review Result\n<reviewer output>\n\n## Test Plan\n- [ ] <verification>",
+    "head": "<branch-name>",
+    "base": "main"
+  }' \
+  https://api.github.com/repos/{owner}/{repo}/pulls
 ```
 
 ## Notes
