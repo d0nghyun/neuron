@@ -84,6 +84,7 @@
 | 2026-01-11 | #12 | CLAUDE.md | Add architecture check before location decisions | Location decisions bypassed architecture principles (new func -> submodule) |
 | 2026-01-12 | #21 | decision-guide.md | Update MCP terminology to API Skills | MCP-to-API-Skills migration updated extension-mechanisms.md but not decision-guide.md |
 | 2026-01-12 | #28 | CLAUDE.md | Add CRITICAL language enforcement warning | 4+ language violations - reactive review not preventing non-English content |
+| 2026-01-12 | #29 | CLAUDE.md | Add CRITICAL Advisor-before-AskUser enforcement | AI skipped Advisor agent, asked user questions that knowledge could answer |
 
 ---
 
