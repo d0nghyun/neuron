@@ -86,6 +86,11 @@
   - Fetches data from Jira (In Progress, Done, Backlog) and GitLab (commits, MRs, pipelines)
   - Updates Confluence Status page (ID: 4971692151) as SSOT
   - On-demand execution preserves data freshness without auto-sync complexity
+- Submodule inheritance mechanism (`knowledge/neuron-base.md`) defining universal policies for all neuron submodules:
+  - Required policies (3 Axioms, SSOT, Verify Before Done, Conventional Commits, Co-Authored-By) that cannot be overridden
+  - Configurable policies (Language, Test-First, AI-First docs) with documented override protocol
+  - Explicit inheritance declaration via `## Inherits` section in submodule CLAUDE.md
+  - Verification checklist and grep command for audit automation
 
 ## Changed
 
@@ -133,6 +138,10 @@
 - Updated neuron-knowledge skill to reference `knowledge/_index.yaml` for knowledge discovery instead of listing individual files
 - Removed redundant YAML frontmatter from knowledge files (data-pipeline.md, decision-guide.md, git-workflow.md) implementing SSOT principle with _index.yaml as single source
 - Updated jira-api skill to use `/search/jql` endpoint (2026 API deprecation of `/search`)
+- Updated `knowledge/_index.yaml` to include neuron-base in core category and summaries
+- Updated `knowledge/module-protocol.md` to make CLAUDE.md required (was recommended) with inheritance verification section
+- Updated `knowledge/repo-setup.md` CLAUDE.md template to include explicit inheritance and overrides sections
+- Updated `modules/pm-arkraft` as first implementation example with neuron-base.md reference and documented language override
 
 ## Fixed
 
