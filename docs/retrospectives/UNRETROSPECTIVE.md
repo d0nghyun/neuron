@@ -12,6 +12,7 @@
 | 2026-01-11 | #15 | Language convention violation - non-English content in knowledge files | pending |
 | 2026-01-12 | #21 | Language convention violation - Korean content in api-tokens.md | pending |
 | 2026-01-12 | #TBD | Language convention violation - Korean content in advisor.md, _index.yaml, data-pipeline.md, CLAUDE.md | pending |
+| 2026-01-12 | #TBD | Submodule independence violation - parent-relative paths break standalone usage | fixed |
 
 ## Insights
 
@@ -79,10 +80,16 @@
 - 2026-01-12: Verification checklist with grep command demonstrates automation-first thinking - manual audit made scriptable
 - 2026-01-12: CLAUDE.md made required (was recommended) for modules - policy clarification strengthens contract without breaking existing submodules
 - 2026-01-12: Inheritance mechanism enables consistent policy enforcement across 2+ submodules without duplication - scales better than inline policy docs in each CLAUDE.md
+- 2026-01-12: Formalizing existing practice as principle strengthens system - retrospectives already existed, "Learn from Failure" principle makes it explicit and traceable to axioms
+- 2026-01-12: Small documentation changes (5 lines) can have high strategic value - connecting existing mechanism to philosophy creates conceptual clarity
+- 2026-01-12: Principle #17 demonstrates meta-learning - system now has formal principle about learning from failures, closing the feedback loop
+- 2026-01-12: Submodule inheritance via parent-relative paths (../../knowledge/) violates Independence principle - physical dependency breaks standalone usage. Solution: inline policies in submodule CLAUDE.md, reference neuron conceptually via URL
+- 2026-01-12: Documentation templates can encode anti-patterns - repo-setup.md and neuron-base.md both prescribed the broken pattern, requiring systematic fix across 3 knowledge files
+- 2026-01-12: Submodule PR must come first, then parent update - correct ordering prevents pointing to non-existent commits
 - 2026-01-12: CLAUDE.md restructuring demonstrates Front-load Pain principle in documentation design - moving axioms/principles to top ensures AI loads critical context before operational details
 - 2026-01-12: Routing table consolidation demonstrates Information Architecture principle - single scannable table beats scattered prose for decision-making reference
 - 2026-01-12: Agent System section prominence reflects shift from implicit to explicit agent usage - documenting confidence levels and workflows makes autonomous decision-making transparent
-- 2026-01-12: All 16 principles now visible in single table at load time (lines 17-34) - AI-First design ensures philosophical foundation loads before operational decisions
+- 2026-01-12: All 17 principles now visible in single table at load time - AI-First design ensures philosophical foundation loads before operational decisions
 - 2026-01-12: Three-level structure (Philosophy → Agents → Operations) mirrors cognitive loading pattern - understand "why" before "what" and "how"
 - 2026-01-12: Self-test reference placement at document end demonstrates trust-but-verify approach - reference exists for verification without cluttering main flow
 
@@ -97,6 +104,7 @@
 | 2026-01-12 | #21 | decision-guide.md | Update MCP terminology to API Skills | MCP-to-API-Skills migration updated extension-mechanisms.md but not decision-guide.md |
 | 2026-01-12 | #28 | CLAUDE.md | Add CRITICAL language enforcement warning | 4+ language violations - reactive review not preventing non-English content |
 | 2026-01-12 | #29 | CLAUDE.md | Add CRITICAL Advisor-before-AskUser enforcement | AI skipped Advisor agent, asked user questions that knowledge could answer |
+| 2026-01-12 | #TBD | module-protocol.md, repo-setup.md, neuron-base.md | Establish submodule independence principle - inline policies instead of parent paths | Templates prescribed anti-pattern (../../knowledge/) that breaks standalone submodule usage |
 
 ---
 

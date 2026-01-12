@@ -32,6 +32,7 @@ Three axioms govern all decisions:
 | 14 | Trust-based Delegation | AI owns execution, human sets direction | Truth |
 | 15 | Verify Before Done | Prove it works, don't assume | Truth |
 | 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
+| 17 | Learn from Failure | Record failures, find patterns, improve system | Truth, Curiosity |
 
 Detailed explanations: `knowledge/philosophy.md`
 
