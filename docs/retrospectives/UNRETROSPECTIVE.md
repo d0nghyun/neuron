@@ -86,6 +86,12 @@
 - 2026-01-12: Submodule inheritance via parent-relative paths (../../knowledge/) violates Independence principle - physical dependency breaks standalone usage. Solution: inline policies in submodule CLAUDE.md, reference neuron conceptually via URL
 - 2026-01-12: Documentation templates can encode anti-patterns - repo-setup.md and neuron-base.md both prescribed the broken pattern, requiring systematic fix across 3 knowledge files
 - 2026-01-12: Submodule PR must come first, then parent update - correct ordering prevents pointing to non-existent commits
+- 2026-01-12: CLAUDE.md restructuring demonstrates Front-load Pain principle in documentation design - moving axioms/principles to top ensures AI loads critical context before operational details
+- 2026-01-12: Routing table consolidation demonstrates Information Architecture principle - single scannable table beats scattered prose for decision-making reference
+- 2026-01-12: Agent System section prominence reflects shift from implicit to explicit agent usage - documenting confidence levels and workflows makes autonomous decision-making transparent
+- 2026-01-12: All 17 principles now visible in single table at load time - AI-First design ensures philosophical foundation loads before operational decisions
+- 2026-01-12: Three-level structure (Philosophy → Agents → Operations) mirrors cognitive loading pattern - understand "why" before "what" and "how"
+- 2026-01-12: Self-test reference placement at document end demonstrates trust-but-verify approach - reference exists for verification without cluttering main flow
 
 ## Improvements
 
