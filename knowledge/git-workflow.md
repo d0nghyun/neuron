@@ -85,7 +85,7 @@ Claude commits autonomously without asking. Do not ask "Should I commit?".
 - Before context switch
 
 **Ask before commit when**:
-- Sensitive files (.env, credentials, secrets)
+- Sensitive files (.env.local, credentials, secrets)
 - Large deletions (10+ lines removed)
 - Breaking changes
 - Uncertain about scope
