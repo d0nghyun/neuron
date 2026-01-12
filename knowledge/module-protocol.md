@@ -139,6 +139,29 @@ git submodule update --init --recursive
 git submodule foreach git pull origin main
 ```
 
+### Verify Inheritance
+
+When registering or auditing a module:
+
+```bash
+# Check CLAUDE.md has inheritance
+grep -A2 "## Inherits" modules/<repo>/CLAUDE.md
+```
+
+**Checklist:**
+- [ ] CLAUDE.md exists in module root
+- [ ] Contains `## Inherits` section
+- [ ] References `neuron-base.md` with correct path
+- [ ] Overrides documented with reasons (if any)
+
+**Common Issues:**
+
+| Issue | Fix |
+|-------|-----|
+| Missing CLAUDE.md | Create using repo-setup.md template |
+| Old "Inherits Neuron policies" | Update to reference neuron-base.md |
+| Undocumented override | Add to Overrides section |
+
 ## Dashboard Integration
 
 The `_registry.yaml` format enables:
@@ -151,14 +174,17 @@ Future dashboard can parse this YAML directly.
 
 ## Module Interface Standard
 
-Each module SHOULD have:
+Each module MUST have:
 
 ```
 module/
   README.md           # Required: Purpose, setup, usage
-  CLAUDE.md           # Recommended: AI-specific instructions
+  CLAUDE.md           # Required: AI instructions with inheritance
   .claude/            # Optional: Claude Code configuration
 ```
+
+CLAUDE.md must include `## Inherits` section referencing [neuron-base.md](neuron-base.md).
+See [repo-setup.md](repo-setup.md) for template.
 
 ## Related
 

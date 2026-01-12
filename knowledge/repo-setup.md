@@ -25,7 +25,12 @@
 Brief description of what this project does.
 
 ## Inherits
-This project follows Neuron policies (parent directory).
+
+Neuron base: [neuron-base.md](../../knowledge/neuron-base.md)
+
+## Overrides
+
+(Document any policy overrides with reasons, or remove this section if none)
 
 ## Commands
 | Command | Purpose |
@@ -141,6 +146,8 @@ Commands: go test ./..., go build
 
 Before first PR:
 - [ ] CLAUDE.md has correct commands
+- [ ] CLAUDE.md has `## Inherits` referencing neuron-base.md
+- [ ] Overrides documented with reasons (if any)
 - [ ] README.md explains the project
 - [ ] .gitignore covers build artifacts
 - [ ] Branch protection enabled
