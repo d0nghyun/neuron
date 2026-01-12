@@ -50,6 +50,9 @@
   - Module interface standard (README.md, CLAUDE.md, .claude/)
 - PM-arkraft submodule (modules/pm-arkraft) registered with work domain for arkraft project management
 - Atlassian MCP server configuration in `.mcp.json` using official endpoint (https://mcp.atlassian.com/v1/sse)
+- GitHub and Notion MCP servers in `.mcp.json` with HTTP transport for web sandbox compatibility
+- HTTP-first MCP configuration policy documented in `knowledge/extension-mechanisms.md` with transport comparison table (HTTP/SSE/stdio)
+- Common MCP server URLs reference table in extension-mechanisms.md (Atlassian, Notion, GitHub)
 
 ## Changed
 
@@ -77,6 +80,7 @@
 - Updated CLAUDE.md with new Axioms section referencing ai-axioms.md and updated Knowledge Files table to include ai-axioms.md
 - Enhanced CLAUDE.md Philosophy section: replaced comma-separated principle list with table format showing principle names and one-line meanings to improve AI comprehension at load time
 - Updated CLAUDE.md Navigation table to include `modules/_registry.yaml` entry and Knowledge Files table to include `module-protocol.md`
+- Migrated Atlassian and Notion MCP servers from stdio/SSE to HTTP transport in `.mcp.json` for consistency
 
 ## Fixed
 
