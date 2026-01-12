@@ -19,6 +19,7 @@
 | 13 | Autonomous Execution | Act first, ask only when truly blocked |
 | 14 | Trust-based Delegation | AI owns execution, human sets direction |
 | 15 | Verify Before Done | Prove it works, don't assume it works |
+| 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. |
 
 ## Details
 
@@ -66,3 +67,6 @@ AI owns execution; human sets direction and reviews results. The immune system (
 
 ### 15. Verify Before Done
 Never declare "done" based on "looks right." Actually run it, render it, test it. Multi-source verification: check from different angles. "Plausible code" ≠ "working code."
+
+### 16. Automate Repetition
+Repetition signals inefficiency. If something is done twice, it's a candidate for automation. Scripts, commands, and workflows should replace manual routines. Bottlenecks are improvement opportunities.
