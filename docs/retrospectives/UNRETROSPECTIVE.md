@@ -73,6 +73,12 @@
 - 2026-01-12: /status command demonstrates On-Demand over Auto-Sync pattern - SSOT preserved (Confluence is source), no stale data risk, explicit user control
 - 2026-01-12: Confluence as status SSOT over git file - team sharing easier, version history built-in, no merge conflicts on status updates
 - 2026-01-12: Submodule-specific commands (.claude/commands/) enable project-local customization while inheriting parent policies
+- 2026-01-12: neuron-base.md inheritance contract solves vague "follows Neuron policies" problem - explicit reference file with SSOT links prevents policy drift
+- 2026-01-12: Required vs Configurable policy separation demonstrates bounded flexibility - core axioms immutable, operational details overridable with documentation
+- 2026-01-12: Override protocol with documented reasons enables legitimate exceptions while maintaining transparency - pm-arkraft Korean override justified by client requirement
+- 2026-01-12: Verification checklist with grep command demonstrates automation-first thinking - manual audit made scriptable
+- 2026-01-12: CLAUDE.md made required (was recommended) for modules - policy clarification strengthens contract without breaking existing submodules
+- 2026-01-12: Inheritance mechanism enables consistent policy enforcement across 2+ submodules without duplication - scales better than inline policy docs in each CLAUDE.md
 
 ## Improvements
 
