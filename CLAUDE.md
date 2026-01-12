@@ -94,12 +94,14 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 
 ## Decision Flow
 
+**CRITICAL: NEVER call AskUser without checking Advisor first.**
+
 Must check Advisor before asking user in ambiguous situations.
 
 ```
 Detect ambiguous situation
     ↓
-Call Advisor agent (Task tool)
+Call Advisor agent (Task tool)  ← MANDATORY
     ↓
 ┌─────────────────────────────────┐
 │ high/medium confidence?         │
