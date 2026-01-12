@@ -52,6 +52,7 @@ git log --grep="fix:" --oneline -10
 | Missing workflow step | `.claude/commands/*.md` |
 | Review gap | `.claude/agents/reviewer.md` |
 | Knowledge gap | `knowledge/*.md` |
+| Repeated manual work | `.claude/commands/*.md` or `scripts/` |
 
 ## Step 4: Generate Proposal
 
