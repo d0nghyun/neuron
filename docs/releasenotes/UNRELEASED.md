@@ -94,6 +94,9 @@
 
 ## Changed
 
+- Restructured CLAUDE.md to front-load philosophy (Axioms, Principles, Agent System) before operational details for improved AI comprehension at load time
+- Consolidated routing information into single table format in CLAUDE.md for better scannability
+- Expanded Agent System section in CLAUDE.md with detailed Advisor confidence levels (high/medium/low) and example workflow
 - Enhanced CLAUDE.md with Knowledge Files section providing overview of all knowledge base files
 - Updated README.md with documentation table clarifying audience (Human vs AI) and purpose for each file
 - Updated CLAUDE.md with references to auto-commit and auto-PR policies

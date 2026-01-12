@@ -79,6 +79,12 @@
 - 2026-01-12: Verification checklist with grep command demonstrates automation-first thinking - manual audit made scriptable
 - 2026-01-12: CLAUDE.md made required (was recommended) for modules - policy clarification strengthens contract without breaking existing submodules
 - 2026-01-12: Inheritance mechanism enables consistent policy enforcement across 2+ submodules without duplication - scales better than inline policy docs in each CLAUDE.md
+- 2026-01-12: CLAUDE.md restructuring demonstrates Front-load Pain principle in documentation design - moving axioms/principles to top ensures AI loads critical context before operational details
+- 2026-01-12: Routing table consolidation demonstrates Information Architecture principle - single scannable table beats scattered prose for decision-making reference
+- 2026-01-12: Agent System section prominence reflects shift from implicit to explicit agent usage - documenting confidence levels and workflows makes autonomous decision-making transparent
+- 2026-01-12: All 16 principles now visible in single table at load time (lines 17-34) - AI-First design ensures philosophical foundation loads before operational decisions
+- 2026-01-12: Three-level structure (Philosophy → Agents → Operations) mirrors cognitive loading pattern - understand "why" before "what" and "how"
+- 2026-01-12: Self-test reference placement at document end demonstrates trust-but-verify approach - reference exists for verification without cluttering main flow
 
 ## Improvements
 
