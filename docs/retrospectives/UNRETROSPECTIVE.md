@@ -79,6 +79,9 @@
 - 2026-01-12: Verification checklist with grep command demonstrates automation-first thinking - manual audit made scriptable
 - 2026-01-12: CLAUDE.md made required (was recommended) for modules - policy clarification strengthens contract without breaking existing submodules
 - 2026-01-12: Inheritance mechanism enables consistent policy enforcement across 2+ submodules without duplication - scales better than inline policy docs in each CLAUDE.md
+- 2026-01-12: Formalizing existing practice as principle strengthens system - retrospectives already existed, "Learn from Failure" principle makes it explicit and traceable to axioms
+- 2026-01-12: Small documentation changes (5 lines) can have high strategic value - connecting existing mechanism to philosophy creates conceptual clarity
+- 2026-01-12: Principle #17 demonstrates meta-learning - system now has formal principle about learning from failures, closing the feedback loop
 
 ## Improvements
 
