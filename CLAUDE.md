@@ -117,7 +117,7 @@ Task(subagent_type="advisor", prompt="<current situation + question>")
 
 ## Conventions
 
-- **Language**: English for all repository content
+- **Language**: English for all repository content (CRITICAL: Never write Korean/Japanese/Chinese in neuron files—submodules may have different policies)
 - **File size**: Max 200 lines per file
 - **Documentation**: Structured for AI consumption
 - **Commits**: Conventional commits (see [git-workflow.md](knowledge/git-workflow.md))
