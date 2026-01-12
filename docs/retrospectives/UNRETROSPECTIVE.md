@@ -11,6 +11,7 @@
 | 2026-01-11 | #12 | Location decision vs architecture decision confusion | pending |
 | 2026-01-11 | #15 | Language convention violation - non-English content in knowledge files | pending |
 | 2026-01-12 | #21 | Language convention violation - Korean content in api-tokens.md | pending |
+| 2026-01-12 | #TBD | Language convention violation - Korean content in advisor.md, _index.yaml, data-pipeline.md, CLAUDE.md | pending |
 
 ## Insights
 
@@ -59,6 +60,11 @@
 - 2026-01-12: Capturing Confluence page IDs in CLAUDE.md enables programmatic access without URL parsing
 - 2026-01-12: Documentation consistency fix (`.env` → `.env.local`) across 2 knowledge files demonstrates thoroughness - systematic correction prevents confusion
 - 2026-01-12: Configuration-only changes (no skill implementation yet) demonstrate Incremental principle - add environment variables first, implementation later when needed
+- 2026-01-12: Advisor agent introduces intelligent decision layer - reduces unnecessary AskUser calls while maintaining user control through confidence levels
+- 2026-01-12: Knowledge index system (_index.yaml) demonstrates AI-First principle - trigger map enables automatic knowledge discovery without manual search
+- 2026-01-12: Data pipeline pattern addresses root cause of context bloat - systematic approach (Fetch → Transform → Interpret) prevents token waste
+- 2026-01-12: Frontmatter metadata in knowledge files improves discoverability - machine-readable triggers, categories, and relations enable autonomous navigation
+- 2026-01-12: Fourth consecutive language convention violation signals systemic issue - reactive review catching not preventing non-English content creation
 
 ## Improvements
 
