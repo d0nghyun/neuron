@@ -40,6 +40,9 @@
 - 2026-01-11: Flat structure + registry approach beats nested hierarchies for AI parsing - simple structure with metadata wins over complex directory organization
 - 2026-01-12: Work domain submodule registration follows module-protocol.md exactly - consistent process makes adding new modules predictable and low-friction
 - 2026-01-12: Official MCP endpoints (Atlassian) demonstrate ecosystem maturity - using https://mcp.atlassian.com/v1/sse instead of custom server simplifies configuration
+- 2026-01-12: HTTP transport migration demonstrates Simplicity First - removing stdio/SSE complexity unifies on single transport type with better compatibility
+- 2026-01-12: Web sandbox compatibility consideration shows forward-thinking - HTTP-first policy prevents future friction when using Claude Code in browser
+- 2026-01-12: Common MCP URLs reference table demonstrates AI-First - machine-readable format makes future MCP additions copy-paste easy
 
 ## Improvements
 
