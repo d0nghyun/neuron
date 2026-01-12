@@ -15,11 +15,22 @@ modules:
       - memory
       - context
 
+  pm-arkraft:
+    repo: gitlab.quantit.io/ark/arkraft/pm-arkraft
+    domain: work
+    status: active
+    description: Project management for arkraft project
+    registered_at: "2026-01-12"
+    tags:
+      - pm
+      - arkraft
+      - work
+
 # Archived modules (removed from submodules but tracked)
 archived: {}
 
 # Registry metadata
 _meta:
   version: 1
-  updated_at: "2026-01-11"
+  updated_at: "2026-01-12"
   schema: knowledge/module-protocol.md

@@ -7,6 +7,12 @@
       "env": {
         "NOTION_API_KEY": "${NOTION_API_KEY}"
       }
+    },
+    "atlassian": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcp.atlassian.com/v1/sse"],
+      "env": {}
     }
   }
 }
