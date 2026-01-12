@@ -121,7 +121,7 @@ git submodule update --init --recursive
 
 ### Node.js
 ```
-.gitignore: node_modules/, dist/, .env
+.gitignore: node_modules/, dist/, .env.local
 Commands: npm test, npm run build, npm start
 ```
 
