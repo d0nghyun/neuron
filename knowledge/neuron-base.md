@@ -29,28 +29,30 @@ Can override with documented reason.
 
 ## Override Protocol
 
-1. Add `## Overrides` section in submodule CLAUDE.md
-2. List policy and reason
+Add override to Configurable table in submodule CLAUDE.md with reason:
 
 ```markdown
-## Overrides
-- **Language**: Korean for internal docs (client requirement)
+### Configurable
+
+| Policy | Default | This Project |
+|--------|---------|--------------|
+| Language | English only | Korean allowed (client requirement) |
 ```
 
 ## Inheritance Declaration
 
-Submodule CLAUDE.md must include:
+Submodule CLAUDE.md must include `## Inherited Policies` section with:
 
-```markdown
-## Inherits
+1. GitHub URL reference to neuron (conceptual, not physical dependency)
+2. Required policies table (inlined, not file reference)
+3. Configurable policies table with project-specific values
 
-Neuron base: [neuron-base.md](../../knowledge/neuron-base.md)
-```
-
-Path: `modules/<repo>/CLAUDE.md` → `knowledge/neuron-base.md`
+**DO NOT use relative paths** like `../../knowledge/neuron-base.md`.
+Submodules must work standalone. See [repo-setup.md](repo-setup.md) for template.
 
 ## Verification
 
-- [ ] CLAUDE.md has `## Inherits` section
-- [ ] References neuron-base.md with correct path
-- [ ] Overrides documented with reasons (if any)
+- [ ] CLAUDE.md has `## Inherited Policies` section
+- [ ] Required policies inlined in table
+- [ ] No parent-relative paths (works standalone)
+- [ ] Configurable overrides documented with reasons
