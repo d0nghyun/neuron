@@ -58,6 +58,7 @@
   - Dashboard-ready schema with status (active/maintenance/archived) and domain (tools/personal/work/experimental) categorization
   - Module interface standard (README.md, CLAUDE.md, .claude/)
 - PM-arkraft submodule (modules/pm-arkraft) registered with work domain for arkraft project management
+- GitLab API support in `.env.example` with `GITLAB_BASE_URL` and `GITLAB_API_TOKEN` variables for internal GitLab access
 - Atlassian MCP server configuration in `.mcp.json` using official endpoint (https://mcp.atlassian.com/v1/sse)
 - GitHub and Notion MCP servers in `.mcp.json` with HTTP transport for web sandbox compatibility
 - HTTP-first MCP configuration policy documented in `knowledge/extension-mechanisms.md` with transport comparison table (HTTP/SSE/stdio)
@@ -114,13 +115,13 @@
 
 - No secrets or credentials detected in codebase
 - Security review checklist included in reviewer agent
-- Added `.gitignore` to protect sensitive files (.env, .mcp.json) from version control
+- Added `.gitignore` to protect sensitive files (.env.local, .mcp.json) from version control
 - Environment variable-based authentication replaces OAuth for better CI/CD security
-- `.env.example` provides safe template without exposing actual credentials
+- `.env.example` provides safe template (copy to `.env.local`) without exposing actual credentials
 
 ## Breaking Changes
 
-- `.mcp.json` removed from repository - users must migrate to API token-based authentication via `.env` file (see `.env.example` for template)
+- `.mcp.json` removed from repository - users must migrate to API token-based authentication via `.env.local` file (see `.env.example` for template)
 - OAuth-based MCP servers (GitHub, Jira, Notion) replaced by API Skills requiring manual token generation
 - MCP configurations now user-specific and gitignored - shared configurations no longer supported
 
