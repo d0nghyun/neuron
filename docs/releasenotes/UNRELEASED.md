@@ -91,6 +91,11 @@
   - Configurable policies (Language, Test-First, AI-First docs) with documented override protocol
   - Explicit inheritance declaration via `## Inherits` section in submodule CLAUDE.md
   - Verification checklist and grep command for audit automation
+- 17th core principle "Learn from Failure" formalizing retrospective mechanism as philosophy:
+  - Record failures, find patterns, improve the system
+  - Axiom connection: Truth (admit failures), Curiosity (find patterns)
+  - Links existing retrospective cycle (docs/retrospectives/) to core philosophy
+  - References self-improve-policy.md for improvement guardrails
 
 ## Changed
 
