@@ -2,11 +2,11 @@
 id: decision-guide
 category: architecture
 triggers:
-  - "어디에 만들지"
-  - "새 기능 위치"
-  - "새 프로젝트"
+  - "where to build"
+  - "feature location"
+  - "new project"
   - "submodule"
-  - "API Skill 배치"
+  - "API Skill placement"
 related: [extension-mechanisms, module-protocol, repo-setup]
 ---
 
