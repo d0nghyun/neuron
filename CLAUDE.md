@@ -46,12 +46,12 @@ Agents embody philosophical principles as executable components.
 
 ### Agent Roles
 
-| Agent | Purpose | Implements | When to Use |
-|-------|---------|------------|-------------|
-| `advisor` | Philosophy interpretation, ambiguity resolution | Constructive Challenge | Before asking user anything |
-| `reviewer` | Code quality, PR review, release notes | Verify Before Done | Before creating PR |
-| `refactor` | Structure improvement, complexity reduction | Simplicity First, MECE | When code feels messy |
-| `self-improve` | System improvement from recurring patterns | Learn from Failure | When reviewer outputs `[IMPROVE]` |
+| Agent | Brain Analogy | Purpose | Implements | When to Use |
+|-------|---------------|---------|------------|-------------|
+| `advisor` | PFC (Prefrontal Cortex) | Philosophy interpretation, ambiguity resolution | Constructive Challenge | Before asking user anything |
+| `reviewer` | ACC (Anterior Cingulate) | Code quality, PR review, release notes | Verify Before Done | Before creating PR |
+| `refactor` | Hippocampus | Structure improvement, complexity reduction | Simplicity First, MECE | When code feels messy |
+| `self-improve` | Neuroplasticity | System improvement from recurring patterns | Learn from Failure | When reviewer outputs `[IMPROVE]` |
 
 ### How to Call Agents
 

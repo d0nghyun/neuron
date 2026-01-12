@@ -5,3 +5,5 @@
 
 # MCP config (user-specific)
 .mcp.json
+
+.mypy_cache/

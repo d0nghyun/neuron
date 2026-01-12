@@ -53,3 +53,4 @@ Task(subagent_type="general-purpose", prompt="Read CLAUDE.md only. Explain:
 |------|--------|-------|
 | 2025-01-12 | 9/10 ✓ | Initial full test after adding 16 principles |
 | 2025-01-12 | 8/10 ✓ | Final test after Self-Test section refactor |
+| 2026-01-12 | 8/10 ✓ | Added Brain Analogy column to Agent Roles |
