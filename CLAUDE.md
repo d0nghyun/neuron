@@ -10,6 +10,7 @@ See [diagram.md](diagram.md) for visual structure.
 | Location | Purpose |
 |----------|---------|
 | `knowledge/` | Core policies (philosophy, conventions, guides) |
+| `knowledge/_index.yaml` | Knowledge index (categories, triggers, summaries) |
 | `modules/` | Git submodules (external projects) |
 | `modules/_registry.yaml` | Module metadata registry |
 | `docs/retrospectives/` | Learnings and insights |
@@ -33,6 +34,7 @@ See [diagram.md](diagram.md) for visual structure.
 | `repo-setup.md` | New repo and submodule setup guide |
 | `module-protocol.md` | Submodule management (register, archive, re-register) |
 | `self-improve-policy.md` | Self-healing agent constraints |
+| `data-pipeline.md` | Large data handling (fetch → transform → interpret) |
 
 ## Axioms
 
@@ -79,6 +81,29 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 - Ambiguous scope (what vs where vs how unclear)
 
 **Default**: Trust user's stated decision. Act, don't ask.
+
+## Decision Flow
+
+Must check Advisor before asking user in ambiguous situations.
+
+```
+Detect ambiguous situation
+    ↓
+Call Advisor agent (Task tool)
+    ↓
+┌─────────────────────────────────┐
+│ high/medium confidence?         │
+│ YES → Proceed with recommendation│
+│ NO  → Call AskUser              │
+└─────────────────────────────────┘
+```
+
+**Advisor call example**:
+```
+Task(subagent_type="advisor", prompt="<current situation + question>")
+```
+
+**Knowledge lookup**: Reference trigger_map in `knowledge/_index.yaml`
 
 ## Conventions
 

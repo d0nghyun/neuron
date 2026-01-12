@@ -63,6 +63,20 @@
 - GitHub and Notion MCP servers in `.mcp.json` with HTTP transport for web sandbox compatibility
 - HTTP-first MCP configuration policy documented in `knowledge/extension-mechanisms.md` with transport comparison table (HTTP/SSE/stdio)
 - Common MCP server URLs reference table in extension-mechanisms.md (Atlassian, Notion, GitHub)
+- Advisor agent (`.claude/agents/advisor.md`) for knowledge-based recommendations before AskUser with:
+  - Trigger matching via `knowledge/_index.yaml` for automatic knowledge discovery
+  - Confidence levels (high/medium/low) to determine whether to proceed or ask user
+  - Structured output format with recommendation, basis (file + section + quote), and suggested question
+  - Guardrails preventing final decisions (recommendations only) and knowledge speculation
+- Knowledge index system (`knowledge/_index.yaml`) with:
+  - Category taxonomy (core, workflow, architecture, operations) for organizing knowledge files
+  - Trigger map with pattern matching for situation-based knowledge discovery
+  - File summaries for quick reference
+- Knowledge file `knowledge/data-pipeline.md` for large data handling patterns with:
+  - Fetch → Transform → Interpret pipeline pattern for AI context efficiency
+  - Hard rules (pagination, reuse, nested structures) and soft rules (>100 lines, partial fields)
+  - Anti-patterns (direct load, repeated calls, context bloat)
+  - Connection to core philosophy (SSOT, Modularity, Front-load Pain, Simplicity First)
 
 ## Changed
 
@@ -101,6 +115,10 @@
   - `knowledge/repo-setup.md` - Repository creation updated
 - Consolidated Atlassian environment variables: `JIRA_*` → `ATLASSIAN_*` for shared use across Jira and Confluence
 - Updated CLAUDE.md Knowledge Files table: "MCP placement" → "API Skill placement" for terminology consistency
+- Enhanced CLAUDE.md with Decision Flow section documenting Advisor agent pre-AskUser workflow
+- Updated CLAUDE.md Navigation and Knowledge Files tables to include `knowledge/_index.yaml` and `data-pipeline.md`
+- Added frontmatter metadata to knowledge files (decision-guide.md, git-workflow.md) for consistency with knowledge index system
+- Updated extension-mechanisms.md with Advisor Agent section describing special role in pre-AskUser workflow
 
 ## Fixed
 

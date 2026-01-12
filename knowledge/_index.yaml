@@ -1,0 +1,85 @@
+# Knowledge Index
+# Structured for AI to find relevant knowledge files for each situation
+
+categories:
+  core:
+    description: "Foundational principles, basis for all decisions"
+    files:
+      - ai-axioms
+      - philosophy
+
+  workflow:
+    description: "Work procedures, git, release, data processing"
+    files:
+      - git-workflow
+      - git-advanced
+      - release-workflow
+      - spec-process
+      - data-pipeline
+
+  architecture:
+    description: "Structural decisions, where to build what"
+    files:
+      - decision-guide
+      - extension-mechanisms
+      - module-protocol
+      - repo-setup
+
+  operations:
+    description: "Operations, settings, token management"
+    files:
+      - github-settings
+      - api-tokens
+      - self-improve-policy
+
+# Situation-based trigger → file mapping
+# AI references these files when detecting these patterns
+trigger_map:
+  - pattern: "API|data|pagination|large|100 lines|pipeline"
+    files: [data-pipeline]
+    description: "When handling large data"
+
+  - pattern: "where|location|new feature|new project|submodule"
+    files: [decision-guide, module-protocol]
+    description: "When deciding feature/project location"
+
+  - pattern: "git|commit|branch|PR|merge|rebase"
+    files: [git-workflow, git-advanced]
+    description: "When working with Git"
+
+  - pattern: "release|version|tag|changelog"
+    files: [release-workflow]
+    description: "When releasing"
+
+  - pattern: "skill|mcp|agent|command|hook|extend"
+    files: [extension-mechanisms]
+    description: "When extending Claude Code"
+
+  - pattern: "principle|philosophy|why|rationale|judgment"
+    files: [ai-axioms, philosophy]
+    description: "When decision rationale needed"
+
+  - pattern: "token|API key|auth|credential"
+    files: [api-tokens]
+    description: "When authenticating external services"
+
+  - pattern: "spec|requirement|scenario"
+    files: [spec-process]
+    description: "When writing specifications"
+
+# Per-file summaries (quick reference)
+summaries:
+  ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
+  philosophy: "SSOT, MECE, Simplicity First - 16 principles"
+  decision-guide: "neuron vs separate repo, API Skill placement"
+  extension-mechanisms: "Skills, MCP, Subagent, Commands, Hooks selection"
+  git-workflow: "Conventional Commits, branch strategy"
+  git-advanced: "Worktree, revert, collaboration tips"
+  release-workflow: "Semantic versioning, /release command"
+  spec-process: "Scenario-based spec development"
+  data-pipeline: "Large data pipeline pattern"
+  module-protocol: "Submodule register/archive/re-register"
+  repo-setup: "New repository essential files, templates"
+  github-settings: "Branch protection, PR settings"
+  api-tokens: "External service token metadata"
+  self-improve-policy: "Self-improve agent guardrails"

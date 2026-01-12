@@ -66,10 +66,26 @@ Not suitable for automation/CI.
 Examples:
 - reviewer: Analyze code quality, make judgments
 - self-improve: Detect patterns, propose changes
+- advisor: Knowledge-based recommendations before AskUser
 - explorer: Navigate codebase, find relevant info
 ```
 
 **Location**: `.claude/agents/<agent-name>.md`
+
+### Advisor Agent
+
+Special role: **Auto-called before AskUser**
+
+```
+Main Agent: Detect ambiguous situation
+    ↓
+Call Advisor → reference knowledge/_index.yaml
+    ↓
+high/medium confidence → Proceed with recommendation
+low confidence → Call AskUser
+```
+
+See: `.claude/agents/advisor.md`
 
 ## Commands (Slash)
 

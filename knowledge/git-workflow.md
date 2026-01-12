@@ -1,3 +1,15 @@
+---
+id: git-workflow
+category: workflow
+triggers:
+  - "commit"
+  - "branch"
+  - "PR"
+  - "auto-commit"
+  - "커밋 메시지"
+related: [git-advanced, release-workflow, github-settings]
+---
+
 # Git Workflow Guide
 
 ## Commit Convention
