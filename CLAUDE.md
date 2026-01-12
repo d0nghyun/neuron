@@ -75,6 +75,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 | Trust-based Delegation | AI executes, human directs | Truth |
 | Verify Before Done | Prove it works, don't assume | Truth |
 | Automate Repetition | Routine is inefficiency, automate what repeats | Beauty |
+| Learn from Failure | Record failures, find patterns, improve system | Truth, Curiosity |
 
 ## Decision Signal Recognition
 
