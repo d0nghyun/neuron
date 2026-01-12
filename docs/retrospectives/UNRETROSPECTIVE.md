@@ -56,6 +56,7 @@
 |------|-----|--------|--------|------------|
 | 2026-01-11 | #11 | CLAUDE.md | Add decision signal recognition section | AI lacked guidance to distinguish user decisions from genuine ambiguity |
 | 2026-01-11 | #12 | CLAUDE.md | Add architecture check before location decisions | Location decisions bypassed architecture principles (new func -> submodule) |
+| 2026-01-12 | #21 | decision-guide.md | Update MCP terminology to API Skills | MCP-to-API-Skills migration updated extension-mechanisms.md but not decision-guide.md |
 
 ---
 
