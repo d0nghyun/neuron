@@ -51,6 +51,7 @@ Agents embody philosophical principles as executable components.
 | `advisor` | Philosophy interpretation, ambiguity resolution | Constructive Challenge | Before asking user anything |
 | `reviewer` | Code quality, PR review, release notes | Verify Before Done | Before creating PR |
 | `refactor` | Structure improvement, complexity reduction | Simplicity First, MECE | When code feels messy |
+| `self-improve` | System improvement from recurring patterns | Learn from Failure | When reviewer outputs `[IMPROVE]` |
 
 ### How to Call Agents
 
@@ -102,6 +103,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Need judgment/philosophy | `Task(subagent_type="advisor")` |
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
+| Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
 | GitHub API | `Skill(github-api)` |
 | Jira API | `Skill(jira-api)` |
 | Notion API | `Skill(notion-api)` |
