@@ -1,6 +1,6 @@
 # API Tokens Registry
 
-API 토큰 발급 정보 관리. 실제 토큰 값은 `.env.local`에 저장.
+Manages API token metadata. Actual token values stored in `.env.local`.
 
 ## Atlassian (Jira, Confluence)
 
