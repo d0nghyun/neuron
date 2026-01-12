@@ -10,6 +10,7 @@
 |------|-----|---------|--------|
 | 2026-01-11 | #12 | Location decision vs architecture decision confusion | pending |
 | 2026-01-11 | #15 | Language convention violation - non-English content in knowledge files | pending |
+| 2026-01-12 | #21 | Language convention violation - Korean content in api-tokens.md | pending |
 
 ## Insights
 
@@ -47,6 +48,11 @@
 - 2026-01-12: Consistent skill structure across services (github-api, jira-api, notion-api) demonstrates modularity - each skill independent, easily replaceable, follows same pattern
 - 2026-01-12: Moving secrets from tracked (.mcp.json) to gitignored (.env) demonstrates security-first thinking - prevents accidental credential exposure
 - 2026-01-12: Breaking change well-documented in release notes - migration path clear (see .env.example), rationale explicit (headless automation)
+- 2026-01-12: Comprehensive gh CLI replacement demonstrates thoroughness - all 5 documentation files updated consistently, no partial migration
+- 2026-01-12: Confluence API Skill follows established pattern - same structure as github-api, jira-api, notion-api ensures consistency and maintainability
+- 2026-01-12: Terminology alignment (MCP → API Skills) demonstrates SSOT principle - single consistent term across all documentation
+- 2026-01-12: ATLASSIAN_* variable consolidation demonstrates DRY - single set of credentials serves both Jira and Confluence APIs
+- 2026-01-12: Small documentation-only refactor (3 commits, 10 files) demonstrates Incremental principle - focused scope, clear intent, easy to review
 
 ## Improvements
 

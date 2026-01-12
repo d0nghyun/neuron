@@ -61,7 +61,14 @@ git checkout -b feature/my-feature
 ### 3. Push & Create PR
 ```bash
 git push -u origin feature/my-feature
-gh pr create --title "feat: add feature" --body "Description"
+
+# Create PR via GitHub API
+curl -s -X POST \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"feat: add feature","body":"Description","head":"feature/my-feature","base":"main"}' \
+  https://api.github.com/repos/{owner}/{repo}/pulls
 ```
 
 ### 4. Review Process

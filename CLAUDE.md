@@ -23,7 +23,7 @@ See [diagram.md](diagram.md) for visual structure.
 |------|---------|
 | `ai-axioms.md` | Foundational axioms (Curiosity, Truth, Beauty) |
 | `philosophy.md` | Core principles (SSOT, MECE, etc.) |
-| `decision-guide.md` | Where to build (neuron vs submodule, MCP placement) |
+| `decision-guide.md` | Where to build (neuron vs submodule, API Skill placement) |
 | `extension-mechanisms.md` | When to use skills/mcp/agent/command/hook |
 | `spec-process.md` | How to develop specs via scenarios |
 | `git-workflow.md` | Commit conventions, branch strategy, auto-commit/PR policies |

@@ -16,46 +16,46 @@ allowed-tools: Bash, Read, Grep
 ## Authentication
 
 **Environment Variables**:
-- `JIRA_BASE_URL` - Your Jira instance (e.g., `https://yourcompany.atlassian.net`)
-- `JIRA_USER_EMAIL` - Your Atlassian account email
-- `JIRA_API_TOKEN` - API token
+- `ATLASSIAN_BASE_URL` - Your Atlassian instance (e.g., `https://yourcompany.atlassian.net`)
+- `ATLASSIAN_USER_EMAIL` - Your Atlassian account email
+- `ATLASSIAN_API_TOKEN` - API token
 
 Create token at: https://id.atlassian.com/manage-profile/security/api-tokens
 
 ## API Base URL
 
 ```
-{JIRA_BASE_URL}/rest/api/3
+$ATLASSIAN_BASE_URL/rest/api/3
 ```
 
 ## Common Operations
 
 ### Get Current User
 ```bash
-curl -s -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Accept: application/json" \
-  "$JIRA_BASE_URL/rest/api/3/myself"
+  "$ATLASSIAN_BASE_URL/rest/api/3/myself"
 ```
 
 ### Search Issues (JQL)
 ```bash
-curl -s -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Accept: application/json" \
   --data-urlencode "jql=project=PROJ AND status='In Progress'" \
-  "$JIRA_BASE_URL/rest/api/3/search"
+  "$ATLASSIAN_BASE_URL/rest/api/3/search"
 ```
 
 ### Get Issue
 ```bash
-curl -s -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Accept: application/json" \
-  "$JIRA_BASE_URL/rest/api/3/issue/{issueIdOrKey}"
+  "$ATLASSIAN_BASE_URL/rest/api/3/issue/{issueIdOrKey}"
 ```
 
 ### Create Issue
 ```bash
 curl -s -X POST \
-  -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+  -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
   -d '{
@@ -70,28 +70,28 @@ curl -s -X POST \
       "issuetype": {"name": "Task"}
     }
   }' \
-  "$JIRA_BASE_URL/rest/api/3/issue"
+  "$ATLASSIAN_BASE_URL/rest/api/3/issue"
 ```
 
 ### Transition Issue
 ```bash
 # Get available transitions
-curl -s -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Accept: application/json" \
-  "$JIRA_BASE_URL/rest/api/3/issue/{issueIdOrKey}/transitions"
+  "$ATLASSIAN_BASE_URL/rest/api/3/issue/{issueIdOrKey}/transitions"
 
 # Apply transition
 curl -s -X POST \
-  -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+  -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"transition": {"id": "31"}}' \
-  "$JIRA_BASE_URL/rest/api/3/issue/{issueIdOrKey}/transitions"
+  "$ATLASSIAN_BASE_URL/rest/api/3/issue/{issueIdOrKey}/transitions"
 ```
 
 ### Add Comment
 ```bash
 curl -s -X POST \
-  -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" \
+  -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "body": {
@@ -100,7 +100,7 @@ curl -s -X POST \
       "content": [{"type": "paragraph", "content": [{"type": "text", "text": "Comment text"}]}]
     }
   }' \
-  "$JIRA_BASE_URL/rest/api/3/issue/{issueIdOrKey}/comment"
+  "$ATLASSIAN_BASE_URL/rest/api/3/issue/{issueIdOrKey}/comment"
 ```
 
 ## Error Handling

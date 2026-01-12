@@ -8,6 +8,8 @@
   - `github-api` - GitHub REST API with PAT authentication
   - `jira-api` - Jira REST API with API token authentication
   - `notion-api` - Notion REST API with integration token authentication
+  - `confluence-api` - Confluence REST API with API token authentication
+- Knowledge file `knowledge/api-tokens.md` for tracking API token metadata (names, expiration dates, URLs)
 - Environment variable template (`.env.example`) with token creation URLs and required scopes
 - `.gitignore` file for secret protection (.env, .mcp.json excluded from version control)
 - External Service Integration policy in CLAUDE.md (API Skills default, MCP manual only)
@@ -90,6 +92,14 @@
 - Migrated Atlassian and Notion MCP servers from stdio/SSE to HTTP transport in `.mcp.json` for consistency
 - Refactored `knowledge/extension-mechanisms.md` MCP section to prioritize API Skills over MCP for automation scenarios with comparison table (MCP vs API Skills)
 - MCP configuration moved from shared (.mcp.json tracked) to user-specific (gitignored) to support personal OAuth flows
+- Replaced all gh CLI references with GitHub REST API curl patterns in documentation:
+  - `.claude/agents/self-improve.md` - PR creation now uses GitHub API
+  - `.claude/commands/pr.md` - PR creation now uses GitHub API
+  - `knowledge/git-advanced.md` - PR workflow examples updated
+  - `knowledge/github-settings.md` - Branch protection setup updated
+  - `knowledge/repo-setup.md` - Repository creation updated
+- Consolidated Atlassian environment variables: `JIRA_*` → `ATLASSIAN_*` for shared use across Jira and Confluence
+- Updated CLAUDE.md Knowledge Files table: "MCP placement" → "API Skill placement" for terminology consistency
 
 ## Fixed
 

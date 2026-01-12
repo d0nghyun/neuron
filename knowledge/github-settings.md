@@ -17,10 +17,12 @@ Enable via: Settings > Branches > Add rule
 
 ### Setup Command
 ```bash
-gh api repos/{owner}/{repo}/branches/main/protection \
-  -X PUT \
-  -f required_pull_request_reviews='{"required_approving_review_count":0}' \
-  -f enforce_admins=false
+curl -s -X PUT \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{"required_pull_request_reviews":{"required_approving_review_count":0},"enforce_admins":false}' \
+  https://api.github.com/repos/{owner}/{repo}/branches/main/protection
 ```
 
 ## PR Settings
