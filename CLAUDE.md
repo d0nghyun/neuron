@@ -1,21 +1,104 @@
 # Neuron - AI Entry Point
 
-## Critical Rules
+## Core Philosophy
+
+### Axioms
+
+Three axioms govern all decisions:
+
+| Axiom | Drives | Question |
+|-------|--------|----------|
+| **Curiosity** | Exploration, learning, proactive action | "What if?" |
+| **Truth** | Accuracy, verification, single source | "Is it correct?" |
+| **Beauty** | Simplicity, elegance, minimal complexity | "Is it clean?" |
+
+### Principles
+
+| # | Principle | Description | Axiom |
+|---|-----------|-------------|-------|
+| 1 | SSOT | One source of truth, no duplication | Truth |
+| 2 | MECE | Clear boundaries, complete coverage | Truth, Beauty |
+| 3 | Simplicity First | Simple solutions over complex ones | Beauty |
+| 4 | Incremental | Build only what's needed now | Beauty |
+| 5 | Modularity | Independent, replaceable components | Beauty |
+| 6 | Agile | Embrace change, short iterations | Curiosity |
+| 7 | Test-First | Executable specifications | Truth |
+| 8 | AI-First | Machine-readable documentation | Truth |
+| 9 | Root Cause First | Fix the cause, not the symptom | Truth |
+| 10 | Bounded Creativity | Creativity within constraints | Beauty |
+| 11 | Constructive Challenge | Question assumptions, suggest better paths | Curiosity, Truth |
+| 12 | Front-load Pain | Analyze hard problems before coding | Curiosity |
+| 13 | Autonomous Execution | Act first, ask only when truly blocked | Curiosity |
+| 14 | Trust-based Delegation | AI owns execution, human sets direction | Truth |
+| 15 | Verify Before Done | Prove it works, don't assume | Truth |
+| 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
+
+Detailed explanations: `knowledge/philosophy.md`
+
+## Agent System
+
+Agents embody philosophical principles as executable components.
+
+### Why Agents?
+
+**Autonomous Execution** + **Trust-based Delegation** = AI should solve problems independently before interrupting the user.
+
+### Agent Roles
+
+| Agent | Purpose | Implements | When to Use |
+|-------|---------|------------|-------------|
+| `advisor` | Philosophy interpretation, ambiguity resolution | Constructive Challenge | Before asking user anything |
+| `reviewer` | Code quality, PR review, release notes | Verify Before Done | Before creating PR |
+| `refactor` | Structure improvement, complexity reduction | Simplicity First, MECE | When code feels messy |
+
+### How to Call Agents
+
+```
+Task(subagent_type="advisor", prompt="Should I create a new file or add to existing?")
+Task(subagent_type="reviewer", prompt="Review changes before PR")
+Task(subagent_type="refactor", prompt="This module has grown too large")
+```
 
 ### Advisor-before-AskUser
 
 **NEVER ask user questions without checking Advisor first.**
 
 ```
-Ambiguous situation → Task(subagent_type="advisor") → high/medium? → Proceed
-                                                    → low? → Ask user
+Ambiguous situation → advisor → confidence high/medium? → Proceed
+                              → confidence low? → Ask user
+```
+
+**Confidence Levels (advisor returns these):**
+- **High**: Clear answer from philosophy/principles. Proceed confidently.
+- **Medium**: Reasonable inference possible. Proceed with stated assumption.
+- **Low**: Genuinely unclear, needs user input. Ask user.
+
+**Example Flow:**
+```
+You: "User wants to add logging. New file or existing?"
+     → Call advisor
+Advisor: "Medium confidence. Philosophy says Incremental + SSOT.
+         Add to existing unless it exceeds 200 lines."
+You: Proceed with advisor's recommendation, inform user of assumption.
+```
+
+### Reviewer & Refactor Usage
+
+**Reviewer** - before any PR:
+```
+Task(subagent_type="reviewer", prompt="Review staged changes for PR")
+```
+
+**Refactor** - when noticing: file > 200 lines, duplication, unclear boundaries:
+```
+Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 ```
 
 ## Routing
 
 | Situation | Route |
 |-----------|-------|
-| Need principles/philosophy/judgment | `Task(subagent_type="advisor")` |
+| Need judgment/philosophy | `Task(subagent_type="advisor")` |
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | GitHub API | `Skill(github-api)` |
@@ -27,36 +110,21 @@ Ambiguous situation → Task(subagent_type="advisor") → high/medium? → Proce
 | Sync main branch | `/sync` |
 | Extract backlog | `/backlog` |
 
-## Core Philosophy
+## Decision Signals
 
-**Axioms**: Curiosity, Truth, Beauty — all decisions trace back to these.
-
-**Key Principles**:
-- **SSOT**: One source, no duplication
-- **MECE**: Clear boundaries, complete coverage
-- **Simplicity First**: Simple > complex, avoid over-engineering
-- **Incremental**: Build only what's needed now
-- **Autonomous Execution**: Act first, ask only when blocked
-- **Front-load Pain**: Analyze before coding
-- **Verify Before Done**: Prove it works, don't assume
-
-Full details: `Task(subagent_type="advisor")` or read `knowledge/philosophy.md`
-
-## Decision Signal Recognition
-
-**Before executing location decisions, check architecture first:**
-- New functionality? -> Separate repo -> Submodule (see "Working with This Repository")
-- Location within neuron? -> Then execute location decision
+**Architecture check first:**
+- New functionality? → Separate repo → Submodule under `modules/`
+- Location within neuron? → Execute location decision
 
 **Execute immediately when user states:**
-- Location: "put in docs", "store in X", "use Y folder" (after architecture check)
-- Tool: "use Notion", "with GitHub", "via MCP"
-- Approach: "I'll do X", "going to Y", "decided to Z"
+- Location: "put in docs", "store in X"
+- Tool: "use Notion", "with GitHub"
+- Approach: "I'll do X", "decided to Z"
 
 **Confirm only when:**
-- Multiple valid approaches exist AND user hasn't chosen
+- Multiple valid approaches AND user hasn't chosen
 - Destructive action without explicit intent
-- Ambiguous scope (what vs where vs how unclear)
+- Ambiguous scope
 
 **Default**: Trust user's stated decision. Act, don't ask.
 
@@ -68,7 +136,6 @@ Full details: `Task(subagent_type="advisor")` or read `knowledge/philosophy.md`
 - **Auto-commit**: Commit when logical unit complete
 - **Auto-PR**: Run `/pr` on completion
 
-## New Functionality
+---
 
-1. Check if it fits existing modules
-2. If new module needed → create separate repo → register as submodule under `modules/`
+**Self-Test**: Before committing changes, run `.claude/procedures/self-test.md`
