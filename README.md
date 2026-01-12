@@ -24,13 +24,13 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for core principles.
 | File | Audience | Purpose |
 |------|----------|---------|
 | `README.md` | Human | Project overview and usage guide |
-| `diagram.md` | Human | Visual system architecture |
+| `docs/diagram.md` | Human | Visual system architecture |
 | `CLAUDE.md` | AI Agent | Entry point, conventions, and context |
 | `knowledge/` | Both | Core policies and philosophy |
 
 ## Structure
 
-See [diagram.md](diagram.md) for directory structure.
+See [docs/diagram.md](docs/diagram.md) for directory structure.
 
 ## How It Works
 
