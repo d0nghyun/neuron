@@ -7,6 +7,7 @@ categories:
     files:
       - ai-axioms
       - philosophy
+      - neuron-base
 
   workflow:
     description: "Work procedures, git, release, data processing"
@@ -71,6 +72,7 @@ trigger_map:
 summaries:
   ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
   philosophy: "SSOT, MECE, Simplicity First - 16 principles"
+  neuron-base: "Submodule inheritance contract"
   decision-guide: "neuron vs separate repo, API Skill placement"
   extension-mechanisms: "Skills, MCP, Subagent, Commands, Hooks selection"
   git-workflow: "Conventional Commits, branch strategy"
