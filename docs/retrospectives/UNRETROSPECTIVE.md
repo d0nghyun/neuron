@@ -38,6 +38,8 @@
 - 2026-01-11: Machine-readable YAML registry enables future tooling without locking into specific implementation - dashboard-ready design demonstrates forward-thinking architecture
 - 2026-01-11: Module protocol demonstrates SSOT principle - single source for module metadata prevents drift between .gitmodules and documentation
 - 2026-01-11: Flat structure + registry approach beats nested hierarchies for AI parsing - simple structure with metadata wins over complex directory organization
+- 2026-01-12: Work domain submodule registration follows module-protocol.md exactly - consistent process makes adding new modules predictable and low-friction
+- 2026-01-12: Official MCP endpoints (Atlassian) demonstrate ecosystem maturity - using https://mcp.atlassian.com/v1/sse instead of custom server simplifies configuration
 
 ## Improvements
 
