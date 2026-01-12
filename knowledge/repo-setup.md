@@ -48,11 +48,17 @@ This project follows Neuron policies (parent directory).
 
 ### 1. Create Repository
 ```bash
-# Create new repo on GitHub
-gh repo create <repo-name> --private --clone
-cd <repo-name>
+# Create new repo on GitHub via API
+curl -s -X POST \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"<repo-name>","private":true}' \
+  https://api.github.com/user/repos
 
-# Initialize with required files
+# Clone and initialize
+git clone git@github.com:<user>/<repo-name>.git
+cd <repo-name>
 echo "# Project Name" > README.md
 touch CLAUDE.md .gitignore
 git add . && git commit -m "chore: initial setup"
@@ -73,11 +79,13 @@ Apply settings from `github-settings.md`:
 - Squash merge default
 
 ```bash
-# Quick setup via gh CLI
-gh api repos/{owner}/{repo}/branches/main/protection \
-  -X PUT \
-  -f required_pull_request_reviews='{"required_approving_review_count":0}' \
-  -f enforce_admins=false
+# Quick setup via GitHub API
+curl -s -X PUT \
+  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "Content-Type: application/json" \
+  -d '{"required_pull_request_reviews":{"required_approving_review_count":0},"enforce_admins":false}' \
+  https://api.github.com/repos/{owner}/{repo}/branches/main/protection
 ```
 
 ## Working with Submodules
