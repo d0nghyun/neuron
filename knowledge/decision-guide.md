@@ -1,15 +1,3 @@
----
-id: decision-guide
-category: architecture
-triggers:
-  - "where to build"
-  - "feature location"
-  - "new project"
-  - "submodule"
-  - "API Skill placement"
-related: [extension-mechanisms, module-protocol, repo-setup]
----
-
 # Decision Guide
 
 ## Project Scope Decision

@@ -77,6 +77,11 @@
   - Hard rules (pagination, reuse, nested structures) and soft rules (>100 lines, partial fields)
   - Anti-patterns (direct load, repeated calls, context bloat)
   - Connection to core philosophy (SSOT, Modularity, Front-load Pain, Simplicity First)
+- `/backlog` command (`.claude/commands/backlog.md`) for extracting remaining/deferred tasks from conversation context with:
+  - Extraction patterns for Phase 2/3, TODO, deferred, remaining, blocked, incremental signals
+  - TodoWrite integration for task tracking
+  - Priority categorization (blocking vs nice-to-have)
+  - Clear execution workflow: scan → categorize → write todos
 
 ## Changed
 
@@ -119,6 +124,10 @@
 - Updated CLAUDE.md Navigation and Knowledge Files tables to include `knowledge/_index.yaml` and `data-pipeline.md`
 - Added frontmatter metadata to knowledge files (decision-guide.md, git-workflow.md) for consistency with knowledge index system
 - Updated extension-mechanisms.md with Advisor Agent section describing special role in pre-AskUser workflow
+- Enhanced CLAUDE.md with Commands section documenting all slash commands (/pr, /release, /sync, /backlog)
+- Added 16th core principle "Automate Repetition" to CLAUDE.md philosophy table
+- Updated neuron-knowledge skill to reference `knowledge/_index.yaml` for knowledge discovery instead of listing individual files
+- Removed redundant YAML frontmatter from knowledge files (data-pipeline.md, decision-guide.md, git-workflow.md) implementing SSOT principle with _index.yaml as single source
 
 ## Fixed
 

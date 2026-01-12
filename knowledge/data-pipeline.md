@@ -1,14 +1,3 @@
----
-id: data-pipeline
-category: workflow
-triggers:
-  - "API response over 100 lines"
-  - "pagination required"
-  - "large data"
-  - "read header only"
-related: [philosophy]
----
-
 # Data Pipeline Pattern
 
 AI context is a precious resource. Save data to files, read only summaries.

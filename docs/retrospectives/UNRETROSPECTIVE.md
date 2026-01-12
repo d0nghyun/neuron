@@ -65,6 +65,10 @@
 - 2026-01-12: Data pipeline pattern addresses root cause of context bloat - systematic approach (Fetch → Transform → Interpret) prevents token waste
 - 2026-01-12: Frontmatter metadata in knowledge files improves discoverability - machine-readable triggers, categories, and relations enable autonomous navigation
 - 2026-01-12: Fourth consecutive language convention violation signals systemic issue - reactive review catching not preventing non-English content creation
+- 2026-01-12: /backlog command demonstrates Automate Repetition principle - codifies task extraction pattern that was done manually repeatedly
+- 2026-01-12: SSOT implementation in action - removing redundant YAML frontmatter (36 lines deleted) consolidates knowledge metadata into single _index.yaml source
+- 2026-01-12: Documentation consistency refactor demonstrates systematic thinking - fixing missing principle, documenting commands, and cleaning up SSOT violations in single logical commit
+- 2026-01-12: Two-commit structure (feature + refactor) shows good separation of concerns - new functionality isolated from cleanup work
 
 ## Improvements
 

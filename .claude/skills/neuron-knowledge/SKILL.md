@@ -16,9 +16,10 @@ This skill activates when the user asks about:
 
 ## Knowledge Location
 
-All documentation is in `knowledge/`:
-- `git-workflow.md` - Git conventions, worktree, revert strategies
-- `github-settings.md` - Branch protection, PR settings, review policy
+All documentation is in `knowledge/`. See `knowledge/_index.yaml` for:
+- Categories and file listings
+- Trigger phrases for each topic
+- Related file connections
 
 ## How to Use
 

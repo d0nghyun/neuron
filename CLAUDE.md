@@ -36,6 +36,15 @@ See [diagram.md](diagram.md) for visual structure.
 | `self-improve-policy.md` | Self-healing agent constraints |
 | `data-pipeline.md` | Large data handling (fetch → transform → interpret) |
 
+## Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/pr` | Create PR with automated review and release notes |
+| `/release` | Create release with version tag |
+| `/sync` | Sync local main after PR merge |
+| `/backlog` | Extract remaining tasks from session |
+
 ## Axioms
 
 See [knowledge/ai-axioms.md](knowledge/ai-axioms.md) for details.
@@ -63,6 +72,7 @@ See [knowledge/philosophy.md](knowledge/philosophy.md) for details.
 | Autonomous Execution | Act first, ask only when blocked |
 | Trust-based Delegation | AI executes, human directs |
 | Verify Before Done | Prove it works, don't assume |
+| Automate Repetition | Routine is inefficiency, automate what repeats |
 
 ## Decision Signal Recognition
 
