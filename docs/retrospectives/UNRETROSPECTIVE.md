@@ -15,6 +15,7 @@
 > What worked well, lessons learned (updated by reviewer on each PR)
 
 - **2026-01-12**: Claude Code subagent에 `skills` 필드 존재. subagent가 skill을 자동 로드 가능. advisor에 neuron-knowledge skill 연결로 knowledge/ 참조 자동화.
+- **2026-01-12**: Visual documentation (ASCII diagrams) makes abstract concepts concrete. Brain analogies help users remember agent roles naturally. Documentation reorganization (root → docs/) follows MECE principle.
 
 ## Improvements
 
