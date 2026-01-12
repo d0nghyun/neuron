@@ -52,6 +52,7 @@ Check against CLAUDE.md principles:
 | AI-First | Machine-readable docs? |
 | Root Cause First | Fixing cause, not symptom? |
 | Bounded Creativity | Within constraints, creative solutions? |
+| Automate Repetition | Repeated patterns → automation candidate? |
 
 ### Step 3: Policy Compliance
 
@@ -129,6 +130,8 @@ After review, check if findings suggest systemic improvement:
 | Same issue in 3+ reviews | Policy needs clarification |
 | Missing guideline caused issue | Knowledge gap |
 | Ambiguous rule interpretation | Needs clarification |
+| Same code pattern 2+ times | Automation candidate |
+| Manual step repeated across PRs | Script/command opportunity |
 
 If detected, append to report:
 
