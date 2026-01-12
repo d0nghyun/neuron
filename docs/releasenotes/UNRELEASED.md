@@ -48,6 +48,8 @@
   - Standard procedures: register, archive, re-register
   - Dashboard-ready schema with status (active/maintenance/archived) and domain (tools/personal/work/experimental) categorization
   - Module interface standard (README.md, CLAUDE.md, .claude/)
+- PM-arkraft submodule (modules/pm-arkraft) registered with work domain for arkraft project management
+- Atlassian MCP server configuration in `.mcp.json` using official endpoint (https://mcp.atlassian.com/v1/sse)
 
 ## Changed
 
