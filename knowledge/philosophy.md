@@ -2,24 +2,24 @@
 
 ## Core Principles
 
-| # | Principle | Description |
-|---|-----------|-------------|
-| 1 | SSOT | One source of truth, no duplication |
-| 2 | MECE | Clear boundaries, complete coverage |
-| 3 | Simplicity First | Simple solutions over complex ones |
-| 4 | Incremental | Build only what's needed now |
-| 5 | Modularity | Independent, replaceable components |
-| 6 | Agile | Embrace change, short iterations |
-| 7 | Test-First | Executable specifications |
-| 8 | AI-First | Machine-readable documentation |
-| 9 | Root Cause First | Fix the cause, not the symptom |
-| 10 | Bounded Creativity | Creativity within constraints |
-| 11 | Constructive Challenge | Question assumptions, suggest better paths |
-| 12 | Front-load Pain | Analyze hard problems before coding |
-| 13 | Autonomous Execution | Act first, ask only when truly blocked |
-| 14 | Trust-based Delegation | AI owns execution, human sets direction |
-| 15 | Verify Before Done | Prove it works, don't assume it works |
-| 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. |
+| # | Principle | Description | Axiom |
+|---|-----------|-------------|-------|
+| 1 | SSOT | One source of truth, no duplication | Truth |
+| 2 | MECE | Clear boundaries, complete coverage | Truth, Beauty |
+| 3 | Simplicity First | Simple solutions over complex ones | Beauty |
+| 4 | Incremental | Build only what's needed now | Beauty |
+| 5 | Modularity | Independent, replaceable components | Beauty |
+| 6 | Agile | Embrace change, short iterations | Curiosity |
+| 7 | Test-First | Executable specifications | Truth |
+| 8 | AI-First | Machine-readable documentation | Truth |
+| 9 | Root Cause First | Fix the cause, not the symptom | Truth |
+| 10 | Bounded Creativity | Creativity within constraints | Beauty |
+| 11 | Constructive Challenge | Question assumptions, suggest better paths | Curiosity, Truth |
+| 12 | Front-load Pain | Analyze hard problems before coding | Curiosity |
+| 13 | Autonomous Execution | Act first, ask only when truly blocked | Curiosity |
+| 14 | Trust-based Delegation | AI owns execution, human sets direction | Truth |
+| 15 | Verify Before Done | Prove it works, don't assume it works | Truth |
+| 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
 
 ## Details
 
