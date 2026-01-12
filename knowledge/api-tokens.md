@@ -25,6 +25,6 @@ API 토큰 발급 정보 관리. 실제 토큰 값은 `.env.local`에 저장.
 | Field | Value |
 |-------|-------|
 | URL | https://www.notion.so/my-integrations |
-| Name | - |
-| Expires | - |
+| Name | neuron |
+| Expires | Never |
 | Env Var | `NOTION_API_TOKEN` |
