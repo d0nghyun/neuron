@@ -25,59 +25,38 @@ Examples:
 
 **Location**: `.claude/skills/<skill-name>/SKILL.md`
 
-## MCP (Model Context Protocol)
+## External Service Integration
 
-**When**: Need to integrate with external services/APIs.
+**Default Policy**: Use API-based Skills, not MCP.
 
-```
-Examples:
-- Notion API (docs sync)
-- GitHub API (issues, PRs)
-- Database connections
-- Slack notifications
-```
+### MCP vs API Skills
 
-**Location**: `.mcp.json` (project root, Git shared)
+| Scenario | Recommended | Reason |
+|----------|-------------|--------|
+| CI/CD, headless | API Skill | No browser for OAuth |
+| Automation pipeline | API Skill | Env vars only |
+| Local interactive | MCP (optional) | User can add manually |
 
-### Configuration Policy
+### API Skills (Default)
 
-| Transport | CLI | Web (Sandbox) | Use When |
-|-----------|-----|---------------|----------|
-| **HTTP** | Yes | Yes | Default choice, OAuth services |
-| SSE | Yes | Yes | Deprecated, avoid |
-| stdio | Yes | No | CLI-only, local tools |
+**Location**: `.claude/skills/*-api/SKILL.md`
 
-**Policy**: Always use `type: http` for web sandbox compatibility.
+| Service | Skill | Auth Env Var |
+|---------|-------|--------------|
+| GitHub | `github-api` | `GITHUB_PERSONAL_ACCESS_TOKEN` |
+| Jira | `jira-api` | `JIRA_API_TOKEN` |
+| Notion | `notion-api` | `NOTION_API_TOKEN` |
 
-### Format (HTTP - Recommended)
+See `.env.example` for all required environment variables.
 
-```json
-{
-  "mcpServers": {
-    "notion": {
-      "type": "http",
-      "url": "https://mcp.notion.com/mcp"
-    }
-  }
-}
-```
+### MCP (Manual Only)
 
-### Authentication
+**When**: User manually adds for local interactive use.
 
-OAuth-based services (Atlassian, Notion, GitHub):
-- Run `/mcp` command in Claude Code
-- Complete browser OAuth flow
-- Token managed automatically
+**Location**: `.mcp.json` (gitignored)
 
-### Common MCP Servers
-
-| Service | URL |
-|---------|-----|
-| Atlassian | `https://mcp.atlassian.com/v1/mcp` |
-| Notion | `https://mcp.notion.com/mcp` |
-| GitHub | `https://api.githubcopilot.com/mcp/` |
-
-See decision-guide.md for placement decisions (neuron vs project-specific).
+OAuth-based hosted MCP servers require browser authentication.
+Not suitable for automation/CI.
 
 ## Subagent
 
@@ -126,7 +105,7 @@ Need to extend Claude Code?
            ▼
 ┌─────────────────────────────┐
 │ External service needed?    │
-│ YES → MCP                   │
+│ YES → API Skill (default)   │
 │ NO  → ▼                     │
 └─────────────────────────────┘
            │
@@ -156,7 +135,7 @@ Need to extend Claude Code?
 
 | Need | Use |
 |------|-----|
-| Call Notion API | MCP |
+| Call GitHub/Jira/Notion API | API Skill |
 | Review code quality | Subagent |
 | Auto-format on save | Hook |
 | Generate PDF report | Skill |
