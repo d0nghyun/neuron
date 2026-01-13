@@ -9,7 +9,7 @@
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
 | 2026-01-13 | #44 | Project-specific content in neuron - slack-backlog command created in neuron instead of pm-arkraft submodule. Required 3 extra commits to fix. | noted |
-| 2026-01-13 | #TBD | Task verification workflow skipped - No verification criteria defined before slack-api skill creation | pending |
+| 2026-01-13 | feat/slack-api | Task verification workflow skipped - No verification criteria defined before slack-api skill creation | noted |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Task verification workflow skipped - No verification criteria defined before execution, violates Test-First and Verify Before Done | pending |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Debug logs without lifecycle - Writing to /tmp/ without cleanup strategy creates data accumulation risk | pending |
 | 2026-01-13 | #TBD | Language policy violation - Korean text in neuron files violates CLAUDE.md English-only convention | pending |
@@ -39,6 +39,7 @@
 - **2026-01-13**: Task verification workflow codifies "Verify Before Done" into executable pattern. Define → Execute → Verify cycle prevents premature "done" declarations.
 - **2026-01-13**: SSOT refactoring via reference pattern - Replacing duplicated content with references to canonical source maintains single source of truth without losing discoverability. Reader can follow reference when needed.
 - **2026-01-13**: Slack bot permission troubleshooting - `groups:history` scope required for private channels. Token in `.env.local` must be updated after app reinstall. Environment variables in curl prevent special character issues.
+- **2026-01-13**: Self-correction within branch demonstrates Learn from Failure (#17) - slack-backlog location mistake identified, documented in retrospective, and fixed within same branch (3 refactor commits). Pattern: mistake → reflection → correction → documentation.
 
 ## Improvements
 
