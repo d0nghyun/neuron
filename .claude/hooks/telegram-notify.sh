@@ -3,67 +3,74 @@
 # Claude Code Stop Hook - Telegram Notification
 # Required env vars: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
+# Debug log
+echo "[$(date)] Hook started" >> /tmp/telegram-hook-debug.log
+
+# Load .env.local if exists (for Claude subprocesses)
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+[[ -f "$PROJECT_ROOT/.env.local" ]] && source "$PROJECT_ROOT/.env.local"
+
 # Skip if env vars not set
-[[ -z "$TELEGRAM_BOT_TOKEN" || -z "$TELEGRAM_CHAT_ID" ]] && exit 0
+[[ -z "$TELEGRAM_BOT_TOKEN" || -z "$TELEGRAM_CHAT_ID" ]] && { echo "[$(date)] Missing env vars" >> /tmp/telegram-hook-debug.log; exit 0; }
 
 # Read hook input from stdin
 input=$(cat)
 
-# Extract session_id from hook input
+# Extract fields from hook input
 session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
+transcript_path=$(echo "$input" | jq -r '.transcript_path // empty' 2>/dev/null)
 
 # Get project info
 project_name=$(basename "$(pwd)")
 branch=$(git branch --show-current 2>/dev/null || echo "-")
-last_commit=$(git log -1 --format="%h %s" 2>/dev/null | cut -c1-40 || echo "-")
-timestamp=$(date "+%m/%d %H:%M")
-
-# Count today's commits on this branch
-today_commits=$(git log --since="00:00" --oneline 2>/dev/null | wc -l | tr -d ' ')
 
 # Get GitHub PR URL (if exists)
 pr_url=$(gh pr view --json url -q '.url' 2>/dev/null || echo "")
 
-# Get GitHub repo URL
-repo_url=$(gh repo view --json url -q '.url' 2>/dev/null || echo "")
-
-# Escape special characters for Telegram
-escape_telegram() {
-    echo "$1" | sed 's/[_*`\[]/\\&/g'
+# Clean text for Telegram (remove markdown, limit length)
+clean_text() {
+    echo "$1" | tr -d '`*_[]#' | tr '\n' ' ' | sed 's/  */ /g'
 }
 
-last_commit_escaped=$(escape_telegram "$last_commit")
-branch_escaped=$(escape_telegram "$branch")
+# Extract from transcript
+user_question=""
+assistant_answer=""
+if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
+    # 1. First user message (the question)
+    user_question=$(grep '"type":"user"' "$transcript_path" | head -1 | jq -r '.message.content // empty' 2>/dev/null)
+    user_question=$(clean_text "$user_question" | cut -c1-100)
+
+    # 2. Last assistant text response
+    assistant_answer=$(grep '"type":"assistant"' "$transcript_path" | tail -1 | jq -r '.message.content[]? | select(.type=="text") | .text' 2>/dev/null)
+    assistant_answer=$(clean_text "$assistant_answer" | cut -c1-150)
+fi
 
 # Build message
-message="✅ Claude Task Complete
+message="✅ [${project_name}] ${branch}
 
-📁 ${project_name}
-🌿 ${branch_escaped}
-📝 ${last_commit_escaped}
-📊 Commits today: ${today_commits}
-⏰ ${timestamp}"
+Q: ${user_question:-No question}"
 
-# Add PR link if exists
-if [[ -n "$pr_url" ]]; then
+if [[ -n "$assistant_answer" ]]; then
     message="${message}
 
-🔗 PR: ${pr_url}"
-elif [[ -n "$repo_url" ]]; then
-    message="${message}
-
-🔗 Repo: ${repo_url}"
+A: ${assistant_answer}"
 fi
+
+# Add PR link only if exists
+[[ -n "$pr_url" ]] && message="${message}
+
+PR: ${pr_url}"
 
 # Add session resume command
 if [[ -n "$session_id" ]]; then
     message="${message}
 
-▶️ claude -r ${session_id}"
+claude -r ${session_id}"
 else
     message="${message}
 
-▶️ claude --continue"
+claude --continue"
 fi
 
 # Send to Telegram
