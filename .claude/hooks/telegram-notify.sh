@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Claude Code Stop Hook - Telegram Notification
+# Claude Code Hook - Telegram Notification
+# Usage: telegram-notify.sh [stop|question]
 # Required env vars: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
+MODE="${1:-stop}"
+
 # Debug log
-echo "[$(date)] Hook started" >> /tmp/telegram-hook-debug.log
+echo "[$(date)] Hook started (mode: $MODE)" >> /tmp/telegram-hook-debug.log
 
 # Load .env.local if exists (for Claude subprocesses)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -20,47 +23,58 @@ input=$(cat)
 # Extract fields from hook input
 session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
 transcript_path=$(echo "$input" | jq -r '.transcript_path // empty' 2>/dev/null)
+tool_input=$(echo "$input" | jq -r '.tool_input // empty' 2>/dev/null)
 
 # Get project info
 project_name=$(basename "$(pwd)")
 branch=$(git branch --show-current 2>/dev/null || echo "-")
-
-# Get GitHub PR URL (if exists)
-pr_url=$(gh pr view --json url -q '.url' 2>/dev/null || echo "")
 
 # Clean text for Telegram (remove markdown, limit length)
 clean_text() {
     echo "$1" | tr -d '`*_[]#' | tr '\n' ' ' | sed 's/  */ /g'
 }
 
-# Extract from transcript
-user_question=""
-assistant_answer=""
-if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
-    # 1. First user message (the question)
-    user_question=$(grep '"type":"user"' "$transcript_path" | head -1 | jq -r '.message.content // empty' 2>/dev/null)
-    user_question=$(clean_text "$user_question" | cut -c1-100)
+# Build message based on mode
+if [[ "$MODE" == "question" ]]; then
+    # Extract question from AskUserQuestion tool input
+    questions=$(echo "$tool_input" | jq -r '.questions[]?.question // empty' 2>/dev/null | head -3)
+    questions=$(clean_text "$questions" | cut -c1-200)
 
-    # 2. Last assistant text response
-    assistant_answer=$(grep '"type":"assistant"' "$transcript_path" | tail -1 | jq -r '.message.content[]? | select(.type=="text") | .text' 2>/dev/null)
-    assistant_answer=$(clean_text "$assistant_answer" | cut -c1-150)
-fi
+    message="❓ [${project_name}] ${branch}
 
-# Build message
-message="✅ [${project_name}] ${branch}
+${questions:-Claude has a question}"
+
+else
+    # Stop mode - existing logic
+    # Get GitHub PR URL (if exists)
+    pr_url=$(gh pr view --json url -q '.url' 2>/dev/null || echo "")
+
+    # Extract from transcript
+    user_question=""
+    assistant_answer=""
+    if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
+        user_question=$(grep '"type":"user"' "$transcript_path" | head -1 | jq -r '.message.content // empty' 2>/dev/null)
+        user_question=$(clean_text "$user_question" | cut -c1-100)
+
+        assistant_answer=$(grep '"type":"assistant"' "$transcript_path" | tail -1 | jq -r '.message.content[]? | select(.type=="text") | .text' 2>/dev/null)
+        assistant_answer=$(clean_text "$assistant_answer" | cut -c1-150)
+    fi
+
+    message="✅ [${project_name}] ${branch}
 
 Q: ${user_question:-No question}"
 
-if [[ -n "$assistant_answer" ]]; then
-    message="${message}
+    if [[ -n "$assistant_answer" ]]; then
+        message="${message}
 
 A: ${assistant_answer}"
-fi
+    fi
 
-# Add PR link only if exists
-[[ -n "$pr_url" ]] && message="${message}
+    # Add PR link only if exists
+    [[ -n "$pr_url" ]] && message="${message}
 
 PR: ${pr_url}"
+fi
 
 # Add session resume command
 if [[ -n "$session_id" ]]; then
