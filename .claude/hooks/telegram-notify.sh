@@ -67,7 +67,7 @@ else
     user_question=""
     assistant_answer=""
     if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
-        user_question=$(grep '"type":"user"' "$transcript_path" | head -1 | jq -r '.message.content // empty' 2>/dev/null)
+        user_question=$(grep '"type":"user"' "$transcript_path" | tail -1 | jq -r '.message.content // empty' 2>/dev/null)
         user_question=$(clean_text "$user_question" | cut -c1-100)
 
         assistant_answer=$(grep '"type":"assistant"' "$transcript_path" | tail -1 | jq -r '.message.content[]? | select(.type=="text") | .text' 2>/dev/null)
