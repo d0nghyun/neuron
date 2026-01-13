@@ -20,6 +20,7 @@
 - **2026-01-13**: WHY sections in SKILL.md critical rules dramatically improve beginner understanding. Explaining "Citadel fires people for this" adds real-world weight to abstract technical rules.
 - **2026-01-13**: Progression maps with "YOU ARE HERE" markers reduce cognitive load for beginners navigating complex skill hierarchies.
 - **2026-01-13**: Test-first approach for documentation - defining 15 evaluation questions before building the skill ensured completeness.
+- **2026-01-13**: Task verification workflow codifies "Verify Before Done" into executable pattern. Define → Execute → Verify cycle prevents premature "done" declarations.
 
 ## Improvements
 

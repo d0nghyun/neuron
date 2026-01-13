@@ -17,6 +17,7 @@ categories:
       - release-workflow
       - spec-process
       - data-pipeline
+      - task-verification-workflow
 
   architecture:
     description: "Structural decisions, where to build what"
@@ -68,6 +69,10 @@ trigger_map:
     files: [spec-process]
     description: "When writing specifications"
 
+  - pattern: "verify|test|criteria|validate|done|complete|check"
+    files: [task-verification-workflow]
+    description: "When defining tasks with verification"
+
 # Per-file summaries (quick reference)
 summaries:
   ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
@@ -85,3 +90,4 @@ summaries:
   github-settings: "Branch protection, PR settings"
   api-tokens: "External service token metadata"
   self-improve-policy: "Self-improve agent guardrails"
+  task-verification-workflow: "Define task + criteria, verify before done, feedback loop"
