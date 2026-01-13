@@ -44,8 +44,10 @@ Examples:
 | Service | Skill | Auth Env Var |
 |---------|-------|--------------|
 | GitHub | `github-api` | `GITHUB_PERSONAL_ACCESS_TOKEN` |
-| Jira | `jira-api` | `JIRA_API_TOKEN` |
+| Jira | `jira-api` | `ATLASSIAN_API_TOKEN` |
+| Confluence | `confluence-api` | `ATLASSIAN_API_TOKEN` |
 | Notion | `notion-api` | `NOTION_API_TOKEN` |
+| Slack | `slack-api` | `SLACK_BOT_TOKEN` |
 
 See `.env.example` for all required environment variables.
 
