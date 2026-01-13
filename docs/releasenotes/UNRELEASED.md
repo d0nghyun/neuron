@@ -4,6 +4,10 @@
 
 ## Added
 
+- **Principle #20: Sustainable by Design** - One-off is waste. Build reproducible, self-evolving processes.
+  - Added to CLAUDE.md principles table
+  - Detailed explanation in knowledge/philosophy.md
+  - Axiom mapping: Truth, Beauty, Curiosity
 - **slack-api skill**: Slack Web API integration for messaging, channels, and notifications
   - Comprehensive API operations: messages, files, threads, reactions, channel management
   - Bot token authentication with required scopes documentation
