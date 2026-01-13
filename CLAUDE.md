@@ -35,6 +35,7 @@ Three axioms govern all decisions:
 | 17 | Learn from Failure | Record failures, find patterns, improve system | Truth, Curiosity |
 | 18 | Docendo Discimus | Teach to learn; explaining forces understanding | Curiosity, Truth |
 | 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
+| 20 | Sustainable by Design | One-off is waste. Build reproducible, self-evolving processes. | Truth, Beauty, Curiosity |
 
 Detailed explanations: `knowledge/philosophy.md`
 
