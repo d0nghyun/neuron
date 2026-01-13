@@ -47,15 +47,7 @@ Claude Code executes:
 
 ### 4. Run /release Command
 
-When ready to release, run `/release`:
-
-1. Check UNRELEASED.md has content
-2. Determine version (MAJOR/MINOR/PATCH)
-3. Convert `UNRELEASED.md` → `v{X.Y.Z}.md`
-4. Reset `UNRELEASED.md` for next cycle
-5. Commit, tag, and push
-
-Tags can trigger GitHub Actions for automation.
+When ready to release, run `/release`. See [release.md](../.claude/commands/release.md) for execution details.
 
 ## Review Categories
 
