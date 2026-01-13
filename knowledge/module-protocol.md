@@ -192,6 +192,32 @@ module/
 CLAUDE.md must include `## Inherited Policies` section with inlined policy table.
 Do NOT use parent-relative paths. See [repo-setup.md](repo-setup.md) for template.
 
+## Language Policy
+
+### neuron Repository
+
+All files in neuron MUST be in English. No exceptions.
+
+### Submodule Directories
+
+| Directory | Language | Reason |
+|-----------|----------|--------|
+| `.claude/*` | English only | AI infrastructure, Claude Code compatibility |
+| `docs/*` | Submodule policy | Business documents, local team preference |
+| `decisions/*` | Submodule policy | ADRs, stakeholder communication |
+| `README.md` | Submodule policy | Project overview |
+
+**Rationale**: `.claude/` directories are part of Claude Code infrastructure.
+AI-First principle requires English for AI agent consumption.
+Content files may use local language for team efficiency.
+
+### Override Documentation
+
+If a submodule uses non-English for `.claude/` files, it MUST:
+1. Document the reason in CLAUDE.md under "Policy Overrides"
+2. Ensure command syntax and AI instructions remain in English
+3. Accept reduced AI comprehension quality
+
 ## Related
 
 - [decision-guide.md](decision-guide.md) - When to create new module

@@ -18,6 +18,8 @@ categories:
       - spec-process
       - data-pipeline
       - task-verification-workflow
+      - doc-policy
+      - doc-routine
 
   architecture:
     description: "Structural decisions, where to build what"
@@ -73,6 +75,10 @@ trigger_map:
     files: [task-verification-workflow]
     description: "When defining tasks with verification"
 
+  - pattern: "document|documentation|SSOT|language policy|routine"
+    files: [doc-policy, doc-routine]
+    description: "When organizing documentation"
+
 # Per-file summaries (quick reference)
 summaries:
   ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
@@ -91,3 +97,5 @@ summaries:
   api-tokens: "External service token metadata"
   self-improve-policy: "Self-improve agent guardrails"
   task-verification-workflow: "Define task + criteria, verify before done, feedback loop"
+  doc-policy: "SSOT, language policy, document location matrix"
+  doc-routine: "PR review, release, monthly API validation routines"

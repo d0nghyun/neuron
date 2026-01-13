@@ -8,7 +8,7 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
-| 2026-01-13 | pm-arkraft | Language policy unclear for submodule .claude/ directories (Korean in neuron infra) | pending |
+| 2026-01-13 | pm-arkraft | Language policy unclear for submodule .claude/ directories (Korean in neuron infra) | resolved: see knowledge/module-protocol.md#language-policy |
 | 2026-01-13 | pm-arkraft | SSOT violation through documentation duplication (team registry in assign.md) | pending |
 | 2026-01-13 | pm-arkraft | Deprecated Jira API field 'Epic Link' used instead of 'parent' | pending |
 
