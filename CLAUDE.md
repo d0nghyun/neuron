@@ -116,6 +116,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Create release | `/release` |
 | Sync main branch | `/sync` |
 | Extract backlog | `/backlog` |
+| Audit submodules | `/audit-modules` |
 
 ## Decision Signals
 
