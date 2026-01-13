@@ -104,6 +104,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
+| **Any task starts** | Define verification criteria (see `knowledge/task-verification-workflow.md`) |
 | GitHub API | `Skill(github-api)` |
 | Jira API | `Skill(jira-api)` |
 | Notion API | `Skill(notion-api)` |
