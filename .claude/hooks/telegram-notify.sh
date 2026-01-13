@@ -36,12 +36,12 @@ last_commit_escaped=$(escape_telegram "$last_commit")
 branch_escaped=$(escape_telegram "$branch")
 
 # Build message
-message="✅ Claude 작업 완료
+message="✅ Claude Task Complete
 
 📁 ${project_name}
 🌿 ${branch_escaped}
 📝 ${last_commit_escaped}
-📊 오늘 커밋: ${today_commits}개
+📊 Commits today: ${today_commits}
 ⏰ ${timestamp}"
 
 # Add PR link if exists
