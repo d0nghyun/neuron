@@ -19,7 +19,6 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Read hook input from stdin
 input=$(cat)
-echo "[$(date)] Input: $input" >> /tmp/telegram-hook-debug.log
 
 # Extract fields from hook input
 session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
@@ -29,6 +28,42 @@ tool_input=$(echo "$input" | jq -r '.tool_input // empty' 2>/dev/null)
 # Get project info
 project_name=$(basename "$(pwd)")
 branch=$(git branch --show-current 2>/dev/null || echo "-")
+
+# Session emoji based on session_id hash (for visual distinction)
+get_session_emoji() {
+    local sid="$1"
+    local emojis=("🔵" "🟢" "🟠" "🟣" "🔴" "🟡" "⚪" "🟤")
+    if [[ -n "$sid" ]]; then
+        # Simple hash: sum of ASCII values mod emoji count
+        local hash=0
+        for ((i=0; i<${#sid}; i++)); do
+            hash=$((hash + $(printf '%d' "'${sid:$i:1}")))
+        done
+        echo "${emojis[$((hash % ${#emojis[@]}))]}"
+    else
+        echo "⚪"
+    fi
+}
+
+# Extract first user question keyword for context
+get_task_keyword() {
+    local transcript="$1"
+    if [[ -n "$transcript" && -f "$transcript" ]]; then
+        # Get FIRST user message (not last) for task context
+        local first_q=$(grep '"type":"user"' "$transcript" | \
+            grep -v '"tool_use_id"' | \
+            grep -v '"tooluseid"' | \
+            head -1 | \
+            jq -r '.message.content // empty' 2>/dev/null)
+        # Clean and extract first meaningful words (Korean/English)
+        first_q=$(echo "$first_q" | sed 's/<[^>]*>//g' | tr -d '`*_[]#\n' | sed 's/  */ /g')
+        # Take first 15 chars as keyword
+        echo "$first_q" | cut -c1-15 | sed 's/ *$//'
+    fi
+}
+
+session_emoji=$(get_session_emoji "$session_id")
+task_keyword=$(get_task_keyword "$transcript_path")
 
 # Clean text for Telegram (remove markdown, XML tags, limit length)
 clean_text() {
@@ -52,7 +87,11 @@ if [[ "$MODE" == "question" ]]; then
     questions=$(echo "$tool_input" | jq -r '.questions[]?.question // empty' 2>/dev/null | head -3)
     questions=$(clean_text "$questions" | cut -c1-200)
 
-    message="❓ [${project_name}] ${branch}
+    # Build header with emoji and task keyword
+    header="${session_emoji} [${project_name}] ${branch}"
+    [[ -n "$task_keyword" ]] && header="${header} | ${task_keyword}"
+
+    message="❓ ${header}
 
 ${questions:-Claude has a question}"
 
@@ -73,7 +112,11 @@ elif [[ "$MODE" == "permission" ]]; then
         user_question=$(clean_text "$user_question" | cut -c1-100)
     fi
 
-    message="⏸️ [${project_name}] ${branch}
+    # Build header with emoji and task keyword
+    header="${session_emoji} [${project_name}] ${branch}"
+    [[ -n "$task_keyword" ]] && header="${header} | ${task_keyword}"
+
+    message="⏸️ ${header}
 
 Q: ${user_question:-No question}
 
@@ -100,7 +143,11 @@ else
         assistant_answer=$(clean_text "$assistant_answer" | cut -c1-150)
     fi
 
-    message="✅ [${project_name}] ${branch}
+    # Build header with emoji and task keyword
+    header="${session_emoji} [${project_name}] ${branch}"
+    [[ -n "$task_keyword" ]] && header="${header} | ${task_keyword}"
+
+    message="✅ ${header}
 
 Q: ${user_question:-No question}"
 
