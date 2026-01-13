@@ -158,15 +158,6 @@ Need to extend Claude Code?
 | Auto-format on save | Hook |
 | Generate PDF report | Skill |
 | Create PR with template | Command |
-| Slack → Confluence backlog | `/slack-backlog` command |
-
-## Backlog Convention
-
-| Project | Confluence Location |
-|---------|---------------------|
-| **Arkraft** | ARK Space → Arkraft page |
-
-Workflow: Slack URL → `/slack-backlog` → Confluence page created
 
 ## Related
 
