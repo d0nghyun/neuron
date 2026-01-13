@@ -20,6 +20,7 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- **2026-01-13**: Principle #20 (Sustainable by Design) codifies "process over output" philosophy - Addresses gap where system had principles for quality/truth but not for long-term reproducibility. Complements Automate Repetition (#16) by focusing on reusability over automation.
 - **2026-01-13**: Submodule inheritance model (Required vs Configurable policies) provides clear override semantics without duplicating neuron philosophy. Conceptual reference via GitHub link maintains context without creating hard dependency.
 - **2026-01-13**: ADR structure with 상태/맥락/결정/결과 provides complete decision context. ADR-0001 (Confluence SSOT) and ADR-0002 (no tenant) demonstrate good practice of documenting "why not" decisions.
 - **2026-01-13**: PM workflow aligned to philosophy principles (workflow.md lines 5-11 table) makes abstract principles concrete for non-technical domain.
