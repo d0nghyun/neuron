@@ -54,6 +54,22 @@ Check against CLAUDE.md principles:
 | Bounded Creativity | Within constraints, creative solutions? |
 | Automate Repetition | Repeated patterns → automation candidate? |
 
+### Step 2b: Task Verification Check
+
+Verify that task-verification-workflow was followed:
+
+| Check | Pass Criteria |
+|-------|---------------|
+| Criteria defined? | Verification criteria existed at task start |
+| Criteria executable? | Each criterion has concrete "how to verify" |
+| Verification run? | Evidence of each criterion being tested |
+| All passed? | All criteria show PASS status |
+
+If verification workflow was skipped, add finding:
+```
+- [warning] task-verification: No verification criteria defined for this task
+```
+
 ### Step 3: Policy Compliance
 
 Check against knowledge/ policies:
