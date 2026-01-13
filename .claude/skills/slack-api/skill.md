@@ -22,6 +22,11 @@ allowed-tools: Bash, Read, Grep
 
 Create token at: https://api.slack.com/apps → Your App → OAuth & Permissions
 
+**IMPORTANT**: Before any API call, load environment variables:
+```bash
+export $(grep -E "^SLACK_" /Users/dhlee/Git/personal/neuron/.env.local | xargs)
+```
+
 **Required Scopes**:
 - `chat:write` - Send messages
 - `channels:read` - List public channels

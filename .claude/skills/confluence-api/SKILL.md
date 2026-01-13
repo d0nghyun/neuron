@@ -20,6 +20,22 @@ allowed-tools: Bash, Read, Grep
 - `ATLASSIAN_USER_EMAIL`: Your Atlassian account email
 - `ATLASSIAN_API_TOKEN`: API token from https://id.atlassian.com/manage-profile/security/api-tokens
 
+**IMPORTANT**: Before any API call, load environment variables:
+```bash
+export $(grep -E "^ATLASSIAN_" /Users/dhlee/Git/personal/neuron/.env.local | xargs)
+```
+
+Or use Python with inline loading:
+```python
+import os
+# Load from .env.local
+with open('/Users/dhlee/Git/personal/neuron/.env.local') as f:
+    for line in f:
+        if line.startswith('ATLASSIAN_'):
+            key, val = line.strip().split('=', 1)
+            os.environ[key] = val
+```
+
 ## API Base URL
 
 ```
