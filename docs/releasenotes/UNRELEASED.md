@@ -5,7 +5,10 @@
 ## Added
 
 - Telegram notification on Claude Code Stop event
-  - Sends project info, branch, commit summary, PR/repo link
+  - Extracts user question and assistant answer from transcript for context-rich notifications
+  - Concise message format with Q&A instead of verbose metadata
+  - Debug logging for troubleshooting hook execution
+  - Auto-loads .env.local for Claude subprocesses
   - Includes session resume command for quick continuation
   - Opt-in via TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID env vars
 - **modules/modeling**: finter-quickstart skill - 15-minute beginner onboarding path to first backtest
