@@ -4,6 +4,10 @@
 
 ## Added
 
+- Telegram notification on Claude Code Stop event
+  - Sends project info, branch, commit summary, PR/repo link
+  - Includes session resume command for quick continuation
+  - Opt-in via TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID env vars
 - **modules/modeling**: finter-quickstart skill - 15-minute beginner onboarding path to first backtest
 - **modules/modeling**: /finter-skills:start command - Interactive routing based on user experience level
 - **modules/modeling**: Skill routing decision tree in CLAUDE.md - Machine-readable keyword mapping for Claude
