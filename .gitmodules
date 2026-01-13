@@ -7,3 +7,9 @@
 [submodule "modules/modeling"]
 	path = modules/modeling
 	url = https://github.com/Quantit-Github/modeling.git
+[submodule "modules/arkraft-fe"]
+	path = modules/arkraft-fe
+	url = ssh://git@gitlab.quantit.io:2222/ark/arkraft/arkraft-fe.git
+[submodule "modules/finter"]
+	path = modules/finter
+	url = ssh://git@gitlab.quantit.io:2222/ark/finter.git
