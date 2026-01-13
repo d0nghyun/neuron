@@ -76,7 +76,7 @@ trigger_map:
 # Per-file summaries (quick reference)
 summaries:
   ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
-  philosophy: "SSOT, MECE, Simplicity First - 16 principles"
+  philosophy: "SSOT, MECE, Simplicity First - 19 principles"
   neuron-base: "Submodule inheritance contract"
   decision-guide: "neuron vs separate repo, API Skill placement"
   extension-mechanisms: "Skills, MCP, Subagent, Commands, Hooks selection"

@@ -19,6 +19,7 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Read hook input from stdin
 input=$(cat)
+echo "[$(date)] Input: $input" >> /tmp/telegram-hook-debug.log
 
 # Extract fields from hook input
 session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
@@ -61,7 +62,20 @@ elif [[ "$MODE" == "permission" ]]; then
     notification_msg=$(echo "$input" | jq -r '.message // empty' 2>/dev/null)
     notification_msg=$(clean_text "$notification_msg" | cut -c1-200)
 
+    # Extract user question from transcript (same as stop mode)
+    user_question=""
+    if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
+        user_question=$(grep '"type":"user"' "$transcript_path" | \
+            grep -v '"tool_use_id"' | \
+            grep -v '"tooluseid"' | \
+            tail -1 | \
+            jq -r '.message.content // empty' 2>/dev/null)
+        user_question=$(clean_text "$user_question" | cut -c1-100)
+    fi
+
     message="⏸️ [${project_name}] ${branch}
+
+Q: ${user_question:-No question}
 
 ${tool_name}: ${notification_msg:-Permission needed}"
 
@@ -74,11 +88,11 @@ else
     user_question=""
     assistant_answer=""
     if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
-        # Get first user message that's not a tool result
+        # Get last user message that's not a tool result
         user_question=$(grep '"type":"user"' "$transcript_path" | \
             grep -v '"tool_use_id"' | \
             grep -v '"tooluseid"' | \
-            head -1 | \
+            tail -1 | \
             jq -r '.message.content // empty' 2>/dev/null)
         user_question=$(clean_text "$user_question" | cut -c1-100)
 
