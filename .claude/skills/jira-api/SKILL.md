@@ -22,6 +22,11 @@ allowed-tools: Bash, Read, Grep
 
 Create token at: https://id.atlassian.com/manage-profile/security/api-tokens
 
+**IMPORTANT**: Before any API call, load environment variables:
+```bash
+export $(grep -E "^ATLASSIAN_" /Users/dhlee/Git/personal/neuron/.env.local | xargs)
+```
+
 ## API Base URL
 
 ```
