@@ -48,6 +48,16 @@ if [[ "$MODE" == "question" ]]; then
 
 ${questions:-Claude has a question}"
 
+elif [[ "$MODE" == "permission" ]]; then
+    # Extract permission request info
+    tool_name=$(echo "$input" | jq -r '.tool_name // empty' 2>/dev/null)
+    notification_msg=$(echo "$input" | jq -r '.message // empty' 2>/dev/null)
+    notification_msg=$(clean_text "$notification_msg" | cut -c1-200)
+
+    message="⏸️ [${project_name}] ${branch}
+
+${tool_name}: ${notification_msg:-Permission needed}"
+
 else
     # Stop mode - existing logic
     # Get GitHub PR URL (if exists)
