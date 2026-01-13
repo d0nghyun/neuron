@@ -67,11 +67,11 @@ else
     user_question=""
     assistant_answer=""
     if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
-        # Get last user message that's not a tool result
+        # Get first user message that's not a tool result
         user_question=$(grep '"type":"user"' "$transcript_path" | \
             grep -v '"tool_use_id"' | \
             grep -v '"tooluseid"' | \
-            tail -1 | \
+            head -1 | \
             jq -r '.message.content // empty' 2>/dev/null)
         user_question=$(clean_text "$user_question" | cut -c1-100)
 
