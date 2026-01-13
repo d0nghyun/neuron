@@ -30,6 +30,11 @@
 - **knowledge/task-verification-workflow.md**: Universal task verification pattern (Define → Execute → Verify → Feedback)
 - **CLAUDE.md**: Routing entry for task verification workflow
 - **.claude/agents/reviewer.md**: Step 2b verification check
+- **`/slack-backlog` command**: Extract backlog from Slack messages and save to Confluence
+  - Parses Slack URLs, fetches messages and threads
+  - Creates Confluence pages with deduplication check
+  - Convention: Arkraft backlog → ARK Space/Arkraft page
+- **knowledge/extension-mechanisms.md**: Added Slack/Confluence to API skills table, backlog convention
 
 ## Changed
 
@@ -52,7 +57,7 @@
 
 ## Fixed
 
--
+- **slack-api skill**: Added `groups:history` scope for private channel access
 
 ## Removed
 

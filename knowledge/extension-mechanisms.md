@@ -44,8 +44,10 @@ Examples:
 | Service | Skill | Auth Env Var |
 |---------|-------|--------------|
 | GitHub | `github-api` | `GITHUB_PERSONAL_ACCESS_TOKEN` |
-| Jira | `jira-api` | `JIRA_API_TOKEN` |
+| Jira | `jira-api` | `ATLASSIAN_API_TOKEN` |
+| Confluence | `confluence-api` | `ATLASSIAN_API_TOKEN` |
 | Notion | `notion-api` | `NOTION_API_TOKEN` |
+| Slack | `slack-api` | `SLACK_BOT_TOKEN` |
 
 See `.env.example` for all required environment variables.
 
@@ -156,6 +158,15 @@ Need to extend Claude Code?
 | Auto-format on save | Hook |
 | Generate PDF report | Skill |
 | Create PR with template | Command |
+| Slack → Confluence backlog | `/slack-backlog` command |
+
+## Backlog Convention
+
+| Project | Confluence Location |
+|---------|---------------------|
+| **Arkraft** | ARK Space → Arkraft page |
+
+Workflow: Slack URL → `/slack-backlog` → Confluence page created
 
 ## Related
 

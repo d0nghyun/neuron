@@ -24,9 +24,11 @@ Create token at: https://api.slack.com/apps → Your App → OAuth & Permissions
 
 **Required Scopes**:
 - `chat:write` - Send messages
-- `channels:read` - List channels
-- `channels:history` - Read channel messages
+- `channels:read` - List public channels
+- `channels:history` - Read public channel messages
+- `groups:history` - Read private channel messages
 - `files:write` - Upload files
+- `reactions:read` - Read reactions (optional)
 
 ## API Base URL
 
