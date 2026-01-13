@@ -30,6 +30,7 @@
 - **knowledge/task-verification-workflow.md**: Universal task verification pattern (Define → Execute → Verify → Feedback)
 - **CLAUDE.md**: Routing entry for task verification workflow
 - **.claude/agents/reviewer.md**: Step 2b verification check
+- **knowledge/extension-mechanisms.md**: Added Slack/Confluence to API skills table
 
 ## Changed
 
@@ -52,7 +53,7 @@
 
 ## Fixed
 
--
+- **slack-api skill**: Added `groups:history` scope for private channel access
 
 ## Removed
 

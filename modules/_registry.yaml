@@ -38,11 +38,32 @@ modules:
       - skills
       - claude-code
 
+  arkraft-fe:
+    repo: gitlab.quantit.io/ark/arkraft/arkraft-fe
+    domain: work
+    status: active
+    description: Arkraft frontend application for demo
+    registered_at: "2026-01-13"
+    tags:
+      - arkraft
+      - frontend
+
+  finter:
+    repo: gitlab.quantit.io/ark/finter
+    domain: work
+    status: active
+    description: Finter backend service for Arkraft demo
+    registered_at: "2026-01-13"
+    tags:
+      - arkraft
+      - backend
+      - finter
+
 # Archived modules (removed from submodules but tracked)
 archived: {}
 
 # Registry metadata
 _meta:
   version: 1
-  updated_at: "2026-01-12"
+  updated_at: "2026-01-13"
   schema: knowledge/module-protocol.md
