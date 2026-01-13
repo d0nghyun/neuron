@@ -38,7 +38,6 @@
 - **2026-01-13**: Task verification workflow codifies "Verify Before Done" into executable pattern. Define → Execute → Verify cycle prevents premature "done" declarations.
 - **2026-01-13**: SSOT refactoring via reference pattern - Replacing duplicated content with references to canonical source maintains single source of truth without losing discoverability. Reader can follow reference when needed.
 - **2026-01-13**: Slack bot permission troubleshooting - `groups:history` scope required for private channels. Token in `.env.local` must be updated after app reinstall. Environment variables in curl prevent special character issues.
-- **2026-01-13**: `/slack-backlog` command establishes Slack → Confluence workflow. Convention documented: Arkraft backlog → ARK Space/Arkraft page. Deduplication via CQL search before page creation.
 
 ## Improvements
 
