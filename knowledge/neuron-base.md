@@ -52,7 +52,4 @@ Submodules must work standalone. See [repo-setup.md](repo-setup.md) for template
 
 ## Verification
 
-- [ ] CLAUDE.md has `## Inherited Policies` section
-- [ ] Required policies inlined in table
-- [ ] No parent-relative paths (works standalone)
-- [ ] Configurable overrides documented with reasons
+See [repo-setup.md](repo-setup.md) Validation Checklist.
