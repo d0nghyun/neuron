@@ -29,9 +29,13 @@ tool_input=$(echo "$input" | jq -r '.tool_input // empty' 2>/dev/null)
 project_name=$(basename "$(pwd)")
 branch=$(git branch --show-current 2>/dev/null || echo "-")
 
-# Clean text for Telegram (remove markdown, limit length)
+# Clean text for Telegram (remove markdown, XML tags, limit length)
 clean_text() {
-    echo "$1" | tr -d '`*_[]#' | tr '\n' ' ' | sed 's/  */ /g'
+    echo "$1" | \
+        sed 's/<[^>]*>//g' | \
+        tr -d '`*_[]#' | \
+        tr '\n' ' ' | \
+        sed 's/  */ /g'
 }
 
 # Build message based on mode
