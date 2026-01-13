@@ -73,11 +73,11 @@ else
 claude --continue"
 fi
 
-# Send to Telegram
+# Send to Telegram (use --data-urlencode for multiline text)
 curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-  -d "chat_id=${TELEGRAM_CHAT_ID}" \
-  -d "text=${message}" \
-  -d "disable_web_page_preview=true" \
+  --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+  --data-urlencode "text=${message}" \
+  --data-urlencode "disable_web_page_preview=true" \
   > /dev/null 2>&1
 
 exit 0
