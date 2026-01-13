@@ -20,7 +20,7 @@ Spawn a fresh Claude agent:
 ```
 Task(subagent_type="general-purpose", prompt="Read CLAUDE.md only. Explain:
 1. The three Axioms and their meaning
-2. All 16 principles with their axiom mapping
+2. All 19 principles with their axiom mapping
 3. How to call each agent and when
 4. The Advisor-before-AskUser workflow
 5. Rate your confidence 1-10 in operating this system.")
@@ -32,7 +32,7 @@ Task(subagent_type="general-purpose", prompt="Read CLAUDE.md only. Explain:
 |--------|-----------|
 | Confidence | ≥ 8/10 |
 | Axioms | All 3 correctly explained |
-| Principles | All 16 listed with correct axiom mapping |
+| Principles | All 19 listed with correct axiom mapping |
 | Agent workflow | Advisor-before-AskUser flow correct |
 | Critical misunderstandings | None |
 
@@ -54,3 +54,4 @@ Task(subagent_type="general-purpose", prompt="Read CLAUDE.md only. Explain:
 | 2025-01-12 | 9/10 ✓ | Initial full test after adding 16 principles |
 | 2025-01-12 | 8/10 ✓ | Final test after Self-Test section refactor |
 | 2026-01-12 | 8/10 ✓ | Added Brain Analogy column to Agent Roles |
+| 2026-01-13 | 8/10 ✓ | Added principles 18 (Docendo Discimus), 19 (Visual Architecture) |
