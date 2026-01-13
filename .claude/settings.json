@@ -1,5 +1,16 @@
 {
     "hooks": {
+        "SessionStart": [
+            {
+                "matcher": "startup",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "[ -f .env.local ] && grep -v '^#' .env.local | grep -v '^$' >> $CLAUDE_ENV_FILE || true"
+                    }
+                ]
+            }
+        ],
         "Stop": [
             {
                 "matcher": "",

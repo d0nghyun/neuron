@@ -141,11 +141,7 @@ git add .gitmodules modules/_registry.yaml
 git commit -m "refactor(modules): rename old-name to new-name"
 ```
 
-**⚠️ Note for recipients**: After pulling a rename commit, run:
-```bash
-git submodule update --init modules/new-name
-```
-Git does not auto-initialize renamed submodules.
+**Note**: After pulling, run `git submodule update --init modules/new-name`.
 
 ### Update All Submodules
 
@@ -180,13 +176,7 @@ grep -A5 "## Inherited Policies" modules/<repo>/CLAUDE.md
 
 ## Dashboard Integration
 
-The `_registry.yaml` format enables:
-- **Status overview**: Quick view of all module states
-- **Domain filtering**: Group by category
-- **Timeline**: Registration/archive history
-- **Health check**: Detect stale or orphaned modules
-
-Future dashboard can parse this YAML directly.
+`_registry.yaml` enables status overview, domain filtering, timeline tracking, and health checks.
 
 ## Module Interface Standard
 
