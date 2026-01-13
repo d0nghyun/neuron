@@ -8,12 +8,13 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
-| 2026-01-13 | #TBD | Task verification workflow skipped - No verification criteria defined before slack-api skill creation | pending |
+| 2026-01-13 | #44 | Project-specific content in neuron - slack-backlog command created in neuron instead of pm-arkraft submodule. Required 3 extra commits to fix. | noted |
+| 2026-01-13 | feat/slack-api | Task verification workflow skipped - No verification criteria defined before slack-api skill creation | noted |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Task verification workflow skipped - No verification criteria defined before execution, violates Test-First and Verify Before Done | pending |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Debug logs without lifecycle - Writing to /tmp/ without cleanup strategy creates data accumulation risk | pending |
 | 2026-01-13 | #TBD | Language policy violation - Korean text in neuron files violates CLAUDE.md English-only convention | pending |
 | 2026-01-13 | #TBD | Branch naming inconsistency - Auto-generated branch doesn't follow feature/ prefix convention from git-workflow.md | pending |
-| 2026-01-12 | - | 불필요한 확인 질문 (push 할까?) - Autonomous Execution 원칙 위반 | noted |
+| 2026-01-12 | - | Unnecessary confirmation question (should I push?) - Violates Autonomous Execution principle | noted |
 | 2026-01-13 | modeling#feat/neuron-quickstart | Test evaluation file exceeds 200-line limit (493 lines) - File size convention not enforced in test files | pending |
 
 ## Insights
@@ -30,7 +31,7 @@
 - **2026-01-13**: Automation of repetitive notifications follows "Automate Repetition" principle - transforms manual status checks into automatic push notifications.
 - **2026-01-13**: Transcript parsing for context extraction - Reading Claude session transcript to extract Q&A provides significantly better notification UX than generic metadata. Human can recall "what did I ask?" instantly from notification.
 - **2026-01-13**: Text cleaning strategy for external APIs - Removing markdown/special chars before sending to Telegram prevents formatting issues. Length limits (100/150 chars) ensure mobile-friendly notifications.
-- **2026-01-12**: Claude Code subagent에 `skills` 필드 존재. subagent가 skill을 자동 로드 가능. advisor에 neuron-knowledge skill 연결로 knowledge/ 참조 자동화.
+- **2026-01-12**: Claude Code subagent has `skills` field. Subagent can auto-load skills. Connecting neuron-knowledge skill to advisor automates knowledge/ reference.
 - **2026-01-12**: Visual documentation (ASCII diagrams) makes abstract concepts concrete. Brain analogies help users remember agent roles naturally. Documentation reorganization (root → docs/) follows MECE principle.
 - **2026-01-13**: WHY sections in SKILL.md critical rules dramatically improve beginner understanding. Explaining "Citadel fires people for this" adds real-world weight to abstract technical rules.
 - **2026-01-13**: Progression maps with "YOU ARE HERE" markers reduce cognitive load for beginners navigating complex skill hierarchies.
@@ -38,6 +39,7 @@
 - **2026-01-13**: Task verification workflow codifies "Verify Before Done" into executable pattern. Define → Execute → Verify cycle prevents premature "done" declarations.
 - **2026-01-13**: SSOT refactoring via reference pattern - Replacing duplicated content with references to canonical source maintains single source of truth without losing discoverability. Reader can follow reference when needed.
 - **2026-01-13**: Slack bot permission troubleshooting - `groups:history` scope required for private channels. Token in `.env.local` must be updated after app reinstall. Environment variables in curl prevent special character issues.
+- **2026-01-13**: Self-correction within branch demonstrates Learn from Failure (#17) - slack-backlog location mistake identified, documented in retrospective, and fixed within same branch (3 refactor commits). Pattern: mistake → reflection → correction → documentation.
 
 ## Improvements
 
