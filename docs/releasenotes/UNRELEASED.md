@@ -32,6 +32,13 @@
   - Expanded directory structure with actual module names
 - **modules/modeling**: Standardized commands/setup.md to English (was Korean) per neuron language policy
 - **knowledge/_index.yaml**: Added trigger pattern for task verification workflow
+- Telegram notification hook enhancements:
+  - Session emoji for visual distinction between concurrent sessions
+  - Task keyword extraction from first user message for context
+  - Consistent header format across question/permission/stop modes
+- SSOT refactoring:
+  - **knowledge/neuron-base.md**: Verification section now references repo-setup.md checklist
+  - **knowledge/release-workflow.md**: Step 4-7 execution now references /release command
 
 ## Fixed
 

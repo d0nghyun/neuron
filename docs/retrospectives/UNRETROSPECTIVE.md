@@ -29,6 +29,7 @@
 - **2026-01-13**: Progression maps with "YOU ARE HERE" markers reduce cognitive load for beginners navigating complex skill hierarchies.
 - **2026-01-13**: Test-first approach for documentation - defining 15 evaluation questions before building the skill ensured completeness.
 - **2026-01-13**: Task verification workflow codifies "Verify Before Done" into executable pattern. Define → Execute → Verify cycle prevents premature "done" declarations.
+- **2026-01-13**: SSOT refactoring via reference pattern - Replacing duplicated content with references to canonical source maintains single source of truth without losing discoverability. Reader can follow reference when needed.
 
 ## Improvements
 
