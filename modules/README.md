@@ -12,9 +12,16 @@ Submodules registered under neuron. Named after brain parts.
 
 ## Current Modules
 
-| Module | Visibility | Description |
-|--------|------------|-------------|
-| [hippo](https://github.com/d0nghyun/hippo) | Private | Resume, projects, career docs (SSOT) |
+| Module | Domain | Status | Description |
+|--------|--------|--------|-------------|
+| [hippo](https://github.com/d0nghyun/hippo) | tools | active | Memory and context management system |
+| [pm-arkraft](https://gitlab.quantit.io/ark/arkraft/pm-arkraft) | work | active | Project management for arkraft |
+| [modeling](https://github.com/Quantit-Github/modeling) | work | active | Finter quantitative trading skills |
+| [arkraft](https://github.com/Quantit-Github/arkraft) | work | active | AI-Powered Quant Research Platform |
+| [finter](https://gitlab.quantit.io/ark/finter) | work | active | Finter backend service |
+| [arkraft-fe](https://gitlab.quantit.io/ark/arkraft/arkraft-fe) | work | legacy | Arkraft frontend (legacy) |
+
+See `_registry.yaml` for full metadata.
 
 ## Task Management
 
