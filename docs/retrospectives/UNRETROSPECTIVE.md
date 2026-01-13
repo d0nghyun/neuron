@@ -8,6 +8,8 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-13 | claude/task-completion-notifications-5WXXe | Task verification workflow skipped - No verification criteria defined before execution, violates Test-First and Verify Before Done | pending |
+| 2026-01-13 | claude/task-completion-notifications-5WXXe | Debug logs without lifecycle - Writing to /tmp/ without cleanup strategy creates data accumulation risk | pending |
 | 2026-01-13 | #TBD | Language policy violation - Korean text in neuron files violates CLAUDE.md English-only convention | pending |
 | 2026-01-13 | #TBD | Branch naming inconsistency - Auto-generated branch doesn't follow feature/ prefix convention from git-workflow.md | pending |
 | 2026-01-12 | - | 불필요한 확인 질문 (push 할까?) - Autonomous Execution 원칙 위반 | noted |
@@ -19,6 +21,8 @@
 
 - **2026-01-13**: Telegram notification hook demonstrates good security practices - checks for required env vars, suppresses sensitive output, no hardcoded secrets.
 - **2026-01-13**: Automation of repetitive notifications follows "Automate Repetition" principle - transforms manual status checks into automatic push notifications.
+- **2026-01-13**: Transcript parsing for context extraction - Reading Claude session transcript to extract Q&A provides significantly better notification UX than generic metadata. Human can recall "what did I ask?" instantly from notification.
+- **2026-01-13**: Text cleaning strategy for external APIs - Removing markdown/special chars before sending to Telegram prevents formatting issues. Length limits (100/150 chars) ensure mobile-friendly notifications.
 - **2026-01-12**: Claude Code subagent에 `skills` 필드 존재. subagent가 skill을 자동 로드 가능. advisor에 neuron-knowledge skill 연결로 knowledge/ 참조 자동화.
 - **2026-01-12**: Visual documentation (ASCII diagrams) makes abstract concepts concrete. Brain analogies help users remember agent roles naturally. Documentation reorganization (root → docs/) follows MECE principle.
 - **2026-01-13**: WHY sections in SKILL.md critical rules dramatically improve beginner understanding. Explaining "Citadel fires people for this" adds real-world weight to abstract technical rules.
