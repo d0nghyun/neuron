@@ -8,6 +8,7 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-13 | #TBD | Task verification workflow skipped - No verification criteria defined before slack-api skill creation | pending |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Task verification workflow skipped - No verification criteria defined before execution, violates Test-First and Verify Before Done | pending |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Debug logs without lifecycle - Writing to /tmp/ without cleanup strategy creates data accumulation risk | pending |
 | 2026-01-13 | #TBD | Language policy violation - Korean text in neuron files violates CLAUDE.md English-only convention | pending |
@@ -19,6 +20,11 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- **2026-01-13**: Submodule inheritance model (Required vs Configurable policies) provides clear override semantics without duplicating neuron philosophy. Conceptual reference via GitHub link maintains context without creating hard dependency.
+- **2026-01-13**: ADR structure with 상태/맥락/결정/결과 provides complete decision context. ADR-0001 (Confluence SSOT) and ADR-0002 (no tenant) demonstrate good practice of documenting "why not" decisions.
+- **2026-01-13**: PM workflow aligned to philosophy principles (workflow.md lines 5-11 table) makes abstract principles concrete for non-technical domain.
+- **2026-01-13**: Slack-api skill follows established pattern consistency - Matching github-api structure (frontmatter, sections, examples) makes skills predictable and easier to learn.
+- **2026-01-13**: Comprehensive API documentation in skill files - Including auth, common operations, error handling, and rate limits in one place reduces context switching.
 - **2026-01-13**: Telegram notification hook demonstrates good security practices - checks for required env vars, suppresses sensitive output, no hardcoded secrets.
 - **2026-01-13**: Automation of repetitive notifications follows "Automate Repetition" principle - transforms manual status checks into automatic push notifications.
 - **2026-01-13**: Transcript parsing for context extraction - Reading Claude session transcript to extract Q&A provides significantly better notification UX than generic metadata. Human can recall "what did I ask?" instantly from notification.

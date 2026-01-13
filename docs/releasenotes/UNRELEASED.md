@@ -4,6 +4,12 @@
 
 ## Added
 
+- **slack-api skill**: Slack Web API integration for messaging, channels, and notifications
+  - Comprehensive API operations: messages, files, threads, reactions, channel management
+  - Bot token authentication with required scopes documentation
+  - Rich formatting support with Block Kit and mrkdwn
+  - Error handling and rate limiting guidelines
+  - Example curl commands for all common operations
 - Telegram notification on Claude Code Stop event
   - Extracts user question and assistant answer from transcript for context-rich notifications
   - Concise message format with Q&A instead of verbose metadata
