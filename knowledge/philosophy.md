@@ -23,6 +23,7 @@
 | 17 | Learn from Failure | Record failures, find patterns, improve the system | Truth, Curiosity |
 | 18 | Docendo Discimus | Teach to learn; explaining forces understanding | Curiosity, Truth |
 | 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
+| 20 | Sustainable by Design | One-off is waste. Build reproducible, self-evolving processes. | Truth, Beauty, Curiosity |
 
 ## Details
 
@@ -82,3 +83,6 @@ The act of explaining forces clarity. If you cannot teach it simply, you do not 
 
 ### 19. Visual Architecture
 Code captures behavior; diagrams capture structure. Even AI benefits from spatial representation of relationships. A diagram is a commitment to clarity—it forces explicit decisions about boundaries, flows, and dependencies. In AI-native contexts, diagrams remain essential: they serve humans, other AIs, and future versions of the authoring AI. Text describes; diagrams declare.
+
+### 20. Sustainable by Design
+One-time outputs are sunk costs. Build reproducible processes, not just deliverables. A script is more valuable than its output. A pipeline beats a manual workflow. Systems should evolve through use—each execution can improve the next. If you can't run it again tomorrow, it wasn't worth building today.
