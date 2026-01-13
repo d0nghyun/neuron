@@ -4,7 +4,15 @@
 
 ## Added
 
--
+- **modules/modeling**: finter-quickstart skill - 15-minute beginner onboarding path to first backtest
+- **modules/modeling**: /finter-skills:start command - Interactive routing based on user experience level
+- **modules/modeling**: Skill routing decision tree in CLAUDE.md - Machine-readable keyword mapping for Claude
+- **modules/modeling**: Skill progression map - Visual guide from quickstart to advanced skills
+- **modules/modeling**: Claude evaluation test framework - 15 test questions across 5 categories (onboarding, skill selection, execution, edge cases)
+- **modules/modeling**: WHY explanations for critical rules in finter-alpha and finter-portfolio skills
+- **knowledge/task-verification-workflow.md**: Universal task verification pattern (Define → Execute → Verify → Feedback)
+- **CLAUDE.md**: Routing entry for task verification workflow
+- **.claude/agents/reviewer.md**: Step 2b verification check
 
 ## Changed
 
@@ -15,6 +23,8 @@
   - Routing Table categorizing Agents vs Skills vs Commands
   - PR/Release workflow diagram showing agent integration
   - Expanded directory structure with actual module names
+- **modules/modeling**: Standardized commands/setup.md to English (was Korean) per neuron language policy
+- **knowledge/_index.yaml**: Added trigger pattern for task verification workflow
 
 ## Fixed
 
