@@ -8,6 +8,7 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-13 | #44 | Project-specific content in neuron - slack-backlog command created in neuron instead of pm-arkraft submodule. Required 3 extra commits to fix. | noted |
 | 2026-01-13 | #TBD | Task verification workflow skipped - No verification criteria defined before slack-api skill creation | pending |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Task verification workflow skipped - No verification criteria defined before execution, violates Test-First and Verify Before Done | pending |
 | 2026-01-13 | claude/task-completion-notifications-5WXXe | Debug logs without lifecycle - Writing to /tmp/ without cleanup strategy creates data accumulation risk | pending |
