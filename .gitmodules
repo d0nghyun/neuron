@@ -13,3 +13,6 @@
 [submodule "modules/finter"]
 	path = modules/finter
 	url = ssh://git@gitlab.quantit.io:2222/ark/finter.git
+[submodule "modules/arkraft"]
+	path = modules/arkraft
+	url = https://github.com/Quantit-Github/arkraft
