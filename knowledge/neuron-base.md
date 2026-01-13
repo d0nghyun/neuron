@@ -27,6 +27,9 @@ Can override with documented reason.
 | Test-First | Required | Experimental/prototype |
 | AI-First docs | Required | Domain-specific formats |
 
+**Note**: Language policy applies to **all files** including `.claude/` directory.
+To use non-English in submodule, document override in Configurable table with reason.
+
 ## Override Protocol
 
 Add override to Configurable table in submodule CLAUDE.md with reason:
