@@ -33,6 +33,8 @@ Three axioms govern all decisions:
 | 15 | Verify Before Done | Prove it works, don't assume | Truth |
 | 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
 | 17 | Learn from Failure | Record failures, find patterns, improve system | Truth, Curiosity |
+| 18 | Docendo Discimus | Teach to learn; explaining forces understanding | Curiosity, Truth |
+| 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
 
 Detailed explanations: `knowledge/philosophy.md`
 
@@ -104,6 +106,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
+| **Any task starts** | Define verification criteria (see `knowledge/task-verification-workflow.md`) |
 | GitHub API | `Skill(github-api)` |
 | Jira API | `Skill(jira-api)` |
 | Notion API | `Skill(notion-api)` |

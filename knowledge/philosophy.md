@@ -21,6 +21,8 @@
 | 15 | Verify Before Done | Prove it works, don't assume it works | Truth |
 | 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
 | 17 | Learn from Failure | Record failures, find patterns, improve the system | Truth, Curiosity |
+| 18 | Docendo Discimus | Teach to learn; explaining forces understanding | Curiosity, Truth |
+| 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
 
 ## Details
 
@@ -74,3 +76,9 @@ Repetition signals inefficiency. If something is done twice, it's a candidate fo
 
 ### 17. Learn from Failure
 Failures are data, not shame. Record every failure, analyze patterns, and improve the system to prevent recurrence. The retrospective cycle (detect → record → analyze → fix) turns mistakes into system upgrades. See `docs/retrospectives/` for the learning mechanism and `knowledge/self-improve-policy.md` for improvement guardrails.
+
+### 18. Docendo Discimus (Teaching to Learn)
+The act of explaining forces clarity. If you cannot teach it simply, you do not understand it fully. Write documentation as if teaching someone else. Structure knowledge for external consumption—this crystallizes your own understanding. The Feynman technique applies: explain → identify gaps → refine → repeat.
+
+### 19. Visual Architecture
+Code captures behavior; diagrams capture structure. Even AI benefits from spatial representation of relationships. A diagram is a commitment to clarity—it forces explicit decisions about boundaries, flows, and dependencies. In AI-native contexts, diagrams remain essential: they serve humans, other AIs, and future versions of the authoring AI. Text describes; diagrams declare.
