@@ -31,7 +31,14 @@ branch=$(git branch --show-current 2>/dev/null || echo "-")
 
 # Clean text for Telegram (remove markdown, XML tags, limit length)
 clean_text() {
-    echo "$1" | \
+    local text="$1"
+
+    # If contains <command-name>, extract just the command
+    if echo "$text" | grep -q '<command-name>'; then
+        text=$(echo "$text" | sed -n 's/.*<command-name>\([^<]*\)<\/command-name>.*/\1/p')
+    fi
+
+    echo "$text" | \
         sed 's/<[^>]*>//g' | \
         tr -d '`*_[]#' | \
         tr '\n' ' ' | \
