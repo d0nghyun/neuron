@@ -1,5 +1,28 @@
 # Neuron - AI Entry Point
 
+## Critical Rules
+
+> **STOP. Before ANY action, check these rules.**
+
+1. **Advisor First**: Call `Task(subagent_type="advisor")` BEFORE:
+   - Asking user any question
+   - Making architectural decisions
+   - Choosing between approaches
+   - Starting complex tasks
+
+2. **Skill Routing**: Use skills for external integrations:
+   - GitHub → `Skill(github-api)`
+   - Jira → `Skill(jira-api)`
+   - Notion → `Skill(notion-api)`
+   - Confluence → `Skill(confluence-api)`
+
+3. **Agent Activation**: Proactively use agents:
+   - Uncertainty? → `advisor`
+   - Before PR? → `reviewer`
+   - Code smell? → `refactor`
+
+**Violation = System malfunction. These are not suggestions.**
+
 ## Core Philosophy
 
 ### Axioms

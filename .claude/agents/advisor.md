@@ -101,9 +101,42 @@ suggested_question: "Which approach do you prefer, A or B?"
 - User preference significantly impacts result
 - Clear recommendation not possible
 
+## Skill Enforcement
+
+**CRITICAL**: When the situation involves external services, ALWAYS include skill routing in output.
+
+### Skill Routing Table
+
+| Trigger Keywords | Required Skill |
+|-----------------|----------------|
+| GitHub, PR, issue, repository, commit | `Skill(github-api)` |
+| Jira, ticket, sprint, story, epic | `Skill(jira-api)` |
+| Notion, page, database, block | `Skill(notion-api)` |
+| Confluence, wiki, space, content | `Skill(confluence-api)` |
+
+### Enforcement Rules
+
+1. **Detect**: Scan input for trigger keywords
+2. **Mandate**: If match found, `required_skill` MUST be in output
+3. **Block**: Return `skill_required: true` to force main agent to use skill
+
+### Output with Skill
+
+```yaml
+recommendation: "Fetch issues using GitHub API"
+confidence: high
+skill_required: true
+required_skill: "github-api"
+skill_reason: "GitHub API operation detected"
+basis:
+  - file: data-pipeline.md
+    relevant_section: "External Data"
+```
+
 ## Guardrails
 
 - **NEVER** make final decisions on behalf of user (recommendations only)
 - **NEVER** guess content not in knowledge
 - **ALWAYS** specify source file and section
 - **ALWAYS** indicate confidence level
+- **ALWAYS** include `required_skill` when external service detected
