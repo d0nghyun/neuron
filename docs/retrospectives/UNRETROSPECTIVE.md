@@ -8,6 +8,10 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-14 | submodules | Documentation location unclear - created in Git then moved to Confluence (SSOT violation) | pending |
+| 2026-01-14 | submodules | Multi-submodule commits lack scope clarity in message | pending |
+| 2026-01-14 | submodules | Submodule dirty state committed (uncommitted changes within submodule) | pending |
+| 2026-01-14 | arkraft-fe | API routes lack test coverage despite external dependencies | pending |
 | 2026-01-13 | pm-arkraft | Language policy unclear for submodule .claude/ directories (Korean in neuron infra) | resolved (neuron-base.md clarified) |
 | 2026-01-13 | pm-arkraft | SSOT violation through documentation duplication (team registry in assign.md) | pending |
 | 2026-01-13 | pm-arkraft | Deprecated Jira API field 'Epic Link' used instead of 'parent' | pending |
@@ -16,6 +20,19 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-14: SSOT correction - recognized Git docs should not duplicate Confluence ADR, deleted local file
+- 2026-01-14: IAM credentials added with Bearer Token fallback demonstrates proper backward compatibility strategy
+- 2026-01-14: Submodule architecture properly isolates changes - neuron commit is clean pointer update
+- 2026-01-14: Release notes comprehensively document changes across multiple submodules
+- 2026-01-14: Environment variable externalizes endpoint config - moving from hardcoded IP to production domain improves portability
+- 2026-01-14: .env.example serves as documentation for required configuration without storing actual values
+- 2026-01-14: Fallback pattern in env var usage (process.env.X || 'default') provides development convenience
+- 2026-01-14: File splitting kept functions cohesive - results.py, logging_utils.py, user_prompts.py each have clear single responsibility
+- 2026-01-14: Agent-specific prompt files (alpha.py, insight.py) improved maintainability without breaking public API (get_system_prompt)
+- 2026-01-14: IAM credentials support added with backward compatibility (Bearer Token fallback) enables smooth migration
+- 2026-01-14: Incremental approach to Trading page - AUM calculation added without disrupting existing functionality
+- 2026-01-14: Conditional data fetching pattern (fetch balances only when active strategy exists) prevents unnecessary API calls
+- 2026-01-14: useMemo for portfolio metrics calculation optimizes re-render performance
 - 2026-01-13: team-registry.yaml demonstrates proper SSOT implementation for cross-system IDs (Jira/Slack)
 - 2026-01-13: Setup guide provides clear API token configuration without storing secrets
 
