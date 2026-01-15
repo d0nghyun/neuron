@@ -10,11 +10,8 @@
    - Choosing between approaches
    - Starting complex tasks
 
-2. **Skill Routing**: Use skills for external integrations:
-   - GitHub → `Skill(github-api)`
-   - Jira → `Skill(jira-api)`
-   - Notion → `Skill(notion-api)`
-   - Confluence → `Skill(confluence-api)`
+2. **Skill Routing**: External services require skills. Advisor enforces this.
+   - See: `.claude/agents/advisor.md` → Skill Enforcement
 
 3. **Agent Activation**: Proactively use agents:
    - Uncertainty? → `advisor`
@@ -131,10 +128,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
 | **Any task starts** | Define verification criteria (see `knowledge/task-verification-workflow.md`) |
-| GitHub API | `Skill(github-api)` |
-| Jira API | `Skill(jira-api)` |
-| Notion API | `Skill(notion-api)` |
-| Confluence API | `Skill(confluence-api)` |
+| External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
 | Create PR | `/pr` |
 | Create release | `/release` |
 | Sync main branch | `/sync` |
