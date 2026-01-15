@@ -15,9 +15,21 @@
   - Navigation item added to GlobalNav
 - **Portrader API Integration** (`modules/arkraft-fe`): GraphQL proxy endpoint for trading data
 - **Market Data API** (`modules/arkraft-fe`): Binance BTC price endpoint with caching
+- **Submodule Compliance Audit** (`scripts/audit-modules.sh`): Automated script to verify submodule CLAUDE.md compliance
+  - Checks for Inherited Policies section, Required table, principle reference table
+  - Validates no parent-relative paths and proper neuron URL reference
+  - Verifies all required policies are inlined (3 Axioms, SSOT, Verify Before Done, Conventional Commits, Co-Authored-By)
+  - Exit code indicates pass/fail status for CI integration
 
 ## Changed
 
+- **Principle-Based Reasoning Enforcement** (CLAUDE.md, .claude/agents/advisor.md, knowledge/repo-setup.md):
+  - Added mandatory principle citation requirement: every decision must cite [P#] with reasoning
+  - Reordered Critical Rules with "Principle-Based Reasoning" as #1 priority
+  - Added "Autonomous Execution" as Critical Rule #2 with "Questions are failures" philosophy
+  - Updated advisor agent to require `principles` and `principle_reasoning` fields in all outputs
+  - Added principle reference table to repo-setup.md template for submodules
+  - Added bias toward action in advisor confidence levels (low = exceptional case)
 - **Critical Rules Enforcement** (CLAUDE.md, .claude/agents/advisor.md):
   - Added "Critical Rules" section at top of CLAUDE.md for high-visibility enforcement
   - Mandated advisor call before user questions, architectural decisions, and complex tasks
@@ -50,7 +62,7 @@
 
 ## Breaking Changes
 
--
+- **Advisor Agent Output Format**: Added required `principles` and `principle_reasoning` fields to all advisor outputs. Any code parsing advisor YAML output must be updated to handle these new fields.
 
 ---
 
