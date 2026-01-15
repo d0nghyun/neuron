@@ -64,6 +64,8 @@ basis:
 ```yaml
 recommendation: "Use pipeline pattern: save data via script → analysis script → read results only"
 confidence: high
+principles: [P12, P1]  # REQUIRED: Which principles support this
+principle_reasoning: "P12 Front-load Pain: structure data before analysis. P1 SSOT: single pipeline, no duplication."
 basis:
   - file: data-pipeline.md
     relevant_section: "When to Apply"
@@ -79,11 +81,15 @@ Or:
 ```yaml
 recommendation: null
 confidence: low
+principles: []
+principle_reasoning: "No clear principle applies; genuine user preference needed"
 basis: []
 ask_user: true
 reason: "User preference clearly needed (A vs B choice)"
 suggested_question: "Which approach do you prefer, A or B?"
 ```
+
+**CRITICAL**: Every recommendation MUST include `principles` and `principle_reasoning`.
 
 ## Confidence Criteria
 
@@ -140,3 +146,5 @@ basis:
 - **ALWAYS** specify source file and section
 - **ALWAYS** indicate confidence level
 - **ALWAYS** include `required_skill` when external service detected
+- **ALWAYS** cite principles (P#) with reasoning for every recommendation
+- **BIAS toward action**: Default confidence should be medium or high. Low = exceptional case.

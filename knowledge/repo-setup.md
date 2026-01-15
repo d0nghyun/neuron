@@ -21,12 +21,31 @@
 ```markdown
 # Project Name
 
+## Critical Rules
+
+1. **Principle-Based Reasoning**: Every decision MUST cite principle(s).
+   - Format: `[P#] decision`
+   - No decision without principle backing
+
+2. **Autonomous Execution** [P13]: Act first, ask only when truly blocked.
+
 ## Overview
+
 Brief description of what this project does.
 
 ## Inherited Policies
 
 This project follows [neuron](https://github.com/d0nghyun/neuron) conventions.
+
+### Principles Reference
+
+| # | Principle | When to Apply |
+|---|-----------|---------------|
+| P1 | SSOT | One source, no duplication |
+| P3 | Simplicity First | Simple over complex |
+| P4 | Incremental | Build only what's needed now |
+| P13 | Autonomous Execution | Act first, ask only when blocked |
+| P15 | Verify Before Done | Prove it works |
 
 ### Required (cannot override)
 
@@ -46,11 +65,13 @@ This project follows [neuron](https://github.com/d0nghyun/neuron) conventions.
 | Test-First | Required | (override or keep default) |
 
 ## Commands
+
 | Command | Purpose |
 |---------|---------|
 | `npm test` | Run tests |
 
 ## Key Files
+
 | File | Purpose |
 |------|---------|
 | `src/` | Source code |

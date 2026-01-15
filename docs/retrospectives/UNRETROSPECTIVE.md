@@ -8,6 +8,9 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-15 | claude/refactor-submodule-mapping-h6mdU | Branch naming doesn't follow git-workflow.md convention (claude/ prefix instead of feature/) | pending |
+| 2026-01-15 | claude/refactor-submodule-mapping-h6mdU | Test-First principle violated: compliance audit script has no test suite | pending |
+| 2026-01-15 | claude/refactor-submodule-mapping-h6mdU | Task verification workflow skipped (no verification criteria defined) | pending |
 | 2026-01-14 | claude/optimize-neural-activation-WWCmm | Branch naming doesn't follow git-workflow.md convention (missing feature/docs/fix prefix) | pending |
 | 2026-01-14 | claude/optimize-neural-activation-WWCmm | Task verification workflow skipped for documentation changes | pending |
 | 2026-01-14 | claude/optimize-neural-activation-WWCmm | SSOT violation: Skill routing table duplicated in CLAUDE.md and advisor.md | pending |
@@ -23,6 +26,11 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-15: Principle citation requirement creates explicit reasoning trail - [P#] format makes decision rationale auditable
+- 2026-01-15: Automated compliance checking enables scalable governance - audit script can verify policies across all submodules
+- 2026-01-15: Template embedding in knowledge/ ensures consistency - repo-setup.md provides copy-paste template with all required sections
+- 2026-01-15: Bias toward action guideline operationalizes P13 - "low confidence = exceptional case" prevents analysis paralysis
+- 2026-01-15: "Questions are failures" philosophy articulates autonomous execution - reframes user questions as system improvement opportunities
 - 2026-01-14: Critical Rules section uses structural prominence to enforce compliance - placing rules at document top increases visibility
 - 2026-01-14: Skill enforcement through advisor output format - adding required_skill field creates programmatic enforcement point
 - 2026-01-14: Trigger keyword table enables systematic detection - maps service names to required skills
