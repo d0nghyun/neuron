@@ -4,49 +4,11 @@
 
 ## Added
 
-- pm-arkraft: `/assign` command for Jira issue creation with Slack notifications
-- pm-arkraft: `/healthcheck` command for ARK-307 epic status check via Slack
-- pm-arkraft: `team-registry.yaml` as SSOT for team member Jira/Slack IDs
-- pm-arkraft: Setup guide with API token configuration instructions
-- **Trading Dashboard** (`modules/arkraft-fe`): New trading page with Portrader integration
-  - Real-time trading strategy status and rebalance history
-  - BTC price chart with trade markers using ECharts
-  - Portfolio analysis and recent order tracking
-  - Navigation item added to GlobalNav
-- **Portrader API Integration** (`modules/arkraft-fe`): GraphQL proxy endpoint for trading data
-- **Market Data API** (`modules/arkraft-fe`): Binance BTC price endpoint with caching
-- **Submodule Compliance Audit** (`scripts/audit-modules.sh`): Automated script to verify submodule CLAUDE.md compliance
-  - Checks for Inherited Policies section, Required table, principle reference table
-  - Validates no parent-relative paths and proper neuron URL reference
-  - Verifies all required policies are inlined (3 Axioms, SSOT, Verify Before Done, Conventional Commits, Co-Authored-By)
-  - Exit code indicates pass/fail status for CI integration
+-
 
 ## Changed
 
-- **Principle-Based Reasoning Enforcement** (CLAUDE.md, .claude/agents/advisor.md, knowledge/repo-setup.md):
-  - Added mandatory principle citation requirement: every decision must cite [P#] with reasoning
-  - Reordered Critical Rules with "Principle-Based Reasoning" as #1 priority
-  - Added "Autonomous Execution" as Critical Rule #2 with "Questions are failures" philosophy
-  - Updated advisor agent to require `principles` and `principle_reasoning` fields in all outputs
-  - Added principle reference table to repo-setup.md template for submodules
-  - Added bias toward action in advisor confidence levels (low = exceptional case)
-- **Critical Rules Enforcement** (CLAUDE.md, .claude/agents/advisor.md):
-  - Added "Critical Rules" section at top of CLAUDE.md for high-visibility enforcement
-  - Mandated advisor call before user questions, architectural decisions, and complex tasks
-  - Added skill routing enforcement to advisor agent with trigger keyword detection
-  - Included `required_skill` field in advisor output format for external service operations
-- **Arkraft Claude Agent Refactoring** (`modules/arkraft/agents/claude-agent/src`):
-  - Split `run_agent.py` (454→192 lines) - extracted `results.py`, `logging_utils.py`
-  - Split `system_prompts.py` (652 lines deleted) into separate modules per agent type
-  - Added `user_prompts.py` for centralized user prompt builders
-  - Updated `config.py` to support IAM credentials with agent-specific override (backwards compatible with Bearer Token)
-- **Portrader Endpoint Configuration** (`modules/arkraft-fe`):
-  - Updated default GraphQL endpoint from internal IP to production domain (finter.quantit.io/trading)
-  - Added `PORTRADER_GRAPHQL_URL` to `.env.example` for environment-specific configuration
-- **AWS Bedrock Cost Tracking** (`modules/pm-arkraft`):
-  - Migrated documentation from Git to Confluence ADR-0005 (SSOT)
-  - Enhanced ADR with Cache Write pricing (25% premium), cost calculation formulas, and CloudWatch dashboard details
-  - Documented managed IAM policy (arn:aws:iam::696201523565:policy/BedrockInvokePolicy)
+-
 
 ## Fixed
 
@@ -62,7 +24,7 @@
 
 ## Breaking Changes
 
-- **Advisor Agent Output Format**: Added required `principles` and `principle_reasoning` fields to all advisor outputs. Any code parsing advisor YAML output must be updated to handle these new fields.
+-
 
 ---
 
