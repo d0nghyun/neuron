@@ -8,6 +8,9 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-14 | claude/optimize-neural-activation-WWCmm | Branch naming doesn't follow git-workflow.md convention (missing feature/docs/fix prefix) | pending |
+| 2026-01-14 | claude/optimize-neural-activation-WWCmm | Task verification workflow skipped for documentation changes | pending |
+| 2026-01-14 | claude/optimize-neural-activation-WWCmm | SSOT violation: Skill routing table duplicated in CLAUDE.md and advisor.md | pending |
 | 2026-01-14 | submodules | Documentation location unclear - created in Git then moved to Confluence (SSOT violation) | pending |
 | 2026-01-14 | submodules | Multi-submodule commits lack scope clarity in message | pending |
 | 2026-01-14 | submodules | Submodule dirty state committed (uncommitted changes within submodule) | pending |
@@ -20,6 +23,9 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-14: Critical Rules section uses structural prominence to enforce compliance - placing rules at document top increases visibility
+- 2026-01-14: Skill enforcement through advisor output format - adding required_skill field creates programmatic enforcement point
+- 2026-01-14: Trigger keyword table enables systematic detection - maps service names to required skills
 - 2026-01-14: SSOT correction - recognized Git docs should not duplicate Confluence ADR, deleted local file
 - 2026-01-14: IAM credentials added with Bearer Token fallback demonstrates proper backward compatibility strategy
 - 2026-01-14: Submodule architecture properly isolates changes - neuron commit is clean pointer update

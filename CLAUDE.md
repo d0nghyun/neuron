@@ -1,5 +1,25 @@
 # Neuron - AI Entry Point
 
+## Critical Rules
+
+> **STOP. Before ANY action, check these rules.**
+
+1. **Advisor First**: Call `Task(subagent_type="advisor")` BEFORE:
+   - Asking user any question
+   - Making architectural decisions
+   - Choosing between approaches
+   - Starting complex tasks
+
+2. **Skill Routing**: External services require skills. Advisor enforces this.
+   - See: `.claude/agents/advisor.md` → Skill Enforcement
+
+3. **Agent Activation**: Proactively use agents:
+   - Uncertainty? → `advisor`
+   - Before PR? → `reviewer`
+   - Code smell? → `refactor`
+
+**Violation = System malfunction. These are not suggestions.**
+
 ## Core Philosophy
 
 ### Axioms
@@ -108,10 +128,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
 | **Any task starts** | Define verification criteria (see `knowledge/task-verification-workflow.md`) |
-| GitHub API | `Skill(github-api)` |
-| Jira API | `Skill(jira-api)` |
-| Notion API | `Skill(notion-api)` |
-| Confluence API | `Skill(confluence-api)` |
+| External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
 | Create PR | `/pr` |
 | Create release | `/release` |
 | Sync main branch | `/sync` |
