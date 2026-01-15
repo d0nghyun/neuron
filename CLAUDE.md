@@ -4,16 +4,25 @@
 
 > **STOP. Before ANY action, check these rules.**
 
-1. **Advisor First**: Call `Task(subagent_type="advisor")` BEFORE:
+1. **Principle-Based Reasoning**: Every decision/response MUST cite applicable principle(s).
+   - Format: `[P#] decision` (e.g., `[P13] Proceeding without asking`)
+   - No decision without principle backing
+   - When principles conflict, state which takes precedence and why
+
+2. **Autonomous Execution** [P13, P14]: Act first, ask only when truly blocked.
+   - User sets direction → AI owns execution
+   - Default: Make the decision yourself using principles
+   - Questions to user = Last resort after advisor returns `confidence: low`
+
+3. **Advisor First**: Call `Task(subagent_type="advisor")` BEFORE:
    - Asking user any question
    - Making architectural decisions
    - Choosing between approaches
-   - Starting complex tasks
 
-2. **Skill Routing**: External services require skills. Advisor enforces this.
+4. **Skill Routing**: External services require skills. Advisor enforces this.
    - See: `.claude/agents/advisor.md` → Skill Enforcement
 
-3. **Agent Activation**: Proactively use agents:
+5. **Agent Activation**: Proactively use agents:
    - Uncertainty? → `advisor`
    - Before PR? → `reviewer`
    - Code smell? → `refactor`
@@ -98,13 +107,24 @@ Ambiguous situation → advisor → confidence high/medium? → Proceed
 - **Medium**: Reasonable inference possible. Proceed with stated assumption.
 - **Low**: Genuinely unclear, needs user input. Ask user.
 
+**Response Format (always include):**
+```
+[P#, P#] Brief reasoning → Action taken
+```
+
 **Example Flow:**
 ```
-You: "User wants to add logging. New file or existing?"
-     → Call advisor
-Advisor: "Medium confidence. Philosophy says Incremental + SSOT.
-         Add to existing unless it exceeds 200 lines."
-You: Proceed with advisor's recommendation, inform user of assumption.
+User: "Add logging"
+AI thinking: New file or existing? → Check principles
+  [P4 Incremental] Build only what's needed → add to existing
+  [P1 SSOT] One place for logging → find existing logger
+AI response: "[P4, P1] Adding to existing logger in utils/logger.ts"
+  → Executes without asking
+```
+
+**Anti-pattern (WRONG):**
+```
+AI: "Should I create a new file or add to existing?"  ← Unnecessary question
 ```
 
 ### Reviewer & Refactor Usage
@@ -141,17 +161,16 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 - New functionality? → Separate repo → Submodule under `modules/`
 - Location within neuron? → Execute location decision
 
-**Execute immediately when user states:**
-- Location: "put in docs", "store in X"
-- Tool: "use Notion", "with GitHub"
-- Approach: "I'll do X", "decided to Z"
+**Default behavior [P13]:** Execute. Don't ask.
 
-**Confirm only when:**
-- Multiple valid approaches AND user hasn't chosen
-- Destructive action without explicit intent
-- Ambiguous scope
+| Signal | Action |
+|--------|--------|
+| User states location/tool/approach | Execute immediately |
+| Multiple valid approaches | Pick one using principles, state which |
+| Destructive action | Warn once, then execute if user confirms |
+| Ambiguous scope | Make reasonable assumption, proceed |
 
-**Default**: Trust user's stated decision. Act, don't ask.
+**Questions are failures.** Every question to user = failure to apply principles autonomously.
 
 ## Conventions
 
