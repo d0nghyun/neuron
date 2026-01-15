@@ -18,6 +18,11 @@
 
 ## Changed
 
+- **Critical Rules Enforcement** (CLAUDE.md, .claude/agents/advisor.md):
+  - Added "Critical Rules" section at top of CLAUDE.md for high-visibility enforcement
+  - Mandated advisor call before user questions, architectural decisions, and complex tasks
+  - Added skill routing enforcement to advisor agent with trigger keyword detection
+  - Included `required_skill` field in advisor output format for external service operations
 - **Arkraft Claude Agent Refactoring** (`modules/arkraft/agents/claude-agent/src`):
   - Split `run_agent.py` (454→192 lines) - extracted `results.py`, `logging_utils.py`
   - Split `system_prompts.py` (652 lines deleted) into separate modules per agent type
