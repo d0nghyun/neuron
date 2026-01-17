@@ -19,7 +19,7 @@
 | 13 | Autonomous Execution | Act first, ask only when truly blocked | Curiosity |
 | 14 | Trust-based Delegation | AI owns execution, human sets direction | Truth |
 | 15 | Verify Before Done | Prove it works, don't assume it works | Truth |
-| 16 | Automate Repetition | Routine is inefficiency. Automate what repeats. | Beauty |
+| 16 | Automate Repetition | Code for deterministic, AI for judgment. Context is expensive. | Beauty |
 | 17 | Learn from Failure | Record failures, find patterns, improve the system | Truth, Curiosity |
 | 18 | Docendo Discimus | Teach to learn; explaining forces understanding | Curiosity, Truth |
 | 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
