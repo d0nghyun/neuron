@@ -75,6 +75,14 @@ Never declare "done" based on "looks right." Actually run it, render it, test it
 ### 16. Automate Repetition
 Repetition signals inefficiency. If something is done twice, it's a candidate for automation. Scripts, commands, and workflows should replace manual routines. Bottlenecks are improvement opportunities.
 
+**Automation Hierarchy:**
+| Layer | When | Examples |
+|-------|------|----------|
+| Code (hook, workflow, script) | Deterministic: same input → same output | Format check, lint, file validation |
+| AI | Judgment required: context, creativity, decision | Code review, architecture, documentation |
+
+Code first, AI where judgment needed. AI context is expensive—reserve it for decisions, not mechanics.
+
 ### 17. Learn from Failure
 Failures are data, not shame. Record every failure, analyze patterns, and improve the system to prevent recurrence. The retrospective cycle (detect → record → analyze → fix) turns mistakes into system upgrades. See `docs/retrospectives/` for the learning mechanism and `knowledge/self-improve-policy.md` for improvement guardrails.
 
