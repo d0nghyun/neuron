@@ -8,12 +8,18 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-18 | #new (ui-ux-pro-max skill) | File size violations: 1066-line file added when 200-line limit exists (P3 Simplicity First violated) | pending |
+| 2026-01-18 | #new (ui-ux-pro-max skill) | No verification before commit: Python syntax error shipped (P15 Verify Before Done violated) | pending |
+| 2026-01-18 | #new (ui-ux-pro-max skill) | No tests for new functionality (P7 Test-First violated) | pending |
 | 2026-01-15 | arkraft-fe/color-unification | Large refactors (110+ files) lack verification criteria - no build check, no visual test, no grep for removed references | pending |
 
 ## Insights
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-18: P8 (AI-First) well executed: CSV format enables efficient search, structured data for machine consumption
+- 2026-01-18: P16 (Automate Repetition) demonstrated: BM25 search automates UI/UX knowledge retrieval vs manual docs
+- 2026-01-18: P2 (MECE) in skill design: Clear domain boundaries (style, color, typography, ux, chart) prevent overlap
 - 2026-01-17: P16 expansion demonstrates P18 (Docendo Discimus): teaching the hierarchy clarifies when to use code vs AI
 - 2026-01-17: P2 (MECE) applied to automation: clear boundary between deterministic (code) and judgment (AI) layers prevents confusion
 - 2026-01-15: Design system unification shows good principle application: SSOT (centralized tokens), Simplicity First (9→5 variants), Root Cause First (fixed at token level not UI level)
