@@ -4,7 +4,16 @@
 
 ## Added
 
--
+- **[ui-ux-pro-max skill]** Comprehensive UI/UX design intelligence skill
+  - 50+ UI styles (glassmorphism, minimalism, brutalism, neumorphism, etc.)
+  - 97 color palettes organized by product type (SaaS, e-commerce, healthcare, fintech)
+  - 57 font pairings with Google Fonts integration
+  - 99 UX guidelines covering accessibility, performance, touch targets
+  - 25 chart types with library recommendations
+  - Support for 9 tech stacks: React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, Jetpack Compose
+  - Python BM25 search engine for retrieving design recommendations
+  - Design system generator with reasoning rules and anti-patterns
+  - Source: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
 
 ## Changed
 
