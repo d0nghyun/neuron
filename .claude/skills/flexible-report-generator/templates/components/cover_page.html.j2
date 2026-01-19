@@ -1,0 +1,55 @@
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] text-white p-12 {{ component.grid_span }}">
+    <div class="max-w-3xl text-center">
+        {% if component.data.badge %}
+        <div class="inline-block px-4 py-1 rounded-full bg-white/20 text-sm mb-6">
+            {{ component.data.badge }}
+        </div>
+        {% endif %}
+
+        <h1 class="text-5xl font-bold mb-4">{{ component.data.headline }}</h1>
+
+        {% if component.data.subheadline %}
+        <p class="text-2xl text-white/80 mb-8">{{ component.data.subheadline }}</p>
+        {% endif %}
+
+        {% if component.data.hero_metrics %}
+        <div class="grid grid-cols-2 md:grid-cols-{{ component.data.hero_metrics | length }} gap-6 mt-12">
+            {% for metric in component.data.hero_metrics %}
+            <div class="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                <div class="text-3xl font-bold">
+                    {{ metric.unit if metric.unit and metric.unit != '%' else '' }}{{ metric.value | format_number }}{{ '%' if metric.unit == '%' else '' }}
+                </div>
+                <div class="text-sm text-white/70 mt-1">{{ metric.label }}</div>
+                {% if metric.delta is defined %}
+                <div class="text-sm mt-2 {{ 'text-green-300' if metric.delta >= 0 else 'text-red-300' }}">
+                    {{ '+' if metric.delta >= 0 else '' }}{{ metric.delta }}%
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if component.data.rating %}
+        <div class="mt-12">
+            <span class="inline-block px-8 py-3 rounded-full text-xl font-bold
+                {% if component.data.rating in ['Strong Buy', 'Buy', 'Accumulate', 'Bullish'] %}
+                bg-green-500
+                {% elif component.data.rating in ['Hold', 'Neutral'] %}
+                bg-yellow-500 text-black
+                {% else %}
+                bg-red-500
+                {% endif %}
+            ">
+                {{ component.data.rating }}
+            </span>
+        </div>
+        {% endif %}
+
+        {% if component.data.date %}
+        <div class="mt-12 text-white/50 text-sm">
+            {{ component.data.date }}
+        </div>
+        {% endif %}
+    </div>
+</div>

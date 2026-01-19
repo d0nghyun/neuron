@@ -1,0 +1,40 @@
+<div class="bg-white rounded-2xl p-6 shadow-lg {{ component.grid_span }}">
+    {% if component.data.title %}
+    <h3 class="text-lg font-semibold mb-4">{{ component.data.title }}</h3>
+    {% endif %}
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr>
+                    <th class="p-2"></th>
+                    {% for col in component.data.columns %}
+                    <th class="p-2 text-center font-medium text-gray-600">{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row_idx, row in component.data.rows | enumerate %}
+                <tr>
+                    <td class="p-2 font-medium text-gray-700">{{ component.data.row_labels[row_idx] if component.data.row_labels else row_idx }}</td>
+                    {% for cell in row %}
+                    {% set intensity = (cell - component.data.min_val) / (component.data.max_val - component.data.min_val) if component.data.max_val != component.data.min_val else 0.5 %}
+                    {% set bg_color = 'rgba(59, 130, 246, ' ~ intensity ~ ')' %}
+                    <td class="p-2 text-center" style="background-color: {{ bg_color }}; color: {{ 'white' if intensity > 0.5 else 'black' }};">
+                        {{ cell | round(1) if cell is number else cell }}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if component.data.legend %}
+    <div class="flex items-center justify-center gap-4 mt-4 text-xs text-gray-500">
+        <span>Low</span>
+        <div class="w-24 h-3 rounded" style="background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 1));"></div>
+        <span>High</span>
+    </div>
+    {% endif %}
+</div>

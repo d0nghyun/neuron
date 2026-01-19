@@ -9,3 +9,8 @@ InsightCard,insight,headline|body|source,Key observations,1,2,insight_card.html.
 QuoteBlock,insight,quote|attribution,Impactful statements,1,2,quote_block.html.j2,none,quote highlight key takeaway
 ComparisonGrid,comparison,items[]|metrics[],A/B comparisons,2,3,comparison_grid.html.j2,none,compare versus ab side by side
 SectionDivider,layout,title,Visual section breaks,1,6,section_divider.html.j2,none,divider section break header
+CoverPage,cover,headline|subheadline|hero_metrics|rating,Report cover page,3,0,cover_page.html.j2,none,cover title hero opening
+ScatterPlot,chart,datasets[]|x_label|y_label,Correlation and distribution,2,3,scatter_plot.html.j2,chartjs,scatter correlation relationship xy
+Heatmap,chart,columns[]|rows[]|row_labels|min_val|max_val,Intensity and matrices,2,3,heatmap.html.j2,none,heatmap intensity matrix correlation
+WaterfallChart,chart,labels[]|datasets[],Change breakdown,2,3,waterfall_chart.html.j2,chartjs,waterfall bridge change breakdown
+CalloutBox,insight,type|title|body,Warnings and highlights,1,2,callout_box.html.j2,none,callout warning info alert highlight

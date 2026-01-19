@@ -1,0 +1,249 @@
+# Report Constraints - Bounded Creativity Guardrails [P10]
+# Code-enforced rules that AI must follow
+
+version: "1.0"
+
+# ============================================================
+# STRUCTURE CONSTRAINTS
+# ============================================================
+structure:
+  required_sections:
+    - cover
+    - executive_summary
+    - data_analysis  # At least one
+
+  section_order:
+    - cover
+    - executive_summary
+    - thesis
+    - data_analysis
+    - valuation
+    - risks
+    - recommendation
+    - appendix
+
+  max_pages:
+    cover: 1
+    executive_summary: 2
+    thesis: 2
+    data_analysis: 10  # Per section
+    valuation: 3
+    risks: 2
+    recommendation: 1
+    appendix: 5
+
+# ============================================================
+# DATA SOURCE CONSTRAINTS
+# ============================================================
+data_sources:
+  stock:
+    allowed:
+      - yahoo_finance
+      - sec_edgar
+      - bloomberg
+      - refinitiv
+      - company_filings
+    forbidden:
+      - reddit
+      - twitter_rumors
+      - unverified_sources
+
+  crypto:
+    allowed:
+      - coingecko
+      - coinmarketcap
+      - glassnode
+      - defillama
+      - dune_analytics
+      - etherscan
+      - official_docs
+    forbidden:
+      - telegram_groups
+      - anonymous_tips
+
+  macro:
+    allowed:
+      - fred
+      - bls
+      - imf
+      - world_bank
+      - central_banks
+      - oecd
+    forbidden:
+      - political_blogs
+      - opinion_pieces
+
+# ============================================================
+# CONTENT CONSTRAINTS
+# ============================================================
+content:
+  # What AI must NOT generate
+  forbidden_content:
+    - specific_price_targets_guaranteed
+    - timing_predictions  # "will reach X by date Y"
+    - guaranteed_returns
+    - insider_information
+    - market_manipulation_advice
+    - pump_and_dump_signals
+
+  # Required disclaimers
+  required_disclaimers:
+    - "This report is for informational purposes only"
+    - "Past performance does not guarantee future results"
+    - "Not financial advice"
+
+  # Tone guidelines
+  tone:
+    allowed:
+      - analytical
+      - objective
+      - cautiously_optimistic
+      - cautiously_pessimistic
+      - balanced
+    forbidden:
+      - sensational
+      - hype
+      - fomo_inducing
+      - panic_inducing
+
+# ============================================================
+# METRIC CONSTRAINTS
+# ============================================================
+metrics:
+  # Risk rating scale (standardized)
+  risk_scale:
+    levels: [1, 2, 3, 4, 5]
+    labels:
+      1: "Very Low"
+      2: "Low"
+      3: "Medium"
+      4: "High"
+      5: "Very High"
+
+  # Recommendation scale
+  recommendation_scale:
+    stock:
+      - Strong Buy
+      - Buy
+      - Hold
+      - Sell
+      - Strong Sell
+    crypto:
+      - Accumulate
+      - Hold
+      - Reduce
+      - Avoid
+    macro:
+      - Bullish
+      - Neutral
+      - Bearish
+
+  # Number formatting
+  number_formats:
+    currency:
+      precision: 2
+      grouping: true
+    percentage:
+      precision: 1
+      suffix: "%"
+    large_numbers:
+      abbreviate: true  # 1.5M, 2.3B
+      threshold: 1000
+
+# ============================================================
+# VISUALIZATION CONSTRAINTS
+# ============================================================
+visualization:
+  # Allowed chart types
+  allowed_types:
+    - line
+    - bar
+    - area
+    - scatter
+    - heatmap
+    - waterfall
+    - donut
+    - sankey
+
+  # Chart limits
+  limits:
+    max_datasets_per_chart: 5
+    max_data_points: 100
+    max_charts_per_section: 4
+
+  # Color accessibility
+  colors:
+    must_be_colorblind_safe: true
+    min_contrast_ratio: 4.5
+
+# ============================================================
+# OUTPUT CONSTRAINTS
+# ============================================================
+output:
+  formats:
+    - html
+    - pdf
+
+  html:
+    must_include:
+      - tailwind_cdn
+      - chartjs_cdn
+      - responsive_meta
+      - print_styles
+
+  pdf:
+    page_size: A4
+    margins: "20mm"
+    include_page_numbers: true
+    include_date: true
+
+# ============================================================
+# VALIDATION RULES
+# ============================================================
+validation:
+  # Data freshness
+  max_data_age_days:
+    stock: 1
+    crypto: 1
+    macro: 30
+
+  # Required fields per section
+  required_fields:
+    cover:
+      - headline
+      - hero_metrics
+    executive_summary:
+      - key_points
+    data_analysis:
+      - title
+      - narrative
+
+  # Auto-fail conditions
+  fail_conditions:
+    - missing_required_section
+    - missing_required_field
+    - forbidden_content_detected
+    - data_source_not_allowed
+
+# ============================================================
+# AI CREATIVITY SPACE
+# ============================================================
+# These are explicitly ALLOWED for AI judgment
+ai_creativity:
+  allowed_decisions:
+    - which_metrics_to_highlight
+    - narrative_flow_and_emphasis
+    - chart_type_selection  # Within allowed types
+    - section_depth  # How detailed each section is
+    - insight_prioritization
+    - risk_weighting
+    - cross_reference_connections
+    - language_style  # Within tone constraints
+
+  # Budget limits for AI-generated content
+  token_budgets:
+    executive_summary: 500
+    thesis: 1000
+    analysis_section: 2000
+    insight: 200
+    recommendation: 500

@@ -1,0 +1,17 @@
+<div class="bg-white rounded-2xl p-6 shadow-lg {{ component.grid_span }}">
+    {% if component.data.title %}
+    <h3 class="text-lg font-semibold mb-4">{{ component.data.title }}</h3>
+    {% endif %}
+    <div class="relative" style="height: {{ component.data.height | default(300) }}px;">
+        <canvas id="{{ component.data.id }}"></canvas>
+    </div>
+    {% if component.data.x_label or component.data.y_label %}
+    <div class="flex justify-between text-xs text-gray-500 mt-2">
+        <span>{{ component.data.x_label | default('X Axis') }}</span>
+        <span>{{ component.data.y_label | default('Y Axis') }}</span>
+    </div>
+    {% endif %}
+    {% if component.data.caption %}
+    <p class="text-sm text-gray-500 mt-4">{{ component.data.caption }}</p>
+    {% endif %}
+</div>

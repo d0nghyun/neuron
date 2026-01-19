@@ -12,7 +12,7 @@ Generate professional, analyst-quality reports with dynamic layouts based on dat
 
 Activate this skill when:
 - User needs to generate a data report/dashboard
-- Creating analyst-style presentations
+- Creating analyst-style presentations (stock, crypto, macro)
 - Converting raw data into visual narratives
 - Building executive summaries with charts/metrics
 
@@ -21,42 +21,124 @@ Keywords: report, dashboard, analyst, visualization, metrics, KPI, chart, summar
 ## Architecture
 
 ```
-Data (JSON) → Analyzer → Component Selector → Layout Planner → HTML Render → [PDF Export]
-  확정적        확정적         AI 판단          AI 판단         확정적         선택적
+┌─────────────────────────────────────────────────────────────────┐
+│                     Report Generation Flow                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Data (JSON) ──► SchemaAdapter ──► Analyzer ──► Component       │
+│    Any format     Auto-detect       Profile     Selector        │
+│                                                                 │
+│                              ▼                                  │
+│                                                                 │
+│  Layout Planner ◄── Design Selector ◄── Purpose + Style         │
+│    AI judgment      Color/Typography    User input              │
+│                                                                 │
+│                              ▼                                  │
+│                                                                 │
+│  HTML Render ──► [Optional] ──► PDF Export                      │
+│    Jinja2 +       Playwright                                    │
+│    Tailwind                                                     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## Workflow
+## Bounded Creativity [P10]
 
-### Step 1: Prepare Data (JSON format)
+### Constraints (Fixed)
+- Component library (defined set of components)
+- Color palettes (per purpose/style)
+- Output schema (HTML/PDF structure)
+- Required sections per report type
 
+### Creativity (AI Judgment)
+- Which components to use
+- Layout arrangement
+- Section emphasis
+- Chart type selection
+
+## Schema Support
+
+Supports three data formats:
+
+### 1. New Schema (report-schema.md compliant)
 ```json
 {
-  "metrics": {
-    "revenue": {"value": 1500000, "delta": 23, "label": "Total Revenue", "unit": "$"},
-    "users": {"value": 50000, "delta": 15, "label": "Active Users"}
-  },
-  "time_series": {
-    "labels": ["Jan", "Feb", "Mar", "Apr"],
-    "datasets": [
-      {"label": "Revenue", "data": [100, 120, 140, 180]},
-      {"label": "Users", "data": [1000, 1200, 1500, 2000]}
-    ]
-  },
-  "table": {
-    "columns": ["Product", "Revenue", "Growth"],
-    "rows": [
-      ["Product A", "$500K", "+12%"],
-      ["Product B", "$300K", "+8%"]
-    ]
-  },
-  "insights": [
-    {"headline": "Key Finding", "body": "Revenue grew 23% this quarter"}
-  ]
+  "metadata": {"type": "stock", "title": "Analysis Report"},
+  "sections": {
+    "cover": {"headline": "Title", "hero_metrics": [...]},
+    "executive_summary": {"key_points": [...]},
+    "data_analysis": [{"title": "...", "visualizations": [...]}]
+  }
 }
 ```
 
-### Step 2: Generate Report
+### 2. Legacy Schema (original format)
+```json
+{
+  "metrics": {"revenue": {"value": 1500000, "delta": 23}},
+  "time_series": {"labels": [...], "datasets": [...]},
+  "table": {"columns": [...], "rows": [...]}
+}
+```
 
+### 3. Arbitrary JSON (auto-detected)
+```json
+{
+  "revenue": 1500000,
+  "quarterly_data": [100, 120, 140],
+  "products": [{"name": "A", "sales": 500}]
+}
+```
+
+## Component Library
+
+### Metrics
+| Component | Best For | Data |
+|-----------|----------|------|
+| HeroMetric | KPI headlines | value, delta, label, unit |
+| TrendIndicator | Quick status | value, delta, direction |
+
+### Charts
+| Component | Best For | Data |
+|-----------|----------|------|
+| LineChart | Trends over time | labels[], datasets[] |
+| BarChart | Category comparisons | labels[], datasets[] |
+| DonutChart | Part-to-whole | labels[], data[] |
+| ScatterPlot | Correlations | datasets[], x_label, y_label |
+| Heatmap | Intensity matrices | columns[], rows[], row_labels |
+| WaterfallChart | Change breakdown | labels[], datasets[] |
+
+### Content
+| Component | Best For | Data |
+|-----------|----------|------|
+| DataTable | Detailed data | columns[], rows[] |
+| InsightCard | Key observations | headline, body, source |
+| CalloutBox | Warnings/highlights | type, title, body |
+| CoverPage | Report cover | headline, hero_metrics, rating |
+
+## Layout Patterns
+
+| Pattern | Best For | Grid |
+|---------|----------|------|
+| Executive Summary | C-level reports | 2-column hero, then grid |
+| Data Deep Dive | Analyst reports | Single column, progressive |
+| Dashboard Grid | Real-time monitoring | Dense 4-column grid |
+| Storytelling | Narrative reports | Single column, prose |
+| Comparison Focus | A/B analysis | 2-column throughout |
+
+## Report Types
+
+| Type | Data Skills | Analyst Agent |
+|------|-------------|---------------|
+| stock | finance-data | stock-analyst |
+| crypto | crypto-data | crypto-analyst |
+| macro | macro-data | macro-analyst |
+| market | finance-data | market-analyst |
+| custom | user-provided | - |
+
+## Usage
+
+### CLI
 ```bash
 python3 .claude/skills/flexible-report-generator/scripts/report_cli.py \
   data.json \
@@ -66,52 +148,33 @@ python3 .claude/skills/flexible-report-generator/scripts/report_cli.py \
   --output report.html
 ```
 
-### Step 3: Export to PDF (Optional)
+### Python
+```python
+from scripts.report_generator import ReportGenerator
+from scripts.schema_adapter import SchemaAdapter
 
-```bash
-python3 .claude/skills/flexible-report-generator/scripts/report_cli.py \
-  data.json \
-  --title "Q4 Performance Report" \
-  --format pdf \
-  --output report.pdf
+# Auto-adapt any schema
+adapter = SchemaAdapter()
+data = adapter.adapt(raw_data)
+
+# Generate report
+generator = ReportGenerator()
+html = generator.generate(
+    data=data,
+    title="Analysis Report",
+    purpose="analyst",
+    style="formal"
+)
 ```
 
-## Component Library
+## Related Files
 
-| Component | Type | Best For | Layout Weight |
-|-----------|------|----------|---------------|
-| HeroMetric | metric | KPI headlines, key findings | 1 |
-| TrendIndicator | metric | Quick status indicators | 1 |
-| LineChart | chart | Trends over time | 2 |
-| BarChart | chart | Category comparisons | 2 |
-| DonutChart | chart | Part-to-whole relationships | 1 |
-| DataTable | table | Detailed data display | 2-3 |
-| InsightCard | insight | Key observations | 1 |
-| QuoteBlock | insight | Impactful statements | 1 |
-| ComparisonGrid | comparison | A/B comparisons | 2 |
-
-## Layout Patterns
-
-| Pattern | Best For | Grid |
-|---------|----------|------|
-| Executive Summary | C-level reports | 2-column hero, then grid |
-| Data Deep Dive | Analyst reports | Single column, progressive detail |
-| Dashboard Grid | Real-time monitoring | Dense 4-column grid |
-| Storytelling | Narrative reports | Single column, prose width |
-
-## Analyst Styles
-
-| Style | Tone | Example Headline |
-|-------|------|------------------|
-| witty | Sharp, clever | "The Numbers Don't Lie (But They Do Exaggerate)" |
-| formal | Professional | "Q4 Performance: Key Metrics" |
-| storyteller | Narrative | "The Hidden Pattern in Your Data" |
-| minimalist | Clean, factual | "Revenue: +23%" |
-
-## Output
-
-- **HTML**: Tailwind CSS styling, Chart.js visualizations, responsive design
-- **PDF**: Optional export via Playwright (requires `playwright install chromium`)
+- `knowledge/report-schema.md` - Universal report structure
+- `knowledge/report-constraints.yaml` - Guardrails
+- `.claude/agents/report-generator.md` - Orchestrator agent
+- `.claude/agents/stock-analyst.md` - Stock analysis
+- `.claude/agents/crypto-analyst.md` - Crypto analysis
+- `.claude/agents/macro-analyst.md` - Macro analysis
 
 ## Dependencies
 
@@ -119,18 +182,4 @@ python3 .claude/skills/flexible-report-generator/scripts/report_cli.py \
 pip install jinja2
 # For PDF export:
 pip install playwright && playwright install chromium
-```
-
-## Example
-
-```python
-from scripts.report_generator import ReportGenerator
-
-generator = ReportGenerator()
-html = generator.generate(
-    data=your_data,
-    title="Q4 Report",
-    purpose="executive",
-    style="witty"
-)
 ```
