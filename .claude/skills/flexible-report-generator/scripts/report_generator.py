@@ -576,10 +576,13 @@ class ReportGenerator:
             arrow = "↑" if delta >= 0 else "↓"
 
             formatted_value = self._format_number(value)
+            # Handle % unit (should come after value)
+            prefix = unit if unit != "%" else ""
+            suffix = "%" if unit == "%" else ""
 
             return f'''
                 <div class="bg-white rounded-xl p-4 shadow">
-                    <div class="text-2xl font-bold text-[var(--color-text)]">{unit}{formatted_value}</div>
+                    <div class="text-2xl font-bold text-[var(--color-text)]">{prefix}{formatted_value}{suffix}</div>
                     <div class="text-sm text-gray-500">{label}</div>
                     <div class="{delta_color} text-sm font-medium mt-1">{arrow} {delta_sign}{delta}%</div>
                 </div>'''
