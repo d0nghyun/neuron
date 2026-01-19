@@ -1,0 +1,12 @@
+# Core dependencies
+jinja2>=3.0.0
+
+# Optional: PDF export
+playwright>=1.40.0
+
+# Optional: Data validation
+pydantic>=2.0.0
+
+# Development
+pytest>=7.0.0
+pytest-asyncio>=0.21.0

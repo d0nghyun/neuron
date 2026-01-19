@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "report-generator"
+version = "0.2.0"
+description = "Flexible report generator with AI-driven layout planning"
+readme = "SKILL.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Neuron Team"}
+]
+keywords = [
+    "report",
+    "analytics",
+    "visualization",
+    "ai",
+    "mcp",
+    "claude"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "jinja2>=3.0.0",
+]
+
+[project.optional-dependencies]
+pdf = ["playwright>=1.40.0"]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pydantic>=2.0.0",
+]
+all = ["report-generator[pdf,dev]"]
+
+[project.scripts]
+report-gen = "report_generator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["scripts"]
+include = ["report_generator*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.html.j2", "*.csv", "*.yaml", "*.md"]
+
+[project.urls]
+"Homepage" = "https://github.com/d0nghyun/neuron"
+"Bug Tracker" = "https://github.com/d0nghyun/neuron/issues"
