@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family={{ typography.heading | urlencode }}:wght@400;500;600;700&family={{ typography.body | urlencode }}:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: {{ colors.primary }};
+            --color-secondary: {{ colors.secondary }};
+            --color-accent: {{ colors.accent }};
+            --color-background: {{ colors.background }};
+            --color-text: {{ colors.text }};
+            --color-border: {{ colors.border }};
+        }
+        body { font-family: '{{ typography.body }}', system-ui, sans-serif; }
+        h1, h2, h3, h4 { font-family: '{{ typography.heading }}', system-ui, sans-serif; }
+
+        /* Print styles for PDF export */
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-text)] min-h-screen">
+    {% include 'partials/header.html.j2' %}
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        {% for section in layout.sections %}
+        <section class="mb-12">
+            {% if section.title %}
+            <h2 class="text-xl font-semibold mb-6 text-[var(--color-text)]">{{ section.title }}</h2>
+            {% endif %}
+            <div class="grid {{ section.grid_classes }} gap-6">
+                {% for component in section.components %}
+                {% include 'components/' ~ component.template ignore missing %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+    </main>
+
+    {% include 'partials/footer.html.j2' %}
+
+    <script>
+    {% for chart_id, config in chart_configs.items() %}
+    new Chart(document.getElementById('{{ chart_id }}'), {
+        type: '{{ config.type }}',
+        data: {{ config.data | tojson }},
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+    {% endfor %}
+    </script>
+</body>
+</html>

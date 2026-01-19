@@ -1,0 +1,16 @@
+<div class="bg-gradient-to-br from-[var(--color-primary)]/5 to-transparent rounded-2xl p-6 border border-[var(--color-primary)]/10">
+    <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+        </div>
+        <div>
+            <h4 class="font-semibold text-lg mb-2">{{ component.data.headline }}</h4>
+            <p class="text-gray-600">{{ component.data.body }}</p>
+            {% if component.data.source %}
+            <p class="text-xs text-gray-400 mt-3">Source: {{ component.data.source }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

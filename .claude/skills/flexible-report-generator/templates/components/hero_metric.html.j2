@@ -1,0 +1,21 @@
+<div class="bg-white rounded-2xl p-6 shadow-lg {{ component.grid_span }}">
+    <div class="flex items-baseline gap-2 mb-2">
+        <span class="text-4xl font-bold text-[var(--color-primary)]">
+            {% if component.data.unit %}{{ component.data.unit }}{% endif %}{{ component.data.value | format_number }}
+        </span>
+    </div>
+    <div class="text-lg text-gray-600 mb-3">{{ component.data.label }}</div>
+    {% if component.data.delta is defined %}
+    <div class="flex items-center gap-2 text-sm">
+        <span class="{{ 'text-green-600' if component.data.delta >= 0 else 'text-red-600' }} font-medium">
+            {{ '+' if component.data.delta >= 0 else '' }}{{ component.data.delta }}%
+        </span>
+        <span class="text-gray-400">vs previous period</span>
+    </div>
+    {% endif %}
+    {% if component.data.insight %}
+    <p class="mt-4 text-sm text-gray-500 italic border-l-2 border-[var(--color-accent)] pl-3">
+        {{ component.data.insight }}
+    </p>
+    {% endif %}
+</div>

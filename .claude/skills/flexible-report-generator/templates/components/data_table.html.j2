@@ -1,0 +1,25 @@
+<div class="bg-white rounded-2xl shadow-lg overflow-hidden {{ component.grid_span }}">
+    <div class="px-6 py-4 border-b border-gray-100">
+        <h3 class="text-lg font-semibold">{{ component.data.title | default('Data') }}</h3>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full">
+            <thead>
+                <tr>
+                    {% for col in component.data.columns %}
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 bg-gray-50">{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in component.data.rows %}
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    {% for cell in row %}
+                    <td class="px-4 py-3 text-sm text-gray-600">{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

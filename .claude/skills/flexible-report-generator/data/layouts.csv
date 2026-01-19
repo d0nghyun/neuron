@@ -1,0 +1,6 @@
+Layout Pattern,Grid Classes,Section Order,Best For,Max Row Weight,Keywords
+Executive Summary,grid-cols-1 lg:grid-cols-2,hero|insights|charts|table,C-level reports and board presentations,4,executive summary ceo board leadership
+Data Deep Dive,grid-cols-1,hero|table|charts|insights,Analyst reports and detailed analysis,3,analyst detail deep dive comprehensive
+Dashboard Grid,grid-cols-2 md:grid-cols-4,metrics|charts|table,Real-time dashboards and monitoring,6,dashboard monitor realtime grid dense
+Storytelling,grid-cols-1 max-w-prose mx-auto,quote|insight|chart|quote,Narrative reports and presentations,2,story narrative presentation flow
+Comparison Focus,grid-cols-1 lg:grid-cols-2,hero|comparison|charts|table,A/B analysis and benchmarking,4,compare benchmark ab versus

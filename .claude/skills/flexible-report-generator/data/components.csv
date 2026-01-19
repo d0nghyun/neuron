@@ -1,0 +1,11 @@
+Component,Type,Data Requirements,Best For,Layout Weight,Visual Priority,Template,Chart Library,Keywords
+HeroMetric,metric,value|delta|label|unit,KPI headlines and key findings,1,1,hero_metric.html.j2,none,kpi metric headline big number
+TrendIndicator,metric,value|delta|direction,Quick status indicators,1,2,trend_indicator.html.j2,none,trend arrow delta change
+LineChart,chart,labels[]|datasets[],Trends over time,2,3,chart_section.html.j2,chartjs,trend time series line growth
+BarChart,chart,labels[]|datasets[],Category comparisons,2,3,chart_section.html.j2,chartjs,bar compare category distribution
+DonutChart,chart,labels[]|data[],Part-to-whole relationships,1,4,chart_section.html.j2,chartjs,pie donut percentage share
+DataTable,table,columns[]|rows[],Detailed data display,3,5,data_table.html.j2,none,table data detail list
+InsightCard,insight,headline|body|source,Key observations,1,2,insight_card.html.j2,none,insight finding observation note
+QuoteBlock,insight,quote|attribution,Impactful statements,1,2,quote_block.html.j2,none,quote highlight key takeaway
+ComparisonGrid,comparison,items[]|metrics[],A/B comparisons,2,3,comparison_grid.html.j2,none,compare versus ab side by side
+SectionDivider,layout,title,Visual section breaks,1,6,section_divider.html.j2,none,divider section break header

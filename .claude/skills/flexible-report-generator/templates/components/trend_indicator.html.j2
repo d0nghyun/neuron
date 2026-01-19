@@ -1,0 +1,11 @@
+<div class="bg-white rounded-xl p-4 shadow">
+    <div class="text-2xl font-bold text-[var(--color-text)]">
+        {% if component.data.unit %}{{ component.data.unit }}{% endif %}{{ component.data.value | format_number }}
+    </div>
+    <div class="text-sm text-gray-500">{{ component.data.label }}</div>
+    {% if component.data.delta is defined %}
+    <div class="{{ 'text-green-600' if component.data.delta >= 0 else 'text-red-600' }} text-sm font-medium mt-1">
+        {{ '↑' if component.data.delta >= 0 else '↓' }} {{ '+' if component.data.delta >= 0 else '' }}{{ component.data.delta }}%
+    </div>
+    {% endif %}
+</div>
