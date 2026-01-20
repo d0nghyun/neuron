@@ -8,6 +8,7 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-20 | arkraft-fe/trading-chart | Task-verification workflow skipped: no criteria defined, no verification evidence for chart fixes (P15 Verify Before Done, P7 Test-First) | pending |
 | 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Submodule updates lack verification: no build check, no integration test after pointer updates (P15 Verify Before Done) | pending |
 | 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Manual submodule updates - automation candidate for `git submodule update --remote` workflow (P16 Automate Repetition) | pending |
 | 2026-01-18 | #new (ui-ux-pro-max skill) | File size violations: 1066-line file added when 200-line limit exists (P3 Simplicity First violated) | pending |
@@ -19,6 +20,11 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-20: P4 (Incremental) in UX polish: Dashed line style is minimal solution to visual confusion - no redesign needed
+- 2026-01-20: P19 (Visual Architecture) refinement: Line style differentiation (solid vs dashed) communicates data relationship non-verbally
+- 2026-01-20: P9 (Root Cause First) well executed: Fixed date format mismatch (root cause) rather than adjusting marker positions (symptom)
+- 2026-01-20: P3 (Simplicity First) in chart design: Hidden series for tooltip data reduces visual noise while preserving information
+- 2026-01-20: P2 (MECE) in dual Y-axis: Clear separation between price and return % prevents scale confusion
 - 2026-01-20: P5 (Modularity) in action: Submodules isolate complexity - neuron tracks only pointers while subprojects evolve independently
 - 2026-01-20: P1 (SSOT) via .gitmodules: Single source for dependency versions prevents version drift across environments
 - 2026-01-18: P8 (AI-First) well executed: CSV format enables efficient search, structured data for machine consumption

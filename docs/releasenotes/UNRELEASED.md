@@ -32,10 +32,22 @@
   - arkraft-fe: 6587482 → 1a20f2c (9 commits: HTML report rendering, data reports API, financial research page)
   - finter: 707dc66 → b98bf8e (12 commits: HTML report generation, flexible-report-generator integration, analysis API with agent logs)
   - pm-arkraft: 4ef7b4d → 5be5d13 (6 commits: ADR Confluence migration, Google Calendar scheduling, Slack notifications)
+- **[arkraft-fe/trading]** Improved trading chart visualization and UX
+  - Removed BTC % line from chart (kept in tooltip for cleaner visual)
+  - Dual Y-axis: left for price (orange), right for return % (purple)
+  - Custom legend formatting with unicode line symbols (━, ┈)
+  - Orders panel: default open, collapsible, positioned below GNB
+  - Added ReturnComparisonPanel showing BTC/Expected/Actual/vs BTC returns
+  - Added StrategyBrowserModal for strategy selection (mockup)
+  - Grid adjustments: left margin 60px, right margin 55px for dual axes
+  - Expected % line now uses dashed style to distinguish from Actual % (solid) in live mode
 
 ## Fixed
 
--
+- **[arkraft-fe/trading]** Fixed BUY/SELL trade marker overlap on chart by mapping timestamps to 8H intervals
+  - Trade markers now align correctly with Binance 8H candlestick data
+  - Implemented 3-tier date matching: exact match → date-only → closest timestamp (within 24h)
+  - 8H interval snapping: maps trade times to 00:00, 08:00, or 16:00 UTC
 
 ## Removed
 
