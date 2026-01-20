@@ -27,6 +27,11 @@
   - Color naming standardized: `gray-*` → `neutral-*`, `cyan-*` → `blue-*`
   - Design tokens reorganized with clear semantic categories
   - 110+ component files updated for consistency
+- **[submodules]** Updated all project submodules to latest stable versions
+  - arkraft: 4e3e705 → 4381d9f (137 commits: research infrastructure, K8s migration, frontend redesign)
+  - arkraft-fe: 6587482 → 1a20f2c (9 commits: HTML report rendering, data reports API, financial research page)
+  - finter: 707dc66 → b98bf8e (12 commits: HTML report generation, flexible-report-generator integration, analysis API with agent logs)
+  - pm-arkraft: 4ef7b4d → 5be5d13 (6 commits: ADR Confluence migration, Google Calendar scheduling, Slack notifications)
 
 ## Fixed
 

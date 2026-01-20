@@ -8,6 +8,8 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Submodule updates lack verification: no build check, no integration test after pointer updates (P15 Verify Before Done) | pending |
+| 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Manual submodule updates - automation candidate for `git submodule update --remote` workflow (P16 Automate Repetition) | pending |
 | 2026-01-18 | #new (ui-ux-pro-max skill) | File size violations: 1066-line file added when 200-line limit exists (P3 Simplicity First violated) | pending |
 | 2026-01-18 | #new (ui-ux-pro-max skill) | No verification before commit: Python syntax error shipped (P15 Verify Before Done violated) | pending |
 | 2026-01-18 | #new (ui-ux-pro-max skill) | No tests for new functionality (P7 Test-First violated) | pending |
@@ -17,6 +19,8 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-20: P5 (Modularity) in action: Submodules isolate complexity - neuron tracks only pointers while subprojects evolve independently
+- 2026-01-20: P1 (SSOT) via .gitmodules: Single source for dependency versions prevents version drift across environments
 - 2026-01-18: P8 (AI-First) well executed: CSV format enables efficient search, structured data for machine consumption
 - 2026-01-18: P16 (Automate Repetition) demonstrated: BM25 search automates UI/UX knowledge retrieval vs manual docs
 - 2026-01-18: P2 (MECE) in skill design: Clear domain boundaries (style, color, typography, ux, chart) prevent overlap
