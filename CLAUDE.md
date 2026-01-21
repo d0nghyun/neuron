@@ -172,6 +172,16 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 
 **Questions are failures.** Every question to user = failure to apply principles autonomously.
 
+## Personal Context
+
+Short-term memory (always loaded). For details: `meta/` folder.
+
+| What | Current | Details |
+|------|---------|---------|
+| Focus | arkraft demo delivery | `meta/projects.yaml` |
+| Org | Quantit AI팀 | `meta/team.yaml` |
+| Active | arkraft, finter, modeling | `modules/_registry.yaml` |
+
 ## Conventions
 
 - **Language**: English for all neuron files (submodules may differ)

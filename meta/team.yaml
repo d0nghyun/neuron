@@ -1,0 +1,23 @@
+# Team Registry
+# Long-term memory: team structure, contacts, roles
+
+me:
+  name: Donghyun
+  role: AI/Quant Developer
+  org: Quantit
+  focus: AI-native development, quantitative research
+
+team:
+  quantit-ai:
+    description: Quantit AI팀
+    members: []  # Add as needed
+    channels:
+      slack: ""  # Add channel
+
+# External collaborators
+collaborators: {}
+
+# Meta
+_meta:
+  updated_at: "2026-01-21"
+  version: 1
