@@ -13,24 +13,43 @@ This skill activates when the user asks about:
 - Project conventions and standards
 - Architecture and module organization
 - Philosophy and principles
+- **Personal context**: team, projects, priorities (long-term memory)
 
-## Knowledge Location
+## Knowledge Locations
 
-All documentation is in `knowledge/`. See `knowledge/_index.yaml` for:
-- Categories and file listings
-- Trigger phrases for each topic
-- Related file connections
+| Type | Location | Purpose |
+|------|----------|---------|
+| Philosophy/Workflow | `knowledge/` | Principles, conventions, guides |
+| Personal Context | `meta/` | Team, projects, priorities |
+| Module Registry | `modules/_registry.yaml` | All registered modules |
+
+## Memory Model
+
+```
+Short-term (CLAUDE.md)  ←  Always loaded, compact summary
+         ↓
+Long-term (meta/)       ←  This skill fetches details on demand
+```
 
 ## How to Use
 
-1. **Discover**: Check what docs exist in knowledge/
+1. **Discover**: Check `knowledge/` or `meta/` based on query type
 2. **Read**: Load relevant documentation
 3. **Reference**: Quote specific sections in responses
 
-## Example
+## Examples
 
-User: "How should I name my branches?"
-
+**Philosophy query:**
+> "How should I name my branches?"
 1. Read `knowledge/git-workflow.md`
 2. Find the Branch Strategy section
-3. Respond with the naming convention
+
+**Personal context query:**
+> "What projects am I working on?"
+1. Read `meta/projects.yaml`
+2. Return active projects with priorities
+
+**Team query:**
+> "Who's on my team?"
+1. Read `meta/team.yaml`
+2. Return team structure

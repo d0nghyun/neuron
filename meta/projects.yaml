@@ -1,0 +1,33 @@
+# Project Registry
+# Long-term memory: all projects with status and priorities
+
+active:
+  arkraft:
+    priority: high
+    description: AI-Powered Quantitative Research Automation Platform
+    module: modules/arkraft
+    deliverable: Demo delivery
+
+  finter:
+    priority: high
+    description: Finter backend service for Arkraft demo
+    module: modules/finter
+
+  modeling:
+    priority: medium
+    description: Finter quantitative trading skills
+    module: modules/modeling
+
+backlog:
+  hippo:
+    description: Memory and context management system
+    module: modules/hippo
+    trigger: When embedding-based retrieval needed
+
+# Completed projects (archive)
+completed: {}
+
+# Meta
+_meta:
+  updated_at: "2026-01-21"
+  version: 1
