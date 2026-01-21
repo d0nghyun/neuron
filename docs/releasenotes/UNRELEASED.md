@@ -4,6 +4,13 @@
 
 ## Added
 
+- **[Personal KB Architecture]** Hybrid short/long-term memory model for personal context management
+  - Short-term memory: Compact summary in CLAUDE.md (~50 tokens, always loaded)
+  - Long-term memory: Detailed YAML in meta/ folder (accessed via neuron-knowledge skill on demand)
+  - meta/projects.yaml: Project registry with priorities, status, deliverables
+  - meta/team.yaml: Team structure, roles, contacts
+  - neuron-knowledge skill extended to access meta/ folder for personal context queries
+  - Memory architecture: CLAUDE.md → meta/ retrieval pattern for scalable context management
 - **[ui-ux-pro-max skill]** Comprehensive UI/UX design intelligence skill
   - 50+ UI styles (glassmorphism, minimalism, brutalism, neumorphism, etc.)
   - 97 color palettes organized by product type (SaaS, e-commerce, healthcare, fintech)
