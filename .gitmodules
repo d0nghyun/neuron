@@ -16,3 +16,9 @@
 [submodule "modules/arkraft"]
 	path = modules/arkraft
 	url = https://github.com/Quantit-Github/arkraft
+[submodule "modules/arkraft-agent-report"]
+	path = modules/arkraft-agent-report
+	url = git@github.com:Quantit-Github/arkraft-agent-report.git
+[submodule "modules/arkraft-jupyter"]
+	path = modules/arkraft-jupyter
+	url = git@github.com:Quantit-Github/arkraft-jupyter.git
