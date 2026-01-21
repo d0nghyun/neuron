@@ -8,6 +8,7 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-21 | claude/design-kb-architecture-sB1SQ | Task verification workflow skipped again: no criteria defined before implementation (P15, P7 violated) - 4th occurrence suggests enforcement mechanism needed | pending |
 | 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Submodule updates lack verification: no build check, no integration test after pointer updates (P15 Verify Before Done) | pending |
 | 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Manual submodule updates - automation candidate for `git submodule update --remote` workflow (P16 Automate Repetition) | pending |
 | 2026-01-18 | #new (ui-ux-pro-max skill) | File size violations: 1066-line file added when 200-line limit exists (P3 Simplicity First violated) | pending |
@@ -19,6 +20,9 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-21: P1 (SSOT) + P8 (AI-First) in memory architecture: meta/ YAML as single source, CLAUDE.md as compact index - clear separation enables scalable context management
+- 2026-01-21: P19 (Visual Architecture) aids understanding: ASCII diagram in skill doc clarifies short→long memory model at a glance
+- 2026-01-21: P4 (Incremental) demonstrated: Scaffold structure with minimal data, ready to grow organically as needed
 - 2026-01-20: P5 (Modularity) in action: Submodules isolate complexity - neuron tracks only pointers while subprojects evolve independently
 - 2026-01-20: P1 (SSOT) via .gitmodules: Single source for dependency versions prevents version drift across environments
 - 2026-01-18: P8 (AI-First) well executed: CSV format enables efficient search, structured data for machine consumption
