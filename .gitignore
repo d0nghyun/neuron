@@ -8,4 +8,4 @@
 
 .mypy_cache/
 
-.credentials/.mcp.json.backup
+.credentials/
