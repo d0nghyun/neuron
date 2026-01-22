@@ -1,5 +1,5 @@
 [submodule "modules/arkraft/pm-arkraft"]
-	path = modules/arkraft/pm-arkraft
+	path = modules/arkraft/arkraft-agent-pm
 	url = https://github.com/Quantit-Github/arkraft-agent-pm.git
 [submodule "modules/arkraft/arkraft-jupyter"]
 	path = modules/arkraft/arkraft-jupyter
