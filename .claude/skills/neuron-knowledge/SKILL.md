@@ -46,8 +46,8 @@ Long-term (meta/)       ←  This skill fetches details on demand
 
 **Personal context query:**
 > "What projects am I working on?"
-1. Read `meta/projects.yaml`
-2. Return active projects with priorities
+1. Read `meta/focus.yaml`
+2. Return current focus and active modules
 
 **Team query:**
 > "Who's on my team?"

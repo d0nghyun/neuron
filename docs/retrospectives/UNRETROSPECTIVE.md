@@ -8,6 +8,7 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-22 | #new (MCP revert) | Task verification workflow skipped: no criteria defined for MCP revert task (P15, P7 violated) - 7th occurrence, enforcement mechanism urgently needed | pending |
 | 2026-01-22 | #new (MCP migration cleanup) | Task verification workflow skipped: no criteria defined for file deletion task (P15, P7 violated) - 6th occurrence, pattern persists strongly | pending |
 | 2026-01-22 | #new (hippo suspension) | Task verification workflow skipped: no criteria defined for submodule removal (P15, P7 violated) - 5th occurrence, pattern persists | pending |
 | 2026-01-22 | #new (hippo suspension) | Reference checking not performed before removal: meta/projects.yaml still points to deleted submodule path (P15 Verify Before Done) | pending |
@@ -24,6 +25,10 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-22: P17 (Learn from Failure) demonstrated: MCP context cost issue identified through actual usage, reverted quickly without sunk cost fallacy
+- 2026-01-22: P6 (Agile) + P11 (Constructive Challenge): Willingness to revert architectural decision when evidence shows original approach was better
+- 2026-01-22: P16 (Automate Repetition) clarified: Context is expensive - skills provide lighter-weight alternative to MCP tool overhead
+- 2026-01-22: P1 (SSOT) for credentials: Centralized .credentials/*.json pattern ensures consistent auth across all API skills
 - 2026-01-22: P16 (Automate Repetition) via MCP migration: Replacing 855 lines of skill boilerplate with native MCP tool routing reduces maintenance burden
 - 2026-01-22: P9 (Root Cause First) demonstrated: Removing redundant infrastructure (self-test, PR template) at source rather than maintaining parallel patterns
 - 2026-01-22: P3 (Simplicity First) applied to external API access: MCP tools provide simpler interface than custom skill layer

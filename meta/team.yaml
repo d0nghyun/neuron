@@ -1,23 +1,60 @@
 # Team Registry
-# Long-term memory: team structure, contacts, roles
+# SSOT for team member information across all projects
+# Jira/Slack integrations reference this file
 
-me:
-  name: Donghyun
-  role: AI/Quant Developer
-  org: Quantit
-  focus: AI-native development, quantitative research
+members:
+  송낙훈:
+    email: nakhun.song@quantit.io
+    jira_account_id: "633b9065234d44d406d3ed2a"
+    slack_id: "U044K34GBLP"
+    role: BE/Infra
 
-team:
-  quantit-ai:
-    description: Quantit AI팀
-    members: []  # Add as needed
-    channels:
-      slack: ""  # Add channel
+  이동현:
+    email: dh.lee@quantit.io
+    jira_account_id: "60f8fa01199a84006859e5b0"
+    slack_id: "UNNCYQB0B"
+    role: Agent Dev
 
-# External collaborators
-collaborators: {}
+  백재현:
+    email: 94wogus@quantit.io
+    jira_account_id: "5efc15b8f34eae0ba6e360b7"
+    slack_id: "U015U3DL4RK"
+    role: Data Agent/Infra
 
-# Meta
+  손시연:
+    email: syson@quantit.io
+    jira_account_id: "712020:752c3847-3405-4743-b7ed-0f4b8d08190b"
+    slack_id: "U08NALAD8R3"
+    role: Analysis Agent
+
+  이한주:
+    email: dhrhee@quantit.io
+    jira_account_id: "712020:572b32f0-b867-401b-ad0d-d8e47d3463bd"
+    jira_display_name: Daniel Hanjoo Rhee
+    slack_id: "U05TN1L7ATB"
+    role: Crypto Alpha
+
+  김일웅:
+    email: ilwoong.kim@quantit.io
+    jira_account_id: "6040590ac58c72007140a156"
+    slack_id: "U01QGDBGJRF"
+    role: TBD
+
+# Groups
+groups:
+  amt:
+    email: amt@quantit.io
+    description: Asset Management Technology Team
+
+# Slack configuration
+slack:
+  channels:
+    arkraft_dev: "C0891E6DDPA"    # Team channel (healthcheck)
+    exec_report: "C0933M2A5CK"    # Executive report channel
+    test: "C06457NL2H4"           # Test channel
+  usergroups:
+    amt: "S089G4FCJRJ"            # Asset Management Technology Team
+
 _meta:
-  updated_at: "2026-01-21"
-  version: 1
+  updated_at: "2026-01-22"
+  version: 2

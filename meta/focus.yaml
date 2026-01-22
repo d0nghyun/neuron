@@ -1,0 +1,27 @@
+# Focus
+# Long-term memory: current priorities (updated periodically)
+
+current_focus: arkraft demo delivery
+
+# Active modules I'm working on
+# Full module details: modules/_registry.yaml
+active_modules:
+  - arkraft/pm-arkraft
+  - arkraft/arkraft-jupyter
+  - arkraft/arkraft-agent-report
+  - modeling
+
+# Priority projects
+priorities:
+  high:
+    - arkraft demo delivery
+  medium:
+    - modeling skills development
+  low: []
+
+# Backlog (things to do later)
+backlog: []
+
+_meta:
+  updated_at: "2026-01-22"
+  version: 1
