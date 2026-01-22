@@ -4,17 +4,6 @@
 # Dashboard-ready format for tracking all modules
 
 modules:
-  hippo:
-    repo: github.com/d0nghyun/hippo
-    domain: tools
-    status: active
-    description: Memory and context management system
-    registered_at: "2026-01-11"
-    tags:
-      - ai
-      - memory
-      - context
-
   pm-arkraft:
     repo: gitlab.quantit.io/ark/arkraft/pm-arkraft
     domain: work
@@ -76,10 +65,22 @@ modules:
       - k8s
 
 # Archived modules (removed from submodules but tracked)
-archived: {}
+archived:
+  hippo:
+    repo: github.com/d0nghyun/hippo
+    domain: tools
+    status: suspended
+    description: Memory and context management system
+    registered_at: "2026-01-11"
+    archived_at: "2026-01-22"
+    reason: Suspended pending priority review
+    tags:
+      - ai
+      - memory
+      - context
 
 # Registry metadata
 _meta:
   version: 1
-  updated_at: "2026-01-13"
+  updated_at: "2026-01-22"
   schema: knowledge/module-protocol.md

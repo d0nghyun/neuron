@@ -8,6 +8,9 @@
 
 | Date | PR | Pattern | Status |
 |------|-----|---------|--------|
+| 2026-01-22 | #new (hippo suspension) | Task verification workflow skipped: no criteria defined for submodule removal (P15, P7 violated) - 5th occurrence, pattern persists | pending |
+| 2026-01-22 | #new (hippo suspension) | Reference checking not performed before removal: meta/projects.yaml still points to deleted submodule path (P15 Verify Before Done) | pending |
+| 2026-01-22 | #new (hippo suspension) | Language convention violated: Korean text in English-only file (CLAUDE.md policy) | pending |
 | 2026-01-21 | claude/design-kb-architecture-sB1SQ | Task verification workflow skipped again: no criteria defined before implementation (P15, P7 violated) - 4th occurrence suggests enforcement mechanism needed | pending |
 | 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Submodule updates lack verification: no build check, no integration test after pointer updates (P15 Verify Before Done) | pending |
 | 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Manual submodule updates - automation candidate for `git submodule update --remote` workflow (P16 Automate Repetition) | pending |
@@ -20,6 +23,8 @@
 
 > What worked well, lessons learned (updated by reviewer on each PR)
 
+- 2026-01-22: P2 (MECE) in module lifecycle: Clear separation between active and archived states via registry structure enables clean suspension workflow
+- 2026-01-22: P1 (SSOT) for module metadata: archived section preserves history (registered_at, archived_at, reason) for future reference
 - 2026-01-21: P1 (SSOT) + P8 (AI-First) in memory architecture: meta/ YAML as single source, CLAUDE.md as compact index - clear separation enables scalable context management
 - 2026-01-21: P19 (Visual Architecture) aids understanding: ASCII diagram in skill doc clarifies short→long memory model at a glance
 - 2026-01-21: P4 (Incremental) demonstrated: Scaffold structure with minimal data, ready to grow organically as needed

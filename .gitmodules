@@ -1,6 +1,3 @@
-[submodule "modules/hippo"]
-	path = modules/hippo
-	url = https://github.com/d0nghyun/hippo.git
 [submodule "modules/pm-arkraft"]
 	path = modules/pm-arkraft
 	url = ssh://git@gitlab.quantit.io:2222/ark/arkraft/pm-arkraft.git
