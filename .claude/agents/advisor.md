@@ -107,33 +107,33 @@ suggested_question: "Which approach do you prefer, A or B?"
 - User preference significantly impacts result
 - Clear recommendation not possible
 
-## MCP Tool Routing
+## Skill Enforcement
 
-**CRITICAL**: External services are accessed via MCP tools directly (no separate skill files needed).
+**CRITICAL**: When the situation involves external services, ALWAYS include skill routing in output.
 
-### MCP Tool Mapping
+### Skill Routing Table
 
-| Trigger Keywords | MCP Tools |
-|-----------------|-----------|
-| GitHub, PR, issue, repository, commit | `mcp__github__*` tools |
-| Jira, ticket, sprint, story, epic | `mcp__atlassian__*` tools |
-| Notion, page, database, block | `mcp__notion__*` tools |
-| Slack, channel, message, thread | `mcp__slack__*` tools |
-| Calendar, event, schedule, meeting | `mcp__google-calendar__*` tools |
+| Trigger Keywords | Required Skill |
+|-----------------|----------------|
+| GitHub, PR, issue, repository, commit | `Skill(github-api)` |
+| Jira, ticket, sprint, story, epic | `Skill(jira-api)` |
+| Notion, page, database, block | `Skill(notion-api)` |
+| Confluence, wiki, space, content | `Skill(confluence-api)` |
 
 ### Enforcement Rules
 
 1. **Detect**: Scan input for trigger keywords
-2. **Route**: If match found, recommend using appropriate MCP tools directly
-3. **No Skill Files**: MCP tools are available natively, no skill routing needed
+2. **Mandate**: If match found, `required_skill` MUST be in output
+3. **Block**: Return `skill_required: true` to force main agent to use skill
 
-### Output with MCP Routing
+### Output with Skill
 
 ```yaml
-recommendation: "Fetch issues using GitHub MCP tools"
+recommendation: "Fetch issues using GitHub API"
 confidence: high
-mcp_tools: ["mcp__github__list_issues", "mcp__github__get_issue"]
-tool_reason: "GitHub API operation - use MCP tools directly"
+skill_required: true
+required_skill: "github-api"
+skill_reason: "GitHub API operation detected"
 basis:
   - file: data-pipeline.md
     relevant_section: "External Data"
@@ -145,6 +145,6 @@ basis:
 - **NEVER** guess content not in knowledge
 - **ALWAYS** specify source file and section
 - **ALWAYS** indicate confidence level
-- **ALWAYS** include `mcp_tools` when external service detected
+- **ALWAYS** include `required_skill` when external service detected
 - **ALWAYS** cite principles (P#) with reasoning for every recommendation
 - **BIAS toward action**: Default confidence should be medium or high. Low = exceptional case.
