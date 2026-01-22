@@ -18,16 +18,19 @@ active:
     description: Finter quantitative trading skills
     module: modules/modeling
 
-backlog:
+backlog: {}
+
+# Suspended projects (temporarily on hold)
+suspended:
   hippo:
     description: Memory and context management system
-    module: modules/hippo
-    trigger: When embedding-based retrieval needed
+    reason: Paused development pending priority review
+    suspended_at: "2026-01-22"
 
 # Completed projects (archive)
 completed: {}
 
 # Meta
 _meta:
-  updated_at: "2026-01-21"
+  updated_at: "2026-01-22"
   version: 1
