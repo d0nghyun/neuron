@@ -5,13 +5,13 @@ active:
   arkraft:
     priority: high
     description: AI-Powered Quantitative Research Automation Platform
-    module: modules/arkraft
+    module: modules/arkraft-legacy/arkraft
     deliverable: Demo delivery
 
   finter:
     priority: high
     description: Finter backend service for Arkraft demo
-    module: modules/finter
+    module: modules/arkraft-legacy/finter
 
   modeling:
     priority: medium
