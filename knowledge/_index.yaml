@@ -2,92 +2,98 @@
 # Structured for AI to find relevant knowledge files for each situation
 
 categories:
-  core:
+  01-core:
     description: "Foundational principles, basis for all decisions"
     files:
-      - ai-axioms
-      - philosophy
-      - neuron-base
+      - 01-core/ai-axioms
+      - 01-core/philosophy
+      - 01-core/neuron-base
+      - 01-core/agents
 
-  workflow:
+  02-workflow:
     description: "Work procedures, git, release, data processing"
     files:
-      - git-workflow
-      - git-advanced
-      - release-workflow
-      - spec-process
-      - data-pipeline
-      - task-verification-workflow
+      - 02-workflow/git-workflow
+      - 02-workflow/git-advanced
+      - 02-workflow/release-workflow
+      - 02-workflow/spec-process
+      - 02-workflow/data-pipeline
+      - 02-workflow/task-verification-workflow
 
-  architecture:
+  03-architecture:
     description: "Structural decisions, where to build what"
     files:
-      - decision-guide
-      - extension-mechanisms
-      - module-protocol
-      - repo-setup
+      - 03-architecture/decision-guide
+      - 03-architecture/extension-mechanisms
+      - 03-architecture/module-protocol
+      - 03-architecture/repo-setup
 
-  operations:
+  04-operations:
     description: "Operations, settings, token management"
     files:
-      - github-settings
-      - api-tokens
-      - self-improve-policy
+      - 04-operations/github-settings
+      - 04-operations/api-tokens
+      - 04-operations/self-improve-policy
 
 # Situation-based trigger → file mapping
 # AI references these files when detecting these patterns
 trigger_map:
   - pattern: "API|data|pagination|large|100 lines|pipeline"
-    files: [data-pipeline]
+    files: [02-workflow/data-pipeline]
     description: "When handling large data"
 
   - pattern: "where|location|new feature|new project|submodule"
-    files: [decision-guide, module-protocol]
+    files: [03-architecture/decision-guide, 03-architecture/module-protocol]
     description: "When deciding feature/project location"
 
   - pattern: "git|commit|branch|PR|merge|rebase"
-    files: [git-workflow, git-advanced]
+    files: [02-workflow/git-workflow, 02-workflow/git-advanced]
     description: "When working with Git"
 
   - pattern: "release|version|tag|changelog"
-    files: [release-workflow]
+    files: [02-workflow/release-workflow]
     description: "When releasing"
 
   - pattern: "skill|mcp|agent|command|hook|extend"
-    files: [extension-mechanisms]
+    files: [03-architecture/extension-mechanisms]
     description: "When extending Claude Code"
 
   - pattern: "principle|philosophy|why|rationale|judgment"
-    files: [ai-axioms, philosophy]
+    files: [01-core/ai-axioms, 01-core/philosophy]
     description: "When decision rationale needed"
 
   - pattern: "token|API key|auth|credential"
-    files: [api-tokens]
+    files: [04-operations/api-tokens]
     description: "When authenticating external services"
 
   - pattern: "spec|requirement|scenario"
-    files: [spec-process]
+    files: [02-workflow/spec-process]
     description: "When writing specifications"
 
   - pattern: "verify|test|criteria|validate|done|complete|check"
-    files: [task-verification-workflow]
+    files: [02-workflow/task-verification-workflow]
     description: "When defining tasks with verification"
+
+  - pattern: "agent|advisor|reviewer|refactor|self-improve|subagent"
+    files: [01-core/agents]
+    description: "When working with AI agents"
 
 # Per-file summaries (quick reference)
 summaries:
-  ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
-  philosophy: "SSOT, MECE, Simplicity First - 19 principles"
-  neuron-base: "Submodule inheritance contract"
-  decision-guide: "neuron vs separate repo, API Skill placement"
-  extension-mechanisms: "Skills, MCP, Subagent, Commands, Hooks selection"
-  git-workflow: "Conventional Commits, branch strategy"
-  git-advanced: "Worktree, revert, collaboration tips"
-  release-workflow: "Semantic versioning, /release command"
-  spec-process: "Scenario-based spec development"
-  data-pipeline: "Large data pipeline pattern"
-  module-protocol: "Submodule register/archive/re-register"
-  repo-setup: "New repository essential files, templates"
-  github-settings: "Branch protection, PR settings"
-  api-tokens: "External service token metadata"
-  self-improve-policy: "Self-improve agent guardrails"
-  task-verification-workflow: "Define task + criteria, verify before done, feedback loop"
+  01-core/ai-axioms: "Curiosity, Truth, Beauty - 3 core axioms"
+  01-core/philosophy: "SSOT, MECE, Simplicity First - 20 principles"
+  01-core/neuron-base: "Submodule inheritance contract"
+  01-core/agents: "Advisor, reviewer, refactor, self-improve agents"
+  02-workflow/git-workflow: "Conventional Commits, branch strategy"
+  02-workflow/git-advanced: "Worktree, revert, collaboration tips"
+  02-workflow/release-workflow: "Semantic versioning, /release command"
+  02-workflow/spec-process: "Scenario-based spec development"
+  02-workflow/data-pipeline: "Large data pipeline pattern"
+  02-workflow/task-verification-workflow: "Define task + criteria, verify before done"
+  03-architecture/decision-guide: "neuron vs separate repo, API Skill placement"
+  03-architecture/extension-mechanisms: "Skills, MCP, Subagent, Commands, Hooks selection"
+  03-architecture/module-protocol: "Submodule register/archive/re-register"
+  03-architecture/repo-setup: "New repository essential files, templates"
+  04-operations/github-settings: "Branch protection, PR settings"
+  04-operations/api-tokens: "External service token metadata"
+  04-operations/self-improve-policy: "Self-improve agent guardrails"

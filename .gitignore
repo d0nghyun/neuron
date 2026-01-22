@@ -7,5 +7,8 @@
 .credentials/
 .mcp.json
 
+# Personal context (long-term memory)
+meta/
+
 # Python cache
 .mypy_cache/

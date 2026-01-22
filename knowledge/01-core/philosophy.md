@@ -84,7 +84,7 @@ Repetition signals inefficiency. If something is done twice, it's a candidate fo
 Code first, AI where judgment needed. AI context is expensive—reserve it for decisions, not mechanics.
 
 ### 17. Learn from Failure
-Failures are data, not shame. Record every failure, analyze patterns, and improve the system to prevent recurrence. The retrospective cycle (detect → record → analyze → fix) turns mistakes into system upgrades. See `docs/retrospectives/` for the learning mechanism and `knowledge/self-improve-policy.md` for improvement guardrails.
+Failures are data, not shame. Record every failure, analyze patterns, and improve the system to prevent recurrence. The retrospective cycle (detect → record → analyze → fix) turns mistakes into system upgrades. See `docs/retrospectives/` for the learning mechanism and `knowledge/04-operations/self-improve-policy.md` for improvement guardrails.
 
 ### 18. Docendo Discimus (Teaching to Learn)
 The act of explaining forces clarity. If you cannot teach it simply, you do not understand it fully. Write documentation as if teaching someone else. Structure knowledge for external consumption—this crystallizes your own understanding. The Feynman technique applies: explain → identify gaps → refine → repeat.

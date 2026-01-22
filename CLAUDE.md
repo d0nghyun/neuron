@@ -66,7 +66,7 @@ Three axioms govern all decisions:
 | 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
 | 20 | Sustainable by Design | One-off is waste. Build reproducible, self-evolving processes. | Truth, Beauty, Curiosity |
 
-Detailed explanations: `knowledge/philosophy.md`
+Detailed explanations: `knowledge/01-core/philosophy.md`
 
 ## Agents
 
@@ -77,7 +77,7 @@ Detailed explanations: `knowledge/philosophy.md`
 | `refactor` | Structure improvement | File > 200 lines, duplication |
 | `self-improve` | System improvement | Reviewer outputs `[IMPROVE]` |
 
-Details: `knowledge/agents.md`
+Details: `knowledge/01-core/agents.md`
 
 ## Routing
 
@@ -87,7 +87,7 @@ Details: `knowledge/agents.md`
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
-| **Any task starts** | Define verification criteria (see `knowledge/task-verification-workflow.md`) |
+| **Any task starts** | Define verification criteria (see `knowledge/02-workflow/task-verification-workflow.md`) |
 | External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
 | Create PR | `/pr` |
 | Create release | `/release` |
