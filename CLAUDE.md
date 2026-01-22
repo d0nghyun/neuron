@@ -189,7 +189,3 @@ Short-term memory (always loaded). For details: `meta/` folder.
 - **Commits**: Conventional commits, `Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>`
 - **Auto-commit**: Commit when logical unit complete
 - **Auto-PR**: Run `/pr` on completion
-
----
-
-**Self-Test**: Before committing changes, run `.claude/procedures/self-test.md`

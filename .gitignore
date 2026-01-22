@@ -7,3 +7,5 @@
 .mcp.json
 
 .mypy_cache/
+
+.credentials/

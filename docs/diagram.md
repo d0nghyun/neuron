@@ -97,13 +97,14 @@
          │                     │                     │
          ▼                     ▼                     ▼
 ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│     AGENTS      │  │     SKILLS      │  │    COMMANDS     │
+│     AGENTS      │  │   MCP SERVERS   │  │    COMMANDS     │
 │  (Judgment)     │  │  (External API) │  │   (Workflow)    │
 ├─────────────────┤  ├─────────────────┤  ├─────────────────┤
-│ • advisor       │  │ • github-api    │  │ • /pr           │
-│ • reviewer      │  │ • jira-api      │  │ • /release      │
-│ • refactor      │  │ • notion-api    │  │ • /sync         │
-│ • self-improve  │  │ • confluence-api│  │ • /backlog      │
+│ • advisor       │  │ • github        │  │ • /pr           │
+│ • reviewer      │  │ • atlassian     │  │ • /release      │
+│ • refactor      │  │ • notion        │  │ • /sync         │
+│ • self-improve  │  │ • slack         │  │ • /backlog      │
+│                 │  │ • google-cal    │  │ • /audit-modules│
 └─────────────────┘  └─────────────────┘  └─────────────────┘
 ```
 
@@ -152,8 +153,14 @@ neuron/
 │
 ├── modules/               # Git submodules
 │   ├── _registry.yaml     # Module registry
-│   ├── hippo/             # Personal data
-│   ├── pm-arkraft/        # Project management
+│   ├── arkraft/           # Active arkraft modules
+│   │   ├── pm-arkraft/
+│   │   ├── arkraft-jupyter/
+│   │   └── arkraft-agent-report/
+│   ├── arkraft-legacy/    # Legacy arkraft modules
+│   │   ├── arkraft/
+│   │   ├── arkraft-fe/
+│   │   └── finter/
 │   └── modeling/          # ML experiments
 │
 ├── docs/
@@ -171,11 +178,9 @@ neuron/
     │   ├── pr.md
     │   ├── release.md
     │   ├── sync.md
-    │   └── backlog.md
+    │   ├── backlog.md
+    │   └── audit-modules.md
     ├── procedures/        # Step-by-step guides
-    └── skills/            # External API integrations
-        ├── github-api/
-        ├── jira-api/
-        ├── notion-api/
-        └── confluence-api/
+    └── skills/            # Domain-specific skills
+        └── ui-ux-pro-max/ # UI/UX design skill
 ```
