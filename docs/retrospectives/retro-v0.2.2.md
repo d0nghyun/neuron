@@ -1,0 +1,67 @@
+# Retrospective v0.2.2
+
+> Released: 2026-01-22
+
+## Patterns
+
+> Recurring issues detected by reviewer agent
+
+| Date | PR | Pattern | Status |
+|------|-----|---------|--------|
+| 2026-01-22 | #68 | Task verification workflow skipped: no criteria defined for meta infrastructure (P15, P7 violated) - 8th occurrence, ENFORCEMENT MECHANISM CRITICAL | pending |
+| 2026-01-22 | #new (MCP revert) | Task verification workflow skipped: no criteria defined for MCP revert task (P15, P7 violated) - 7th occurrence, enforcement mechanism urgently needed | pending |
+| 2026-01-22 | #new (MCP migration cleanup) | Task verification workflow skipped: no criteria defined for file deletion task (P15, P7 violated) - 6th occurrence, pattern persists strongly | pending |
+| 2026-01-22 | #new (hippo suspension) | Task verification workflow skipped: no criteria defined for submodule removal (P15, P7 violated) - 5th occurrence, pattern persists | pending |
+| 2026-01-22 | #new (hippo suspension) | Reference checking not performed before removal: meta/projects.yaml still points to deleted submodule path (P15 Verify Before Done) | pending |
+| 2026-01-22 | #new (hippo suspension) | Language convention violated: Korean text in English-only file (CLAUDE.md policy) | pending |
+| 2026-01-21 | claude/design-kb-architecture-sB1SQ | Task verification workflow skipped again: no criteria defined before implementation (P15, P7 violated) - 4th occurrence suggests enforcement mechanism needed | pending |
+| 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Submodule updates lack verification: no build check, no integration test after pointer updates (P15 Verify Before Done) | pending |
+| 2026-01-20 | claude/flexible-report-generator-Z5qc9 | Manual submodule updates - automation candidate for `git submodule update --remote` workflow (P16 Automate Repetition) | pending |
+| 2026-01-18 | #new (ui-ux-pro-max skill) | File size violations: 1066-line file added when 200-line limit exists (P3 Simplicity First violated) | pending |
+| 2026-01-18 | #new (ui-ux-pro-max skill) | No verification before commit: Python syntax error shipped (P15 Verify Before Done violated) | pending |
+| 2026-01-18 | #new (ui-ux-pro-max skill) | No tests for new functionality (P7 Test-First violated) | pending |
+| 2026-01-15 | arkraft-fe/color-unification | Large refactors (110+ files) lack verification criteria - no build check, no visual test, no grep for removed references | pending |
+
+## Insights
+
+> What worked well, lessons learned (updated by reviewer on each PR)
+
+- 2026-01-22: P1 (SSOT) + P2 (MECE) in meta architecture: identity (static) / focus (current) / team (registry) separation creates clear boundaries
+- 2026-01-22: P16 (Automate Repetition) via handoff system: Parallel session support without manual context reconstruction
+- 2026-01-22: P4 (Incremental) in meta structure: Minimal viable YAML scaffolding ready to grow organically
+- 2026-01-22: P17 (Learn from Failure) demonstrated: MCP context cost issue identified through actual usage, reverted quickly without sunk cost fallacy
+- 2026-01-22: P6 (Agile) + P11 (Constructive Challenge): Willingness to revert architectural decision when evidence shows original approach was better
+- 2026-01-22: P16 (Automate Repetition) clarified: Context is expensive - skills provide lighter-weight alternative to MCP tool overhead
+- 2026-01-22: P1 (SSOT) for credentials: Centralized .credentials/*.json pattern ensures consistent auth across all API skills
+- 2026-01-22: P16 (Automate Repetition) via MCP migration: Replacing 855 lines of skill boilerplate with native MCP tool routing reduces maintenance burden
+- 2026-01-22: P9 (Root Cause First) demonstrated: Removing redundant infrastructure (self-test, PR template) at source rather than maintaining parallel patterns
+- 2026-01-22: P3 (Simplicity First) applied to external API access: MCP tools provide simpler interface than custom skill layer
+- 2026-01-22: P2 (MECE) in module lifecycle: Clear separation between active and archived states via registry structure enables clean suspension workflow
+- 2026-01-22: P1 (SSOT) for module metadata: archived section preserves history (registered_at, archived_at, reason) for future reference
+- 2026-01-21: P1 (SSOT) + P8 (AI-First) in memory architecture: meta/ YAML as single source, CLAUDE.md as compact index - clear separation enables scalable context management
+- 2026-01-21: P19 (Visual Architecture) aids understanding: ASCII diagram in skill doc clarifies short→long memory model at a glance
+- 2026-01-21: P4 (Incremental) demonstrated: Scaffold structure with minimal data, ready to grow organically as needed
+- 2026-01-20: P5 (Modularity) in action: Submodules isolate complexity - neuron tracks only pointers while subprojects evolve independently
+- 2026-01-20: P1 (SSOT) via .gitmodules: Single source for dependency versions prevents version drift across environments
+- 2026-01-18: P8 (AI-First) well executed: CSV format enables efficient search, structured data for machine consumption
+- 2026-01-18: P16 (Automate Repetition) demonstrated: BM25 search automates UI/UX knowledge retrieval vs manual docs
+- 2026-01-18: P2 (MECE) in skill design: Clear domain boundaries (style, color, typography, ux, chart) prevent overlap
+- 2026-01-17: P16 expansion demonstrates P18 (Docendo Discimus): teaching the hierarchy clarifies when to use code vs AI
+- 2026-01-17: P2 (MECE) applied to automation: clear boundary between deterministic (code) and judgment (AI) layers prevents confusion
+- 2026-01-15: Design system unification shows good principle application: SSOT (centralized tokens), Simplicity First (9→5 variants), Root Cause First (fixed at token level not UI level)
+- 2026-01-15: Bulk refactoring benefits from clear semantic naming: neutral/blue/green/amber/red more maintainable than gray/cyan/magenta/yellow/orange
+
+## Improvements
+
+> System fixes by self-improve agent
+
+| Date | PR | Target | Change | Root Cause |
+|------|-----|--------|--------|------------|
+
+## Action Items for v0.2.3
+
+1. **[CRITICAL]** Implement task verification enforcement mechanism (8 consecutive violations)
+   - PR template added in v0.2.2, monitor effectiveness
+   - Consider pre-commit hook if template insufficient
+2. **[HIGH]** Address ui-ux-pro-max skill file size violation (1066 lines > 200 limit)
+3. **[MEDIUM]** Automate submodule update workflow
