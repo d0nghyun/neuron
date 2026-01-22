@@ -46,6 +46,10 @@
 
 ## Removed
 
+- **[hippo submodule]** Suspended hippo memory management module
+  - Removed from .gitmodules and modules/ directory
+  - Moved to archived section in modules/_registry.yaml with status: suspended
+  - Archived on 2026-01-22
 - **[arkraft-fe]** Removed unused color variants from design system
   - ColorVariant: removed `info`, `cyan`, `magenta`, `yellow`
   - TitleColor: removed `orange`, `cyan`, `yellow`, `magenta`, `white`, `purple`
