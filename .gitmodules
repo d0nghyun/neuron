@@ -19,3 +19,6 @@
 [submodule "modules/modeling"]
 	path = modules/modeling
 	url = https://github.com/Quantit-Github/modeling.git
+[submodule "modules/arkraft/arkraft-agent-insight"]
+	path = modules/arkraft/arkraft-agent-insight
+	url = https://github.com/Quantit-Github/arkraft-agent-insight.git
