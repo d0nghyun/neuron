@@ -22,3 +22,6 @@
 [submodule "modules/arkraft/arkraft-agent-insight"]
 	path = modules/arkraft/arkraft-agent-insight
 	url = https://github.com/Quantit-Github/arkraft-agent-insight.git
+[submodule "modules/arkraft/arkraft-deploy"]
+	path = modules/arkraft/arkraft-deploy
+	url = git@github.com:Quantit-Github/arkraft-deploy.git
