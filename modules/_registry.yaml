@@ -4,7 +4,10 @@
 # Dashboard-ready format for tracking all modules
 
 modules:
-  pm-arkraft:
+  # ============================================
+  # arkraft - Active project group
+  # ============================================
+  arkraft/pm-arkraft:
     repo: gitlab.quantit.io/ark/arkraft/pm-arkraft
     domain: work
     status: active
@@ -15,6 +18,69 @@ modules:
       - arkraft
       - work
 
+  arkraft/arkraft-jupyter:
+    repo: github.com/Quantit-Github/arkraft-jupyter
+    domain: work
+    status: active
+    description: Jupyter notebook integration for arkraft
+    registered_at: "2026-01-22"
+    tags:
+      - arkraft
+      - jupyter
+      - notebook
+
+  arkraft/arkraft-agent-report:
+    repo: github.com/Quantit-Github/arkraft-agent-report
+    domain: work
+    status: active
+    description: Agent report generation for arkraft
+    registered_at: "2026-01-22"
+    tags:
+      - arkraft
+      - agent
+      - report
+
+  # ============================================
+  # arkraft-legacy - Legacy project group
+  # ============================================
+  arkraft-legacy/arkraft:
+    repo: github.com/Quantit-Github/arkraft
+    domain: work
+    status: legacy
+    description: AI-Powered Quantitative Research Automation Platform (legacy monorepo)
+    registered_at: "2026-01-13"
+    tags:
+      - arkraft
+      - claude-agent
+      - turborepo
+      - legacy
+
+  arkraft-legacy/arkraft-fe:
+    repo: gitlab.quantit.io/ark/arkraft/arkraft-fe
+    domain: work
+    status: legacy
+    description: Arkraft frontend (legacy) - Vue.js demo app
+    registered_at: "2026-01-13"
+    tags:
+      - arkraft
+      - frontend
+      - legacy
+
+  arkraft-legacy/finter:
+    repo: gitlab.quantit.io/ark/finter
+    domain: work
+    status: legacy
+    description: Finter backend service (legacy)
+    registered_at: "2026-01-13"
+    tags:
+      - arkraft
+      - backend
+      - finter
+      - legacy
+
+  # ============================================
+  # Standalone modules
+  # ============================================
   modeling:
     repo: github.com/Quantit-Github/modeling
     domain: work
@@ -26,43 +92,6 @@ modules:
       - quant
       - skills
       - claude-code
-
-  arkraft-fe:
-    repo: gitlab.quantit.io/ark/arkraft/arkraft-fe
-    domain: work
-    status: legacy
-    description: Arkraft frontend (legacy) - Vue.js demo app
-    registered_at: "2026-01-13"
-    notes: |
-      Legacy frontend. Referenced by pm-arkraft (GitLab ID: 535).
-      Development possible but superseded by new architecture.
-    tags:
-      - arkraft
-      - frontend
-      - legacy
-
-  finter:
-    repo: gitlab.quantit.io/ark/finter
-    domain: work
-    status: active
-    description: Finter backend service for Arkraft demo
-    registered_at: "2026-01-13"
-    tags:
-      - arkraft
-      - backend
-      - finter
-
-  arkraft:
-    repo: github.com/Quantit-Github/arkraft
-    domain: work
-    status: active
-    description: AI-Powered Quantitative Research Automation Platform
-    registered_at: "2026-01-13"
-    tags:
-      - arkraft
-      - claude-agent
-      - turborepo
-      - k8s
 
 # Archived modules (removed from submodules but tracked)
 archived:
@@ -81,6 +110,6 @@ archived:
 
 # Registry metadata
 _meta:
-  version: 1
+  version: 2
   updated_at: "2026-01-22"
   schema: knowledge/module-protocol.md

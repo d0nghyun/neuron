@@ -39,6 +39,11 @@
   - arkraft-fe: 6587482 → 1a20f2c (9 commits: HTML report rendering, data reports API, financial research page)
   - finter: 707dc66 → b98bf8e (12 commits: HTML report generation, flexible-report-generator integration, analysis API with agent logs)
   - pm-arkraft: 4ef7b4d → 5be5d13 (6 commits: ADR Confluence migration, Google Calendar scheduling, Slack notifications)
+- **[modules]** Reorganized submodule structure into logical groups
+  - modules/arkraft/ (active): pm-arkraft, arkraft-jupyter, arkraft-agent-report
+  - modules/arkraft-legacy/ (legacy): arkraft, arkraft-fe, finter
+  - modules/modeling (standalone)
+  - Registry version bumped to v2 with updated module keys matching new paths
 
 ## Fixed
 

@@ -1,21 +1,21 @@
-[submodule "modules/pm-arkraft"]
-	path = modules/pm-arkraft
+[submodule "modules/arkraft/pm-arkraft"]
+	path = modules/arkraft/pm-arkraft
 	url = ssh://git@gitlab.quantit.io:2222/ark/arkraft/pm-arkraft.git
+[submodule "modules/arkraft/arkraft-jupyter"]
+	path = modules/arkraft/arkraft-jupyter
+	url = git@github.com:Quantit-Github/arkraft-jupyter.git
+[submodule "modules/arkraft/arkraft-agent-report"]
+	path = modules/arkraft/arkraft-agent-report
+	url = git@github.com:Quantit-Github/arkraft-agent-report.git
+[submodule "modules/arkraft-legacy/arkraft"]
+	path = modules/arkraft-legacy/arkraft
+	url = https://github.com/Quantit-Github/arkraft
+[submodule "modules/arkraft-legacy/arkraft-fe"]
+	path = modules/arkraft-legacy/arkraft-fe
+	url = ssh://git@gitlab.quantit.io:2222/ark/arkraft/arkraft-fe.git
+[submodule "modules/arkraft-legacy/finter"]
+	path = modules/arkraft-legacy/finter
+	url = ssh://git@gitlab.quantit.io:2222/ark/finter.git
 [submodule "modules/modeling"]
 	path = modules/modeling
 	url = https://github.com/Quantit-Github/modeling.git
-[submodule "modules/arkraft-fe"]
-	path = modules/arkraft-fe
-	url = ssh://git@gitlab.quantit.io:2222/ark/arkraft/arkraft-fe.git
-[submodule "modules/finter"]
-	path = modules/finter
-	url = ssh://git@gitlab.quantit.io:2222/ark/finter.git
-[submodule "modules/arkraft"]
-	path = modules/arkraft
-	url = https://github.com/Quantit-Github/arkraft
-[submodule "modules/arkraft-agent-report"]
-	path = modules/arkraft-agent-report
-	url = git@github.com:Quantit-Github/arkraft-agent-report.git
-[submodule "modules/arkraft-jupyter"]
-	path = modules/arkraft-jupyter
-	url = git@github.com:Quantit-Github/arkraft-jupyter.git
