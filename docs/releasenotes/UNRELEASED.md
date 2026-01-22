@@ -29,6 +29,11 @@
   - philosophy.md adds hierarchy table: Code layer (deterministic) vs AI layer (judgment)
   - Clarifies when to use code (hooks, scripts) vs AI (review, architecture)
   - Emphasizes AI context cost as decision factor
+- **[MCP Migration]** Advisor agent routing updated for MCP tool integration
+  - Skill Enforcement section renamed to MCP Tool Routing
+  - Routing table updated: Skill names → MCP tool prefixes (mcp__github__*, mcp__atlassian__*, etc.)
+  - Output format changed: removed `required_skill`, added `mcp_tools` array
+  - Added Google Calendar and Slack to routing table
 - **[arkraft-fe]** Unified design system color palette to Blue/Green/Red semantic system
   - Phase colors simplified: insight/design/explore use blue variants, implement uses amber, evaluate uses green
   - Color naming standardized: `gray-*` → `neutral-*`, `cyan-*` → `blue-*`
@@ -51,6 +56,16 @@
 
 ## Removed
 
+- **[MCP Migration]** Removed skill files replaced by MCP tools (855 lines deleted)
+  - .claude/skills/github-api/SKILL.md - use mcp__github__* tools
+  - .claude/skills/jira-api/SKILL.md - use mcp__atlassian__* tools
+  - .claude/skills/notion-api/SKILL.md - use mcp__notion__* tools
+  - .claude/skills/confluence-api/SKILL.md - use mcp__atlassian__* tools
+  - .claude/skills/slack-api/SKILL.md - use mcp__slack__* tools
+  - .claude/skills/google-calendar/SKILL.md - use mcp__google-calendar__* tools
+- **[Redundant Procedures]** Removed procedures superseded by better patterns
+  - .claude/procedures/self-test.md - superseded by task-verification-workflow.md
+  - .github/PULL_REQUEST_TEMPLATE.md - superseded by /pr skill dynamic generation
 - **[hippo submodule]** Suspended hippo memory management module
   - Removed from .gitmodules and modules/ directory
   - Moved to archived section in modules/_registry.yaml with status: suspended
@@ -62,10 +77,15 @@
 
 ## Security
 
--
+- **[.gitignore]** Added .credentials/ directory to prevent credential leakage
 
 ## Breaking Changes
 
+- **[Advisor Agent]** Output format changed for external service routing
+  - Removed fields: `skill_required`, `required_skill`, `skill_reason`
+  - Added field: `mcp_tools` (array of MCP tool names)
+  - Changed field: `tool_reason` (replaces `skill_reason`)
+  - Consumers must update to new output schema
 - **[arkraft-fe]** Design system color API changes
   - Components using removed ColorVariant values (`info`, `cyan`, `magenta`, `yellow`) must migrate to new variants
   - TitleColor props must use new values: `default`, `blue`, `green`, `amber`, `red`
