@@ -3,9 +3,12 @@
 .env.local
 .env.*.local
 
-# MCP config (user-specific)
+# Credentials and configs (user-specific)
+.credentials/
 .mcp.json
 
-.mypy_cache/
+# Personal context (long-term memory)
+meta/
 
-.credentials/.mcp.json.backup
+# Python cache
+.mypy_cache/

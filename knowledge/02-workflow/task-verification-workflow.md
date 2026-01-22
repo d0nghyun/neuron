@@ -194,3 +194,16 @@ Before declaring any task done:
 - [ ] All criteria pass
 - [ ] Failures diagnosed and fixed
 - [ ] Recurring patterns recorded
+
+## Enforcement Mechanism
+
+**PR Template**: `.github/pull_request_template.md` includes mandatory verification section.
+
+**Reviewer Agent**: Will mark `changes-requested` if:
+- No verification criteria defined
+- Criteria not executed
+- Broken references found (grep for deleted files)
+
+**Pattern Tracking**: Violations logged in `docs/retrospectives/UNRETROSPECTIVE.md`.
+- 8+ occurrences → system-level fix required
+- `self-improve` agent triggered on [IMPROVE] tags

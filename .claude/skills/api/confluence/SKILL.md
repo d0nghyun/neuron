@@ -34,16 +34,6 @@ ATLASSIAN_USER_EMAIL=$(jq -r '.user_email' /Users/dhlee/Git/personal/neuron/.cre
 ATLASSIAN_API_TOKEN=$(jq -r '.api_token' /Users/dhlee/Git/personal/neuron/.credentials/atlassian.json)
 ```
 
-Or use Python:
-```python
-import json
-with open('/Users/dhlee/Git/personal/neuron/.credentials/atlassian.json') as f:
-    creds = json.load(f)
-BASE_URL = creds['base_url']
-USER_EMAIL = creds['user_email']
-API_TOKEN = creds['api_token']
-```
-
 ## API Base URL
 
 ```

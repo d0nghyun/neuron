@@ -66,78 +66,18 @@ Three axioms govern all decisions:
 | 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
 | 20 | Sustainable by Design | One-off is waste. Build reproducible, self-evolving processes. | Truth, Beauty, Curiosity |
 
-Detailed explanations: `knowledge/philosophy.md`
+Detailed explanations: `knowledge/01-core/philosophy.md`
 
-## Agent System
+## Agents
 
-Agents embody philosophical principles as executable components.
+| Agent | Purpose | Trigger |
+|-------|---------|---------|
+| `advisor` | Ambiguity resolution | Before asking user |
+| `reviewer` | Code quality, PR review | Before `/pr` |
+| `refactor` | Structure improvement | File > 200 lines, duplication |
+| `self-improve` | System improvement | Reviewer outputs `[IMPROVE]` |
 
-### Why Agents?
-
-**Autonomous Execution** + **Trust-based Delegation** = AI should solve problems independently before interrupting the user.
-
-### Agent Roles
-
-| Agent | Brain Analogy | Purpose | Implements | When to Use |
-|-------|---------------|---------|------------|-------------|
-| `advisor` | PFC (Prefrontal Cortex) | Philosophy interpretation, ambiguity resolution | Constructive Challenge | Before asking user anything |
-| `reviewer` | ACC (Anterior Cingulate) | Code quality, PR review, release notes | Verify Before Done | Before creating PR |
-| `refactor` | Hippocampus | Structure improvement, complexity reduction | Simplicity First, MECE | When code feels messy |
-| `self-improve` | Neuroplasticity | System improvement from recurring patterns | Learn from Failure | When reviewer outputs `[IMPROVE]` |
-
-### How to Call Agents
-
-```
-Task(subagent_type="advisor", prompt="Should I create a new file or add to existing?")
-Task(subagent_type="reviewer", prompt="Review changes before PR")
-Task(subagent_type="refactor", prompt="This module has grown too large")
-```
-
-### Advisor-before-AskUser
-
-**NEVER ask user questions without checking Advisor first.**
-
-```
-Ambiguous situation → advisor → confidence high/medium? → Proceed
-                              → confidence low? → Ask user
-```
-
-**Confidence Levels (advisor returns these):**
-- **High**: Clear answer from philosophy/principles. Proceed confidently.
-- **Medium**: Reasonable inference possible. Proceed with stated assumption.
-- **Low**: Genuinely unclear, needs user input. Ask user.
-
-**Response Format (always include):**
-```
-[P#, P#] Brief reasoning → Action taken
-```
-
-**Example Flow:**
-```
-User: "Add logging"
-AI thinking: New file or existing? → Check principles
-  [P4 Incremental] Build only what's needed → add to existing
-  [P1 SSOT] One place for logging → find existing logger
-AI response: "[P4, P1] Adding to existing logger in utils/logger.ts"
-  → Executes without asking
-```
-
-**Anti-pattern (WRONG):**
-```
-AI: "Should I create a new file or add to existing?"  ← Unnecessary question
-```
-
-### Reviewer & Refactor Usage
-
-**Reviewer** - before any PR:
-```
-Task(subagent_type="reviewer", prompt="Review staged changes for PR")
-```
-
-**Refactor** - when noticing: file > 200 lines, duplication, unclear boundaries:
-```
-Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
-```
+Details: `knowledge/01-core/agents.md`
 
 ## Routing
 
@@ -147,7 +87,7 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
-| **Any task starts** | Define verification criteria (see `knowledge/task-verification-workflow.md`) |
+| **Any task starts** | Define verification criteria (see `knowledge/02-workflow/task-verification-workflow.md`) |
 | External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
 | Create PR | `/pr` |
 | Create release | `/release` |
@@ -174,13 +114,36 @@ Task(subagent_type="refactor", prompt="Module X has 3 similar functions")
 
 ## Personal Context
 
-Short-term memory (always loaded). For details: `meta/` folder.
+AI long-term memory. Always loaded at session start. **SSOT for user context.**
 
-| What | Current | Details |
-|------|---------|---------|
-| Focus | arkraft demo delivery | `meta/projects.yaml` |
-| Org | Quantit AI팀 | `meta/team.yaml` |
-| Active | arkraft, finter, modeling | `modules/_registry.yaml` |
+| File | Purpose | Update Frequency |
+|------|---------|------------------|
+| `meta/identity.yaml` | Who I am (name, role, org) | Rarely |
+| `meta/focus.yaml` | Current priorities, active modules | Per project change |
+| `meta/team.yaml` | Team members (Jira/Slack IDs) | Per team change |
+
+### Meta Update Rule [P17]
+
+**After every significant session, update meta/ to prevent repeated mistakes.**
+
+When to update:
+- New insight about workflow → Update relevant file
+- Recurring question answered → Record in meta/
+- Focus/priority changed → Update `focus.yaml`
+- Team member added/changed → Update `team.yaml`
+
+Use `/meta` skill to update meta files interactively.
+
+## Session Protocol
+
+**Complex tasks only** (code changes, multi-step). Simple queries → skip.
+
+| Phase | Action |
+|-------|--------|
+| Start | `/handoff` → `meta/focus.yaml` → TodoWrite |
+| During | TodoWrite progress, handoff for decisions |
+| End | Complete: `reviewer` → `/pr`. Paused: update handoff. Insights: `/meta` |
+| Overflow | Dump everything to handoff: progress point, decisions, file:line, next steps |
 
 ## Conventions
 
