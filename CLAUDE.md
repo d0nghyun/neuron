@@ -5,7 +5,7 @@
 > **STOP. Before ANY action, check these rules.**
 
 1. **Principle-Based Reasoning**: Every decision/response MUST cite applicable principle(s).
-   - Format: `[P#] decision` (e.g., `[P13] Proceeding without asking`)
+   - Format: `[P#] decision`
    - No decision without principle backing
    - When principles conflict, state which takes precedence and why
 
@@ -26,6 +26,11 @@
    - Uncertainty? → `advisor`
    - Before PR? → `reviewer`
    - Code smell? → `refactor`
+
+6. **Session Lifecycle** [P17, P20]: Boot and wrapup are mandatory.
+   - Session start → `Task(subagent_type="boot")` FIRST
+   - Session end → `Task(subagent_type="wrapup")` LAST
+   - No exceptions. Context is expensive. Learnings must persist.
 
 **Violation = System malfunction. These are not suggestions.**
 
@@ -72,6 +77,8 @@ Detailed explanations: `knowledge/01-core/philosophy.md`
 
 | Agent | Purpose | Trigger |
 |-------|---------|---------|
+| `boot` | Session initialization | **Session start (MANDATORY)** |
+| `wrapup` | Session teardown, persist learnings | **Session end (MANDATORY)** |
 | `advisor` | Ambiguity resolution | Before asking user |
 | `reviewer` | Code quality, PR review | Before `/pr` |
 | `refactor` | Structure improvement | File > 200 lines, duplication |
@@ -83,6 +90,8 @@ Details: `knowledge/01-core/agents.md`
 
 | Situation | Route |
 |-----------|-------|
+| **Session start** | `Task(subagent_type="boot")` |
+| **Session end** | `Task(subagent_type="wrapup")` |
 | Need judgment/philosophy | `Task(subagent_type="advisor")` |
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
@@ -121,6 +130,7 @@ AI long-term memory. Always loaded at session start. **SSOT for user context.**
 | `meta/identity.yaml` | Who I am (name, role, org) | Rarely |
 | `meta/focus.yaml` | Current priorities, active modules | Per project change |
 | `meta/team.yaml` | Team members (Jira/Slack IDs) | Per team change |
+| `meta/lessons.yaml` | Learnings from past sessions | Per significant session (by wrapup) |
 
 ### Meta Update Rule [P17]
 
@@ -136,14 +146,16 @@ Use `/meta` skill to update meta files interactively.
 
 ## Session Protocol
 
-**Complex tasks only** (code changes, multi-step). Simple queries → skip.
+**When to use boot/wrapup:**
+- Complex: Multi-file changes, commits, handoff needed, external API calls
+- Simple (skip): Read-only queries, single-file reads, explanations, quick lookups
 
 | Phase | Action |
 |-------|--------|
-| Start | `/handoff` → `meta/focus.yaml` → TodoWrite |
+| Start | **`boot` agent** → loads handoff, focus, lessons → TodoWrite |
 | During | TodoWrite progress, handoff for decisions |
-| End | Complete: `reviewer` → `/pr`. Paused: update handoff. Insights: `/meta` |
-| Overflow | Dump everything to handoff: progress point, decisions, file:line, next steps |
+| End | **`wrapup` agent** → extracts lessons, updates handoff → `/pr` if complete |
+| Overflow | `wrapup` agent with `session_outcome: paused` |
 
 ## Conventions
 
