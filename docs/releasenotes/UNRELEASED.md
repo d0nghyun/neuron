@@ -8,6 +8,10 @@
 - boot agent: session initialization - loads handoff, focus, and relevant lessons at session start
 - wrapup agent: session teardown - extracts facts/lessons/patterns and updates handoff at session end
 - meta/lessons.yaml: structured long-term memory storage with fact/lesson/pattern types
+- arkraft-agent-pm: specs/ knowledge cache for offline AI context loading (Confluence read-only mirror)
+- arkraft-agent-pm: /ask command for project Q&A with cache-first, API-fallback strategy
+- arkraft-agent-pm: /route command for expertise-based issue-to-assignee matching
+- arkraft-agent-pm: /sync-specs command for Confluence to specs/ synchronization
 
 ## Changed
 
@@ -17,6 +21,8 @@
 - CLAUDE.md: updated Agents table and Routing table to include boot/wrapup agents
 - CLAUDE.md: updated Session Protocol to replace manual handoff steps with agent-driven workflow
 - CLAUDE.md: added meta/lessons.yaml to Personal Context table
+- arkraft-agent-pm: CLAUDE.md updated with Commands section documenting /ask, /route, /sync-specs
+- arkraft-agent-pm: specs/ directory repurposed from specifications to knowledge cache
 
 ## Fixed
 
