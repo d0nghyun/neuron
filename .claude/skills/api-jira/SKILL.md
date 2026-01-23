@@ -1,7 +1,8 @@
 ---
-name: jira-api
+name: api-jira
 description: Jira REST API for issues, projects, sprints. Uses API token for headless/CI. Activate for Jira operations.
 allowed-tools: Bash, Read, Grep
+user-invocable: true
 ---
 
 # Jira API Skill
