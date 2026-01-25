@@ -1,0 +1,81 @@
+# Factory
+
+Reference pattern library for component generation.
+
+## Before Creating
+
+**Check `ref-claude-code.md` first** to avoid reinventing built-in features.
+
+## Purpose
+
+Factory provides patterns (not templates) for creating new components.
+When a required component doesn't exist, reference the appropriate pattern to create it.
+
+## Component Selection Guide
+
+Analyze the request to determine the required component type:
+
+| Need | Component Type | Pattern |
+|------|----------------|---------|
+| Judgment/reasoning/review | Agent | pattern-agent.md |
+| External API call | Skill (api-*) | pattern-skill.md |
+| Reusable workflow | Skill (workflow-*) | pattern-skill.md |
+| Project-specific config | Context | pattern-context.yaml |
+| Automatic trigger | Hook | pattern-hook.md |
+| Reference docs/guides/lessons | Knowledge | pattern-knowledge.md |
+
+## Decision Tree
+
+```
+External service integration? → Skill (api-*)
+Judgment needed? → Agent
+Automatic execution? → Hook
+Project settings? → Context
+Reusable multi-step process? → Skill (workflow-*)
+Document for reference? → Knowledge
+```
+
+## Usage
+
+1. Identify what's missing (via boot or manual search)
+2. Read the appropriate pattern file
+3. Create the component at the correct location:
+   - Agents → `.claude/agents/{type}-{name}.md`
+   - Skills → `.claude/skills/{type}-{name}.md`
+   - Contexts → `.claude/contexts/ctx-{name}.yaml`
+   - Hooks → `.claude/settings.json` (hooks section)
+   - Knowledge → `.claude/knowledge/{prefix}-{name}.md`
+4. Create Task with `pending: session_restart` for handoff
+
+## Patterns
+
+| Pattern | Location | Creates |
+|---------|----------|---------|
+| pattern-agent.md | agents/ | Judgment components |
+| pattern-skill.md | skills/ | API wrappers, workflows |
+| pattern-context.yaml | contexts/ | Project configs |
+| pattern-hook.md | settings.json | Automatic triggers |
+| pattern-knowledge.md | knowledge/ | Reference docs, guides, lessons |
+
+## Naming Conventions
+
+**Agents**: `{type}-{name}.md`
+- `system-*`: Core system agents (boot, wrapup, advisor, self-improve)
+- `feature-dev-*`: Feature development agents
+- `code-*`: Code-related agents (code-review-*, code-refactor, etc.)
+
+**Skills**: `{type}-{name}.md`
+- `api-*`: External API integrations
+- `workflow-*`: Multi-step processes
+- `capability-*`: Domain capabilities
+
+**Contexts**: `ctx-{name}.yaml`
+- `ctx-focus.yaml`: Current priorities (always loaded)
+- `ctx-{module}.yaml`: Module-specific configs
+
+**Knowledge**: `{prefix}-{name}.md`
+- `ref-*`: Reference documents, specs
+- `guide-*`: Decision guides, how-tos
+- `protocol-*`: Procedures, standards
+- `workflow-*`: Process specifications
+- `learn-*`: Accumulated lessons (YAML)

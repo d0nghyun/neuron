@@ -192,7 +192,7 @@ curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
   | jq '.results[] | .title'
 
 # 2. AI infers pattern from titles like:
-#    "MTNG-0004-제목", "MTNG-0005-제목"
+#    "MTNG-0004-Title", "MTNG-0005-Title"
 #    → Pattern: MTNG-{4-digit}-{title}
 #    → Next: MTNG-0006-{new-title}
 ```

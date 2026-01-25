@@ -1,0 +1,102 @@
+---
+name: workflow-audit-modules
+description: Audit submodule compliance with neuron inheritance protocol
+allowed-tools: Read, Bash, Grep
+user-invocable: true
+---
+
+# Audit Submodule Inheritance
+
+## When to Activate
+
+- User runs `/audit-modules` command
+- After registering new submodules
+- Periodic compliance check
+
+## Purpose
+
+Verify all registered submodules follow the correct CLAUDE.md template per module-protocol.md.
+
+## Steps
+
+### Step 1: Load Registry
+
+```bash
+cat modules/_registry.yaml
+```
+
+Get list of active submodules (status: active).
+
+### Step 2: Initialize Submodules
+
+```bash
+git submodule update --init
+```
+
+### Step 3: Check Each Submodule
+
+For each active module, run compliance checks:
+
+| Check | Command | Pass |
+|-------|---------|------|
+| CLAUDE.md exists | `test -f modules/<name>/CLAUDE.md` | File exists |
+| Has Inherited Policies | `grep "## Inherited Policies" modules/<name>/CLAUDE.md` | Found |
+| Has Required table | `grep "### Required" modules/<name>/CLAUDE.md` | Found |
+| No parent-relative paths | `grep -E "\.\./\.\." modules/<name>/CLAUDE.md` | No matches |
+| References neuron URL | `grep "github.com/d0nghyun/neuron" modules/<name>/CLAUDE.md` | Found |
+
+### Step 4: Output Report
+
+```markdown
+## Submodule Audit Report
+
+| Module | Status | Issues |
+|--------|--------|--------|
+| <name> | PASS/FAIL | <issues or "None"> |
+
+### Summary
+- Total: X modules
+- Passing: Y
+- Failing: Z
+
+### Remediation
+For failing modules, apply template from knowledge/repo-setup.md
+```
+
+## Module Protocol
+
+Modules connect to neuron like USB-C devices:
+- **Standardized interface**: Consistent structure and metadata
+- **Plug and play**: Easy registration and removal
+- **Independence**: Each module is a standalone repository
+
+### Independence Requirement
+
+Submodules must work standalone when cloned independently.
+
+**DO NOT** use parent-relative paths like `../../knowledge/`.
+**DO** inline core policies in submodule CLAUDE.md.
+
+### Required Structure
+
+```
+module/
+  README.md     # Required: Purpose, setup, usage
+  CLAUDE.md     # Required: AI instructions with inlined policies
+  .claude/      # Optional: Claude Code configuration
+```
+
+### Registry Schema (modules/_registry.yaml)
+
+```yaml
+module_name:
+  repo: github.com/user/repo
+  domain: tools | personal | work | experimental
+  status: active | maintenance | archived
+  description: Brief description
+  registered_at: YYYY-MM-DD
+```
+
+## Notes
+
+- Submodules with empty directories (shallow clone) will fail - run `git submodule update --init` first

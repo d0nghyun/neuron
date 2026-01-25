@@ -5,88 +5,113 @@
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         NEURON (Hub)                            │
-│                   Central Orchestration Layer                   │
+│                     Component Factory Layer                     │
+│         "Claude Code = Framework, Neuron = Factory"             │
 └─────────────────────────────────────────────────────────────────┘
                                │
-        ┌───────────────────────┼───────────────────────┐
-        │                       │                       │
-        ▼                       ▼                       ▼
-┌───────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   knowledge/  │     │    modules/     │     │     .claude/    │
-│    (Policy)   │     │   (Registry)    │     │  (Automation)   │
-├───────────────┤     ├─────────────────┤     ├─────────────────┤
-│ • philosophy  │     │ • hippo/        │     │ • agents/       │
-│ • conventions │     │ • pm-arkraft/   │     │ • commands/     │
-│ • standards   │     │ • modeling/     │     │ • skills/       │
-└───────────────┘     └─────────────────┘     └─────────────────┘
+        ┌──────────────────────┼──────────────────────┐
+        │                      │                      │
+        ▼                      ▼                      ▼
+┌───────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   CLAUDE.md   │    │    modules/     │    │     .claude/    │
+│   (SSOT)      │    │   (Submodules)  │    │  (Components)   │
+├───────────────┤    ├─────────────────┤    ├─────────────────┤
+│ • Philosophy  │    │ • arkraft/      │    │ • agents/       │
+│ • Principles  │    │ • modeling/     │    │ • skills/       │
+│ • Routing     │    │                 │    │ • factory/      │
+│               │    │                 │    │ • memory/       │
+│               │    │                 │    │ • knowledge/    │
+└───────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## Agent System (Brain Analogy)
+## Self-Evolution Pattern
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                    SELF-EVOLUTION FLOW                           │
+└──────────────────────────────────────────────────────────────────┘
+
+  [Session Start]
+        │
+        ▼
+┌─────────────────┐
+│ system-boot.md  │  Component Resolver
+│   (registry)    │
+└───────┬─────────┘
+        │
+        ▼
+   ┌────────────┐
+   │  Missing   │
+   │ Component? │
+   └─────┬──────┘
+         │
+    ┌────┴────┐
+    │         │
+    ▼         ▼
+  [YES]      [NO]
+    │         │
+    ▼         ▼
+┌────────┐  ┌────────┐
+│Factory │  │ Ready  │
+│create()│  │ :true  │
+└────┬───┘  └────────┘
+     │
+     ▼
+┌────────────────┐
+│ Task created   │
+│ (session_      │
+│  restart)      │
+└────────┬───────┘
+         │
+         ▼
+   [Next Session]
+         │
+         ▼
+┌────────────────┐
+│ Component      │
+│ Available      │
+└────────────────┘
+```
+
+## Agent System
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     NEURON AGENT SYSTEM                         │
-│                  "AI Brain for Development"                     │
+│                  "Judgment Components"                          │
 └─────────────────────────────────────────────────────────────────┘
 
     ┌─────────────────┐
-    │    ADVISOR      │  PFC (Prefrontal Cortex)
-    │   "Think First" │  Decision-making, planning
+    │      BOOT       │  Session Start (MANDATORY)
+    │   "Initialize"  │  Load registry, focus, lessons
     └────────┬────────┘
              │
              ▼
     ┌─────────────────┐
-    │    REFACTOR     │  Hippocampus
-    │ "Organize Code" │  Memory consolidation, structure
+    │    ADVISOR      │  Pre-decision consultation
+    │   "Think First" │  Uncertainty? → Call advisor
     └────────┬────────┘
              │
              ▼
     ┌─────────────────┐
-    │    REVIEWER     │  ACC (Anterior Cingulate)
-    │  "Check Quality"│  Error detection, conflict monitoring
+    │    REVIEWER     │  Before PR
+    │  "Check Quality"│  Code quality, security
     └────────┬────────┘
              │
              ▼ [IMPROVE] signal
     ┌─────────────────┐
-    │  SELF-IMPROVE   │  Neuroplasticity
-    │ "Learn & Adapt" │  System adaptation from patterns
+    │  SELF-IMPROVE   │  Pattern-based improvement
+    │ "Learn & Adapt" │  System evolution
+    └────────┬────────┘
+             │
+             ▼
+    ┌─────────────────┐
+    │     WRAPUP      │  Session End (MANDATORY)
+    │ "Persist Learn" │  Extract lessons, update registry
     └─────────────────┘
 ```
 
-## Advisor-before-AskUser Flow
-
-```
-┌──────────────────┐
-│ Ambiguous Task   │
-└────────┬─────────┘
-         │
-         ▼
-┌──────────────────┐
-│  Call Advisor    │
-└────────┬─────────┘
-         │
-         ▼
-    ┌────────────┐
-    │ Confidence │
-    │   Level?   │
-    └─────┬──────┘
-          │
-    ┌─────┼─────┐
-    │     │     │
-    ▼     ▼     ▼
- ┌────┐ ┌────┐ ┌────┐
- │High│ │Med │ │Low │
- └──┬─┘ └──┬─┘ └──┬─┘
-    │      │      │
-    ▼      ▼      ▼
-┌──────┐┌──────┐┌──────┐
-│Proceed││Proceed││ Ask  │
-│ with ││ with ││ User │
-│answer││assume││      │
-└──────┘└──────┘└──────┘
-```
-
-## Routing Table
+## Component Routing
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -97,90 +122,97 @@
          │                     │                     │
          ▼                     ▼                     ▼
 ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│     AGENTS      │  │   MCP SERVERS   │  │    COMMANDS     │
-│  (Judgment)     │  │  (External API) │  │   (Workflow)    │
+│     AGENTS      │  │     SKILLS      │  │      HOOKS      │
+│  (Judgment)     │  │  (Execution)    │  │  (Automation)   │
 ├─────────────────┤  ├─────────────────┤  ├─────────────────┤
-│ • advisor       │  │ • github        │  │ • /pr           │
-│ • reviewer      │  │ • atlassian     │  │ • /release      │
-│ • refactor      │  │ • notion        │  │ • /sync         │
-│ • self-improve  │  │ • slack         │  │ • /backlog      │
-│                 │  │ • google-cal    │  │ • /audit-modules│
+│ system-*        │  │ api-*           │  │ • PreToolUse    │
+│ • boot          │  │ • github        │  │ • PostToolUse   │
+│ • wrapup        │  │ • jira, slack   │  │ • SubagentStart │
+│ • advisor       │  │ capability-*    │  │                 │
+│ role-*          │  │ • ui-design     │  │                 │
+│ • reviewer      │  │ workflow-*      │  │                 │
+│ • refactor      │  │ • pr, release   │  │                 │
+│ task-*          │  │ • audit-modules │  │                 │
+│ • self-improve  │  │                 │  │                 │
 └─────────────────┘  └─────────────────┘  └─────────────────┘
 ```
 
-## PR/Release Workflow
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     DEVELOPMENT CYCLE                           │
-└─────────────────────────────────────────────────────────────────┘
-
-  ┌────────┐    ┌────────┐    ┌────────┐    ┌────────┐
-  │  Code  │───▶│ Review │───▶│  PR    │───▶│Release │
-  │ Change │    │        │    │        │    │        │
-  └────────┘    └────────┘    └────────┘    └────────┘
-       │             │             │             │
-       ▼             ▼             ▼             ▼
-  ┌────────┐    ┌────────┐    ┌────────┐    ┌────────┐
-  │refactor│    │reviewer│    │  /pr   │    │/release│
-  │ agent  │    │ agent  │    │command │    │command │
-  └────────┘    └────────┘    └────────┘    └────────┘
-                     │
-                     ▼ [IMPROVE]
-                ┌────────┐
-                │  self  │
-                │improve │
-                └────────┘
-
-Post-merge:
-┌────────┐
-│ /sync  │  ← Sync main branch, cleanup
-└────────┘
-```
-
-## Directory Structure
+## Directory Structure (v2)
 
 ```
 neuron/
-├── CLAUDE.md              # AI entry point (start here)
-├── README.md              # Project overview
-│
-├── knowledge/             # Policies & philosophy
-│   ├── _index.yaml        # Knowledge index
-│   ├── philosophy.md      # Core principles (SSOT)
-│   ├── module-protocol.md # Module management
-│   └── ...
+├── CLAUDE.md              # AI entry point (SSOT)
+├── README.md
 │
 ├── modules/               # Git submodules
-│   ├── _registry.yaml     # Module registry
-│   ├── arkraft/           # Active arkraft modules
-│   │   ├── pm-arkraft/
-│   │   ├── arkraft-jupyter/
-│   │   └── arkraft-agent-report/
-│   ├── arkraft-legacy/    # Legacy arkraft modules
-│   │   ├── arkraft/
-│   │   ├── arkraft-fe/
-│   │   └── finter/
-│   └── modeling/          # ML experiments
+│   ├── arkraft/
+│   └── modeling/
 │
 ├── docs/
 │   ├── diagram.md         # This file
-│   ├── releasenotes/      # Version history
-│   └── retrospectives/    # Learning records
+│   └── releasenotes/
 │
 └── .claude/
-    ├── agents/            # Thinking agents
-    │   ├── advisor.md
-    │   ├── reviewer.md
-    │   ├── refactor.md
-    │   └── self-improve.md
-    ├── commands/          # Slash commands
-    │   ├── pr.md
-    │   ├── release.md
-    │   ├── sync.md
-    │   ├── backlog.md
-    │   └── audit-modules.md
-    ├── procedures/        # Step-by-step guides
-    └── skills/            # Domain-specific skills
-        └── ui-ux-pro-max/ # UI/UX design skill
+    ├── agents/            # Judgment (6)
+    │   ├── system-boot.md      # system-* (core lifecycle)
+    │   ├── system-wrapup.md
+    │   ├── system-advisor.md
+    │   ├── role-reviewer.md    # role-* (judgment/review)
+    │   ├── role-refactor.md
+    │   └── task-self-improve.md # task-* (task-oriented)
+    │
+    ├── skills/            # Execution (10)
+    │   ├── api-*/         # External APIs
+    │   ├── capability-*/  # Reusable workflows
+    │   └── workflow-*/    # Internal workflows (pr, release)
+    │
+    ├── factory/           # Component generation
+    │   ├── templates/
+    │   └── registry.yaml  # Component SSOT
+    │
+    ├── memory/            # Long-term state
+    │   ├── identity.yaml
+    │   ├── focus.yaml
+    │   ├── team.yaml
+    │   └── lessons.yaml
+    │
+    ├── knowledge/         # Reference docs
+    │   └── *.md
+    │
+    └── contexts/          # Module configs
+        └── ctx-*.yaml
+```
+
+## Decision Guide
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│                   WHAT COMPONENT TO USE?                        │
+└────────────────────────────────────────────────────────────────┘
+
+  Need judgment/reasoning?
+         │
+    ┌────┴────┐
+    │         │
+   YES        NO
+    │         │
+    ▼         ▼
+┌────────┐  External API needed?
+│ AGENT  │       │
+└────────┘  ┌────┴────┐
+            │         │
+           YES        NO
+            │         │
+            ▼         ▼
+      ┌──────────┐  Automated trigger?
+      │SKILL     │       │
+      │(api-*)   │  ┌────┴────┐
+      └──────────┘  │         │
+                   YES        NO
+                    │         │
+                    ▼         ▼
+              ┌────────┐  ┌────────────┐
+              │ HOOK   │  │ SKILL      │
+              │        │  │(capability)│
+              └────────┘  └────────────┘
 ```

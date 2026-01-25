@@ -22,6 +22,10 @@
 - 2026-01-23: Boot/wrapup agent design creates enforced memory system - instructions become executable workflows (P20 Sustainable by Design)
 - 2026-01-23: Structured learning types (fact/lesson/pattern) provide clear taxonomy for knowledge accumulation (P2 MECE)
 - 2026-01-23: Cache-first API-fallback pattern in /ask command demonstrates good P16 (context cost reduction) while maintaining freshness
+- 2026-01-25: Clear separation of concerns between boot (list available) and main agent (decide needed) follows P3 Modularity and eliminates duplication
+- 2026-01-25: Universal boot→execute→wrapup lifecycle (removing conditional logic) creates predictable, consistent session initialization
+- 2026-01-25: Aggressive cleanup of 11 obsolete files (1393 lines removed) demonstrates commitment to P1 SSOT and P2 Simplicity
+- 2026-01-25: Inlining protocol documentation into relevant components (e.g., module protocol → audit-modules skill) reduces navigation overhead
 
 ## Improvements
 
