@@ -63,6 +63,11 @@ For each failure:
 
 ### Step 4: Execute Updates
 
+**Before any documentation update:**
+1. Read CLAUDE.md to verify terminology
+2. Read factory/README.md for component behavior
+3. Ensure new text is consistent with existing docs
+
 | Type | Action |
 |------|--------|
 | fact | Edit ctx-*.yaml directly |
@@ -130,8 +135,10 @@ wrapup_summary:
 
 - **NEVER** just "propose" - implement or TaskCreate
 - **NEVER** leave items in lessons.yaml - process and DELETE all
+- **NEVER** document without verifying against CLAUDE.md first
 - **ALWAYS** implement automation directly when safe
 - **ALWAYS** delete from lessons.yaml after processing
+- **ALWAYS** cross-check terminology with existing docs before writing
 
 ## Success Criteria
 

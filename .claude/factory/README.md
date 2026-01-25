@@ -58,13 +58,16 @@ Components can live at **neuron level** or **module level**.
 2. Read the appropriate pattern file
 3. Decide location (neuron vs module level)
 4. Create the component:
-   - Agents → `{root}/.claude/agents/{type}-{name}.md`
-   - Skills → `{root}/.claude/skills/{type}-{name}/SKILL.md`
-   - Contexts → `{root}/.claude/contexts/ctx-{name}.yaml`
-   - Hooks → `{root}/.claude/settings.json` (hooks section)
-   - Knowledge → `{root}/.claude/knowledge/{prefix}-{name}.md`
+   - Agents → `{root}/.claude/agents/{type}-{name}.md` (auto-registers)
+   - Skills → `{root}/.claude/skills/{type}-{name}/SKILL.md` (auto-registers)
+   - Contexts → `{root}/.claude/contexts/ctx-{name}.yaml` (loaded by boot)
+   - Hooks → `{root}/.claude/settings.json` (manual registration required)
+   - Knowledge → `{root}/.claude/knowledge/{prefix}-{name}.md` (reference only)
 
    Where `{root}` = neuron or module path
+
+**Important**: Agents and Skills auto-register when files are created. Only Hooks require manual registration in settings.json.
+
 5. Create Task with `pending: session_restart` for handoff
 
 ## Patterns
