@@ -14,9 +14,24 @@ Runs at session start to restore context and surface critical information.
 - Load previous session state (handoff)
 - Load current priorities (meta/focus.yaml)
 - Surface CRITICAL facts, lessons, patterns for active modules
+- **Resolve component dependencies and trigger factory if needed**
+- **Load module-specific contexts**
 - Provide actionable context to main agent
 
 ## Execution Steps
+
+### Step 0: Load Component Registry
+
+```
+Read .claude/factory/registry.yaml
+```
+
+**If file doesn't exist:** Skip component resolution (backward compatible)
+
+**If file exists:** Parse and store:
+- `components`: All registered components
+- `module_components`: Per-module requirements
+- `_meta`: Registry metadata
 
 ### Step 1: Load Handoff State
 
@@ -28,6 +43,32 @@ Check for:
 - Active contexts → Load `handoff/<context>.md`
 - Paused work → Show what was interrupted
 
+### Step 1.5: Resolve Component Dependencies
+
+**Requires:** Step 0 (registry) and Step 1 (handoff for context)
+
+For each module in `active_modules` from focus.yaml:
+
+1. **Check module_components** in registry:
+   ```yaml
+   module_components:
+     arkraft:
+       required: [agent:arkraft-pm, context:ctx-arkraft]
+       optional: [agent:arkraft-worker]
+   ```
+
+2. **Identify missing components:**
+   - Required but not in `components` → **missing**
+   - Status = `error` or `deprecated` → **unhealthy**
+
+3. **Build component status:**
+   ```yaml
+   component_status:
+     healthy: ["agent:advisor", "skill:api-github"]
+     missing: ["agent:arkraft-pm"]
+     unhealthy: ["skill:api-jira"]  # has error status
+   ```
+
 ### Step 2: Load Focus
 
 ```
@@ -38,6 +79,35 @@ Extract:
 - `current_focus`: What am I working on?
 - `active_modules`: Which modules are hot?
 - `priorities`: What's urgent?
+
+### Step 2.5: Factory Trigger
+
+**Requires:** Step 1.5 (component resolution)
+
+If `missing` components exist:
+
+1. **Determine appropriate template:**
+   | Component Type | Template |
+   |---------------|----------|
+   | agent (role-based) | agent-role |
+   | agent (task-based) | agent-task |
+   | skill (API) | skill-api |
+   | context | context-project |
+   | pipeline | pipeline-parallel |
+
+2. **Create factory task:**
+   ```yaml
+   factory_tasks:
+     - action: create_component
+       type: agent
+       name: arkraft-pm
+       template: agent-role
+       module: arkraft
+       status: pending_session_restart
+   ```
+
+3. **Flag for next session:**
+   Factory tasks with `pending_session_restart` will be executed at next boot.
 
 ### Step 3: Load Relevant Learnings
 
@@ -58,6 +128,35 @@ Read meta/lessons.yaml
 - `fact`: Information main agent MUST know
 - `lesson`: Mistakes main agent MUST avoid
 - `pattern`: Actions main agent SHOULD follow
+
+### Step 3.5: Load Module Contexts
+
+**Requires:** Step 2 (focus.yaml for active_modules)
+
+For each module in `active_modules`:
+
+```
+Glob .claude/contexts/ctx-{module}*.yaml
+Read matched context files
+```
+
+Extract and merge:
+- `variables`: Key-value pairs for injection
+- `instructions.must_know`: Add to boot must_know
+- `instructions.must_avoid`: Add to boot must_avoid
+- `instructions.should_follow`: Add to boot should_follow
+
+```yaml
+contexts:
+  arkraft:
+    api_base_url: "https://api.arkraft.io"
+    api_version: "v1"
+    instructions:
+      must_know:
+        - "arkraft API requires X-Api-Key header"
+      must_avoid:
+        - "Never call /deploy without confirmation"
+```
 
 ### Step 4: Generate Boot Summary
 
@@ -99,6 +198,33 @@ boot_summary:
 
   suggested_todos:
     - "<from handoff>"
+
+  # ═══════════════════════════════════════════════════════
+  # COMPONENT STATUS (if registry exists)
+  # ═══════════════════════════════════════════════════════
+
+  component_status:
+    healthy: ["agent:advisor", "skill:api-github"]
+    missing: ["agent:arkraft-pm"]
+    unhealthy: []
+    pending_factory: ["agent:arkraft-worker"]
+
+  factory_tasks:
+    - action: create_component
+      type: agent
+      name: arkraft-pm
+      template: agent-role
+      module: arkraft
+
+  # ═══════════════════════════════════════════════════════
+  # CONTEXTS (if context files exist)
+  # ═══════════════════════════════════════════════════════
+
+  contexts:
+    arkraft:
+      api_base_url: "https://api.arkraft.io"
+      instructions:
+        - "API requires X-Api-Key header"
 
 ready: true
 ```

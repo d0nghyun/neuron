@@ -104,6 +104,67 @@ Read meta/lessons.yaml
 
 Update `handoff/_index.md` and context file.
 
+### Step 5.5: Update Component Registry
+
+```
+Read .claude/factory/registry.yaml
+```
+
+**If registry doesn't exist:** Skip (backward compatible)
+
+**If components were created this session:**
+
+```yaml
+# Add new component to registry
+components:
+  <type>:<name>:
+    type: <agent|skill|context|pipeline>
+    path: <relative path>
+    modules: [<module names>]
+    status: pending  # Will be 'healthy' after first successful use
+    health:
+      last_used: null
+      use_count: 0
+```
+
+**If components were used this session:**
+
+```yaml
+# Update health metrics
+components:
+  <type>:<name>:
+    health:
+      last_used: "<ISO 8601 timestamp>"
+      use_count: <increment by 1>
+      last_error: null  # Clear if successful
+```
+
+**If component errors occurred:**
+
+```yaml
+components:
+  <type>:<name>:
+    status: error
+    health:
+      last_error: "<error message>"
+```
+
+### Step 5.6: Component Health Summary
+
+Track component usage patterns:
+
+```yaml
+component_health:
+  used_this_session:
+    - "agent:advisor"
+    - "skill:api-github"
+  created_this_session:
+    - "agent:arkraft-pm"
+  errors_this_session:
+    - component: "skill:api-jira"
+      error: "Authentication failed"
+```
+
 ### Step 6: Generate Wrapup Summary
 
 ```yaml
@@ -132,6 +193,22 @@ wrapup_summary:
     facts_added: <count>
     lessons_added: <count>
     patterns_added: <count>
+
+  # ═══════════════════════════════════════════════════════
+  # REGISTRY UPDATES (if registry exists)
+  # ═══════════════════════════════════════════════════════
+
+  registry_updates:
+    components_created:
+      - name: "agent:arkraft-pm"
+        status: pending
+    components_used:
+      - "agent:advisor"
+      - "skill:api-github"
+    health_changes:
+      - component: "skill:api-github"
+        previous: pending
+        current: healthy
 
 ready_for_next_session: true
 ```
