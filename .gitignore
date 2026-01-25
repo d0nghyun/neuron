@@ -9,6 +9,8 @@
 
 # Personal context (long-term memory)
 meta/
+.claude/memory/
+.claude/contexts/
 
 # Python cache
 .mypy_cache/
