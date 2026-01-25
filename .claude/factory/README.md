@@ -18,6 +18,7 @@ Analyze the request to determine the required component type:
 | Reusable workflow | Skill (workflow-*) | pattern-skill.md |
 | Project-specific config | Context | pattern-context.yaml |
 | Automatic trigger | Hook | pattern-hook.md |
+| Reference docs/guides/lessons | Knowledge | pattern-knowledge.md |
 
 ## Decision Tree
 
@@ -27,6 +28,7 @@ Judgment needed? → Agent
 Automatic execution? → Hook
 Project settings? → Context
 Reusable multi-step process? → Skill (workflow-*)
+Document for reference? → Knowledge
 ```
 
 ## Usage
@@ -38,6 +40,7 @@ Reusable multi-step process? → Skill (workflow-*)
    - Skills → `.claude/skills/{type}-{name}.md`
    - Contexts → `.claude/contexts/ctx-{name}.yaml`
    - Hooks → `.claude/settings.json` (hooks section)
+   - Knowledge → `.claude/knowledge/{prefix}-{name}.md`
 4. Create Task with `pending: session_restart` for handoff
 
 ## Patterns
@@ -48,6 +51,7 @@ Reusable multi-step process? → Skill (workflow-*)
 | pattern-skill.md | skills/ | API wrappers, workflows |
 | pattern-context.yaml | contexts/ | Project configs |
 | pattern-hook.md | settings.json | Automatic triggers |
+| pattern-knowledge.md | knowledge/ | Reference docs, guides, lessons |
 
 ## Naming Conventions
 
@@ -65,3 +69,10 @@ Reusable multi-step process? → Skill (workflow-*)
 **Contexts**: `ctx-{name}.yaml`
 - `ctx-focus.yaml`: Current priorities (always loaded)
 - `ctx-{module}.yaml`: Module-specific configs
+
+**Knowledge**: `{prefix}-{name}.md`
+- `ref-*`: Reference documents, specs
+- `guide-*`: Decision guides, how-tos
+- `protocol-*`: Procedures, standards
+- `workflow-*`: Process specifications
+- `learn-*`: Accumulated lessons (YAML)
