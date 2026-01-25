@@ -6,7 +6,7 @@
 | **Status** | in-progress |
 | **Updated** | 2026-01-25 |
 | **Branch** | claude/neuron-agent-skills-redesign-fgh1M |
-| **Session Outcome** | Architectural Design Complete |
+| **Session Outcome** | Phase 1-4 Complete, Cleanup Pending |
 
 ---
 
@@ -32,6 +32,19 @@ Claude Code provides:     Neuron provides:
 
 ---
 
+## Progress Status
+
+| Phase | Description | Status |
+|-------|-------------|--------|
+| 1 | Factory Structure + Templates | ✅ COMPLETE |
+| 2 | Enhanced boot.md (Resolver, Factory Trigger) | ✅ COMPLETE |
+| 3 | Registry Tracking | ✅ COMPLETE |
+| 4 | Enhanced wrapup.md (Registry Update) | ✅ COMPLETE |
+| 5 | E2E Test (arkraft) | ⏳ NEXT |
+| 6 | Cleanup (Commands deprecation) | ⏳ PENDING |
+
+---
+
 ## Claude Code Framework (DO NOT REINVENT)
 
 ### Already Provided (January 2026 Update)
@@ -42,70 +55,109 @@ Claude Code provides:     Neuron provides:
 - **Hooks**: PreToolUse, PostToolUse, SubagentStart, SubagentStop
 - **Parallel execution**: Task tool, max 10 concurrent
 - **Agent creation UI**: `/agents` command
+- **Commands → Skills migration**: Commands are being deprecated in favor of skills
 
-### Key Constraint
-- **Agent creation requires session restart** - files created in `.claude/agents/` are not loaded until next session
-
----
-
-## Neuron v2 Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                      PHILOSOPHY LAYER                           │
-│              3 Axioms, 20 Principles (Immutable)                │
-└─────────────────────────────────────────────────────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      COMPONENT FACTORY                          │
-│  .claude/factory/                                               │
-│  ├─ templates/          # Agent, skill, context, pipeline       │
-│  └─ registry.yaml       # Created components tracking           │
-└─────────────────────────────────────────────────────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   CLAUDE CODE FRAMEWORK                         │
-│  .claude/agents/   ← Factory outputs here                       │
-│  .claude/skills/   ← Factory outputs here                       │
-│  .claude/contexts/ ← Factory outputs here                       │
-│  ~/.claude/tasks/  ← Tasks for cross-session coordination       │
-└─────────────────────────────────────────────────────────────────┘
-```
+### Key Constraints
+- **Agent creation requires session restart** - files in `.claude/agents/` not loaded until next session
+- **Commands deprecated** - migrate to skills or agents
 
 ---
 
-## Implementation Plan
+## Completed Implementation
 
-### Phase 1: Factory Structure + Templates [IMMEDIATE]
+### Factory Structure
 ```
 .claude/factory/
 ├─ templates/
-│  ├─ agent-role.md           # Role agents (pm, researcher)
-│  ├─ agent-task.md           # Task agents (data-collector)
-│  ├─ skill-api.md            # API skill wrapper
-│  ├─ context-project.yaml    # Project context
-│  └─ pipeline-parallel.yaml  # Parallel pipeline
-└─ registry.yaml              # Component registry
+│  ├─ agent-role.md           ✅
+│  ├─ agent-task.md           ✅
+│  ├─ skill-api.md            ✅
+│  ├─ context-project.yaml    ✅
+│  └─ pipeline-parallel.yaml  ✅
+└─ registry.yaml              ✅ (15 components registered)
 ```
 
-### Phase 2: Enhanced boot.md
-- Component Resolver: detect missing components
-- Factory Trigger: create missing components + Tasks
-- Context Injection: load `.claude/contexts/ctx-*.yaml`
+### Enhanced Agents
+- **boot.md**: +6 steps (Registry load, Component Resolver, Factory Trigger, Context Injection)
+- **wrapup.md**: +2 steps (Registry Update, Health Summary)
 
-### Phase 3: Registry Tracking
-- boot.md: load registry, track component health
-- wrapup.md: update registry with new components
+---
 
-### Phase 4: Enhanced wrapup.md
-- Registry update logic
-- Component health tracking
-- Lesson extraction with module tagging
+## Pending: Phase 5 - E2E Test
 
-### Phase 5: Test with arkraft Scenario
-- End-to-end test: missing agent → factory → task → next session → execute
+### Test Scenario: arkraft Module
+```
+1. Activate arkraft in meta/focus.yaml
+2. boot.md detects missing: agent:arkraft-pm, context:ctx-arkraft
+3. Factory creates component definitions
+4. Tasks created with pending: session_restart
+5. Session ends
+6. Next session: boot.md loads, components execute
+```
+
+### Required for Test
+- [ ] Create `meta/focus.yaml` with arkraft active
+- [ ] Create `ctx-arkraft.yaml` context
+- [ ] Uncomment arkraft section in registry.yaml
+- [ ] Run E2E test
+
+---
+
+## Pending: Phase 6 - Cleanup
+
+### Commands Migration Plan
+
+| Command | Action | Target | Reason |
+|---------|--------|--------|--------|
+| `handoff.md` | ❌ DELETE | - | Replaced by boot/wrapup agents |
+| `backlog.md` | ❌ DELETE | - | Replaced by Claude Code Tasks |
+| `sync.md` | ❌ DELETE | - | Claude basic capability |
+| `pr.md` | ⚠️ MIGRATE | `agent-system/releaser.md` | Needs subagent (reviewer) |
+| `release.md` | ⚠️ MIGRATE | `skill-internal/release-mgmt/` | Workflow, not judgment |
+| `audit-modules.md` | ⚠️ MIGRATE | `agent-task/module-auditor.md` | Analysis task |
+
+### Migration Steps
+```
+1. Create new agent/skill files from commands
+2. Update registry.yaml with new components
+3. Test each migrated component
+4. Delete old commands/
+5. Update CLAUDE.md routing rules
+```
+
+### Directories to Create
+- [ ] `.claude/contexts/` - For context files
+- [ ] `.claude/pipelines/` - For pipeline definitions (if needed)
+
+---
+
+## Decision Guide: Agent vs Skill vs Hook
+
+Use this when creating new components:
+
+| Need | Choose | Example |
+|------|--------|---------|
+| Judgment/reasoning | **Agent** | Code review, architecture decisions |
+| External API call | **Skill (API)** | Jira, GitHub, Slack integration |
+| Reusable workflow | **Skill (Capability)** | Release management, reporting |
+| Automated trigger | **Hook** | Pre-commit validation, notifications |
+| Data transformation | **Skill (Internal)** | Template rendering, data parsing |
+
+### Component Naming Convention
+```
+Agents:
+- agent-system/    → Core lifecycle (boot, wrapup, advisor)
+- agent-role/      → Personas (pm, researcher, reviewer)
+- agent-task/      → Single-purpose (data-collector, validator)
+
+Skills:
+- skill-api/       → External service wrappers
+- skill-capability/ → Business logic compositions
+- skill-internal/  → Neuron core operations
+
+Contexts:
+- ctx-{module}.yaml → Module-specific configuration
+```
 
 ---
 
@@ -134,76 +186,57 @@ Next session boot.md
 Resume Task → Component executes
 ```
 
-### Component Resolver Logic
-```
-1. Load registry.yaml
-2. For each active module:
-   - Check required agents/skills exist
-   - Collect missing components
-3. Return missing list to Factory Trigger
-```
-
-### Factory Trigger Logic
-```
-1. For each missing component:
-   - Load appropriate template
-   - Populate with parameters
-   - Inject philosophy preamble
-   - Write to .claude/{agents|skills|contexts}/
-   - Create Task with dependencies
-   - Update registry.yaml
-```
-
 ---
 
-## Files to Create
+## Next Session Checklist
 
-| Phase | File | Description |
-|-------|------|-------------|
-| 1 | `.claude/factory/templates/agent-role.md` | Role agent template |
-| 1 | `.claude/factory/templates/agent-task.md` | Task agent template |
-| 1 | `.claude/factory/templates/skill-api.md` | API skill template |
-| 1 | `.claude/factory/templates/context-project.yaml` | Project context template |
-| 1 | `.claude/factory/templates/pipeline-parallel.yaml` | Pipeline template |
-| 1 | `.claude/factory/registry.yaml` | Initial empty registry |
-| 2 | `.claude/agents/boot.md` | ENHANCE with resolver |
-| 4 | `.claude/agents/wrapup.md` | ENHANCE with registry update |
+```
+PHASE 5: E2E TEST
+[ ] Create meta/focus.yaml with arkraft module
+[ ] Create .claude/contexts/ctx-arkraft.yaml
+[ ] Uncomment arkraft in registry.yaml module_components
+[ ] Test: boot detects missing components
+[ ] Test: factory trigger creates components
+[ ] Test: next session loads components
+
+PHASE 6: CLEANUP
+[ ] Delete .claude/commands/handoff.md
+[ ] Delete .claude/commands/backlog.md
+[ ] Delete .claude/commands/sync.md
+[ ] Migrate pr.md → agent-system/releaser.md
+[ ] Migrate release.md → skill-internal/release-mgmt/
+[ ] Migrate audit-modules.md → agent-task/module-auditor.md
+[ ] Update CLAUDE.md (remove commands references)
+[ ] Update registry.yaml with migrated components
+[ ] Commit: "refactor: migrate commands to agents/skills"
+```
 
 ---
 
 ## Session Learnings
 
 ### Facts
-- Claude Code Tasks system (January 2026) replaces need for custom Journal
+- Claude Code Tasks system (January 2026) replaces custom Journal
 - CLAUDE_CODE_TASK_LIST_ID enables cross-session collaboration
 - Agent creation requires session restart (architectural constraint)
+- Commands are deprecated → migrate to skills/agents
 
 ### Lessons
 - Registry is essential for SSOT [P1] and self-repair
 - Module tagging enables intelligent filtering
 - Pending Tasks create natural session continuation points
+- Don't reinvent what Claude Code already provides
 
 ### Patterns
 - Factory → Tasks → Next Session prevents context loss
 - Philosophy injection prevents architectural drift
-
----
-
-## Next Session Checklist
-
-```
-[ ] Read this handoff
-[ ] Check .claude/factory/ exists (if not, create)
-[ ] Start Phase 1: Create templates
-[ ] Create registry.yaml
-[ ] Commit: "feat: initial factory structure"
-[ ] Proceed to Phase 2 if time permits
-```
+- Agent for judgment, Skill for workflow, Hook for automation
 
 ---
 
 ## References
 - CLAUDE.md - Core philosophy, routing
 - knowledge/01-core/philosophy.md - 3 Axioms, 20 Principles
-- .claude/agents/boot.md - Current implementation
-- .claude/agents/wrapup.md - Current implementation
+- .claude/agents/boot.md - Component resolver implementation
+- .claude/agents/wrapup.md - Registry update implementation
+- .claude/factory/registry.yaml - Component registry
