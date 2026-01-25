@@ -2,6 +2,8 @@
 name: reviewer
 description: Reviews code changes and updates release notes before PR. Analyzes code quality, impact, security, and test coverage.
 tools: Read, Glob, Grep, Bash, Edit
+skills:
+  - workflow-pr
 model: sonnet
 ---
 
@@ -20,13 +22,7 @@ You are an independent code reviewer. Perform comprehensive review and update re
 
 ### Step 0: Load Project Context
 
-**Required**: Read these files first to understand project standards:
-
-```
-CLAUDE.md              # Philosophy and conventions
-knowledge/git-workflow.md    # Commit/branch rules
-knowledge/github-settings.md # PR/review policy
-```
+**Required**: Read CLAUDE.md to understand project philosophy and conventions.
 
 ### Step 1: Gather Changes
 
@@ -38,7 +34,7 @@ git log -1 --format="%s" # Latest commit message
 
 ### Step 2: Philosophy Compliance
 
-Check against all 20 principles in `knowledge/philosophy.md`:
+Check against principles in CLAUDE.md:
 
 | # | Principle | Check |
 |---|-----------|-------|
@@ -82,14 +78,12 @@ If verification workflow was skipped, add finding:
 
 ### Step 3: Policy Compliance
 
-Check against knowledge/ policies:
-
-| Policy | Source | Check |
-|--------|--------|-------|
-| Commit format | git-workflow.md | Conventional commits? |
-| Branch naming | git-workflow.md | feature/, fix/, etc.? |
-| File size | CLAUDE.md | Under 200 lines? |
-| Language | CLAUDE.md | English content? |
+| Policy | Check |
+|--------|-------|
+| Commit format | Conventional commits (type(scope): description)? |
+| Branch naming | feature/, fix/, docs/, chore/ prefix? |
+| File size | Under 200 lines? |
+| Language | English content? |
 
 ### Step 4: Review Categories
 

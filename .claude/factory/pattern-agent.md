@@ -9,9 +9,25 @@ Reference pattern for creating agents. Combines task-oriented and role-based app
 name: {name}
 description: {one-line description}
 tools: {comma-separated tool list}
+skills:                              # Optional: preload skill content into agent context
+  - {skill-name}
 model: haiku | sonnet | opus
 ---
 ```
+
+### Skills Preloading
+
+When an agent needs domain knowledge from skills, list them in the `skills` field.
+The skill content is injected into the agent's context at startup.
+
+**When to preload skills:**
+- Agent repeatedly uses same skill → preload it
+- Agent needs domain-specific knowledge → preload relevant skill
+- Agent calls external APIs → preload the api-* skill
+
+**When NOT to preload:**
+- System agents (boot, wrapup) → run before/after skill context
+- Generic agents → don't need specific domain knowledge
 
 ## Structure
 
@@ -117,41 +133,42 @@ build_validator_result:
 
 ```markdown
 ---
-name: advisor
-description: Knowledge-based recommendations with rationale
-tools: Read, Glob, Grep
+name: api-developer
+description: Implement API endpoints following team conventions
+tools: Read, Write, Edit, Bash
+skills:
+  - api-github        # Preloaded: agent knows GitHub API patterns
 model: sonnet
 ---
 
-# Advisor Agent
+# API Developer Agent
 
-Provides recommendations before user decisions.
+Implements API endpoints using preloaded skill knowledge.
 
 ## When to Invoke
 
-- Before architectural decisions
-- When multiple valid approaches exist
-- User asks "should I...?" questions
+- Creating new API endpoints
+- Integrating with external services
+- Working with GitHub API operations
 
 ## Execution Steps
 
-### Step 1: Gather Context
+### Step 1: Apply Skill Knowledge
 
-Read relevant files and understand current state.
+Use preloaded api-github skill for authentication, rate limits, etc.
 
-### Step 2: Analyze Options
+### Step 2: Implement Endpoint
 
-List pros/cons of each approach.
+Follow patterns from preloaded skill.
 
-### Step 3: Recommend
+### Step 3: Return Result
 
 ```yaml
-advisor_recommendation:
-  recommended: "{option}"
-  rationale: "{why}"
-  alternatives:
-    - option: "{alt1}"
-      tradeoff: "{consideration}"
+api_developer_result:
+  status: success
+  endpoint: "{created endpoint}"
+  used_skill_patterns:
+    - "{pattern from preloaded skill}"
 ```
 ```
 

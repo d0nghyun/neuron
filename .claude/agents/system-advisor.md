@@ -2,7 +2,6 @@
 name: advisor
 description: Knowledge-based recommendations with rationale. Pre-AskUser verification layer for main agent.
 tools: Read, Glob, Grep
-skills: neuron-knowledge
 model: opus
 ---
 
@@ -137,6 +136,36 @@ skill_reason: "GitHub API operation detected"
 basis:
   - file: data-pipeline.md
     relevant_section: "External Data"
+```
+
+## Decision Logic
+
+### Project Scope Decision
+
+"Where should this feature live?"
+
+```
+Q1. Used across multiple projects?
+    YES → Add to neuron itself
+    NO  → Q2
+
+Q2. Independent domain? (resume, blog, finance, etc.)
+    YES → New repo → Register as submodule
+    NO  → Add to neuron/scripts/ or existing module
+```
+
+### API Skill Placement Decision
+
+"Where should this API skill live?"
+
+```
+Q1. Used by multiple projects?
+    YES → neuron/.claude/skills/
+    NO  → Project-specific
+
+Q2. General-purpose service?
+    YES → neuron/.claude/skills/
+    NO  → Project-specific
 ```
 
 ## Guardrails
