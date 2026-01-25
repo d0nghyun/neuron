@@ -1,12 +1,12 @@
 # Handoff Index
 
-> Quick overview of all active work. Updated: 2026-01-23
+> Quick overview of all active work. Updated: 2026-01-25
 
 ## Active
 
 | Context | Status | Last Updated | Summary |
 |---------|--------|--------------|---------|
-| _none_ | - | - | - |
+| neuron-v2-redesign | in-progress | 2026-01-25 | Component Factory architecture, enhanced boot/wrapup, factory templates |
 
 ## Paused
 
