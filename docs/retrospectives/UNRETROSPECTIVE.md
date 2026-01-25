@@ -11,6 +11,7 @@
 | 2026-01-23 | arkraft-agent-insight | Task verification workflow not followed for refactoring tasks | pending |
 | 2026-01-23 | arkraft-agent-insight | Subagent added without corresponding test coverage | pending |
 | 2026-01-23 | arkraft-agent-pm#1 | Language policy violation - Korean content in English-only repo without detection | pending |
+| 2026-01-25 | docs-factory-boot | Task verification workflow not followed for documentation changes | pending |
 
 ## Insights
 
@@ -26,6 +27,8 @@
 - 2026-01-25: Universal boot→execute→wrapup lifecycle (removing conditional logic) creates predictable, consistent session initialization
 - 2026-01-25: Aggressive cleanup of 11 obsolete files (1393 lines removed) demonstrates commitment to P1 SSOT and P2 Simplicity
 - 2026-01-25: Inlining protocol documentation into relevant components (e.g., module protocol → audit-modules skill) reduces navigation overhead
+- 2026-01-25: Location Decision guide added to factory README fills critical documentation gap - clarifies where (neuron vs module) to create components, not just what to create
+- 2026-01-25: Correcting glob paths from relative to absolute in system-boot prevents future path resolution issues and improves reliability
 
 ## Improvements
 

@@ -35,17 +35,37 @@ Reusable multi-step process? → Skill (workflow-*)
 Document for reference? → Knowledge
 ```
 
+## Location Decision
+
+Components can live at **neuron level** or **module level**.
+
+| Question | Location |
+|----------|----------|
+| Used across multiple modules? | `neuron/.claude/` |
+| Specific to one module? | `modules/{module}/.claude/` |
+| Will be reused in other projects? | Separate module → submodule |
+
+**Examples**:
+- `api-google-calendar` → neuron level (any module can use)
+- `workflow-daily-standup` → calendar module (module-specific workflow)
+- `code-review` for React project → that project's `.claude/`
+
+**When unsure**: Start at module level. Promote to neuron level only when actually needed by multiple modules.
+
 ## Usage
 
 1. Identify what's missing (via boot or manual search)
 2. Read the appropriate pattern file
-3. Create the component at the correct location:
-   - Agents → `.claude/agents/{type}-{name}.md`
-   - Skills → `.claude/skills/{type}-{name}.md`
-   - Contexts → `.claude/contexts/ctx-{name}.yaml`
-   - Hooks → `.claude/settings.json` (hooks section)
-   - Knowledge → `.claude/knowledge/{prefix}-{name}.md`
-4. Create Task with `pending: session_restart` for handoff
+3. Decide location (neuron vs module level)
+4. Create the component:
+   - Agents → `{root}/.claude/agents/{type}-{name}.md`
+   - Skills → `{root}/.claude/skills/{type}-{name}/SKILL.md`
+   - Contexts → `{root}/.claude/contexts/ctx-{name}.yaml`
+   - Hooks → `{root}/.claude/settings.json` (hooks section)
+   - Knowledge → `{root}/.claude/knowledge/{prefix}-{name}.md`
+
+   Where `{root}` = neuron or module path
+5. Create Task with `pending: session_restart` for handoff
 
 ## Patterns
 

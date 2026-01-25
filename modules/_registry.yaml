@@ -93,6 +93,17 @@ modules:
       - skills
       - claude-code
 
+  schedule:
+    repo: local
+    domain: productivity
+    status: active
+    description: Notion-based schedule management and synchronization
+    registered_at: "2026-01-25"
+    tags:
+      - notion
+      - schedule
+      - productivity
+
 # Archived modules (removed from submodules but tracked)
 archived:
   hippo:
@@ -110,6 +121,6 @@ archived:
 
 # Registry metadata
 _meta:
-  version: 2
-  updated_at: "2026-01-22"
+  version: 3
+  updated_at: "2026-01-25"
   schema: knowledge/module-protocol.md
