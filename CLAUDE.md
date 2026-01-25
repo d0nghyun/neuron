@@ -1,234 +1,64 @@
-# Neuron - AI Entry Point
+# Neuron
 
-## What is Neuron?
+Neuron is a **Component Factory** that runs on Claude Code.
+Claude Code provides agents, skills, hooks, and task management.
+Neuron adds templates, registry, memory, and guiding principles.
 
-**Neuron = Component Factory. Claude Code = Framework.**
+## Principles
 
-Neuron은 프레임워크가 아닙니다. Claude Code가 프레임워크입니다.
-Neuron은 Claude Code 위에서 동작하는 **Component Factory**입니다.
+| # | Principle | Description |
+|---|-----------|-------------|
+| 1 | **SSOT** | One source of truth. No duplication. |
+| 2 | **Simplicity** | Simple solutions over complex ones. Build only what's needed now. |
+| 3 | **Modularity** | Independent, replaceable components. |
+| 4 | **Verify** | Prove it works. Don't assume. |
+| 5 | **Learn** | Record failures, find patterns, improve system. |
+| 6 | **Autonomy** | Act first. Ask only when truly blocked. |
+| 7 | **Sustainability** | Build reproducible, self-evolving processes. |
 
-### Claude Code가 제공하는 것 (바퀴 재발명 금지)
-| 제공 | 설명 |
-|------|------|
-| `.claude/agents/*.md` | Agent 정의 (YAML frontmatter) |
-| `.claude/skills/` | Skill 시스템 |
-| `~/.claude/tasks/` | 세션 간 작업 관리 |
-| Task tool | 최대 10개 병렬 subagent 실행 |
-| Hooks | PreToolUse, PostToolUse, SubagentStart, SubagentStop |
-| Agent resume | agentId로 이전 컨텍스트 재개 |
+## Structure
 
-### Neuron이 추가하는 것
-| 추가 | 설명 |
-|------|------|
-| **Factory** | 템플릿으로 없는 컴포넌트 자동 생성 |
-| **Registry** | `.claude/factory/registry.yaml` - 컴포넌트 SSOT |
-| **Philosophy** | 3 Axioms, 20 Principles - 모든 결정의 기반 |
-| **Memory** | `.claude/memory/` - 세션 간 학습 지속 |
-
-### Self-Evolution Pattern
-```
-boot.md (컴포넌트 감지)
-    │ missing?
-    ▼
-Factory.create() (템플릿 기반 생성)
-    │
-    ▼
-Task 생성 (pending: session_restart)
-    │
-    ▼
-다음 세션 → 컴포넌트 사용 가능
-```
-
----
-
-## Critical Rules
-
-> **STOP. Before ANY action, check these rules.**
-
-1. **Principle-Based Reasoning**: Every decision/response MUST cite applicable principle(s).
-   - Format: `[P#] decision`
-   - No decision without principle backing
-   - When principles conflict, state which takes precedence and why
-
-2. **Autonomous Execution** [P13, P14]: Act first, ask only when truly blocked.
-   - User sets direction → AI owns execution
-   - Default: Make the decision yourself using principles
-   - Questions to user = Last resort after advisor returns `confidence: low`
-
-3. **Advisor First**: Call `Task(subagent_type="advisor")` BEFORE:
-   - Asking user any question
-   - Making architectural decisions
-   - Choosing between approaches
-
-4. **Skill Routing**: External services require skills. Advisor enforces this.
-   - See: `.claude/agents/advisor.md` → Skill Enforcement
-
-5. **Agent Activation**: Proactively use agents:
-   - Uncertainty? → `advisor`
-   - Before PR? → `reviewer`
-   - Code smell? → `refactor`
-
-6. **Session Lifecycle** [P17, P20]: Boot and wrapup are mandatory.
-   - Session start → `Task(subagent_type="boot")` FIRST
-   - Session end → `Task(subagent_type="wrapup")` LAST
-   - No exceptions. Context is expensive. Learnings must persist.
-
-**Violation = System malfunction. These are not suggestions.**
-
-## Core Philosophy
-
-### Axioms
-
-Three axioms govern all decisions:
-
-| Axiom | Drives | Question |
-|-------|--------|----------|
-| **Curiosity** | Exploration, learning, proactive action | "What if?" |
-| **Truth** | Accuracy, verification, single source | "Is it correct?" |
-| **Beauty** | Simplicity, elegance, minimal complexity | "Is it clean?" |
-
-### Principles
-
-| # | Principle | Description | Axiom |
-|---|-----------|-------------|-------|
-| 1 | SSOT | One source of truth, no duplication | Truth |
-| 2 | MECE | Clear boundaries, complete coverage | Truth, Beauty |
-| 3 | Simplicity First | Simple solutions over complex ones | Beauty |
-| 4 | Incremental | Build only what's needed now | Beauty |
-| 5 | Modularity | Independent, replaceable components | Beauty |
-| 6 | Agile | Embrace change, short iterations | Curiosity |
-| 7 | Test-First | Executable specifications | Truth |
-| 8 | AI-First | Machine-readable documentation | Truth |
-| 9 | Root Cause First | Fix the cause, not the symptom | Truth |
-| 10 | Bounded Creativity | Creativity within constraints | Beauty |
-| 11 | Constructive Challenge | Question assumptions, suggest better paths | Curiosity, Truth |
-| 12 | Front-load Pain | Analyze hard problems before coding | Curiosity |
-| 13 | Autonomous Execution | Act first, ask only when truly blocked | Curiosity |
-| 14 | Trust-based Delegation | AI owns execution, human sets direction | Truth |
-| 15 | Verify Before Done | Prove it works, don't assume | Truth |
-| 16 | Automate Repetition | Code for deterministic, AI for judgment. Context is expensive. | Beauty |
-| 17 | Learn from Failure | Record failures, find patterns, improve system | Truth, Curiosity |
-| 18 | Docendo Discimus | Teach to learn; explaining forces understanding | Curiosity, Truth |
-| 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
-| 20 | Sustainable by Design | One-off is waste. Build reproducible, self-evolving processes. | Truth, Beauty, Curiosity |
-
-## Component System
-
-Neuron = Component Factory. Claude Code = Framework.
-
-### Structure
 ```
 .claude/
-├─ agents/           # Judgment (boot, wrapup, advisor, reviewer)
-├─ skills/           # Execution
-│  ├─ api-*/         # External APIs (github, jira, notion, slack, confluence)
-│  ├─ capability-*/  # Reusable workflows (ui-design)
-│  └─ */             # Commands (pr, release, audit-modules)
-├─ contexts/         # Module-specific config (ctx-*.yaml)
-├─ factory/          # Templates + Registry
-│  ├─ templates/     # Component generation templates
-│  └─ registry.yaml  # Component SSOT
-├─ memory/           # Persistent state (focus, lessons, identity, team)
-└─ knowledge/        # Reference docs (non-duplicate only)
+├─ agents/       # Judgment components (self-describing)
+├─ skills/       # Execution components (self-describing)
+├─ factory/      # Templates + registry.yaml
+├─ memory/       # Persistent: identity, focus, lessons
+└─ knowledge/    # Reference docs
 ```
 
-### Decision Guide
-| Need | Choose | Example |
-|------|--------|---------|
-| Judgment/reasoning | **Agent** | Code review, architecture |
-| External API | **Skill (api-*)** | Jira, GitHub |
-| Reusable workflow | **Skill (capability-*)** | UI design |
-| Automated trigger | **Hook** | Pre-commit |
+## Component Discovery
 
-### Registry
-Component SSOT: `.claude/factory/registry.yaml`
-- All components tracked with status and health
-- boot.md reads, wrapup.md updates
-- Factory creates missing components
+**Don't memorize routing tables. Discover what you need.**
 
-## Agents
+1. **Need a capability?** → Search `agents/` and `skills/` for matching component
+2. **Found it?** → Read its `.md` file for usage
+3. **Not found?** → Factory creates it from templates
 
-| Agent | Purpose | Trigger |
-|-------|---------|---------|
-| `boot` | Session initialization | **Session start (MANDATORY)** |
-| `wrapup` | Session teardown, persist learnings | **Session end (MANDATORY)** |
-| `advisor` | Ambiguity resolution | Before asking user |
-| `reviewer` | Code quality, PR review | Before `/pr` |
-| `refactor` | Structure improvement | File > 200 lines, duplication |
-| `self-improve` | System improvement | Reviewer outputs `[IMPROVE]` |
+Each component is self-describing. Its `.md` file contains:
+- When to use it
+- How to invoke it
+- What it returns
 
-Details: `.claude/agents/*.md`
+## Session Lifecycle
 
-## Routing
+**Complex tasks** (multi-file changes, commits, external APIs):
+- Start with `boot` agent → loads memory, creates tasks
+- End with `wrapup` agent → persists learnings
 
-| Situation | Route |
-|-----------|-------|
-| **Session start** | `Task(subagent_type="boot")` |
-| **Session end** | `Task(subagent_type="wrapup")` |
-| Need judgment/philosophy | `Task(subagent_type="advisor")` |
-| Code review needed | `Task(subagent_type="reviewer")` |
-| Refactoring decision | `Task(subagent_type="refactor")` |
-| Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
-| **Any task starts** | Define verification criteria (see `.claude/knowledge/task-verification-workflow.md`) |
-| External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
-| Create PR | `/pr` skill |
-| Create release | `/release` skill |
-| Audit submodules | `/audit-modules` skill |
-
-## Decision Signals
-
-**Architecture check first:**
-- New functionality? → Separate repo → Submodule under `modules/`
-- Location within neuron? → Execute location decision
-
-**Default behavior [P13]:** Execute. Don't ask.
-
-| Signal | Action |
-|--------|--------|
-| User states location/tool/approach | Execute immediately |
-| Multiple valid approaches | Pick one using principles, state which |
-| Destructive action | Warn once, then execute if user confirms |
-| Ambiguous scope | Make reasonable assumption, proceed |
-
-**Questions are failures.** Every question to user = failure to apply principles autonomously.
+**Simple tasks** (read-only, explanations): Skip boot/wrapup.
 
 ## Memory
 
-AI long-term memory. Always loaded at session start via boot agent. **SSOT for user context.**
+Persistent context across sessions. Loaded by `boot`, updated by `wrapup`.
 
-| File | Purpose | Update Frequency |
-|------|---------|------------------|
-| `.claude/memory/identity.yaml` | Who I am (name, role, org) | Rarely |
-| `.claude/memory/focus.yaml` | Current priorities, active modules | Per project change |
-| `.claude/memory/team.yaml` | Team members (Jira/Slack IDs) | Per team change |
-| `.claude/memory/lessons.yaml` | Learnings from past sessions | Per significant session (by wrapup) |
-
-### Memory Update Rule [P17]
-
-**wrapup agent automatically updates memory after significant sessions.**
-
-Triggers:
-- New insight about workflow → lessons.yaml
-- Focus/priority changed → focus.yaml
-- User correction → lessons.yaml (fact)
-
-## Session Protocol
-
-**When to use boot/wrapup:**
-- Complex: Multi-file changes, commits, external API calls
-- Simple (skip): Read-only queries, single-file reads, explanations, quick lookups
-
-| Phase | Action |
-|-------|--------|
-| Start | **`boot` agent** → loads registry, focus, lessons, contexts → TaskCreate |
-| During | TaskUpdate progress tracking |
-| End | **`wrapup` agent** → extracts lessons, updates registry → `/pr` if complete |
-| Overflow | `wrapup` agent with `session_outcome: paused` |
+| File | Purpose |
+|------|---------|
+| `memory/identity.yaml` | User info (name, role, org) |
+| `memory/focus.yaml` | Current priorities |
+| `memory/lessons.yaml` | Learnings from past sessions |
 
 ## Conventions
 
-- **Language**: English for all neuron files (submodules may differ)
+- **Language**: English for all neuron files
 - **File size**: Max 200 lines
-- **Commits**: Conventional commits, `Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>`
-- **Auto-commit**: Commit when logical unit complete
-- **Auto-PR**: Run `/pr` on completion
