@@ -32,7 +32,7 @@ Neuron = Factory (그 위에서 동작)
 ## 3. Self-Evolution Pattern
 
 ```
-boot.md (컴포넌트 감지)
+system-boot.md (컴포넌트 감지)
     │ missing?
     ▼
 Factory.create() (템플릿 기반 생성)
@@ -78,14 +78,14 @@ Task 생성 (pending: session_restart)
 ## 6. 세션 라이프사이클
 
 ```
-Session Start → boot.md (MANDATORY)
+Session Start → system-boot.md (MANDATORY)
     ├─ Registry 로드
     ├─ 컴포넌트 리졸버
     └─ 컨텍스트 주입
 
 [Work]
 
-Session End → wrapup.md (MANDATORY)
+Session End → system-wrapup.md (MANDATORY)
     ├─ 학습 추출 (facts, lessons, patterns)
     ├─ Registry 업데이트
     └─ 세션 연속성 확보 (Tasks)

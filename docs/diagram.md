@@ -34,10 +34,10 @@
   [Session Start]
         │
         ▼
-┌───────────────┐
-│   boot.md     │  Component Resolver
-│  (registry)   │
-└───────┬───────┘
+┌─────────────────┐
+│ system-boot.md  │  Component Resolver
+│   (registry)    │
+└───────┬─────────┘
         │
         ▼
    ┌────────────┐
@@ -125,12 +125,15 @@
 │     AGENTS      │  │     SKILLS      │  │      HOOKS      │
 │  (Judgment)     │  │  (Execution)    │  │  (Automation)   │
 ├─────────────────┤  ├─────────────────┤  ├─────────────────┤
-│ • advisor       │  │ • api-github    │  │ • PreToolUse    │
-│ • reviewer      │  │ • api-jira      │  │ • PostToolUse   │
-│ • refactor      │  │ • api-notion    │  │ • SubagentStart │
-│ • self-improve  │  │ • api-slack     │  │                 │
-│                 │  │ • /pr           │  │                 │
-│                 │  │ • /release      │  │                 │
+│ system-*        │  │ • api-github    │  │ • PreToolUse    │
+│ • boot          │  │ • api-jira      │  │ • PostToolUse   │
+│ • wrapup        │  │ • api-notion    │  │ • SubagentStart │
+│ • advisor       │  │ • api-slack     │  │                 │
+│ role-*          │  │ • /pr           │  │                 │
+│ • reviewer      │  │ • /release      │  │                 │
+│ • refactor      │  │                 │  │                 │
+│ task-*          │  │                 │  │                 │
+│ • self-improve  │  │                 │  │                 │
 └─────────────────┘  └─────────────────┘  └─────────────────┘
 ```
 
@@ -151,12 +154,12 @@ neuron/
 │
 └── .claude/
     ├── agents/            # Judgment (6)
-    │   ├── advisor.md
-    │   ├── boot.md
-    │   ├── wrapup.md
-    │   ├── reviewer.md
-    │   ├── refactor.md
-    │   └── self-improve.md
+    │   ├── system-boot.md      # system-* (core lifecycle)
+    │   ├── system-wrapup.md
+    │   ├── system-advisor.md
+    │   ├── role-reviewer.md    # role-* (judgment/review)
+    │   ├── role-refactor.md
+    │   └── task-self-improve.md # task-* (task-oriented)
     │
     ├── skills/            # Execution (10)
     │   ├── api-*/         # External APIs

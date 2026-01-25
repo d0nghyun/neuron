@@ -43,14 +43,14 @@ Each component is self-describing. Its `.md` file contains:
 ## Session Lifecycle
 
 **Complex tasks** (multi-file changes, commits, external APIs):
-- Start with `boot` agent → loads memory, creates tasks
-- End with `wrapup` agent → persists learnings
+- Start with `system-boot` agent → loads memory, creates tasks
+- End with `system-wrapup` agent → persists learnings
 
 **Simple tasks** (read-only, explanations): Skip boot/wrapup.
 
 ## Memory
 
-Persistent context across sessions. Loaded by `boot`, updated by `wrapup`.
+Persistent context across sessions. Loaded by `system-boot`, updated by `system-wrapup`.
 
 | File | Purpose |
 |------|---------|

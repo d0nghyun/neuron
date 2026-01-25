@@ -50,7 +50,7 @@ git log --grep="fix:" --oneline -10
 |-----------------|--------|
 | Unclear convention | `CLAUDE.md` |
 | Missing workflow step | `.claude/skills/*/SKILL.md` |
-| Review gap | `.claude/agents/reviewer.md` |
+| Review gap | `.claude/agents/role-reviewer.md` |
 | Knowledge gap | `.claude/knowledge/*.md` |
 | Repeated manual work | `.claude/skills/*/SKILL.md` or `scripts/` |
 

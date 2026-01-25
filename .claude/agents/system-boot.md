@@ -64,7 +64,7 @@ For each module in `active_modules` from focus.yaml:
 3. **Build component status:**
    ```yaml
    component_status:
-     healthy: ["agent:advisor", "skill:api-github"]
+     healthy: ["agent:system-advisor", "skill:api-github"]
      missing: ["agent:arkraft-pm"]
      unhealthy: ["skill:api-jira"]  # has error status
    ```
@@ -201,7 +201,7 @@ boot_summary:
   # ═══════════════════════════════════════════════════════
 
   component_status:
-    healthy: ["agent:advisor", "skill:api-github"]
+    healthy: ["agent:system-advisor", "skill:api-github"]
     missing: ["agent:arkraft-pm"]
     unhealthy: []
     pending_factory: ["agent:arkraft-worker"]

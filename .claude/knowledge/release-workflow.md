@@ -62,7 +62,7 @@ When ready to release, run `/release`. See `.claude/skills/release/SKILL.md` for
 
 | File | Purpose |
 |------|---------|
-| `.claude/agents/reviewer.md` | Subagent definition |
+| `.claude/agents/role-reviewer.md` | Subagent definition |
 | `.claude/skills/pr/SKILL.md` | PR workflow skill |
 | `.claude/skills/release/SKILL.md` | Release workflow skill |
 | `docs/releasenotes/UNRELEASED.md` | Pending changes |

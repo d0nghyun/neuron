@@ -156,7 +156,7 @@ Track component usage patterns:
 ```yaml
 component_health:
   used_this_session:
-    - "agent:advisor"
+    - "agent:system-advisor"
     - "skill:api-github"
   created_this_session:
     - "agent:arkraft-pm"
@@ -202,7 +202,7 @@ wrapup_summary:
       - name: "agent:arkraft-pm"
         status: pending
     components_used:
-      - "agent:advisor"
+      - "agent:system-advisor"
       - "skill:api-github"
     health_changes:
       - component: "skill:api-github"

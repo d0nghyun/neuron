@@ -8,22 +8,13 @@
 
 components:
   # ─────────────────────────────────────────────────────────────────────────────
-  # AGENTS
+  # AGENTS - System (core lifecycle)
   # ─────────────────────────────────────────────────────────────────────────────
 
-  agent:advisor:
+  agent:system-boot:
     type: agent
-    path: .claude/agents/advisor.md
-    modules: [neuron]
-    status: healthy
-    description: "Knowledge-based recommendations with rationale"
-    health:
-      last_used: null
-      use_count: 0
-
-  agent:boot:
-    type: agent
-    path: .claude/agents/boot.md
+    category: system
+    path: .claude/agents/system-boot.md
     modules: [neuron]
     status: healthy
     description: "Session initialization agent"
@@ -31,9 +22,10 @@ components:
       last_used: null
       use_count: 0
 
-  agent:wrapup:
+  agent:system-wrapup:
     type: agent
-    path: .claude/agents/wrapup.md
+    category: system
+    path: .claude/agents/system-wrapup.md
     modules: [neuron]
     status: healthy
     description: "Session teardown agent"
@@ -41,9 +33,25 @@ components:
       last_used: null
       use_count: 0
 
-  agent:reviewer:
+  agent:system-advisor:
     type: agent
-    path: .claude/agents/reviewer.md
+    category: system
+    path: .claude/agents/system-advisor.md
+    modules: [neuron]
+    status: healthy
+    description: "Knowledge-based recommendations with rationale"
+    health:
+      last_used: null
+      use_count: 0
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # AGENTS - Role (judgment/review)
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  agent:role-reviewer:
+    type: agent
+    category: role
+    path: .claude/agents/role-reviewer.md
     modules: [neuron]
     status: healthy
     description: "Code quality and PR review"
@@ -51,9 +59,10 @@ components:
       last_used: null
       use_count: 0
 
-  agent:refactor:
+  agent:role-refactor:
     type: agent
-    path: .claude/agents/refactor.md
+    category: role
+    path: .claude/agents/role-refactor.md
     modules: [neuron]
     status: healthy
     description: "Structure improvement analysis"
@@ -61,9 +70,14 @@ components:
       last_used: null
       use_count: 0
 
-  agent:self-improve:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # AGENTS - Task (task-oriented)
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  agent:task-self-improve:
     type: agent
-    path: .claude/agents/self-improve.md
+    category: task
+    path: .claude/agents/task-self-improve.md
     modules: [neuron]
     status: healthy
     description: "System improvement proposals"
@@ -205,13 +219,13 @@ module_components:
   # Core neuron module requirements
   neuron:
     required:
-      - agent:advisor
-      - agent:boot
-      - agent:wrapup
-      - agent:reviewer
+      - agent:system-boot
+      - agent:system-wrapup
+      - agent:system-advisor
+      - agent:role-reviewer
     optional:
-      - agent:refactor
-      - agent:self-improve
+      - agent:role-refactor
+      - agent:task-self-improve
 
   # arkraft module requirements
   arkraft:
