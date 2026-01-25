@@ -60,7 +60,7 @@ Components can live at **neuron level** or **module level**.
 4. Create the component:
    - Agents → `{root}/.claude/agents/{type}-{name}.md` (auto-registers)
    - Skills → `{root}/.claude/skills/{type}-{name}/SKILL.md` (auto-registers)
-   - Contexts → `{root}/.claude/contexts/ctx-{name}.yaml` (auto-loads)
+   - Contexts → `{root}/.claude/contexts/ctx-{name}.yaml` (loaded by boot)
    - Hooks → `{root}/.claude/settings.json` (manual registration required)
    - Knowledge → `{root}/.claude/knowledge/{prefix}-{name}.md` (reference only)
 
