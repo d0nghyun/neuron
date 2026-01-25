@@ -4,6 +4,12 @@ Neuron is a **Component Factory** that runs on Claude Code.
 Claude Code provides agents, skills, hooks, and task management.
 Neuron adds templates, registry, contexts, and guiding principles.
 
+## MANDATORY: Session Start
+
+**EVERY session MUST begin by running `system-boot` agent.**
+
+Do NOT respond to user requests until boot completes. No exceptions.
+
 ## Principles
 
 | # | Principle | Description |
