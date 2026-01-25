@@ -19,6 +19,8 @@
 
 - Agent naming convention standardized: role-reviewer → code-reviewer, role-refactor → code-refactor, task-self-improve → system-self-improve
 - Factory README updated with clarified naming conventions (system-*, code-*, api-*, workflow-*, capability-* prefixes)
+- Factory README: added Location Decision guide for choosing between neuron-level vs module-level component placement
+- system-boot agent: corrected glob paths from relative to absolute (.claude/agents/*.md, .claude/skills/*/SKILL.md, .claude/contexts/ctx-*.yaml)
 - CLAUDE.md: Step 3 (Component Creation) now explicitly states "MANDATORY SEQUENCE - NO EXCEPTIONS" with numbered steps
 - CLAUDE.md: Added emphasis on reading factory/pattern files and following naming conventions before component creation
 - All skill SKILL.md files updated: directory names now match YAML name field for consistency

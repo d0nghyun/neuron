@@ -23,9 +23,9 @@ Runs at session start to restore context and surface critical information.
 List all available components for main agent reference:
 
 ```
-Glob agents/*.md → available agents
-Glob skills/*.md → available skills
-Glob contexts/ctx-*.yaml → available contexts
+Glob .claude/agents/*.md → available agents
+Glob .claude/skills/*/SKILL.md → available skills (extract skill name from folder)
+Glob .claude/contexts/ctx-*.yaml → available contexts
 ```
 
 **Note**: Boot only lists what's available. Main agent decides what's needed and creates missing components via factory.
