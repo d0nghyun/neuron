@@ -101,7 +101,7 @@ Factory → Tasks → Next Session
 1. [x] meta/lessons.yaml 병합 후 삭제
 2. [x] boot.md Step 1 수정 (handoff 참조 제거)
 3. [x] CLAUDE.md에 "What is Neuron?" 섹션 추가
-4. [ ] 커밋 및 푸시
+4. [x] 커밋 및 푸시 (451ebd0)
 
 ---
 
