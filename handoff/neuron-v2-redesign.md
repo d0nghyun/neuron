@@ -3,10 +3,10 @@
 ## State
 | Field | Value |
 |-------|-------|
-| **Status** | complete |
+| **Status** | in-progress |
 | **Updated** | 2026-01-25 |
 | **Branch** | claude/neuron-agent-skills-redesign-fgh1M |
-| **Session Outcome** | All Phases Complete, Ready for PR |
+| **Session Outcome** | Phase 1-6 Complete, Additional Cleanup Identified |
 
 ---
 
@@ -26,9 +26,6 @@ Claude Code provides:     Neuron provides:
 ```
 
 **Self-Evolution Pattern**: Factory → Tasks → Next Session
-- Component doesn't exist → Factory creates it
-- Agent requires session restart → Create Task with `pending: session_restart`
-- Next session boot.md resumes Task → Component executes
 
 ---
 
@@ -41,29 +38,14 @@ Claude Code provides:     Neuron provides:
 | 3 | Registry Tracking | ✅ COMPLETE |
 | 4 | Enhanced wrapup.md (Registry Update) | ✅ COMPLETE |
 | 5 | E2E Test (arkraft) | ✅ COMPLETE |
-| 6 | Cleanup (Commands deprecation) | ✅ COMPLETE |
+| 6 | Commands → Skills Migration | ✅ COMPLETE |
+| 7 | Skill Cleanup (redundant skills) | ⏳ NEXT |
+| 8 | Folder Restructure | ⏳ PENDING |
+| 9 | CLAUDE.md v2 Rewrite | ⏳ PENDING |
 
 ---
 
-## Claude Code Framework (DO NOT REINVENT)
-
-### Already Provided (January 2026 Update)
-- **Tasks system**: Dependencies, `~/.claude/tasks/` persistence
-- **Session collaboration**: `CLAUDE_CODE_TASK_LIST_ID` env var
-- **Agent definition**: `.claude/agents/*.md` with YAML frontmatter
-- **Skills injection**: `skills` field in agent frontmatter
-- **Hooks**: PreToolUse, PostToolUse, SubagentStart, SubagentStop
-- **Parallel execution**: Task tool, max 10 concurrent
-- **Agent creation UI**: `/agents` command
-- **Commands → Skills migration**: Commands are being deprecated in favor of skills
-
-### Key Constraints
-- **Agent creation requires session restart** - files in `.claude/agents/` not loaded until next session
-- **Commands deprecated** - migrate to skills or agents
-
----
-
-## Completed Implementation
+## Completed Implementation (Phase 1-6)
 
 ### Factory Structure
 ```
@@ -74,154 +56,218 @@ Claude Code provides:     Neuron provides:
 │  ├─ skill-api.md            ✅
 │  ├─ context-project.yaml    ✅
 │  └─ pipeline-parallel.yaml  ✅
-└─ registry.yaml              ✅ (15 components registered)
+└─ registry.yaml              ✅
 ```
-
-### Enhanced Agents
-- **boot.md**: +6 steps (Registry load, Component Resolver, Factory Trigger, Context Injection)
-- **wrapup.md**: +2 steps (Registry Update, Health Summary)
-
----
-
-## Completed: Phase 5 - E2E Test
-
-### Test Setup Complete
-- ✅ `meta/focus.yaml` already has arkraft active
-- ✅ Created `ctx-arkraft.yaml` context
-- ✅ Activated arkraft section in registry.yaml
-
----
-
-## Completed: Phase 6 - Cleanup
 
 ### Commands Migration Complete
-
-| Command | Action | Result |
-|---------|--------|--------|
-| `handoff.md` | ❌ DELETED | Replaced by boot/wrapup agents |
-| `backlog.md` | ❌ DELETED | Replaced by Claude Code Tasks |
-| `sync.md` | ❌ DELETED | Claude basic capability |
-| `pr.md` | ✅ MIGRATED | `.claude/skills/pr/SKILL.md` |
-| `release.md` | ✅ MIGRATED | `.claude/skills/release/SKILL.md` |
-| `audit-modules.md` | ✅ MIGRATED | `.claude/skills/audit-modules/SKILL.md` |
-
-### Created Directories
-- ✅ `.claude/contexts/` - Context files
-- ✅ `.claude/skills/pr/` - PR skill
-- ✅ `.claude/skills/release/` - Release skill
-- ✅ `.claude/skills/audit-modules/` - Audit skill
+| Command | Result |
+|---------|--------|
+| `handoff.md` | ❌ DELETED |
+| `backlog.md` | ❌ DELETED |
+| `sync.md` | ❌ DELETED |
+| `pr.md` | ✅ → `.claude/skills/pr/SKILL.md` |
+| `release.md` | ✅ → `.claude/skills/release/SKILL.md` |
+| `audit-modules.md` | ✅ → `.claude/skills/audit-modules/SKILL.md` |
 
 ---
 
-## Decision Guide: Agent vs Skill vs Hook
+## Phase 7: Skill Cleanup (NEXT)
 
-Use this when creating new components:
+### Analysis Result
 
+| Skill | Type | Action | Reason |
+|-------|------|--------|--------|
+| `api-jira/` | API | ✅ KEEP | 올바른 명명 |
+| `api-confluence/` | API | ✅ KEEP | 올바른 명명 |
+| `api-notion/` | API | ✅ KEEP | 올바른 명명 |
+| `api-slack/` | API | ✅ KEEP | 올바른 명명 |
+| `api-github/` | API | ✅ KEEP | 올바른 명명 |
+| `api-google-calendar/` | API | ✅ KEEP | 올바른 명명 |
+| `meta/` | Internal | ❌ DELETE | wrapup.md에서 처리 |
+| `neuron-knowledge/` | Internal | ❌ DELETE | boot.md에서 처리 |
+| `ui-ux-pro-max/` | Capability | ⚠️ RENAME | → `capability-ui-design/` |
+
+### Execution
+```bash
+rm -rf .claude/skills/meta/
+rm -rf .claude/skills/neuron-knowledge/
+mv .claude/skills/ui-ux-pro-max/ .claude/skills/capability-ui-design/
+# Update registry.yaml
+```
+
+---
+
+## Phase 8: Folder Restructure
+
+### Current Problems
+
+| Folder | Issue |
+|--------|-------|
+| `handoff/` | Claude Code Tasks로 대체 가능 |
+| `meta/` | CLAUDE.md가 참조하는 파일 3개 중 1개만 존재 |
+| `knowledge/` | CLAUDE.md와 내용 중복 (SSOT 위반) |
+
+### meta/ Analysis
+| File | CLAUDE.md 언급 | 실제 존재 |
+|------|---------------|----------|
+| `identity.yaml` | ✅ | ❌ |
+| `focus.yaml` | ✅ | ❌ |
+| `team.yaml` | ✅ | ❌ |
+| `lessons.yaml` | ✅ | ✅ |
+
+### knowledge/ Analysis
+| Path | Issue |
+|------|-------|
+| `01-core/ai-axioms.md` | CLAUDE.md와 중복 |
+| `01-core/philosophy.md` | CLAUDE.md와 중복 |
+| `03-architecture/extension-mechanisms.md` | 구버전 (Commands 언급) |
+
+### Target Structure
+```
+neuron/
+├─ CLAUDE.md                    # SSOT
+├─ .claude/
+│  ├─ agents/
+│  ├─ skills/
+│  │  ├─ api-*/                 # External APIs
+│  │  ├─ capability-ui-design/  # renamed
+│  │  ├─ pr/                    # migrated
+│  │  ├─ release/               # migrated
+│  │  └─ audit-modules/         # migrated
+│  ├─ contexts/
+│  ├─ factory/
+│  ├─ memory/                   # NEW: from meta/
+│  │  └─ lessons.yaml
+│  └─ knowledge/                # NEW: from knowledge/
+│     └─ *.md (non-duplicate only)
+└─ modules/
+```
+
+### Deletions
+| Target | Reason |
+|--------|--------|
+| `handoff/` | Claude Code Tasks 대체 |
+| `meta/` | `.claude/memory/`로 이동 |
+| `knowledge/` | `.claude/knowledge/`로 이동 (중복 제거) |
+
+### Migration Commands
+```bash
+# meta → .claude/memory
+mkdir -p .claude/memory
+mv meta/lessons.yaml .claude/memory/
+rm -rf meta/
+
+# knowledge → .claude/knowledge (non-duplicate only)
+mkdir -p .claude/knowledge
+mv knowledge/02-workflow/*.md .claude/knowledge/
+mv knowledge/03-architecture/decision-guide.md .claude/knowledge/
+mv knowledge/03-architecture/module-protocol.md .claude/knowledge/
+mv knowledge/04-operations/*.md .claude/knowledge/
+rm -rf knowledge/
+
+# handoff → DELETE (Tasks replaces)
+rm -rf handoff/
+```
+
+---
+
+## Phase 9: CLAUDE.md v2 Rewrite
+
+### Current Issues
+- Commands 섹션 존재 (deprecated → skills로 변경 필요)
+- Component Factory 개념 없음
+- Registry 시스템 설명 없음
+- Skill 카테고리 (api-*/capability-*) 설명 없음
+- 참조하는 meta/ 파일들 존재하지 않음
+
+### New Structure Outline
+```markdown
+# Neuron v2 - Component Factory
+
+## Critical Rules (간소화)
+## Core Philosophy (3 Axioms, 20 Principles 유지)
+## Component System (NEW)
+  - Agents: Judgment
+  - Skills: api-* | capability-*
+  - Factory: Templates + Registry
+## Session Lifecycle (boot/wrapup)
+## Routing (Commands → Skills 변경)
+## Conventions
+```
+
+---
+
+## Decision Guide
+
+### Agent vs Skill vs Hook
 | Need | Choose | Example |
 |------|--------|---------|
-| Judgment/reasoning | **Agent** | Code review, architecture decisions |
-| External API call | **Skill (API)** | Jira, GitHub, Slack integration |
-| Reusable workflow | **Skill (Capability)** | Release management, reporting |
-| Automated trigger | **Hook** | Pre-commit validation, notifications |
-| Data transformation | **Skill (Internal)** | Template rendering, data parsing |
+| Judgment/reasoning | **Agent** | Code review, architecture |
+| External API | **Skill (api-*)** | Jira, GitHub |
+| Reusable workflow | **Skill (capability-*)** | UI design, release |
+| Automated trigger | **Hook** | Pre-commit |
 
-### Component Naming Convention
+### Naming Convention
 ```
-Agents:
-- agent-system/    → Core lifecycle (boot, wrapup, advisor)
-- agent-role/      → Personas (pm, researcher, reviewer)
-- agent-task/      → Single-purpose (data-collector, validator)
-
-Skills:
-- skill-api/       → External service wrappers
-- skill-capability/ → Business logic compositions
-- skill-internal/  → Neuron core operations
-
-Contexts:
-- ctx-{module}.yaml → Module-specific configuration
+Agents: .claude/agents/{name}.md
+Skills: .claude/skills/{type}-{name}/SKILL.md
+  - api-*        → External service wrappers
+  - capability-* → Reusable workflows
+  - (no prefix)  → Migrated from commands (pr, release, audit-modules)
 ```
 
 ---
 
-## Key Design Patterns
-
-### Factory → Tasks → Next Session
-```
-User Request
-    │
-    ▼
-boot.md (Component Resolver)
-    │ (component missing?)
-    ▼
-Factory.create()
-    │
-    ▼
-Task created (pending: session_restart)
-    │
-    ▼
-[Session ends]
-    │
-    ▼
-Next session boot.md
-    │
-    ▼
-Resume Task → Component executes
-```
-
----
-
-## Completion Checklist
+## Next Session Checklist
 
 ```
-PHASE 5: E2E TEST
-[x] Create meta/focus.yaml with arkraft module (already existed)
-[x] Create .claude/contexts/ctx-arkraft.yaml
-[x] Uncomment arkraft in registry.yaml module_components
+PHASE 7: SKILL CLEANUP
+[ ] Delete .claude/skills/meta/
+[ ] Delete .claude/skills/neuron-knowledge/
+[ ] Rename ui-ux-pro-max → capability-ui-design
+[ ] Update registry.yaml (remove deleted, update renamed)
 
-PHASE 6: CLEANUP
-[x] Delete .claude/commands/handoff.md
-[x] Delete .claude/commands/backlog.md
-[x] Delete .claude/commands/sync.md
-[x] Migrate pr.md → .claude/skills/pr/SKILL.md
-[x] Migrate release.md → .claude/skills/release/SKILL.md
-[x] Migrate audit-modules.md → .claude/skills/audit-modules/SKILL.md
-[x] Update CLAUDE.md (remove commands references)
-[x] Update registry.yaml with migrated components
-[x] Commit: "refactor: migrate commands to skills, add arkraft context"
+PHASE 8: FOLDER RESTRUCTURE
+[ ] Create .claude/memory/
+[ ] Move meta/lessons.yaml → .claude/memory/
+[ ] Create .claude/knowledge/
+[ ] Move knowledge/**/*.md → .claude/knowledge/ (non-duplicate)
+[ ] Delete handoff/, meta/, knowledge/
+[ ] Update boot.md paths
+[ ] Update wrapup.md paths
+
+PHASE 9: CLAUDE.MD REWRITE
+[ ] Add Component System section
+[ ] Add Factory concept
+[ ] Update Routing (Commands → Skills)
+[ ] Fix meta/ file references
+[ ] Update knowledge/ paths
 ```
-
-## Next Steps
-
-- [ ] Create PR to merge into main
-- [ ] Test boot agent with new component resolver
-- [ ] Verify skills work correctly (/pr, /release, /audit-modules)
 
 ---
 
 ## Session Learnings
 
 ### Facts
-- Claude Code Tasks system (January 2026) replaces custom Journal
-- CLAUDE_CODE_TASK_LIST_ID enables cross-session collaboration
-- Agent creation requires session restart (architectural constraint)
-- Commands are deprecated → migrate to skills/agents
+- Claude Code Tasks replaces custom handoff system
+- Commands are deprecated in Claude Code
+- CLAUDE.md references 3 meta files that don't exist (identity, focus, team)
+- knowledge/ content duplicates CLAUDE.md (SSOT violation)
+- Skills meta/ and neuron-knowledge/ are redundant with boot/wrapup
 
 ### Lessons
-- Registry is essential for SSOT [P1] and self-repair
-- Module tagging enables intelligent filtering
-- Pending Tasks create natural session continuation points
-- Don't reinvent what Claude Code already provides
+- Consolidate all config under `.claude/` for consistency
+- SSOT: CLAUDE.md is the source, knowledge/ should not duplicate
+- Delete > Migrate when content is redundant
 
 ### Patterns
-- Factory → Tasks → Next Session prevents context loss
-- Philosophy injection prevents architectural drift
-- Agent for judgment, Skill for workflow, Hook for automation
+- Everything under `.claude/` for discoverability
+- api-* for external, capability-* for workflows
+- Agent for judgment, Skill for execution
 
 ---
 
 ## References
-- CLAUDE.md - Core philosophy, routing
-- knowledge/01-core/philosophy.md - 3 Axioms, 20 Principles
-- .claude/agents/boot.md - Component resolver implementation
-- .claude/agents/wrapup.md - Registry update implementation
-- .claude/factory/registry.yaml - Component registry
+- `.claude/factory/registry.yaml` - Component SSOT
+- `.claude/agents/boot.md` - Component resolver
+- `.claude/agents/wrapup.md` - Registry updater
