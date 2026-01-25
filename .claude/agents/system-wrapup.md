@@ -135,15 +135,30 @@ Append ONLY truly unautomatable learnings
 
 | State | Condition | Action |
 |-------|-----------|--------|
-| `completed` | Task fully done | Ready for next |
-| `paused` | Work interrupted | Create Task with pending items |
-| `blocked` | Cannot proceed | Document blocker |
+| `completed` | Task fully done | Clear session_notes |
+| `paused` | Work interrupted | Update session_notes with context |
+| `blocked` | Cannot proceed | Update session_notes with blocker |
 
-### Step 6: Generate Wrapup Summary
+### Step 6: Update Session Notes
+
+```
+Edit .claude/contexts/ctx-focus.yaml
+Update session_notes field:
+- If completed: "" (clear)
+- If paused/blocked: Brief context for next session
+```
+
+Example:
+```yaml
+session_notes: "V2 migration 진행 중. boot/wrapup 수정 완료, PR #71 대기"
+```
+
+### Step 7: Generate Wrapup Summary
 
 ```yaml
 wrapup_summary:
   session_outcome: completed | paused | blocked
+  session_notes: "<context for next session, empty if completed>"
 
   work_done:
     - "<accomplishment>"

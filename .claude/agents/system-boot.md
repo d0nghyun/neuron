@@ -50,6 +50,7 @@ Extract:
 - `current_focus`: What am I working on?
 - `active_modules`: Which modules are hot?
 - `priorities`: What's urgent?
+- `session_notes`: What was happening last session?
 
 ### Step 3: Load Module Contexts
 
@@ -75,6 +76,7 @@ Output format - **designed for main agent consumption**:
 ```yaml
 boot_summary:
   focus: "<current_focus>"
+  session_notes: "<from previous session, if any>"
   active_modules:
     - module1
     - module2
@@ -125,6 +127,7 @@ ready: true
 ```yaml
 boot_summary:
   focus: "arkraft demo delivery"
+  session_notes: "jupyter cell 6-10 테스트 중이었음"
   active_modules:
     - arkraft
 
