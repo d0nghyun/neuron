@@ -1,6 +1,6 @@
 ---
 name: wrapup
-description: Session teardown agent. Extracts lessons/facts, updates handoff, persists learnings.
+description: Session teardown agent. Extracts lessons/facts, updates registry, persists learnings.
 tools: Read, Edit, Glob, Grep
 model: haiku
 ---
@@ -12,7 +12,7 @@ Runs at session end to persist learnings and prepare for next session.
 ## Purpose
 
 - Extract facts, lessons, patterns from session
-- Update handoff state
+- Update component registry
 - Update .claude/memory/lessons.yaml
 - Ensure continuity for next session
 
@@ -94,15 +94,15 @@ Read .claude/memory/lessons.yaml
 - Append under appropriate section (FACTS/LESSONS/PATTERNS)
 - Preserve existing entries
 
-### Step 5: Update Handoff
+### Step 5: Determine Session Outcome
 
 | State | Condition | Action |
 |-------|-----------|--------|
-| `completed` | Task fully done | Move to "Recently Completed" |
-| `paused` | Work interrupted | Document next steps in detail |
-| `blocked` | Cannot proceed | Document blocker clearly |
+| `completed` | Task fully done | Update registry, ready for next |
+| `paused` | Work interrupted | Create Task with pending items |
+| `blocked` | Cannot proceed | Document blocker in lessons |
 
-Update `handoff/_index.md` and context file.
+Use Claude Code Tasks for session continuity (replaces handoff).
 
 ### Step 5.5: Update Component Registry
 
@@ -184,10 +184,9 @@ wrapup_summary:
       - trigger: "<when>"
         action: "<what>"
 
-  handoff_updated:
-    file: "<context>.md"
-    next_steps:
-      - "<step>"
+  pending_tasks:
+    - task_id: "<if work incomplete>"
+      description: "<next steps>"
 
   meta_updated:
     facts_added: <count>
@@ -243,7 +242,7 @@ ready_for_next_session: true
 
 ## Guardrails
 
-- **NEVER** skip handoff update
+- **NEVER** skip registry update
 - **ALWAYS** extract facts when user corrects AI
 - **ALWAYS** extract lessons when same mistake happens twice
 - **ALWAYS** be specific - vague learnings are useless

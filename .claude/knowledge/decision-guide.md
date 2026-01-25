@@ -57,5 +57,5 @@ Q2. Is it a general-purpose service?
 
 ## Related
 
-- [extension-mechanisms.md](extension-mechanisms.md) - How to extend Claude Code (skills, MCP, agents, commands)
+- See `CLAUDE.md` → Component System for Agent vs Skill decision
 - [spec-process.md](spec-process.md) - How to develop specifications through scenarios

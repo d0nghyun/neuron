@@ -32,7 +32,7 @@ model: "{{model}}"
 ### Step 1: Context Loading
 
 ```
-Read meta/focus.yaml
+Read .claude/memory/focus.yaml
 Read {{context_file}}
 ```
 

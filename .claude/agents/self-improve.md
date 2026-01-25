@@ -21,7 +21,7 @@ Neuron's immune system. Detect patterns, analyze root causes, propose improvemen
 
 ```bash
 # Read policy
-cat knowledge/self-improve-policy.md
+cat .claude/knowledge/self-improve-policy.md
 cat CLAUDE.md
 ```
 
@@ -49,10 +49,10 @@ git log --grep="fix:" --oneline -10
 | Root Cause Type | Target |
 |-----------------|--------|
 | Unclear convention | `CLAUDE.md` |
-| Missing workflow step | `.claude/commands/*.md` |
+| Missing workflow step | `.claude/skills/*/SKILL.md` |
 | Review gap | `.claude/agents/reviewer.md` |
-| Knowledge gap | `knowledge/*.md` |
-| Repeated manual work | `.claude/commands/*.md` or `scripts/` |
+| Knowledge gap | `.claude/knowledge/*.md` |
+| Repeated manual work | `.claude/skills/*/SKILL.md` or `scripts/` |
 
 ## Step 4: Generate Proposal
 

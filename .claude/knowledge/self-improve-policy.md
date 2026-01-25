@@ -12,9 +12,8 @@ All changes require human approval via PR review.
 | Path | Description |
 |------|-------------|
 | `CLAUDE.md` | Project index and conventions |
-| `knowledge/*.md` | Policies and philosophy |
+| `.claude/knowledge/*.md` | Policies and philosophy |
 | `.claude/agents/*.md` | Agent definitions |
-| `.claude/commands/*.md` | Command definitions |
 | `.claude/skills/*/SKILL.md` | Skill definitions |
 
 ### Forbidden Targets

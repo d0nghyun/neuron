@@ -23,7 +23,7 @@ Neuron uses semantic versioning with automated review via independent subagent.
 
 Developer finishes feature/fix on working branch.
 
-### 2. Run /pr Command
+### 2. Run /pr Skill
 
 Claude Code executes:
 
@@ -45,9 +45,9 @@ Claude Code executes:
 | changes-requested | Non-critical warnings | Proceed with caution |
 | approve | All checks pass | Create PR |
 
-### 4. Run /release Command
+### 4. Run /release Skill
 
-When ready to release, run `/release`. See [release.md](../.claude/commands/release.md) for execution details.
+When ready to release, run `/release`. See `.claude/skills/release/SKILL.md` for execution details.
 
 ## Review Categories
 
@@ -63,7 +63,7 @@ When ready to release, run `/release`. See [release.md](../.claude/commands/rele
 | File | Purpose |
 |------|---------|
 | `.claude/agents/reviewer.md` | Subagent definition |
-| `.claude/commands/pr.md` | PR workflow entry |
-| `.claude/commands/release.md` | Release workflow entry |
+| `.claude/skills/pr/SKILL.md` | PR workflow skill |
+| `.claude/skills/release/SKILL.md` | Release workflow skill |
 | `docs/releasenotes/UNRELEASED.md` | Pending changes |
 | `docs/releasenotes/v*.md` | Released versions |
