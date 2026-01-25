@@ -19,10 +19,11 @@ Provides recommendations with rationale based on knowledge files.
 
 ## Execution Steps
 
-### Step 0: Load Knowledge Index
+### Step 0: Find Relevant Knowledge
 
-```
-knowledge/_index.yaml  # categories, trigger map, summaries
+```bash
+# Search for relevant knowledge files
+Glob .claude/knowledge/*.md
 ```
 
 ### Step 1: Match Triggers
@@ -63,15 +64,12 @@ basis:
 ```yaml
 recommendation: "Use pipeline pattern: save data via script → analysis script → read results only"
 confidence: high
-principles: [P12, P1]  # REQUIRED: Which principles support this
-principle_reasoning: "P12 Front-load Pain: structure data before analysis. P1 SSOT: single pipeline, no duplication."
+principles: [SSOT, Simplicity]  # REQUIRED: Which principles support this
+principle_reasoning: "SSOT: single pipeline, no duplication. Simplicity: minimal solution."
 basis:
-  - file: data-pipeline.md
+  - file: ref-data-pipeline.md
     relevant_section: "When to Apply"
     quote: "pagination required, expected data > 100 lines"
-  - file: philosophy.md
-    relevant_section: "Front-load Pain"
-    quote: "structure data before analysis"
 ask_user: false
 ```
 
@@ -88,7 +86,7 @@ reason: "User preference clearly needed (A vs B choice)"
 suggested_question: "Which approach do you prefer, A or B?"
 ```
 
-**CRITICAL**: Every recommendation MUST include `principles` and `principle_reasoning`.
+**CRITICAL**: Every recommendation MUST include `principles` (from CLAUDE.md) and `principle_reasoning`.
 
 ## Confidence Criteria
 
@@ -106,36 +104,22 @@ suggested_question: "Which approach do you prefer, A or B?"
 - User preference significantly impacts result
 - Clear recommendation not possible
 
-## Skill Enforcement
+## External Service Detection
 
-**CRITICAL**: When the situation involves external services, ALWAYS include skill routing in output.
+When external services are detected, note them in the recommendation:
 
-### Skill Routing Table
-
-| Trigger Keywords | Required Skill |
-|-----------------|----------------|
-| GitHub, PR, issue, repository, commit | `Skill(github-api)` |
-| Jira, ticket, sprint, story, epic | `Skill(jira-api)` |
-| Notion, page, database, block | `Skill(notion-api)` |
-| Confluence, wiki, space, content | `Skill(confluence-api)` |
-
-### Enforcement Rules
-
-1. **Detect**: Scan input for trigger keywords
-2. **Mandate**: If match found, `required_skill` MUST be in output
-3. **Block**: Return `skill_required: true` to force main agent to use skill
-
-### Output with Skill
+| Service Type | Examples |
+|--------------|----------|
+| Version Control | GitHub, GitLab, Bitbucket |
+| Project Management | Jira, Notion, Linear |
+| Documentation | Confluence, Notion |
 
 ```yaml
-recommendation: "Fetch issues using GitHub API"
+# If external service detected
+recommendation: "Use appropriate API for GitHub operations"
 confidence: high
-skill_required: true
-required_skill: "github-api"
-skill_reason: "GitHub API operation detected"
-basis:
-  - file: data-pipeline.md
-    relevant_section: "External Data"
+external_service: "github"
+note: "Check .claude/skills/ for available API skills"
 ```
 
 ## Decision Logic

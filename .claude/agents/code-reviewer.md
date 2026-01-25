@@ -2,8 +2,6 @@
 name: code-reviewer
 description: Reviews code changes and updates release notes before PR. Analyzes code quality, impact, security, and test coverage.
 tools: Read, Glob, Grep, Bash, Edit
-skills:
-  - workflow-pr
 model: sonnet
 ---
 
@@ -34,31 +32,17 @@ git log -1 --format="%s" # Latest commit message
 
 ### Step 2: Philosophy Compliance
 
-Check against principles in CLAUDE.md:
+**Read CLAUDE.md and verify each Principle is followed:**
 
-| # | Principle | Check |
-|---|-----------|-------|
-| 1 | SSOT | No duplicate definitions? |
-| 2 | MECE | Clear boundaries, no overlap? |
-| 3 | Simplicity First | Minimal solution, no over-engineering? |
-| 4 | Incremental | Only what's needed now? |
-| 5 | Modularity | Independent, replaceable components? |
-| 6 | Agile | Small, focused changes? |
-| 7 | Test-First | Tests before implementation? |
-| 8 | AI-First | Machine-readable docs? |
-| 9 | Root Cause First | Fixing cause, not symptom? |
-| 10 | Bounded Creativity | Within constraints, creative solutions? |
-| 11 | Constructive Challenge | Assumptions questioned, alternatives considered? |
-| 12 | Front-load Pain | Hard problems analyzed before coding? |
-| 13 | Autonomous Execution | No unnecessary user questions? |
-| 14 | Trust-based Delegation | AI executed, human direction respected? |
-| 16 | Automate Repetition | Repeated patterns → automation candidate? |
-| 17 | Learn from Failure | Failures recorded in retrospective? |
-| 18 | Docendo Discimus | Can author explain the change clearly? |
-| 19 | Visual Architecture | Architectural changes have diagrams? |
-| 20 | Sustainable by Design | Reproducible process, not one-off? |
-
-Note: #15 (Verify Before Done) checked separately in Step 2b.
+| Principle | Check |
+|-----------|-------|
+| SSOT | No duplicate definitions? Single source of truth? |
+| Simplicity | Minimal solution, no over-engineering? |
+| Modularity | Independent, replaceable components? |
+| Verify | Proven to work, not assumed? |
+| Learn | Failures recorded, patterns identified? |
+| Autonomy | Acts first, asks only when blocked? |
+| Sustainability | Reproducible, self-evolving process? |
 
 ### Step 2b: Task Verification Check
 
