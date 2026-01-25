@@ -13,7 +13,7 @@ Runs at session end to persist learnings and prepare for next session.
 
 - Extract facts, lessons, patterns from session
 - Update component registry
-- Update .claude/memory/lessons.yaml
+- Update .claude/knowledge/learn-lessons.yaml
 - Ensure continuity for next session
 
 ## Trigger Conditions
@@ -87,7 +87,7 @@ For each learning, use appropriate format:
 ### Step 4: Update Lessons File
 
 ```
-Read .claude/memory/lessons.yaml
+Read .claude/knowledge/learn-lessons.yaml
 ```
 
 - Check for duplicates (similar content/situation)

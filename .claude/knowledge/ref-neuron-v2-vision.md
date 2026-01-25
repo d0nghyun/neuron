@@ -71,7 +71,7 @@ Task 생성 (pending: session_restart)
 |------|------|
 | `CLAUDE.md` | 철학, 라우팅, 핵심 규칙 |
 | `.claude/factory/registry.yaml` | 컴포넌트 상태 |
-| `.claude/memory/lessons.yaml` | 세션 간 학습 |
+| `.claude/knowledge/learn-lessons.yaml` | 세션 간 학습 |
 
 ---
 
@@ -106,9 +106,17 @@ Skills:   .claude/skills/{category}-{name}/SKILL.md
           - capability-* → 재사용 워크플로우
           - workflow-*   → 내부 워크플로우 (pr, release)
 
-Contexts: .claude/contexts/ctx-{module}.yaml
-Memory:   .claude/memory/{type}.yaml
-Knowledge: .claude/knowledge/{topic}.md
+Contexts: .claude/contexts/ctx-{name}.yaml
+          - ctx-identity, ctx-focus, ctx-team (글로벌)
+          - ctx-{project} (프로젝트별)
+
+Knowledge: .claude/knowledge/{prefix}-{name}.md
+          - learn-*     → 축적된 학습
+          - guide-*     → 가이드
+          - protocol-*  → 규칙/정책
+          - workflow-*  → 프로세스
+          - ref-*       → 참조 문서
+          - git-*       → Git 관련
 ```
 
 ---
@@ -157,9 +165,8 @@ neuron/
 │  ├─ agents/       (6)      # Judgment
 │  ├─ skills/       (10)     # Execution
 │  ├─ factory/               # Templates + Registry
-│  ├─ memory/       (4)      # Long-term state
-│  ├─ knowledge/    (13)     # Reference docs
-│  └─ contexts/     (1)      # Module configs
+│  ├─ contexts/     (4)      # Session state (identity, focus, team, projects)
+│  └─ knowledge/    (14)     # Reference docs + learnings
 └─ modules/                  # Submodules
 ```
 
@@ -169,4 +176,4 @@ neuron/
 
 - `CLAUDE.md` - 핵심 규칙 및 라우팅
 - `.claude/factory/registry.yaml` - 컴포넌트 SSOT
-- `.claude/memory/lessons.yaml` - v2 학습 내용 포함
+- `.claude/knowledge/learn-lessons.yaml` - v2 학습 내용 포함

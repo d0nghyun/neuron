@@ -2,7 +2,7 @@
 
 Neuron is a **Component Factory** that runs on Claude Code.
 Claude Code provides agents, skills, hooks, and task management.
-Neuron adds templates, registry, memory, and guiding principles.
+Neuron adds templates, registry, contexts, and guiding principles.
 
 ## Principles
 
@@ -23,8 +23,8 @@ Neuron adds templates, registry, memory, and guiding principles.
 ├─ agents/       # Judgment components (self-describing)
 ├─ skills/       # Execution components (self-describing)
 ├─ factory/      # Templates + registry.yaml
-├─ memory/       # Persistent: identity, focus, lessons
-└─ knowledge/    # Reference docs
+├─ contexts/     # Session state: identity, focus, project configs
+└─ knowledge/    # Reference docs + accumulated learnings
 ```
 
 ## Component Discovery
@@ -43,20 +43,32 @@ Each component is self-describing. Its `.md` file contains:
 ## Session Lifecycle
 
 **Complex tasks** (multi-file changes, commits, external APIs):
-- Start with `system-boot` agent → loads memory, creates tasks
+- Start with `system-boot` agent → loads contexts, creates tasks
 - End with `system-wrapup` agent → persists learnings
 
 **Simple tasks** (read-only, explanations): Skip boot/wrapup.
 
-## Memory
+## Contexts & Knowledge
 
-Persistent context across sessions. Loaded by `system-boot`, updated by `system-wrapup`.
+**Contexts** (`contexts/`): Session state. Loaded by `system-boot`.
 
 | File | Purpose |
 |------|---------|
-| `memory/identity.yaml` | User info (name, role, org) |
-| `memory/focus.yaml` | Current priorities |
-| `memory/lessons.yaml` | Learnings from past sessions |
+| `ctx-identity.yaml` | User info (name, role, org) |
+| `ctx-focus.yaml` | Current priorities |
+| `ctx-team.yaml` | Team information |
+| `ctx-{project}.yaml` | Project-specific configs |
+
+**Knowledge** (`knowledge/`): Reference docs + learnings. Updated by `system-wrapup`.
+
+| Prefix | Purpose |
+|--------|---------|
+| `learn-` | Accumulated learnings (lessons, patterns) |
+| `guide-` | How-to guides |
+| `protocol-` | Rules and policies |
+| `workflow-` | Process documentation |
+| `ref-` | Reference information |
+| `git-` | Git-related docs |
 
 ## Conventions
 
