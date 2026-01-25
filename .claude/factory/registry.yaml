@@ -136,32 +136,12 @@ components:
       use_count: 0
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # SKILLS - Utilities
+  # SKILLS - Capability
   # ─────────────────────────────────────────────────────────────────────────────
 
-  skill:meta:
+  skill:capability-ui-design:
     type: skill
-    path: .claude/skills/meta/SKILL.md
-    modules: [neuron]
-    status: healthy
-    description: "Meta file management"
-    health:
-      last_used: null
-      use_count: 0
-
-  skill:neuron-knowledge:
-    type: skill
-    path: .claude/skills/neuron-knowledge/SKILL.md
-    modules: [neuron]
-    status: healthy
-    description: "Neuron project knowledge reference"
-    health:
-      last_used: null
-      use_count: 0
-
-  skill:ui-ux-pro-max:
-    type: skill
-    path: .claude/skills/ui-ux-pro-max/SKILL.md
+    path: .claude/skills/capability-ui-design/SKILL.md
     modules: [neuron]
     status: healthy
     description: "UI/UX design intelligence"

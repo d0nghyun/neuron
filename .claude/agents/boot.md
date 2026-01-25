@@ -12,7 +12,7 @@ Runs at session start to restore context and surface critical information.
 ## Purpose
 
 - Load previous session state (handoff)
-- Load current priorities (meta/focus.yaml)
+- Load current priorities (.claude/memory/focus.yaml)
 - Surface CRITICAL facts, lessons, patterns for active modules
 - **Resolve component dependencies and trigger factory if needed**
 - **Load module-specific contexts**
@@ -72,7 +72,7 @@ For each module in `active_modules` from focus.yaml:
 ### Step 2: Load Focus
 
 ```
-Read meta/focus.yaml
+Read .claude/memory/focus.yaml
 ```
 
 Extract:
@@ -112,7 +112,7 @@ If `missing` components exist:
 ### Step 3: Load Relevant Learnings
 
 ```
-Read meta/lessons.yaml
+Read .claude/memory/lessons.yaml
 ```
 
 **If file doesn't exist:** Output empty sections (must_know: [], must_avoid: [], should_follow: [])

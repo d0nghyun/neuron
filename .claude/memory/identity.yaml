@@ -1,0 +1,20 @@
+# Identity
+# Long-term memory: who I am (stable, rarely changes)
+
+me:
+  name: Donghyun
+  email: dh.lee@quantit.io
+  role: AI/Quant Developer
+  org: Quantit
+  focus_areas:
+    - AI-native development
+    - quantitative research
+
+org:
+  name: Quantit
+  team: AI팀
+  # Team member details: see team.yaml
+
+_meta:
+  updated_at: "2026-01-22"
+  version: 1

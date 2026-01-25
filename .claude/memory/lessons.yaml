@@ -1,0 +1,105 @@
+# Lessons & Facts
+# Long-term memory: insights, facts, patterns from past sessions
+# Updated by wrapup agent
+
+# ┌─────────────────────────────────────────────────────┐
+# │ TYPE DEFINITIONS                                     │
+# ├─────────────────────────────────────────────────────┤
+# │ fact    : Reference data (stable truths)             │
+# │           e.g., "arkraft Jira board is ARK"          │
+# │                                                      │
+# │ lesson  : Learned from mistakes                      │
+# │           e.g., "check __init__.py first on import"  │
+# │                                                      │
+# │ pattern : Repeatable solutions                       │
+# │           e.g., "always run lint before deploy"      │
+# └─────────────────────────────────────────────────────┘
+
+lessons:
+  # === FACTS ===
+  - type: fact
+    content: "arkraft Jira board name is ARK (not ARKRAFT)"
+    modules: [arkraft]
+    date: "2026-01-23"
+
+  # === LESSONS ===
+  - type: lesson
+    situation: "Building long-term memory systems in CLAUDE.md"
+    insight: "Instructions alone don't execute - need agent enforcement"
+    action: "Use agents (boot/wrapup) to enforce critical workflows"
+    modules: [neuron]
+    date: "2026-01-23"
+
+  - type: lesson
+    situation: "Session continuity across conversations"
+    insight: "Claude is stateless. Handoff must contain EVERYTHING."
+    action: "Include file:line, exact state, concrete next steps in handoff"
+    modules: [neuron]
+    date: "2026-01-23"
+
+  # === PATTERNS ===
+  - type: pattern
+    trigger: "Deploying arkraft services (dev vs production)"
+    action: "Dev Web UI uses direct run_insight_agent() calls via FastAPI. Production uses Worker queue pattern (FE Web → Worker → Agent Pod). Choose pattern based on deployment context."
+    modules: [arkraft, arkraft-agent-insight]
+    date: "2026-01-23"
+
+  - type: pattern
+    trigger: "Adding HTTP API to Python agents"
+    action: "Use FastAPI + uvicorn in docker-compose. Mount src and static volumes for hot-reload. Use StaticFiles for serving HTML. Define Pydantic models for request validation."
+    modules: [arkraft-agent-insight]
+    date: "2026-01-23"
+
+  # === FACTS ===
+  - type: fact
+    content: "arkraft-agent-insight now has Dev Web UI: src/web.py (FastAPI), static/index.html (SPA), ./run.sh web command"
+    modules: [arkraft-agent-insight]
+    date: "2026-01-23"
+
+  - type: fact
+    content: "arkraft-agent-insight uses docker-compose for local dev: agent, agent-dev, web (port 8000), jupyter (port 8888) services"
+    modules: [arkraft-agent-insight]
+    date: "2026-01-23"
+
+  - type: fact
+    content: "arkraft-agent-pm knowledge cache structure: specs/README.md (SSOT=Confluence), specs/_sync.yaml (sync metadata), specs/architecture.md (Arkraft overview), specs/modules/ (6 module specs)"
+    modules: [arkraft-agent-pm]
+    date: "2026-01-23"
+
+  - type: fact
+    content: "arkraft-agent-pm new commands: /sync-specs (Confluence→specs/), /ask (project Q&A with cache priority), /route (question/issue→team member matching)"
+    modules: [arkraft-agent-pm]
+    date: "2026-01-23"
+
+  # === LESSONS ===
+  - type: lesson
+    situation: "Reducing AI context cost for repeated project questions"
+    insight: "Cache + metadata + routing pattern reduces API calls and context usage significantly"
+    action: "Always implement cache layer (specs/) with SSOT elsewhere. Use metadata (team.yaml) for smart routing. Prioritize cached queries over API."
+    modules: [arkraft-agent-pm, neuron]
+    date: "2026-01-23"
+
+  - type: lesson
+    situation: "Persisting configuration changes in gitignore files"
+    insight: "Changes to meta/ files (gitignored) won't survive across sessions without documentation"
+    action: "For gitignored meta updates, either document separately in handoff or use /meta skill for interactive updates that auto-commit"
+    modules: [neuron]
+    date: "2026-01-23"
+
+  # === PATTERNS ===
+  - type: pattern
+    trigger: "Implementing AI PM for a project (arkraft-agent-pm model)"
+    action: "Knowledge cache (specs/ with SSOT elsewhere) + team metadata (expertise, current_focus) + smart routing (/ask for Q&A, /route for assignments) = efficient project operations"
+    modules: [arkraft-agent-pm, neuron]
+    date: "2026-01-23"
+
+  # === PATTERNS ===
+  - type: pattern
+    trigger: "Creating comprehensive handoff documentation for multi-component migrations"
+    action: "Structure as: Part 1 (Agent logic), Part 2 (Service/Infrastructure), Part 3 (State management), Part 4 (File references), Part 5 (Next steps). Use consistent formatting across parts. Include concrete code references. Publish to both internal Git docs AND Confluence for team accessibility."
+    modules: [arkraft, arkraft-deploy]
+    date: "2026-01-23"
+
+_meta:
+  updated_at: "2026-01-23"
+  version: 5

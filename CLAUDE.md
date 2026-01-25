@@ -71,7 +71,39 @@ Three axioms govern all decisions:
 | 19 | Visual Architecture | Express architecture as diagrams, not just code | Truth, Beauty |
 | 20 | Sustainable by Design | One-off is waste. Build reproducible, self-evolving processes. | Truth, Beauty, Curiosity |
 
-Detailed explanations: `knowledge/01-core/philosophy.md`
+## Component System
+
+Neuron = Component Factory. Claude Code = Framework.
+
+### Structure
+```
+.claude/
+├─ agents/           # Judgment (boot, wrapup, advisor, reviewer)
+├─ skills/           # Execution
+│  ├─ api-*/         # External APIs (github, jira, notion, slack, confluence)
+│  ├─ capability-*/  # Reusable workflows (ui-design)
+│  └─ */             # Commands (pr, release, audit-modules)
+├─ contexts/         # Module-specific config (ctx-*.yaml)
+├─ factory/          # Templates + Registry
+│  ├─ templates/     # Component generation templates
+│  └─ registry.yaml  # Component SSOT
+├─ memory/           # Persistent state (focus, lessons, identity, team)
+└─ knowledge/        # Reference docs (non-duplicate only)
+```
+
+### Decision Guide
+| Need | Choose | Example |
+|------|--------|---------|
+| Judgment/reasoning | **Agent** | Code review, architecture |
+| External API | **Skill (api-*)** | Jira, GitHub |
+| Reusable workflow | **Skill (capability-*)** | UI design |
+| Automated trigger | **Hook** | Pre-commit |
+
+### Registry
+Component SSOT: `.claude/factory/registry.yaml`
+- All components tracked with status and health
+- boot.md reads, wrapup.md updates
+- Factory creates missing components
 
 ## Agents
 
@@ -84,7 +116,7 @@ Detailed explanations: `knowledge/01-core/philosophy.md`
 | `refactor` | Structure improvement | File > 200 lines, duplication |
 | `self-improve` | System improvement | Reviewer outputs `[IMPROVE]` |
 
-Details: `knowledge/01-core/agents.md`
+Details: `.claude/agents/*.md`
 
 ## Routing
 
@@ -96,7 +128,7 @@ Details: `knowledge/01-core/agents.md`
 | Code review needed | `Task(subagent_type="reviewer")` |
 | Refactoring decision | `Task(subagent_type="refactor")` |
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
-| **Any task starts** | Define verification criteria (see `knowledge/02-workflow/task-verification-workflow.md`) |
+| **Any task starts** | Define verification criteria (see `.claude/knowledge/task-verification-workflow.md`) |
 | External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
 | Create PR | `/pr` skill |
 | Create release | `/release` skill |
@@ -119,40 +151,37 @@ Details: `knowledge/01-core/agents.md`
 
 **Questions are failures.** Every question to user = failure to apply principles autonomously.
 
-## Personal Context
+## Memory
 
-AI long-term memory. Always loaded at session start. **SSOT for user context.**
+AI long-term memory. Always loaded at session start via boot agent. **SSOT for user context.**
 
 | File | Purpose | Update Frequency |
 |------|---------|------------------|
-| `meta/identity.yaml` | Who I am (name, role, org) | Rarely |
-| `meta/focus.yaml` | Current priorities, active modules | Per project change |
-| `meta/team.yaml` | Team members (Jira/Slack IDs) | Per team change |
-| `meta/lessons.yaml` | Learnings from past sessions | Per significant session (by wrapup) |
+| `.claude/memory/identity.yaml` | Who I am (name, role, org) | Rarely |
+| `.claude/memory/focus.yaml` | Current priorities, active modules | Per project change |
+| `.claude/memory/team.yaml` | Team members (Jira/Slack IDs) | Per team change |
+| `.claude/memory/lessons.yaml` | Learnings from past sessions | Per significant session (by wrapup) |
 
-### Meta Update Rule [P17]
+### Memory Update Rule [P17]
 
-**After every significant session, update meta/ to prevent repeated mistakes.**
+**wrapup agent automatically updates memory after significant sessions.**
 
-When to update:
-- New insight about workflow → Update relevant file
-- Recurring question answered → Record in meta/
-- Focus/priority changed → Update `focus.yaml`
-- Team member added/changed → Update `team.yaml`
-
-Use `/meta` skill to update meta files interactively.
+Triggers:
+- New insight about workflow → lessons.yaml
+- Focus/priority changed → focus.yaml
+- User correction → lessons.yaml (fact)
 
 ## Session Protocol
 
 **When to use boot/wrapup:**
-- Complex: Multi-file changes, commits, handoff needed, external API calls
+- Complex: Multi-file changes, commits, external API calls
 - Simple (skip): Read-only queries, single-file reads, explanations, quick lookups
 
 | Phase | Action |
 |-------|--------|
-| Start | **`boot` agent** → loads handoff, focus, lessons → TodoWrite |
-| During | TodoWrite progress, handoff for decisions |
-| End | **`wrapup` agent** → extracts lessons, updates handoff → `/pr` if complete |
+| Start | **`boot` agent** → loads registry, focus, lessons, contexts → TaskCreate |
+| During | TaskUpdate progress tracking |
+| End | **`wrapup` agent** → extracts lessons, updates registry → `/pr` if complete |
 | Overflow | `wrapup` agent with `session_outcome: paused` |
 
 ## Conventions
