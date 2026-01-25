@@ -63,7 +63,40 @@ For each active module, run compliance checks:
 For failing modules, apply template from knowledge/repo-setup.md
 ```
 
+## Module Protocol
+
+Modules connect to neuron like USB-C devices:
+- **Standardized interface**: Consistent structure and metadata
+- **Plug and play**: Easy registration and removal
+- **Independence**: Each module is a standalone repository
+
+### Independence Requirement
+
+Submodules must work standalone when cloned independently.
+
+**DO NOT** use parent-relative paths like `../../knowledge/`.
+**DO** inline core policies in submodule CLAUDE.md.
+
+### Required Structure
+
+```
+module/
+  README.md     # Required: Purpose, setup, usage
+  CLAUDE.md     # Required: AI instructions with inlined policies
+  .claude/      # Optional: Claude Code configuration
+```
+
+### Registry Schema (modules/_registry.yaml)
+
+```yaml
+module_name:
+  repo: github.com/user/repo
+  domain: tools | personal | work | experimental
+  status: active | maintenance | archived
+  description: Brief description
+  registered_at: YYYY-MM-DD
+```
+
 ## Notes
 
 - Submodules with empty directories (shallow clone) will fail - run `git submodule update --init` first
-- See `knowledge/module-protocol.md` for full verification checklist

@@ -2,6 +2,10 @@
 
 Reference pattern library for component generation.
 
+## Before Creating
+
+**Check `ref-claude-code.md` first** to avoid reinventing built-in features.
+
 ## Purpose
 
 Factory provides patterns (not templates) for creating new components.

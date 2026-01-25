@@ -17,6 +17,10 @@
 - CLAUDE.md: updated Agents table and Routing table to include boot/wrapup agents
 - CLAUDE.md: updated Session Protocol to replace manual handoff steps with agent-driven workflow
 - CLAUDE.md: added meta/lessons.yaml to Personal Context table
+- CLAUDE.md: redesigned Component Lifecycle - boot now lists available components only, main agent decides what's needed
+- CLAUDE.md: simplified Session Lifecycle to universal boot→execute→wrapup (removed conditional logic)
+- system-boot agent: changed from "required components" analysis to "available components" listing - no longer judges what's needed
+- workflow-audit-modules skill: inlined module protocol documentation (independence requirement, registry schema)
 
 ## Fixed
 
@@ -24,7 +28,12 @@
 
 ## Removed
 
--
+- Deleted 11 obsolete knowledge files (1393 lines):
+  - git-advanced.md, git-github-settings.md, git-workflow.md (git workflows)
+  - guide-decision.md, guide-repo-setup.md (consolidated into factory patterns)
+  - protocol-module.md, protocol-self-improve.md (inlined into relevant components)
+  - workflow-release.md, workflow-spec.md, workflow-task-verification.md (replaced by skills)
+  - ref-neuron-v2-vision.md (v2 vision now implemented)
 
 ## Security
 

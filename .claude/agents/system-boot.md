@@ -18,9 +18,9 @@ Runs at session start to restore context and surface critical information.
 
 ## Execution Steps
 
-### Step 0: Check Required Components (MANDATORY)
+### Step 0: List Available Components
 
-Analyze the user's request to identify required components:
+List all available components for main agent reference:
 
 ```
 Glob agents/*.md → available agents
@@ -28,7 +28,7 @@ Glob skills/*.md → available skills
 Glob contexts/ctx-*.yaml → available contexts
 ```
 
-Compare against request needs. Document in boot_summary.
+**Note**: Boot only lists what's available. Main agent decides what's needed and creates missing components via factory.
 
 ### Step 1: Check Pending Tasks
 
@@ -79,14 +79,11 @@ boot_summary:
     - module1
     - module2
 
-  # Component requirements check (Step 0)
-  required_components:
-    available:
-      - agent:advisor
-      - skill:api-github
-    missing:
-      - skill:api-custom
-        suggested_pattern: pattern-skill.md
+  # Available components (Step 0) - main agent decides what to use
+  available_components:
+    agents: [advisor, reviewer, refactor]
+    skills: [api-jira, api-github, workflow-pr]
+    contexts: [ctx-focus, ctx-arkraft]
 
   # From module contexts
   must_know:
@@ -113,9 +110,6 @@ boot_summary:
       api_base_url: "https://api.arkraft.io"
       # ... other variables
 
-  # Set to false if missing components block execution
-  ready_to_proceed: true | false
-
 ready: true
 ```
 
@@ -134,12 +128,10 @@ boot_summary:
   active_modules:
     - arkraft
 
-  required_components:
-    available:
-      - agent:advisor
-      - skill:api-jira
-      - skill:api-github
-    missing: []
+  available_components:
+    agents: [advisor, reviewer, refactor]
+    skills: [api-jira, api-github, workflow-pr]
+    contexts: [ctx-focus, ctx-arkraft]
 
   must_know:
     - "arkraft Jira board is ARK (not ARKRAFT)"
@@ -161,8 +153,6 @@ boot_summary:
     arkraft:
       jira_board: ARK
       api_base_url: "https://api.arkraft.io"
-
-  ready_to_proceed: true
 
 ready: true
 ```

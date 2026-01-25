@@ -29,31 +29,28 @@ Neuron adds templates, registry, contexts, and guiding principles.
 
 ## Component Lifecycle
 
-### Step 1: Analyze Request (MANDATORY)
+### Step 1: Boot (context loading)
 
-Before complex tasks, identify required components:
+`system-boot` agent loads session context:
+- Available components (agents, skills, contexts)
+- Current focus and active modules
+- Pending tasks from previous session
 
-```
-Request Analysis → Required components:
-  - agents: [advisor, reviewer, ...]
-  - skills: [api-jira, workflow-pr, ...]
-  - contexts: [ctx-arkraft, ...]
-```
+### Step 2: Analyze & Resolve (main agent)
 
-### Step 2: Component Resolution
+Main agent analyzes request and compares against available:
 
 | Situation | Action |
 |-----------|--------|
-| All exist | → boot → execute → wrapup |
-| Some missing | → factory reference → create → session handoff |
-| Existing sufficient | → execute directly |
+| All needed exist | → execute → wrapup |
+| Some missing | → factory → create → execute → wrapup |
 
 ### Step 3: Creation (when missing)
 
 1. Read `factory/README.md` for component selection guide
 2. Select pattern: agent | skill | context | hook
 3. Create at correct location
-4. Create Task with `pending: session_restart`
+4. Use immediately or create Task with `pending: session_restart`
 
 Each component is self-describing. Its `.md` file contains:
 - When to use it
@@ -62,11 +59,15 @@ Each component is self-describing. Its `.md` file contains:
 
 ## Session Lifecycle
 
-**Complex tasks** (multi-file changes, commits, external APIs):
-- Start with `system-boot` agent → loads contexts, creates tasks
-- End with `system-wrapup` agent → persists learnings
+Every session follows the same flow:
 
-**Simple tasks** (read-only, explanations): Skip boot/wrapup.
+```
+boot → execute → wrapup
+```
+
+- **boot**: Load contexts, list available components (haiku, lightweight)
+- **execute**: Main agent analyzes request, uses/creates components
+- **wrapup**: Extract learnings, propose automation
 
 ## Contexts & Knowledge
 
