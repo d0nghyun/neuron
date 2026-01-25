@@ -18,6 +18,18 @@ Runs at session start to restore context and surface critical information.
 
 ## Execution Steps
 
+### Step 0: Check Required Components (MANDATORY)
+
+Analyze the user's request to identify required components:
+
+```
+Glob agents/*.md → available agents
+Glob skills/*.md → available skills
+Glob contexts/ctx-*.yaml → available contexts
+```
+
+Compare against request needs. Document in boot_summary.
+
 ### Step 1: Check Pending Tasks
 
 ```
@@ -67,6 +79,15 @@ boot_summary:
     - module1
     - module2
 
+  # Component requirements check (Step 0)
+  required_components:
+    available:
+      - agent:advisor
+      - skill:api-github
+    missing:
+      - skill:api-custom
+        suggested_pattern: pattern-skill.md
+
   # From module contexts
   must_know:
     - "<critical info from ctx files>"
@@ -92,6 +113,9 @@ boot_summary:
       api_base_url: "https://api.arkraft.io"
       # ... other variables
 
+  # Set to false if missing components block execution
+  ready_to_proceed: true | false
+
 ready: true
 ```
 
@@ -109,6 +133,13 @@ boot_summary:
   focus: "arkraft demo delivery"
   active_modules:
     - arkraft
+
+  required_components:
+    available:
+      - agent:advisor
+      - skill:api-jira
+      - skill:api-github
+    missing: []
 
   must_know:
     - "arkraft Jira board is ARK (not ARKRAFT)"
@@ -130,6 +161,8 @@ boot_summary:
     arkraft:
       jira_board: ARK
       api_base_url: "https://api.arkraft.io"
+
+  ready_to_proceed: true
 
 ready: true
 ```

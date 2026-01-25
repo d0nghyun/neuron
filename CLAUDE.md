@@ -22,18 +22,38 @@ Neuron adds templates, registry, contexts, and guiding principles.
 .claude/
 ├─ agents/       # Judgment components (self-describing)
 ├─ skills/       # Execution components (self-describing)
-├─ factory/      # Templates for component generation
+├─ factory/      # Reference patterns for component generation
 ├─ contexts/     # Session state: identity, focus, project configs
 └─ knowledge/    # Reference docs + accumulated learnings
 ```
 
-## Component Discovery
+## Component Lifecycle
 
-**Don't memorize routing tables. Discover what you need.**
+### Step 1: Analyze Request (MANDATORY)
 
-1. **Need a capability?** → Search `agents/` and `skills/` for matching component
-2. **Found it?** → Read its `.md` file for usage
-3. **Not found?** → Factory creates it from templates
+Before complex tasks, identify required components:
+
+```
+Request Analysis → Required components:
+  - agents: [advisor, reviewer, ...]
+  - skills: [api-jira, workflow-pr, ...]
+  - contexts: [ctx-arkraft, ...]
+```
+
+### Step 2: Component Resolution
+
+| Situation | Action |
+|-----------|--------|
+| All exist | → boot → execute → wrapup |
+| Some missing | → factory reference → create → session handoff |
+| Existing sufficient | → execute directly |
+
+### Step 3: Creation (when missing)
+
+1. Read `factory/README.md` for component selection guide
+2. Select pattern: agent | skill | context | hook
+3. Create at correct location
+4. Create Task with `pending: session_restart`
 
 Each component is self-describing. Its `.md` file contains:
 - When to use it
