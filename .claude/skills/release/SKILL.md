@@ -1,9 +1,17 @@
 ---
+name: release
 description: Create a release with version tag. Converts UNRELEASED.md to version file and creates git tag.
-tools: Read, Bash, Edit, Write, Task
+allowed-tools: Read, Bash, Edit, Write
+user-invocable: true
 ---
 
 # Create Release
+
+## When to Activate
+
+- User runs `/release` command
+- User asks to create a new release
+- Changes are ready for versioning
 
 ## Steps
 
@@ -47,24 +55,17 @@ Ask user to confirm version number.
 
 ### Step 4: Reset UNRELEASED.md
 
-Reset to empty template with sections from [releasenotes README](../../docs/releasenotes/README.md):
+Reset to empty template with sections:
 - Header: `# Unreleased` with quote `> Changes pending for the next release`
-- Sections: Added, Changed, Fixed, Removed, Security, Breaking Changes (each with `-` placeholder)
+- Sections: Added, Changed, Fixed, Removed, Security, Breaking Changes
 - Footer: `*Auto-updated by reviewer agent on PR creation.*`
 
-### Step 4b: Convert Retrospective
+### Step 4b: Convert Retrospective (if exists)
 
 1. Read `docs/retrospectives/UNRETROSPECTIVE.md`
-2. If has content beyond template (any entries in tables or insights):
-   - Create `docs/retrospectives/retro-vX.Y.Z.md` with version header, release date, and content
+2. If has content beyond template:
+   - Create `docs/retrospectives/retro-vX.Y.Z.md`
    - Reset UNRETROSPECTIVE.md to empty template
-
-Reset template structure from [retrospectives README](../../docs/retrospectives/README.md):
-- Header: `# Unretrospective` with quote `> Learnings pending for the next release`
-- Patterns: empty table `| Date | PR | Pattern | Status |`
-- Insights: list with `-` placeholder
-- Improvements: empty table `| Date | PR | Target | Change | Root Cause |`
-- Footer: `*Auto-updated by reviewer and self-improve agents.*`
 
 ### Step 5-7: Commit, Tag, Push
 

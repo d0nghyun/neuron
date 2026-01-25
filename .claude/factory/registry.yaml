@@ -169,6 +169,54 @@ components:
       last_used: null
       use_count: 0
 
+  # ─────────────────────────────────────────────────────────────────────────────
+  # SKILLS - Workflow
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  skill:pr:
+    type: skill
+    path: .claude/skills/pr/SKILL.md
+    modules: [neuron]
+    status: healthy
+    description: "Create PR with automated review"
+    health:
+      last_used: null
+      use_count: 0
+
+  skill:release:
+    type: skill
+    path: .claude/skills/release/SKILL.md
+    modules: [neuron]
+    status: healthy
+    description: "Create release with version tag"
+    health:
+      last_used: null
+      use_count: 0
+
+  skill:audit-modules:
+    type: skill
+    path: .claude/skills/audit-modules/SKILL.md
+    modules: [neuron]
+    status: healthy
+    description: "Audit submodule compliance"
+    health:
+      last_used: null
+      use_count: 0
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # CONTEXTS
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  context:ctx-arkraft:
+    type: context
+    path: .claude/contexts/ctx-arkraft.yaml
+    modules: [arkraft]
+    status: healthy
+    description: "Arkraft project context"
+    health:
+      last_used: null
+      use_count: 0
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # MODULE COMPONENTS - Component requirements per module
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -185,13 +233,13 @@ module_components:
       - agent:refactor
       - agent:self-improve
 
-  # Example: arkraft module (to be configured when module is activated)
-  # arkraft:
-  #   required:
-  #     - context:ctx-arkraft
-  #   optional:
-  #     - agent:arkraft-pm
-  #     - agent:arkraft-worker
+  # arkraft module requirements
+  arkraft:
+    required:
+      - context:ctx-arkraft
+    optional:
+      - agent:arkraft-pm
+      - agent:arkraft-worker
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # TEMPLATES - Available factory templates

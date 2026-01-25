@@ -1,9 +1,17 @@
 ---
+name: audit-modules
 description: Audit submodule compliance with neuron inheritance protocol
-tools: Read, Bash, Grep
+allowed-tools: Read, Bash, Grep
+user-invocable: true
 ---
 
 # Audit Submodule Inheritance
+
+## When to Activate
+
+- User runs `/audit-modules` command
+- After registering new submodules
+- Periodic compliance check
 
 ## Purpose
 
@@ -57,6 +65,5 @@ For failing modules, apply template from knowledge/repo-setup.md
 
 ## Notes
 
-- Run after registering new submodules
 - Submodules with empty directories (shallow clone) will fail - run `git submodule update --init` first
 - See `knowledge/module-protocol.md` for full verification checklist

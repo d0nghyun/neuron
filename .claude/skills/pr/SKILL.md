@@ -1,9 +1,17 @@
 ---
+name: pr
 description: Create a PR from current changes. Includes automated review and release notes via reviewer subagent.
-tools: Read, Glob, Grep, Bash, Edit, Task
+allowed-tools: Read, Glob, Grep, Bash, Edit, Task
+user-invocable: true
 ---
 
 # Create Pull Request
+
+## When to Activate
+
+- User runs `/pr` command
+- User asks to create a pull request
+- Feature is ready for review
 
 ## Steps
 
@@ -57,20 +65,18 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 git push -u origin <branch-name>
 ```
 
-Create PR with review summary (using GitHub API):
+Create PR with review summary (using gh CLI):
 
 ```bash
-curl -s -X POST \
-  -H "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "<type>: <description>",
-    "body": "## Summary\n- <changes>\n\n## Review Result\n<reviewer output>\n\n## Test Plan\n- [ ] <verification>",
-    "head": "<branch-name>",
-    "base": "main"
-  }' \
-  https://api.github.com/repos/{owner}/{repo}/pulls
+gh pr create --title "<type>: <description>" \
+  --body "## Summary
+- <changes>
+
+## Review Result
+<reviewer output>
+
+## Test Plan
+- [ ] <verification>"
 ```
 
 ## Notes

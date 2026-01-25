@@ -98,11 +98,9 @@ Details: `knowledge/01-core/agents.md`
 | Reviewer outputs `[IMPROVE]` | `Task(subagent_type="self-improve")` |
 | **Any task starts** | Define verification criteria (see `knowledge/02-workflow/task-verification-workflow.md`) |
 | External API (GitHub/Jira/Notion/Confluence) | Advisor returns `required_skill` |
-| Create PR | `/pr` |
-| Create release | `/release` |
-| Sync main branch | `/sync` |
-| Extract backlog | `/backlog` |
-| Audit submodules | `/audit-modules` |
+| Create PR | `/pr` skill |
+| Create release | `/release` skill |
+| Audit submodules | `/audit-modules` skill |
 
 ## Decision Signals
 
