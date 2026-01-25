@@ -1,5 +1,5 @@
 ---
-name: pr
+name: workflow-pr
 description: Create a PR from current changes. Includes automated review and release notes via reviewer subagent.
 allowed-tools: Read, Glob, Grep, Bash, Edit, Task
 user-invocable: true

@@ -1,5 +1,5 @@
 ---
-name: boot
+name: system-boot
 description: Session initialization agent. Loads context, restores state.
 tools: Read, Glob, Grep
 model: haiku

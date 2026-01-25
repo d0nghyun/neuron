@@ -47,10 +47,15 @@ Main agent analyzes request and compares against available:
 
 ### Step 3: Creation (when missing)
 
-1. Read `factory/README.md` for component selection guide
-2. Select pattern: agent | skill | context | hook
-3. Create at correct location
-4. Use immediately or create Task with `pending: session_restart`
+**MANDATORY SEQUENCE - NO EXCEPTIONS:**
+
+1. **Read** `factory/README.md` → select component type
+2. **Read** `factory/pattern-{type}.md` → get structure
+3. **Follow** naming convention from pattern (api-*, workflow-*, etc.)
+4. **Create** at correct location with correct prefix
+5. Use immediately or create Task with `pending: session_restart`
+
+⚠️ Skip any step → incorrect component structure
 
 Each component is self-describing. Its `.md` file contains:
 - When to use it

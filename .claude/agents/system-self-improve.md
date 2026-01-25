@@ -1,5 +1,5 @@
 ---
-name: self-improve
+name: system-self-improve
 description: Analyzes recurring issues and proposes system improvements. Creates isolated PRs for human approval.
 tools: Read, Glob, Grep, Bash, Edit, Task
 skills:
@@ -52,7 +52,7 @@ git log --grep="fix:" --oneline -10
 |-----------------|--------|
 | Unclear convention | `CLAUDE.md` |
 | Missing workflow step | `.claude/skills/*/SKILL.md` |
-| Review gap | `.claude/agents/role-reviewer.md` |
+| Review gap | `.claude/agents/code-reviewer.md` |
 | Knowledge gap | `.claude/knowledge/*.md` |
 | Repeated manual work | `.claude/skills/*/SKILL.md` or `scripts/` |
 

@@ -60,10 +60,9 @@ Document for reference? → Knowledge
 ## Naming Conventions
 
 **Agents**: `{type}-{name}.md`
-- `system-*`: Core system agents (boot, wrapup)
+- `system-*`: Core system agents (boot, wrapup, advisor, self-improve)
 - `feature-dev-*`: Feature development agents
-- `code-review-*`: Code review agents
-- Other domain-specific prefixes as needed
+- `code-*`: Code-related agents (code-review-*, code-refactor, etc.)
 
 **Skills**: `{type}-{name}.md`
 - `api-*`: External API integrations

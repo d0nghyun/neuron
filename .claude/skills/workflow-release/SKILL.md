@@ -1,5 +1,5 @@
 ---
-name: release
+name: workflow-release
 description: Create a release with version tag. Converts UNRELEASED.md to version file and creates git tag.
 allowed-tools: Read, Bash, Edit, Write
 user-invocable: true

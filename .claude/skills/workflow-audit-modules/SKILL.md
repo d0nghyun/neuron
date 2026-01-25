@@ -1,5 +1,5 @@
 ---
-name: audit-modules
+name: workflow-audit-modules
 description: Audit submodule compliance with neuron inheritance protocol
 allowed-tools: Read, Bash, Grep
 user-invocable: true

@@ -1,5 +1,5 @@
 ---
-name: wrapup
+name: system-wrapup
 description: Session teardown agent. Extracts learnings and proposes automation.
 tools: Read, Edit, Glob, Grep
 model: haiku

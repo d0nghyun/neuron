@@ -1,5 +1,5 @@
 ---
-name: reviewer
+name: code-reviewer
 description: Reviews code changes and updates release notes before PR. Analyzes code quality, impact, security, and test coverage.
 tools: Read, Glob, Grep, Bash, Edit
 skills:

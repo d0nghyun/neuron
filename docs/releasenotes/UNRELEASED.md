@@ -4,6 +4,8 @@
 
 ## Added
 
+- workflow-init-module skill for activating module skills/agents via symlink during session
+- learn-failures.yaml for persistent failure tracking and pattern prevention
 - arkraft-agent-insight: planner subagent for natural language request parsing (topic, universe, count extraction)
 - boot agent: session initialization - loads handoff, focus, and relevant lessons at session start
 - wrapup agent: session teardown - extracts facts/lessons/patterns and updates handoff at session end
@@ -15,6 +17,13 @@
 
 ## Changed
 
+- Agent naming convention standardized: role-reviewer → code-reviewer, role-refactor → code-refactor, task-self-improve → system-self-improve
+- Factory README updated with clarified naming conventions (system-*, code-*, api-*, workflow-*, capability-* prefixes)
+- CLAUDE.md: Step 3 (Component Creation) now explicitly states "MANDATORY SEQUENCE - NO EXCEPTIONS" with numbered steps
+- CLAUDE.md: Added emphasis on reading factory/pattern files and following naming conventions before component creation
+- All skill SKILL.md files updated: directory names now match YAML name field for consistency
+- All agent YAML name fields updated to match filename conventions (system-boot, system-wrapup, system-advisor, code-reviewer, code-refactor, system-self-improve)
+- learn-failures.yaml added to document recurring issues and preventions (factory-skip, prefix-inconsistency)
 - arkraft-agent-insight: simplified CLI to accept single natural language request instead of explicit topic/universe parameters
 - arkraft-agent-insight: updated README with planner architecture diagram and multilingual examples
 - CLAUDE.md: added Critical Rule #6 for mandatory session lifecycle (boot/wrapup)

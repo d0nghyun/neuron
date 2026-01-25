@@ -1,0 +1,34 @@
+# Failure Learnings
+# Record failures and their resolutions to prevent recurrence
+
+failures:
+  - id: 2026-01-25-factory-skip
+    date: 2026-01-25
+    summary: Skill created without following factory pattern
+    context: Created init-module skill without reading factory/README.md or pattern-skill.md
+    symptoms:
+      - Missing frontmatter
+      - Wrong naming (no prefix)
+      - Structure didn't match pattern
+    root_cause: Skipped mandatory factory reference steps during rapid implementation
+    resolution:
+      - Read factory/README.md before creating
+      - Read pattern-{type}.md for structure
+      - Follow naming convention (api-*, workflow-*, etc.)
+    prevention:
+      - CLAUDE.md updated with "MANDATORY SEQUENCE - NO EXCEPTIONS"
+      - Explicit step-by-step requirement added
+    related_files:
+      - CLAUDE.md
+      - .claude/factory/README.md
+
+  - id: 2026-01-25-prefix-inconsistency
+    date: 2026-01-25
+    summary: Existing agents have undefined prefixes
+    context: role-*, task-* prefixes used but not defined in factory/README.md
+    symptoms:
+      - role-refactor.md, role-reviewer.md use undefined prefix
+      - task-self-improve.md uses undefined prefix
+    root_cause: Components created before factory conventions were fully established
+    resolution: Renamed agents + updated factory/README.md with code-* prefix
+    prevention: Always check factory/README.md naming conventions before creating
