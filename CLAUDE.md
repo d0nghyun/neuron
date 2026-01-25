@@ -22,7 +22,7 @@ Neuron adds templates, registry, contexts, and guiding principles.
 .claude/
 ├─ agents/       # Judgment components (self-describing)
 ├─ skills/       # Execution components (self-describing)
-├─ factory/      # Templates + registry.yaml
+├─ factory/      # Templates for component generation
 ├─ contexts/     # Session state: identity, focus, project configs
 └─ knowledge/    # Reference docs + accumulated learnings
 ```
@@ -50,25 +50,9 @@ Each component is self-describing. Its `.md` file contains:
 
 ## Contexts & Knowledge
 
-**Contexts** (`contexts/`): Session state. Loaded by `system-boot`.
+**Contexts** (`contexts/`): Session state. `ctx-*.yaml` files. Loaded by `system-boot`.
 
-| File | Purpose |
-|------|---------|
-| `ctx-identity.yaml` | User info (name, role, org) |
-| `ctx-focus.yaml` | Current priorities |
-| `ctx-team.yaml` | Team information |
-| `ctx-{project}.yaml` | Project-specific configs |
-
-**Knowledge** (`knowledge/`): Reference docs + learnings. Updated by `system-wrapup`.
-
-| Prefix | Purpose |
-|--------|---------|
-| `learn-` | Accumulated learnings (lessons, patterns) |
-| `guide-` | How-to guides |
-| `protocol-` | Rules and policies |
-| `workflow-` | Process documentation |
-| `ref-` | Reference information |
-| `git-` | Git-related docs |
+**Knowledge** (`knowledge/`): Reference docs. Prefixed by category. Updated by `system-wrapup`.
 
 ## Conventions
 

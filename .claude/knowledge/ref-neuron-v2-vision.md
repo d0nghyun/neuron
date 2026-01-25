@@ -1,30 +1,30 @@
 # Neuron v2 Vision
 
-> **Neuron은 Claude Code 프레임워크 위에서 동작하는 Component Factory로, 철학 기반의 자가 진화 시스템이다.**
+> **Neuron is a Component Factory running on Claude Code framework, a philosophy-driven self-evolving system.**
 
 ---
 
-## 1. 정체성
+## 1. Identity
 
 ```
 Neuron ≠ Framework
 Neuron = Component Factory
 
-Claude Code = Framework (이미 제공)
-Neuron = Factory (그 위에서 동작)
+Claude Code = Framework (already provided)
+Neuron = Factory (runs on top)
 ```
 
 ---
 
-## 2. 바퀴 재발명 금지
+## 2. No Reinventing the Wheel
 
-| Claude Code 제공 | Neuron 추가 |
-|-----------------|-------------|
-| `.claude/agents/*.md` | **Factory** - 템플릿 기반 생성 |
-| `.claude/skills/` | **Registry** - SSOT 추적 |
+| Claude Code Provides | Neuron Adds |
+|---------------------|-------------|
+| `.claude/agents/*.md` | **Factory** - Template-based generation |
+| `.claude/skills/` | **Contexts** - Module-specific state |
 | `~/.claude/tasks/` | **Philosophy** - 3 Axioms, 20 Principles |
-| Task tool (10 parallel) | **Memory** - 세션 간 학습 |
-| Hooks | **Self-Evolution** - 자가 성장 |
+| Task tool (10 parallel) | **Automation** - lessons → hooks/skills |
+| Hooks | **Self-Evolution** - Self-growth |
 | Agent resume (agentId) | |
 
 ---
@@ -32,141 +32,141 @@ Neuron = Factory (그 위에서 동작)
 ## 3. Self-Evolution Pattern
 
 ```
-system-boot.md (컴포넌트 감지)
+system-boot.md (Component detection)
     │ missing?
     ▼
-Factory.create() (템플릿 기반 생성)
+Factory.create() (Template-based generation)
     │
     ▼
-Task 생성 (pending: session_restart)
+Task creation (pending: session_restart)
     │
     ▼
-다음 세션 → 컴포넌트 사용 가능
+Next session → Component available
 ```
 
 ---
 
-## 4. 컴포넌트 분류
+## 4. Component Classification
 
-| 유형 | 역할 | 예시 |
-|------|------|------|
-| **Agent** | Judgment (판단) | advisor, reviewer, refactor |
-| **Skill** | Execution (실행) | api-*, capability-*, /pr |
-| **Hook** | Automation (자동화) | PreToolUse, PostToolUse |
+| Type | Role | Examples |
+|------|------|----------|
+| **Agent** | Judgment | advisor, reviewer, refactor |
+| **Skill** | Execution | api-*, capability-*, /pr |
+| **Hook** | Automation | PreToolUse, PostToolUse |
 
-### 결정 기준
+### Decision Criteria
 
 ```
-판단/추론 필요? → Agent
-외부 API? → Skill (api-*)
-재사용 워크플로우? → Skill (capability-*)
-자동 트리거? → Hook
+Requires judgment/reasoning? → Agent
+External API? → Skill (api-*)
+Reusable workflow? → Skill (capability-*)
+Auto-trigger? → Hook
 ```
 
 ---
 
-## 5. SSOT 원칙
+## 5. SSOT Principle
 
-| SSOT | 역할 |
+| SSOT | Role |
 |------|------|
-| `CLAUDE.md` | 철학, 라우팅, 핵심 규칙 |
-| `.claude/factory/registry.yaml` | 컴포넌트 상태 |
-| `.claude/knowledge/learn-lessons.yaml` | 세션 간 학습 |
+| `CLAUDE.md` | Philosophy, routing, core rules |
+| `.claude/contexts/ctx-*.yaml` | Module-specific state and config |
+| `.claude/knowledge/learn-lessons.yaml` | Non-automatable learnings (human ref) |
 
 ---
 
-## 6. 세션 라이프사이클
+## 6. Session Lifecycle
 
 ```
 Session Start → system-boot.md (MANDATORY)
-    ├─ Registry 로드
-    ├─ 컴포넌트 리졸버
-    └─ 컨텍스트 주입
+    ├─ Check pending Tasks
+    ├─ Load Focus (ctx-focus.yaml)
+    └─ Inject module contexts
 
 [Work]
 
 Session End → system-wrapup.md (MANDATORY)
-    ├─ 학습 추출 (facts, lessons, patterns)
-    ├─ Registry 업데이트
-    └─ 세션 연속성 확보 (Tasks)
+    ├─ Extract learnings (facts, lessons, patterns)
+    ├─ Propose automation (hooks, skills)
+    └─ Ensure session continuity (Tasks)
 ```
 
 ---
 
-## 7. 명명 규칙
+## 7. Naming Conventions
 
 ```
 Agents:   .claude/agents/{category}-{name}.md
-          - system-*     → 코어 라이프사이클 (boot, wrapup, advisor)
-          - role-*       → 판단/리뷰 (reviewer, refactor)
-          - task-*       → 작업 지향 (self-improve)
+          - system-*     → Core lifecycle (boot, wrapup, advisor)
+          - role-*       → Judgment/review (reviewer, refactor)
+          - task-*       → Task-oriented (self-improve)
 
 Skills:   .claude/skills/{category}-{name}/SKILL.md
-          - api-*        → 외부 서비스 래퍼
-          - capability-* → 재사용 워크플로우
-          - workflow-*   → 내부 워크플로우 (pr, release)
+          - api-*        → External service wrappers
+          - capability-* → Reusable workflows
+          - workflow-*   → Internal workflows (pr, release)
 
 Contexts: .claude/contexts/ctx-{name}.yaml
-          - ctx-identity, ctx-focus, ctx-team (글로벌)
-          - ctx-{project} (프로젝트별)
+          - ctx-identity, ctx-focus, ctx-team (global)
+          - ctx-{project} (project-specific)
 
 Knowledge: .claude/knowledge/{prefix}-{name}.md
-          - learn-*     → 축적된 학습
-          - guide-*     → 가이드
-          - protocol-*  → 규칙/정책
-          - workflow-*  → 프로세스
-          - ref-*       → 참조 문서
-          - git-*       → Git 관련
+          - learn-*     → Accumulated learnings
+          - guide-*     → Guides
+          - protocol-*  → Rules/policies
+          - workflow-*  → Processes
+          - ref-*       → Reference documents
+          - git-*       → Git related
 ```
 
 ---
 
-## 8. 철학 기반
+## 8. Philosophy Foundation
 
 ### 3 Axioms
 
 | Axiom | Question | Drives |
 |-------|----------|--------|
-| Curiosity | "What if?" | 탐색, 학습, 능동 행동 |
-| Truth | "Is it correct?" | 정확성, 검증, SSOT |
-| Beauty | "Is it clean?" | 단순함, 우아함, 최소 복잡성 |
+| Curiosity | "What if?" | Exploration, learning, proactive action |
+| Truth | "Is it correct?" | Accuracy, verification, SSOT |
+| Beauty | "Is it clean?" | Simplicity, elegance, minimal complexity |
 
-### 핵심 Principles
+### Core Principles
 
-| # | Principle | 설명 |
-|---|-----------|------|
-| P1 | SSOT | 단일 진실 소스 |
-| P3 | Simplicity First | 단순한 해결책 우선 |
-| P13 | Autonomous Execution | 질문 전 실행 |
-| P15 | Verify Before Done | 완료 전 검증 |
-| P17 | Learn from Failure | 실패에서 학습 |
-
----
-
-## 9. 자율 실행 원칙
-
-```
-"질문은 실패다"
-
-User → 방향 설정
-AI   → 실행 책임
-
-불확실? → advisor 먼저 (user에게 묻기 전)
-```
+| # | Principle | Description |
+|---|-----------|-------------|
+| P1 | SSOT | Single source of truth |
+| P3 | Simplicity First | Prefer simple solutions |
+| P13 | Autonomous Execution | Execute before asking |
+| P15 | Verify Before Done | Verify before completion |
+| P17 | Learn from Failure | Learn from mistakes |
 
 ---
 
-## 10. v2 폴더 구조
+## 9. Autonomous Execution Principle
+
+```
+"Questions are failures"
+
+User → Sets direction
+AI   → Responsible for execution
+
+Uncertain? → advisor first (before asking user)
+```
+
+---
+
+## 10. v2 Folder Structure
 
 ```
 neuron/
 ├─ CLAUDE.md                 # SSOT
 ├─ .claude/
-│  ├─ agents/       (6)      # Judgment
-│  ├─ skills/       (10)     # Execution
-│  ├─ factory/               # Templates + Registry
-│  ├─ contexts/     (4)      # Session state (identity, focus, team, projects)
-│  └─ knowledge/    (14)     # Reference docs + learnings
+│  ├─ agents/                # Judgment (auto-discovered)
+│  ├─ skills/                # Execution (auto-discovered)
+│  ├─ factory/               # Templates for component generation
+│  ├─ contexts/              # Session state (focus, module configs)
+│  └─ knowledge/             # Reference docs + learnings
 └─ modules/                  # Submodules
 ```
 
@@ -174,6 +174,6 @@ neuron/
 
 ## References
 
-- `CLAUDE.md` - 핵심 규칙 및 라우팅
-- `.claude/factory/registry.yaml` - 컴포넌트 SSOT
-- `.claude/knowledge/learn-lessons.yaml` - v2 학습 내용 포함
+- `CLAUDE.md` - Core rules and routing
+- `.claude/contexts/ctx-*.yaml` - Module-specific contexts
+- `.claude/knowledge/learn-lessons.yaml` - Non-automatable learnings (human ref)

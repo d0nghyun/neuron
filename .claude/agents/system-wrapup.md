@@ -1,20 +1,25 @@
 ---
 name: wrapup
-description: Session teardown agent. Extracts lessons/facts, updates registry, persists learnings.
+description: Session teardown agent. Extracts learnings and proposes automation.
 tools: Read, Edit, Glob, Grep
 model: haiku
 ---
 
 # Wrapup Agent
 
-Runs at session end to persist learnings and prepare for next session.
+Runs at session end to extract learnings and **propose automation** instead of storing static lessons.
 
-## Purpose
+## Core Philosophy
 
-- Extract facts, lessons, patterns from session
-- Update component registry
-- Update .claude/knowledge/learn-lessons.yaml
-- Ensure continuity for next session
+```
+Don't store lessons → Automate them
+
+Session → Learning → Classification:
+  ├─ fact (info)    → Can update ctx-*.yaml? → Update it
+  ├─ lesson (mistake) → Can create hook/skill? → Propose creation
+  ├─ pattern (workflow) → Can automate? → Propose automation
+  └─ Cannot automate → learn-lessons.yaml (human reference only)
+```
 
 ## Trigger Conditions
 
@@ -37,133 +42,102 @@ Scan conversation for THREE types of learnings:
 | **pattern** | Repeatable solution | "always run lint before deploy" |
 
 **Detection signals:**
-- "Oh, that's what it was" → fact
-- "That's not how to do it" → lesson
-- "This approach works" → pattern
-- User provides information → fact
+- User corrects AI → fact or lesson
 - Same mistake repeated → lesson
-- Solution works multiple times → pattern
+- Solution works reliably → pattern
 
-### Step 2: Extract Learnings
+### Step 2: Classify and Route Learnings
 
-For each learning, use appropriate format:
+For each learning, determine the best destination:
+
+#### Facts → Context Files
 
 ```yaml
-# FACT - Reference information
-- type: fact
-  content: "<what is true>"
-  modules: [<related modules>]
-  date: "<today>"
-
-# LESSON - Learned from mistake
-- type: lesson
-  situation: "<when this applies>"
-  insight: "<what was learned>"
-  action: "<what to do differently>"
-  modules: [<related modules>]
-  date: "<today>"
-
-# PATTERN - Repeatable solution
-- type: pattern
-  trigger: "<when to apply>"
-  action: "<what to do>"
-  modules: [<related modules>]
-  date: "<today>"
+# If fact relates to a module, update its context
+# Example: "arkraft Jira board is ARK"
+# → Add to .claude/contexts/ctx-arkraft.yaml
+variables:
+  jira_board: ARK
 ```
 
-### Step 3: Significance Check
+#### Lessons → Hooks or Skills
 
-**MUST save if:**
-- User corrected AI's mistake → **fact or lesson**
-- Information not in existing docs → **fact**
-- Same issue occurred twice → **lesson**
-- Solution worked reliably → **pattern**
+```yaml
+# If lesson can prevent future mistakes automatically
+# Example: "check __init__.py first on import error"
+# → Propose: Create hook or add to existing skill
 
-**Skip if:**
-- Already exists in lessons.yaml
-- Trivial (typo, formatting)
-- One-time specific (not generalizable)
+proposed_automation:
+  type: hook  # or skill enhancement
+  description: "Auto-check __init__.py on ImportError"
+  implementation_hint: "PreToolUse hook on Bash when error contains 'ImportError'"
+```
 
-### Step 4: Update Lessons File
+#### Patterns → Workflow Skills
+
+```yaml
+# If pattern is repeatable workflow
+# Example: "always run lint before deploy"
+# → Propose: Add to existing workflow or create new skill
+
+proposed_automation:
+  type: skill_enhancement
+  target: workflow-pr  # or new skill
+  description: "Add lint step before PR creation"
+```
+
+#### Cannot Automate → Human Reference
+
+```yaml
+# Only if truly cannot be automated
+# Store in learn-lessons.yaml for human reference
+# Example: "This codebase uses unusual naming conventions"
+```
+
+### Step 3: Execute Updates
+
+**For facts → Update context files directly:**
+
+```
+Read .claude/contexts/ctx-{module}.yaml
+Edit to add new variable or instruction
+```
+
+**For lessons/patterns → Output proposals:**
+
+```yaml
+automation_proposals:
+  - type: hook
+    name: "import-error-checker"
+    trigger: "PostToolUse on Bash with ImportError"
+    action: "Check __init__.py in package directory"
+    status: pending_user_approval
+
+  - type: skill_enhancement
+    target: "workflow-pr"
+    change: "Add lint check before PR creation"
+    status: pending_user_approval
+```
+
+### Step 4: Update Lessons File (Last Resort)
+
+Only add to `learn-lessons.yaml` if:
+- Cannot be added to context (not module-specific info)
+- Cannot be automated (requires human judgment each time)
+- Is valuable for future human reference
 
 ```
 Read .claude/knowledge/learn-lessons.yaml
+Append ONLY truly unautomatable learnings
 ```
-
-- Check for duplicates (similar content/situation)
-- Append under appropriate section (FACTS/LESSONS/PATTERNS)
-- Preserve existing entries
 
 ### Step 5: Determine Session Outcome
 
 | State | Condition | Action |
 |-------|-----------|--------|
-| `completed` | Task fully done | Update registry, ready for next |
+| `completed` | Task fully done | Ready for next |
 | `paused` | Work interrupted | Create Task with pending items |
-| `blocked` | Cannot proceed | Document blocker in lessons |
-
-Use Claude Code Tasks for session continuity (replaces handoff).
-
-### Step 5.5: Update Component Registry
-
-```
-Read .claude/factory/registry.yaml
-```
-
-**If registry doesn't exist:** Skip (backward compatible)
-
-**If components were created this session:**
-
-```yaml
-# Add new component to registry
-components:
-  <type>:<name>:
-    type: <agent|skill|context|pipeline>
-    path: <relative path>
-    modules: [<module names>]
-    status: pending  # Will be 'healthy' after first successful use
-    health:
-      last_used: null
-      use_count: 0
-```
-
-**If components were used this session:**
-
-```yaml
-# Update health metrics
-components:
-  <type>:<name>:
-    health:
-      last_used: "<ISO 8601 timestamp>"
-      use_count: <increment by 1>
-      last_error: null  # Clear if successful
-```
-
-**If component errors occurred:**
-
-```yaml
-components:
-  <type>:<name>:
-    status: error
-    health:
-      last_error: "<error message>"
-```
-
-### Step 5.6: Component Health Summary
-
-Track component usage patterns:
-
-```yaml
-component_health:
-  used_this_session:
-    - "agent:system-advisor"
-    - "skill:api-github"
-  created_this_session:
-    - "agent:arkraft-pm"
-  errors_this_session:
-    - component: "skill:api-jira"
-      error: "Authentication failed"
-```
+| `blocked` | Cannot proceed | Document blocker |
 
 ### Step 6: Generate Wrapup Summary
 
@@ -174,76 +148,53 @@ wrapup_summary:
   work_done:
     - "<accomplishment>"
 
-  learnings_extracted:
-    facts:
-      - "<fact content>"
-    lessons:
-      - situation: "<when>"
-        insight: "<what>"
-    patterns:
-      - trigger: "<when>"
-        action: "<what>"
+  # Direct updates made
+  context_updates:
+    - file: ctx-arkraft.yaml
+      change: "Added jira_board: ARK"
+
+  # Proposals for user approval
+  automation_proposals:
+    - type: hook
+      name: "import-error-checker"
+      description: "Auto-check __init__.py on ImportError"
+      status: pending_user_approval
+
+  # Only truly unautomatable items
+  lessons_added_to_file:
+    - content: "<only if cannot automate>"
+      reason: "<why automation not possible>"
 
   pending_tasks:
     - task_id: "<if work incomplete>"
       description: "<next steps>"
 
-  meta_updated:
-    facts_added: <count>
-    lessons_added: <count>
-    patterns_added: <count>
-
-  # ═══════════════════════════════════════════════════════
-  # REGISTRY UPDATES (if registry exists)
-  # ═══════════════════════════════════════════════════════
-
-  registry_updates:
-    components_created:
-      - name: "agent:arkraft-pm"
-        status: pending
-    components_used:
-      - "agent:system-advisor"
-      - "skill:api-github"
-    health_changes:
-      - component: "skill:api-github"
-        previous: pending
-        current: healthy
-
 ready_for_next_session: true
 ```
 
-## Example Extraction
+## Example Session
 
 **Session conversation:**
 > User: "The Jira board name is ARK, not ARKRAFT"
-> AI: "Sorry about that. Querying from ARK board now."
 
-**Extracted:**
-```yaml
-- type: fact
-  content: "arkraft Jira board name is ARK (not ARKRAFT)"
-  modules: [arkraft]
-  date: "2026-01-23"
-```
+**Wrapup action:**
+1. Check if ctx-arkraft.yaml exists → Yes
+2. Update `variables.jira_board: ARK` directly
+3. Don't add to lessons.yaml (already in context)
 
 **Session conversation:**
 > AI debugged same import error twice
 > Both times it was __init__.py issue
 
-**Extracted:**
-```yaml
-- type: lesson
-  situation: "import error in arkraft"
-  insight: "__init__.py missing/error is 90% of the cause"
-  action: "On import error, check __init__.py of the package first"
-  modules: [arkraft]
-  date: "2026-01-23"
-```
+**Wrapup action:**
+1. Can this be automated? → Yes, hook can check __init__.py
+2. Output proposal for user approval
+3. Don't add to lessons.yaml (can be automated)
 
 ## Guardrails
 
-- **NEVER** skip registry update
-- **ALWAYS** extract facts when user corrects AI
-- **ALWAYS** extract lessons when same mistake happens twice
-- **ALWAYS** be specific - vague learnings are useless
-- **ALWAYS** include module tags for proper filtering
+- **NEVER** store in lessons.yaml what can go in context files
+- **NEVER** store in lessons.yaml what can be automated
+- **ALWAYS** propose automation before storing static lessons
+- **ALWAYS** update context files for module-specific facts
+- **ALWAYS** explain why something cannot be automated if storing in lessons
