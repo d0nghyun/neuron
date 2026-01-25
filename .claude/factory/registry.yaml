@@ -86,11 +86,12 @@ components:
       use_count: 0
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # SKILLS - API Integrations
+  # SKILLS - API (external service wrappers)
   # ─────────────────────────────────────────────────────────────────────────────
 
   skill:api-github:
     type: skill
+    category: api
     path: .claude/skills/api-github/SKILL.md
     modules: [neuron]
     status: healthy
@@ -101,6 +102,7 @@ components:
 
   skill:api-jira:
     type: skill
+    category: api
     path: .claude/skills/api-jira/SKILL.md
     modules: [neuron]
     status: healthy
@@ -111,6 +113,7 @@ components:
 
   skill:api-notion:
     type: skill
+    category: api
     path: .claude/skills/api-notion/SKILL.md
     modules: [neuron]
     status: healthy
@@ -121,6 +124,7 @@ components:
 
   skill:api-confluence:
     type: skill
+    category: api
     path: .claude/skills/api-confluence/SKILL.md
     modules: [neuron]
     status: healthy
@@ -131,6 +135,7 @@ components:
 
   skill:api-slack:
     type: skill
+    category: api
     path: .claude/skills/api-slack/SKILL.md
     modules: [neuron]
     status: healthy
@@ -141,6 +146,7 @@ components:
 
   skill:api-google-calendar:
     type: skill
+    category: api
     path: .claude/skills/api-google-calendar/SKILL.md
     modules: [neuron]
     status: healthy
@@ -150,11 +156,12 @@ components:
       use_count: 0
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # SKILLS - Capability
+  # SKILLS - Capability (reusable workflows)
   # ─────────────────────────────────────────────────────────────────────────────
 
   skill:capability-ui-design:
     type: skill
+    category: capability
     path: .claude/skills/capability-ui-design/SKILL.md
     modules: [neuron]
     status: healthy
@@ -164,12 +171,13 @@ components:
       use_count: 0
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # SKILLS - Workflow
+  # SKILLS - Workflow (internal workflows)
   # ─────────────────────────────────────────────────────────────────────────────
 
-  skill:pr:
+  skill:workflow-pr:
     type: skill
-    path: .claude/skills/pr/SKILL.md
+    category: workflow
+    path: .claude/skills/workflow-pr/SKILL.md
     modules: [neuron]
     status: healthy
     description: "Create PR with automated review"
@@ -177,9 +185,10 @@ components:
       last_used: null
       use_count: 0
 
-  skill:release:
+  skill:workflow-release:
     type: skill
-    path: .claude/skills/release/SKILL.md
+    category: workflow
+    path: .claude/skills/workflow-release/SKILL.md
     modules: [neuron]
     status: healthy
     description: "Create release with version tag"
@@ -187,9 +196,10 @@ components:
       last_used: null
       use_count: 0
 
-  skill:audit-modules:
+  skill:workflow-audit-modules:
     type: skill
-    path: .claude/skills/audit-modules/SKILL.md
+    category: workflow
+    path: .claude/skills/workflow-audit-modules/SKILL.md
     modules: [neuron]
     status: healthy
     description: "Audit submodule compliance"

@@ -125,14 +125,14 @@
 │     AGENTS      │  │     SKILLS      │  │      HOOKS      │
 │  (Judgment)     │  │  (Execution)    │  │  (Automation)   │
 ├─────────────────┤  ├─────────────────┤  ├─────────────────┤
-│ system-*        │  │ • api-github    │  │ • PreToolUse    │
-│ • boot          │  │ • api-jira      │  │ • PostToolUse   │
-│ • wrapup        │  │ • api-notion    │  │ • SubagentStart │
-│ • advisor       │  │ • api-slack     │  │                 │
-│ role-*          │  │ • /pr           │  │                 │
-│ • reviewer      │  │ • /release      │  │                 │
-│ • refactor      │  │                 │  │                 │
-│ task-*          │  │                 │  │                 │
+│ system-*        │  │ api-*           │  │ • PreToolUse    │
+│ • boot          │  │ • github        │  │ • PostToolUse   │
+│ • wrapup        │  │ • jira, slack   │  │ • SubagentStart │
+│ • advisor       │  │ capability-*    │  │                 │
+│ role-*          │  │ • ui-design     │  │                 │
+│ • reviewer      │  │ workflow-*      │  │                 │
+│ • refactor      │  │ • pr, release   │  │                 │
+│ task-*          │  │ • audit-modules │  │                 │
 │ • self-improve  │  │                 │  │                 │
 └─────────────────┘  └─────────────────┘  └─────────────────┘
 ```
@@ -163,8 +163,8 @@ neuron/
     │
     ├── skills/            # Execution (10)
     │   ├── api-*/         # External APIs
-    │   ├── capability-*/  # Workflows
-    │   └── */             # Others (pr, release)
+    │   ├── capability-*/  # Reusable workflows
+    │   └── workflow-*/    # Internal workflows (pr, release)
     │
     ├── factory/           # Component generation
     │   ├── templates/

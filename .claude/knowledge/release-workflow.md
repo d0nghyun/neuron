@@ -47,7 +47,7 @@ Claude Code executes:
 
 ### 4. Run /release Skill
 
-When ready to release, run `/release`. See `.claude/skills/release/SKILL.md` for execution details.
+When ready to release, run `/release`. See `.claude/skills/workflow-release/SKILL.md` for execution details.
 
 ## Review Categories
 
@@ -63,7 +63,7 @@ When ready to release, run `/release`. See `.claude/skills/release/SKILL.md` for
 | File | Purpose |
 |------|---------|
 | `.claude/agents/role-reviewer.md` | Subagent definition |
-| `.claude/skills/pr/SKILL.md` | PR workflow skill |
-| `.claude/skills/release/SKILL.md` | Release workflow skill |
+| `.claude/skills/workflow-pr/SKILL.md` | PR workflow skill |
+| `.claude/skills/workflow-release/SKILL.md` | Release workflow skill |
 | `docs/releasenotes/UNRELEASED.md` | Pending changes |
 | `docs/releasenotes/v*.md` | Released versions |

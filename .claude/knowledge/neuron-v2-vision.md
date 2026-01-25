@@ -96,10 +96,16 @@ Session End → system-wrapup.md (MANDATORY)
 ## 7. 명명 규칙
 
 ```
-Agents:   .claude/agents/{name}.md
-Skills:   .claude/skills/{type}-{name}/SKILL.md
+Agents:   .claude/agents/{category}-{name}.md
+          - system-*     → 코어 라이프사이클 (boot, wrapup, advisor)
+          - role-*       → 판단/리뷰 (reviewer, refactor)
+          - task-*       → 작업 지향 (self-improve)
+
+Skills:   .claude/skills/{category}-{name}/SKILL.md
           - api-*        → 외부 서비스 래퍼
           - capability-* → 재사용 워크플로우
+          - workflow-*   → 내부 워크플로우 (pr, release)
+
 Contexts: .claude/contexts/ctx-{module}.yaml
 Memory:   .claude/memory/{type}.yaml
 Knowledge: .claude/knowledge/{topic}.md
