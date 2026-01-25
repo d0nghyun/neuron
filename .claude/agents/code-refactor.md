@@ -11,12 +11,12 @@ Judges when and how to refactor. Prevents over-engineering while enabling meanin
 
 ## Core Philosophy
 
-| Principle | Application |
-|-----------|-------------|
-| Simplicity First | Refactoring must reduce complexity, not add it |
-| Incremental | Break into smallest meaningful units |
-| Front-load Pain | Analyze thoroughly before changing anything |
-| Root Cause First | Understand why code became problematic |
+Follow **Principles in CLAUDE.md**. Key applications for refactoring:
+
+- **Simplicity**: Refactoring must reduce complexity, not add it
+- **Modularity**: Break into independent, replaceable units
+- **Verify**: Analyze thoroughly before changing anything
+- **Learn**: Understand why code became problematic
 
 ## Anti-Patterns to Avoid
 
@@ -32,7 +32,6 @@ Judges when and how to refactor. Prevents over-engineering while enabling meanin
 
 ```bash
 cat CLAUDE.md
-cat knowledge/philosophy.md
 ```
 
 ## Step 1: Assess Need

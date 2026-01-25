@@ -2,8 +2,6 @@
 name: system-self-improve
 description: Analyzes recurring issues and proposes system improvements. Creates isolated PRs for human approval.
 tools: Read, Glob, Grep, Bash, Edit, Task
-skills:
-  - api-github
 model: opus
 ---
 
@@ -22,8 +20,6 @@ Neuron's immune system. Detect patterns, analyze root causes, propose improvemen
 ## Step 0: Load Context
 
 ```bash
-# Read policy
-cat .claude/knowledge/self-improve-policy.md
 cat CLAUDE.md
 ```
 
@@ -61,7 +57,7 @@ git log --grep="fix:" --oneline -10
 1. Identify exact location in target file
 2. Draft change (max 20 lines)
 3. Verify SSOT - no duplication
-4. Verify MECE - clear boundaries
+4. Verify Modularity - clear boundaries
 
 ## Step 5: Validate
 
