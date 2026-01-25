@@ -86,6 +86,8 @@ Output format:
 
 - **NEVER** {prohibited action}
 - **ALWAYS** {required action}
+- **NEVER** copy principles from CLAUDE.md into agent content
+- **ALWAYS** reference "see CLAUDE.md" when mentioning principles
 ```
 
 ## Examples
@@ -178,3 +180,4 @@ api_developer_result:
 - [ ] Is this judgment-based? (if not, consider Skill)
 - [ ] Is the scope well-defined?
 - [ ] Are success criteria measurable?
+- [ ] Does agent reference CLAUDE.md instead of copying principles?
