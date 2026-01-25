@@ -11,7 +11,7 @@ Runs at session start to restore context and surface critical information.
 
 ## Purpose
 
-- Load previous session state (handoff)
+- Check pending Tasks from previous session
 - Load current priorities (.claude/memory/focus.yaml)
 - Surface CRITICAL facts, lessons, patterns for active modules
 - **Resolve component dependencies and trigger factory if needed**
@@ -33,19 +33,19 @@ Read .claude/factory/registry.yaml
 - `module_components`: Per-module requirements
 - `_meta`: Registry metadata
 
-### Step 1: Load Handoff State
+### Step 1: Check Pending Tasks
 
 ```
-Read handoff/_index.md
+Check ~/.claude/tasks/ for pending items
 ```
 
-Check for:
-- Active contexts → Load `handoff/<context>.md`
-- Paused work → Show what was interrupted
+Look for:
+- Tasks with `pending: session_restart` → Resume these first
+- Incomplete tasks from previous session → Include in suggested_todos
 
 ### Step 1.5: Resolve Component Dependencies
 
-**Requires:** Step 0 (registry) and Step 1 (handoff for context)
+**Requires:** Step 0 (registry) and Step 1 (pending Tasks)
 
 For each module in `active_modules` from focus.yaml:
 
@@ -188,16 +188,13 @@ boot_summary:
 
   # ═══════════════════════════════════════════════════════
 
-  handoff_state:
-    status: active | paused | clean
-    context: "<context name>"
-    last_progress: "<what was done>"
-    next_steps:
-      - "<step 1>"
-      - "<step 2>"
+  pending_tasks:
+    - task_id: "<from ~/.claude/tasks/>"
+      status: pending | session_restart
+      description: "<what needs to be done>"
 
   suggested_todos:
-    - "<from handoff>"
+    - "<from pending tasks>"
 
   # ═══════════════════════════════════════════════════════
   # COMPONENT STATUS (if registry exists)
@@ -271,13 +268,10 @@ boot_summary:
     - trigger: "Before arkraft deploy"
       action: "Run lint && test"
 
-  handoff_state:
-    status: paused
-    context: "arkraft-jupyter-fix"
-    last_progress: "Fixed import error in cell 5"
-    next_steps:
-      - "Test remaining cells 6-10"
-      - "Update README with usage"
+  pending_tasks:
+    - task_id: "arkraft-jupyter-fix"
+      status: session_restart
+      description: "Continue fixing jupyter cells"
 
   suggested_todos:
     - "Test remaining cells 6-10"
@@ -294,5 +288,5 @@ ready: true
 
 - **NEVER** skip loading lessons.yaml
 - **NEVER** output without filtering by active_modules
-- **ALWAYS** surface facts/lessons even if handoff is empty
+- **ALWAYS** surface facts/lessons even if no pending tasks
 - Past mistakes were recorded for a reason - SURFACE THEM

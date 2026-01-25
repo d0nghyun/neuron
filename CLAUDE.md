@@ -1,5 +1,46 @@
 # Neuron - AI Entry Point
 
+## What is Neuron?
+
+**Neuron = Component Factory. Claude Code = Framework.**
+
+Neuron은 프레임워크가 아닙니다. Claude Code가 프레임워크입니다.
+Neuron은 Claude Code 위에서 동작하는 **Component Factory**입니다.
+
+### Claude Code가 제공하는 것 (바퀴 재발명 금지)
+| 제공 | 설명 |
+|------|------|
+| `.claude/agents/*.md` | Agent 정의 (YAML frontmatter) |
+| `.claude/skills/` | Skill 시스템 |
+| `~/.claude/tasks/` | 세션 간 작업 관리 |
+| Task tool | 최대 10개 병렬 subagent 실행 |
+| Hooks | PreToolUse, PostToolUse, SubagentStart, SubagentStop |
+| Agent resume | agentId로 이전 컨텍스트 재개 |
+
+### Neuron이 추가하는 것
+| 추가 | 설명 |
+|------|------|
+| **Factory** | 템플릿으로 없는 컴포넌트 자동 생성 |
+| **Registry** | `.claude/factory/registry.yaml` - 컴포넌트 SSOT |
+| **Philosophy** | 3 Axioms, 20 Principles - 모든 결정의 기반 |
+| **Memory** | `.claude/memory/` - 세션 간 학습 지속 |
+
+### Self-Evolution Pattern
+```
+boot.md (컴포넌트 감지)
+    │ missing?
+    ▼
+Factory.create() (템플릿 기반 생성)
+    │
+    ▼
+Task 생성 (pending: session_restart)
+    │
+    ▼
+다음 세션 → 컴포넌트 사용 가능
+```
+
+---
+
 ## Critical Rules
 
 > **STOP. Before ANY action, check these rules.**

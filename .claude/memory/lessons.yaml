@@ -100,6 +100,59 @@ lessons:
     modules: [arkraft, arkraft-deploy]
     date: "2026-01-23"
 
+  # ═══════════════════════════════════════════════════════════════════════
+  # v2 REDESIGN LEARNINGS (2026-01-25)
+  # ═══════════════════════════════════════════════════════════════════════
+
+  # === FACTS (v2) ===
+  - type: fact
+    content: "Claude Code provides Tasks system with dependencies (January 2026)"
+    details: "Tasks replace TodoWrite for complex projects. Persisted in ~/.claude/tasks. CLAUDE_CODE_TASK_LIST_ID for session collaboration."
+    modules: [neuron]
+    date: "2026-01-25"
+
+  - type: fact
+    content: "Agent creation requires session restart for loading"
+    details: "Files in .claude/agents/*.md not loaded mid-session. Workaround: Task with pending: session_restart"
+    modules: [neuron]
+    date: "2026-01-25"
+
+  - type: fact
+    content: "Neuron = Component Factory, Claude Code = Framework"
+    details: "DO NOT REINVENT: agents, skills, tasks, hooks, agent resume. Neuron adds: Factory, Registry, Philosophy, Memory."
+    modules: [neuron]
+    date: "2026-01-25"
+
+  # === LESSONS (v2) ===
+  - type: lesson
+    situation: "Tracking components across sessions"
+    insight: "Without registry, components get recreated, dependencies lost"
+    action: "Always update registry.yaml when creating/using components"
+    modules: [neuron]
+    date: "2026-01-25"
+
+  - type: lesson
+    situation: "Filtering learnings by active modules"
+    insight: "Without tags, boot.md loads all learnings even if irrelevant"
+    action: "Tag every learning with modules: [module1, module2]"
+    modules: [neuron]
+    date: "2026-01-25"
+
+  # === PATTERNS (v2) ===
+  - type: pattern
+    trigger: "Component doesn't exist and needs creation"
+    action: "Factory → Task (pending: session_restart) → wrapup updates registry → Next session boot resumes"
+    benefit: "Self-evolution without context loss"
+    modules: [neuron]
+    date: "2026-01-25"
+
+  - type: pattern
+    trigger: "Session start, before main work"
+    action: "boot.md loads registry → Compare active_modules → Detect missing → Factory creates → ready: true"
+    benefit: "System has all necessary components before work starts"
+    modules: [neuron]
+    date: "2026-01-25"
+
 _meta:
-  updated_at: "2026-01-23"
-  version: 5
+  updated_at: "2026-01-25"
+  version: 6
