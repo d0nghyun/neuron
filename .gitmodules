@@ -28,3 +28,9 @@
 [submodule "modules/arkraft/arkraft-agent-signal"]
 	path = modules/arkraft/arkraft-agent-signal
 	url = https://github.com/Quantit-Github/arkraft-agent-signal.git
+[submodule "modules/arkraft/arkraft-terraform"]
+	path = modules/arkraft/arkraft-terraform
+	url = git@github.com:Quantit-Github/arkraft-terraform.git
+[submodule "modules/arkraft/arkraft-app"]
+	path = modules/arkraft/arkraft-app
+	url = git@github.com:Quantit-Github/arkraft-app.git

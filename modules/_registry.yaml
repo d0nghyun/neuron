@@ -40,6 +40,29 @@ modules:
       - agent
       - report
 
+  arkraft/arkraft-agent-insight:
+    repo: github.com/Quantit-Github/arkraft-agent-insight
+    domain: work
+    status: active
+    description: Agent insight analysis for arkraft
+    registered_at: "2026-01-26"
+    tags:
+      - arkraft
+      - agent
+      - insight
+
+  arkraft/arkraft-agent-signal:
+    repo: github.com/Quantit-Github/arkraft-agent-signal
+    domain: work
+    status: active
+    description: Trading signal generation agent for arkraft
+    registered_at: "2026-01-26"
+    tags:
+      - arkraft
+      - agent
+      - signal
+      - trading
+
   # ============================================
   # arkraft-legacy - Legacy project group
   # ============================================
@@ -121,6 +144,6 @@ archived:
 
 # Registry metadata
 _meta:
-  version: 3
-  updated_at: "2026-01-25"
+  version: 4
+  updated_at: "2026-01-26"
   schema: knowledge/module-protocol.md
