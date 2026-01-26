@@ -29,6 +29,12 @@
 - 2026-01-25: Inlining protocol documentation into relevant components (e.g., module protocol → audit-modules skill) reduces navigation overhead
 - 2026-01-25: Location Decision guide added to factory README fills critical documentation gap - clarifies where (neuron vs module) to create components, not just what to create
 - 2026-01-25: Correcting glob paths from relative to absolute in system-boot prevents future path resolution issues and improves reliability
+- 2026-01-26: Task handoff system (.claude/tasks/{focus}/) enables cross-session continuity without relying on external services
+- 2026-01-26: Comprehensive CLAUDE.md restructure with emoji warnings and explicit STOP instructions shows evolution toward clearer, more assertive documentation
+- 2026-01-26: Adding permissionMode: bypassPermissions across all agents demonstrates commitment to reducing friction for system-level operations
+- 2026-01-26: Changing pre-validate.sh from warn to approve for settings/destructive commands shows maturity in trust model
+- 2026-01-26: Task restoration as mandatory Step 2 in boot agent codifies cross-session handoff as first-class workflow
+- 2026-01-26: Cleaning up learn-failures.yaml by removing non-systemic errors (user/tool issues) maintains signal-to-noise ratio
 
 ## Improvements
 

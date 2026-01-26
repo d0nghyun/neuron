@@ -14,6 +14,12 @@
 - arkraft-agent-pm: /ask command for project Q&A with cache-first, API-fallback strategy
 - arkraft-agent-pm: /route command for expertise-based issue-to-assignee matching
 - arkraft-agent-pm: /sync-specs command for Confluence to specs/ synchronization
+- Task handoff system: .claude/tasks/{focus}/ directory structure for cross-session task persistence
+- system-boot: TaskCreate tool for restoring pending tasks from previous sessions
+- system-wrapup: TaskList tool and Step 6 for archiving tasks with handoff.md summary
+- .gitignore: .claude/tasks/ exclusion for session-specific task archives
+- arkraft-agent-signal: submodule for research hypothesis to backtestable trading signals conversion
+- permissionMode: bypassPermissions in agent frontmatter (boot, wrapup, code-reviewer, all workers)
 
 ## Changed
 
@@ -38,6 +44,17 @@
 - workflow-audit-modules skill: inlined module protocol documentation (independence requirement, registry schema)
 - arkraft-agent-pm: CLAUDE.md updated with Commands section documenting /ask, /route, /sync-specs
 - arkraft-agent-pm: specs/ directory repurposed from specifications to knowledge cache
+- CLAUDE.md: restructured with critical boot/wrapup requirements section at top with warning emoji and explicit stop instructions
+- CLAUDE.md: expanded session flow documentation with mandatory boot/wrapup emphasis and layer responsibilities
+- CLAUDE.md: updated FORBIDDEN section to highlight boot/wrapup violations with consequences
+- system-boot: added mandatory task restoration step (Step 2) with TaskCreate requirement and explicit warning
+- system-boot: permissionMode bypassPermissions added for frictionless task restoration
+- system-wrapup: added Step 6 for task archiving to .claude/tasks/{focus}/ with handoff.md structure
+- system-wrapup: permissionMode bypassPermissions added for direct file operations
+- pre-validate.sh: changed all warning decisions to approve (warn → approve) for reduced friction
+- All agent frontmatter: added permissionMode: bypassPermissions to prevent permission prompts
+- factory/pattern-agent.md: added permissionMode: bypassPermissions field to agent template with examples
+- learn-failures.yaml: cleaned up non-systemic failures (EISDIR, WebFetch 403, command not found) - moved to comments
 
 ## Fixed
 

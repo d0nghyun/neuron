@@ -2,7 +2,7 @@
 # Record failures and their resolutions to prevent recurrence
 # Once automated/resolved, entries are removed from this file
 
-failures: []
+failures:
   # fail-1769388321: EISDIR error - Not actionable (user/tool error, not systemic)
   # fail-1769388422: Database corruption - External system issue, not preventable
   # fail-1769388677: K8s deployment timeout - Infrastructure issue, not preventable
@@ -10,3 +10,39 @@ failures: []
   # fail-1769389172: EISDIR errors (3x) - User/tool errors, not systemic
   # fail-1769389824: EISDIR error - User/tool error, not systemic
   # All removed: Not systemic failures that can be automated
+  - id: "fail-1769399692"
+    timestamp: "2026-01-26T12:54:52+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+      warning: unable to rmdir 'modules/arkraft/arkraft-agent-signal': Directory not empty
+      HTTP 403: Must have admin rights to Repository.
+    status: pending
+    pattern: null
+  - id: "fail-1769399692-2"
+    timestamp: "2026-01-26T12:54:52+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+      the owner handle "Quantit-Investment" was not recognized as either a GitHub user or an organization
+    status: pending
+    pattern: null
+  - id: "fail-1769399740"
+    timestamp: "2026-01-26T12:55:40+09:00"
+    session: "unknown"
+    tool: "mcp__stitch__create_project"
+    error: |
+      Incompatible auth server: does not support dynamic client registration
+    status: pending
+    pattern: null
+  - id: "fail-1769399754"
+    timestamp: "2026-01-26T12:55:54+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+      X Unable to add remote "origin"
+    status: pending
+    pattern: null
