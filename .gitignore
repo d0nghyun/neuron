@@ -18,3 +18,5 @@
 
 # Python cache
 .mypy_cache/
+
+.DS_Store
