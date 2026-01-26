@@ -13,7 +13,7 @@ Agents are **judgment components** that analyze, decide, and delegate.
 │  orchestrator, advisor, recruiter       │
 ├─────────────────────────────────────────┤
 │  WORKER LAYER (Domain execution)        │
-│  code-reviewer, code-refactor, ...      │
+│  feature-dev, frontend-dev, ...         │
 └─────────────────────────────────────────┘
 ```
 
@@ -44,7 +44,7 @@ Request → BOOT → ORCHESTRATOR → [Dynamic Discovery] → EXECUTE → WRAPUP
 |-------|------|--------|
 | **META** | Session boundaries, system health | boot, wrapup, self-improve, updater |
 | **BUSINESS** | Analyze, delegate, create | orchestrator, advisor, recruiter |
-| **WORKER** | Execute domain tasks | code-reviewer, code-refactor, ... |
+| **WORKER** | Execute domain tasks (compose skills) | feature-dev, frontend-dev, ... |
 
 ## Calling Convention
 
@@ -58,7 +58,8 @@ Task: { subagent_type: "system-wrapup", prompt: "..." }
 **ORCHESTRATOR calls WORKERS:**
 ```yaml
 # Orchestrator decides which worker to use
-Task: { subagent_type: "code-reviewer", prompt: "..." }
+Task: { subagent_type: "feature-dev", prompt: "..." }
+Task: { subagent_type: "frontend-dev", prompt: "..." }
 ```
 
 **ORCHESTRATOR calls RECRUITER when agent missing:**
@@ -73,6 +74,25 @@ Task: { subagent_type: "system-recruiter", prompt: "Create agent for X" }
 - ❌ Skipping boot or wrapup
 - ❌ Hardcoding agent selection (use dynamic discovery)
 
+## Agent vs Skill
+
+| Component | Role | Example |
+|-----------|------|---------|
+| **Agent** | Makes judgment calls | feature-dev decides WHEN to refactor |
+| **Skill** | Executes workflow | workflow-code-refactor executes steps |
+
+Workers compose skills via `skills:` frontmatter field:
+
+```yaml
+---
+name: feature-dev
+skills:
+  - workflow-code-refactor   # Preloaded into context
+  - workflow-code-test
+  - workflow-code-review
+---
+```
+
 ## Agent File Structure
 
 ```yaml
@@ -81,6 +101,8 @@ name: agent-name
 layer: meta | business | worker
 description: One-line purpose
 tools: Tool1, Tool2, ...
+skills:                      # Optional: skills to preload
+  - skill-name
 model: haiku | sonnet | opus
 ---
 ```
