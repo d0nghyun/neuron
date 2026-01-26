@@ -18,4 +18,6 @@ failures:
   # fail-1769414025: EISDIR error - User/tool error, not systemic
   # fail-1769414607: Git stash warning - Transient (expected when no changes to stash)
   # fail-1769414782: EISDIR error - User/tool error, not systemic
+  # fail-1769415372: EISDIR error - User/tool error, not systemic
+  # fail-1769416530: EISDIR error - User/tool error, not systemic
   # All removed: Not systemic failures that can be automated
