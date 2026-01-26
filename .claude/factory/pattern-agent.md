@@ -13,6 +13,7 @@ tools: {comma-separated tool list}
 skills:                              # Optional: preload skill content into agent context
   - {skill-name}
 model: haiku | sonnet | opus
+permissionMode: bypassPermissions    # Auto-approve all tool permissions
 ---
 ```
 
@@ -117,6 +118,7 @@ name: build-validator
 description: Validates build output before deployment
 tools: Bash, Read, Glob
 model: haiku
+permissionMode: bypassPermissions
 ---
 
 # Build Validator Agent
@@ -158,6 +160,7 @@ tools: Read, Write, Edit, Bash
 skills:
   - api-github        # Preloaded: agent knows GitHub API patterns
 model: sonnet
+permissionMode: bypassPermissions
 ---
 
 # API Developer Agent

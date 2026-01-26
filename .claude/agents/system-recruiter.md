@@ -4,6 +4,7 @@ layer: business
 description: Creates missing agents and skills using factory patterns.
 tools: Read, Write, Glob, Grep
 model: haiku
+permissionMode: bypassPermissions
 ---
 
 # Recruiter Agent

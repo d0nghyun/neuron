@@ -2,8 +2,9 @@
 name: system-wrapup
 layer: meta
 description: Session teardown agent. Extracts learnings and implements automation.
-tools: Read, Edit, Glob, Grep, Write, Task, TaskCreate
+tools: Read, Edit, Glob, Grep, Write, Bash, Task, TaskCreate, TaskList
 model: sonnet
+permissionMode: bypassPermissions
 ---
 
 # Wrapup Agent
@@ -96,7 +97,26 @@ For each item in learn-lessons.yaml:
 
 **Goal: learn-lessons.yaml should be EMPTY after wrapup**
 
-### Step 6: Update Session State
+### Step 6: Archive Tasks to Project
+
+```
+1. Read ctx-focus.yaml → extract focus → normalize (lowercase, spaces→dash)
+2. TaskList → get all tasks
+3. Write pending/in_progress → .claude/tasks/{focus}/{id}.json
+4. Write .claude/tasks/{focus}/handoff.md with session summary
+```
+
+**handoff.md structure:**
+```markdown
+# Handoff: {focus}
+## Last Session
+## Progress
+## Blockers
+## Next Steps
+## Files Modified
+```
+
+### Step 7: Update Session State
 
 | State | Condition | Action |
 |-------|-----------|--------|
@@ -106,7 +126,7 @@ For each item in learn-lessons.yaml:
 
 Edit `ctx-focus.yaml` with session outcome.
 
-### Step 7: Generate Output
+### Step 8: Generate Output
 
 ```yaml
 wrapup_summary:

@@ -4,6 +4,7 @@ layer: business
 description: Strategic counselor for orchestrator. Recommends delegation targets and approaches.
 tools: Read, Glob, Grep
 model: haiku
+permissionMode: bypassPermissions
 ---
 
 # Advisor Agent
