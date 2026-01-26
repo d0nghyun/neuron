@@ -4,6 +4,12 @@
 
 ## Added
 
+- workflow-code-review skill: Comprehensive code review workflow extracted from code-reviewer agent
+- workflow-code-refactor skill: Structured refactoring workflow extracted from code-refactor agent
+- workflow-code-test skill: Integration/E2E testing workflow extracted from code-tester agent
+- feature-dev agent: Judgment agent that composes code skills for feature development
+- frontend-dev agent: UI-specialized agent that composes design and code skills
+- guide-agent-vs-skill.md: Decision guide for choosing between agent vs skill
 - modules/shared/: Directory for domain-specific agent resources shared across modules
 - modules/shared/finter-skills/: Finter platform skills (finter-data, finter-alpha) with reference docs and templates
 - modules/README.md: Shared section documenting usage patterns and guidelines for shared resources
@@ -26,6 +32,9 @@
 
 ## Changed
 
+- Component architecture: Separated judgment (agents) from execution (skills) - agents now compose skills
+- workflow-pr skill: Changed from reviewer subagent to workflow-code-review skill invocation
+- agents/README.md: Updated with Agent vs Skill distinction and skill composition documentation
 - Agent naming convention standardized: role-reviewer → code-reviewer, role-refactor → code-refactor, task-self-improve → system-self-improve
 - Factory README updated with clarified naming conventions (system-*, code-*, api-*, workflow-*, capability-* prefixes)
 - Factory README: added Location Decision guide for choosing between neuron-level vs module-level component placement
@@ -65,6 +74,10 @@
 
 ## Removed
 
+- code-reviewer agent: Migrated to workflow-code-review skill
+- code-refactor agent: Migrated to workflow-code-refactor skill
+- code-tester agent: Migrated to workflow-code-test skill
+- feature-dev-builder agent: Replaced by feature-dev agent with skill composition
 - Deleted 11 obsolete knowledge files (1393 lines):
   - git-advanced.md, git-github-settings.md, git-workflow.md (git workflows)
   - guide-decision.md, guide-repo-setup.md (consolidated into factory patterns)

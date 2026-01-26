@@ -1,6 +1,6 @@
 ---
 name: workflow-pr
-description: Create a PR from current changes. Includes automated review and release notes via reviewer subagent.
+description: Create a PR from current changes. Includes automated review and release notes via code-review skill.
 allowed-tools: Read, Glob, Grep, Bash, Edit, Task
 user-invocable: true
 ---
@@ -16,8 +16,8 @@ user-invocable: true
 ## Steps
 
 1. **Check status**: Review current changes
-2. **Run reviewer**: Delegate to reviewer subagent for review + release notes
-3. **Handle result**: Process reviewer feedback
+2. **Run code review**: Invoke workflow-code-review skill for review + release notes
+3. **Handle result**: Process review feedback
 4. **Create branch**: If on main, create feature branch
 5. **Commit**: Stage and commit with conventional format
 6. **Push**: Push branch to origin
@@ -33,15 +33,17 @@ git branch --show-current
 git diff --stat
 ```
 
-### Step 2: Run Reviewer Subagent
+### Step 2: Invoke Code Review Skill
 
-Use Task tool to invoke the reviewer subagent:
+Use Skill tool to invoke workflow-code-review:
 
-> Review the current code changes. Check code quality, impact, security, and test coverage. Update docs/releasenotes/UNRELEASED.md with the changes. Return approval status and version recommendation.
+```
+Skill: workflow-code-review
+```
 
-The reviewer subagent will:
-- Perform comprehensive code review
-- Update UNRELEASED.md automatically
+The skill will:
+- Perform comprehensive code review (quality, impact, security, tests)
+- Update docs/releasenotes/UNRELEASED.md automatically
 - Return: approve / changes-requested / blocked
 
 ### Step 3: Handle Reviewer Result
@@ -84,4 +86,4 @@ gh pr create --title "<type>: <description>" \
 - Always use conventional commit format
 - Include Co-Authored-By for Claude commits
 - Ask for confirmation before creating PR
-- Reviewer subagent runs in independent context
+- workflow-code-review skill handles review and release notes
