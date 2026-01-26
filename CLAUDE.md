@@ -4,11 +4,45 @@ Neuron is a **Component Factory** that runs on Claude Code.
 Claude Code provides agents, skills, hooks, and task management.
 Neuron adds templates, registry, contexts, and guiding principles.
 
-## MANDATORY: Session Start
+## MANDATORY: Session Flow
 
-**EVERY session MUST begin by running `system-boot` agent.**
+```
+Request → BOOT → ORCHESTRATE → EXECUTE → WRAPUP
+```
 
-Do NOT respond to user requests until boot completes. No exceptions.
+### 1. BOOT (session start)
+
+Run `system-boot` agent. Do NOT respond until boot completes.
+
+### 2. ORCHESTRATE (delegation)
+
+For non-trivial requests, delegate to `system-orchestrator`:
+- Dynamically discovers agents via `Glob .claude/agents/*.md`
+- Matches request to appropriate worker agent
+- If no match → delegates to `system-recruiter` to create
+
+### 3. EXECUTE (workers do the work)
+
+Orchestrator delegates to worker layer agents. **You do NOT call workers directly.**
+
+### 4. WRAPUP (session end)
+
+Run `system-wrapup` agent before session ends.
+
+### Layer Responsibilities
+
+| Layer | Agents | Role |
+|-------|--------|------|
+| **META** | boot, wrapup, self-improve, updater | Session lifecycle |
+| **BUSINESS** | orchestrator, advisor, recruiter | Analyze, delegate, create |
+| **WORKER** | code-reviewer, code-refactor, ... | Execute domain tasks |
+
+### FORBIDDEN
+
+- ❌ Calling worker agents directly (let orchestrator decide)
+- ❌ Creating agents/skills yourself (use recruiter)
+- ❌ Skipping boot or wrapup
+- ❌ Using opus for tasks haiku can handle
 
 ## Principles
 

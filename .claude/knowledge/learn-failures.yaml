@@ -3,3 +3,39 @@
 # Once automated/resolved, entries are removed from this file
 
 failures: []
+  # fail-1769388321: EISDIR error - Not actionable (user/tool error, not systemic)
+  # fail-1769388422: Database corruption - External system issue, not preventable
+  # fail-1769388677: K8s deployment timeout - Infrastructure issue, not preventable
+  # All removed: Not systemic failures that can be automated
+  - id: "fail-1769389161"
+    timestamp: "2026-01-26T09:59:21+09:00"
+    session: "unknown"
+    tool: "WebFetch"
+    error: |
+      Request failed with status code 403
+    status: pending
+    pattern: null
+  - id: "fail-1769389172"
+    timestamp: "2026-01-26T09:59:32+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769389172"
+    timestamp: "2026-01-26T09:59:32+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769389824"
+    timestamp: "2026-01-26T10:10:24+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
