@@ -2,61 +2,17 @@
 # Record failures and their resolutions to prevent recurrence
 # Once automated/resolved, entries are removed from this file
 
-failures:
-  # fail-1769388321: EISDIR error - Not actionable (user/tool error, not systemic)
-  # fail-1769388422: Database corruption - External system issue, not preventable
-  # fail-1769388677: K8s deployment timeout - Infrastructure issue, not preventable
-  # fail-1769389161: WebFetch 403 - External service issue, not preventable
-  # fail-1769389172: EISDIR errors (3x) - User/tool errors, not systemic
-  # fail-1769389824: EISDIR error - User/tool error, not systemic
-  # fail-1769399692: Submodule removal warning - Transient
-  # fail-1769399692-2: Organization name typo - User error, resolved
-  # fail-1769399740, fail-1769399844: MCP tool limitation - External
-  # fail-1769399754: Git remote conflict - Transient
-  # fail-1769400290: Submodule path conflict - Transient, resolved with --force
-  # fail-1769413950: Git submodule merge conflict - Transient (user had uncommitted changes)
-  # fail-1769414025: EISDIR error - User/tool error, not systemic
-  # fail-1769414607: Git stash warning - Transient (expected when no changes to stash)
-  # fail-1769414782: EISDIR error - User/tool error, not systemic
-  # fail-1769415372: EISDIR error - User/tool error, not systemic
-  # fail-1769416530: EISDIR error - User/tool error, not systemic
-  # fail-1769416614: .gitignore blocks ctx-focus.yaml - Expected (contexts are gitignored)
-  # All removed: Not systemic failures that can be automated
-  - id: "fail-1769416614"
-    timestamp: "2026-01-26T17:36:54+09:00"
-    session: "unknown"
-    tool: "Bash"
-    error: |
-      Exit code 1
-The following paths are ignored by one of your .gitignore files:
-.claude/contexts/ctx-focus.yaml
-hint: Use -f if you really want to add them.
-hint: Disable this message with "git config set advice.addIgnoredFile false"
-    status: pending
-    pattern: null
-  - id: "fail-1769430448"
-    timestamp: "2026-01-26T21:27:28+09:00"
+failures: []
+
+_meta:
+  updated_at: "2026-01-26T23:00:00+09:00"
+  version: 13
+  note: "Component refactoring session: Removed stray failure entry - was user path typo, not systemic."
+  - id: "fail-1769436283"
+    timestamp: "2026-01-26T23:04:43+09:00"
     session: "unknown"
     tool: "Read"
     error: |
       EISDIR: illegal operation on a directory, read
-    status: pending
-    pattern: null
-  - id: "fail-1769430452"
-    timestamp: "2026-01-26T21:27:32+09:00"
-    session: "unknown"
-    tool: "Read"
-    error: |
-      EISDIR: illegal operation on a directory, read
-    status: pending
-    pattern: null
-  - id: "fail-1769430537"
-    timestamp: "2026-01-26T21:28:57+09:00"
-    session: "unknown"
-    tool: "Bash"
-    error: |
-      Exit code 128
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
     status: pending
     pattern: null

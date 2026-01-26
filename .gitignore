@@ -20,3 +20,5 @@
 .mypy_cache/
 
 .DS_Store
+.playwright-mcp/
+.agents/
