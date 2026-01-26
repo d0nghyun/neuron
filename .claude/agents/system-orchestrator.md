@@ -4,6 +4,7 @@ layer: business
 description: Main delegation controller. Analyzes requests and delegates to appropriate agents.
 tools: Task, Read, Glob, Grep
 model: opus
+permissionMode: bypassPermissions
 ---
 
 # System Orchestrator Agent

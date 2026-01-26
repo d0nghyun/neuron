@@ -2,8 +2,9 @@
 name: system-boot
 layer: meta
 description: Session initialization agent. Analyzes request, loads relevant context.
-tools: Read, Glob, Grep
+tools: Read, Glob, Grep, TaskCreate
 model: opus
+permissionMode: bypassPermissions
 ---
 
 # Boot Agent
@@ -17,9 +18,16 @@ User's first request is passed with this prompt.
 ## Logic
 
 1. **Analyze request** - What is the user trying to do?
-2. **Decide what to load** - Which contexts/skills are relevant?
-3. **Load selectively** - Only read what's needed
-4. **Recommend** - Suggest existing skills to use, new ones to create
+2. **Restore tasks (MANDATORY)** - Match request to project task archives:
+   ```
+   ls .claude/tasks/ → find matching focus directory
+   Read .claude/tasks/{matched}/handoff.md → understand context
+   Read .claude/tasks/{matched}/*.json → MUST TaskCreate for each pending task
+   ```
+   **DO NOT skip TaskCreate.** Handoff incomplete without task restoration.
+3. **Decide what to load** - Which contexts/skills are relevant?
+4. **Load selectively** - Only read what's needed
+5. **Recommend** - Suggest existing skills to use, new ones to create
 
 ## Available Contexts
 

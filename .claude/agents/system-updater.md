@@ -4,6 +4,7 @@ layer: meta
 description: Validates component consistency and applies mechanical updates to Neuron system files.
 tools: Read, Glob, Grep, Edit
 model: haiku
+permissionMode: bypassPermissions
 ---
 
 # Updater Agent

@@ -17,6 +17,7 @@ name: {name}-orchestrator
 description: Orchestrates {domain} by delegating to specialized agents
 tools: Task, Read, Glob, Grep
 model: opus
+permissionMode: bypassPermissions
 delegates_to:
   - agent: {agent-name}
     when: "{condition}"
@@ -89,6 +90,7 @@ name: feature-orchestrator
 description: Orchestrates feature development from design to PR
 tools: Task, Read, Glob
 model: opus
+permissionMode: bypassPermissions
 delegates_to:
   - agent: code-refactor
     when: "needs code changes"
