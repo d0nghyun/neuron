@@ -25,3 +25,6 @@
 [submodule "modules/arkraft/arkraft-worker"]
 	path = modules/arkraft/arkraft-worker
 	url = git@github.com:Quantit-Github/arkraft-worker.git
+[submodule "modules/arkraft/arkraft-agent-signal"]
+	path = modules/arkraft/arkraft-agent-signal
+	url = https://github.com/Quantit-Github/arkraft-agent-signal.git
