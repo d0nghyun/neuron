@@ -12,6 +12,10 @@ tools: {comma-separated tool list}
 skills:                              # Optional: preload skill content into agent context
   - {skill-name}
 model: haiku | sonnet | opus
+delegates_to:                        # Optional: for orchestrator-style agents
+  - agent: {agent-name}
+    when: "{condition}"
+    model: haiku | sonnet | opus
 ---
 ```
 
@@ -28,6 +32,17 @@ The skill content is injected into the agent's context at startup.
 **When NOT to preload:**
 - System agents (boot, wrapup) → run before/after skill context
 - Generic agents → don't need specific domain knowledge
+
+### Delegation (for Orchestrators)
+
+When an agent coordinates other agents instead of executing directly, use `delegates_to`.
+
+**When to use:**
+- Agent breaks down complex tasks
+- Different sub-tasks need different models
+- Workflow requires multiple specialized agents
+
+**See**: `pattern-orchestrator.md` for full orchestrator pattern.
 
 ## Structure
 

@@ -17,6 +17,7 @@ Analyze the request to determine the required component type:
 
 | Need | Component Type | Pattern |
 |------|----------------|---------|
+| Coordinate multiple agents | Orchestrator | pattern-orchestrator.md |
 | Judgment/reasoning/review | Agent | pattern-agent.md |
 | External API call | Skill (api-*) | pattern-skill.md |
 | Reusable workflow | Skill (workflow-*) | pattern-skill.md |
@@ -27,6 +28,7 @@ Analyze the request to determine the required component type:
 ## Decision Tree
 
 ```
+Complex multi-step task needing coordination? → Orchestrator Agent
 External service integration? → Skill (api-*)
 Judgment needed? → Agent
 Automatic execution? → Hook
