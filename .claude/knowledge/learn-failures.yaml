@@ -2,7 +2,7 @@
 # Record failures and their resolutions to prevent recurrence
 # Once automated/resolved, entries are removed from this file
 
-failures: []
+failures:
   # fail-1769388321: EISDIR error - Not actionable (user/tool error, not systemic)
   # fail-1769388422: Database corruption - External system issue, not preventable
   # fail-1769388677: K8s deployment timeout - Infrastructure issue, not preventable
@@ -16,20 +16,17 @@ failures: []
     tool: "Bash"
     error: |
       Exit code 1
-warning: unable to rmdir 'modules/arkraft/arkraft-agent-signal': Directory not empty
-HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/d0nghyun/arkraft-agent-signal)
-This API operation needs the "delete_repo" scope. To request it, run:  gh auth refresh -h github.com -s delete_repo
-
-HEAD is now at f60388b feat: add task handoff system for cross-session continuity
+      warning: unable to rmdir 'modules/arkraft/arkraft-agent-signal': Directory not empty
+      HTTP 403: Must have admin rights to Repository.
     status: pending
     pattern: null
-  - id: "fail-1769399692"
+  - id: "fail-1769399692-2"
     timestamp: "2026-01-26T12:54:52+09:00"
     session: "unknown"
     tool: "Bash"
     error: |
       Exit code 1
-the owner handle "Quantit-Investment" was not recognized as either a GitHub user or an organization
+      the owner handle "Quantit-Investment" was not recognized as either a GitHub user or an organization
     status: pending
     pattern: null
   - id: "fail-1769399740"
@@ -46,8 +43,6 @@ the owner handle "Quantit-Investment" was not recognized as either a GitHub user
     tool: "Bash"
     error: |
       Exit code 1
-X Unable to add remote "origin"
-
-https://github.com/Quantit-Github/arkraft-agent-signal
+      X Unable to add remote "origin"
     status: pending
     pattern: null
