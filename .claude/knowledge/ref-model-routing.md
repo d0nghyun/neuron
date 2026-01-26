@@ -5,9 +5,9 @@ Decision guide for selecting the right model (haiku/sonnet/opus) based on task c
 ## Quick Reference
 
 ```
-haiku  → 빠르고 저렴, 단순 작업
-sonnet → 균형, 일반적인 코드 작업
-opus   → 강력, 복잡한 아키텍처 결정
+haiku  → Fast and cheap, simple tasks
+sonnet → Balanced, general code work
+opus   → Powerful, complex architectural decisions
 ```
 
 ## Dimensions

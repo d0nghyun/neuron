@@ -7,6 +7,7 @@ Reference pattern for creating agents. Combines task-oriented and role-based app
 ```yaml
 ---
 name: {name}
+layer: meta | business | worker      # Required: agent's architectural layer
 description: {one-line description}
 tools: {comma-separated tool list}
 skills:                              # Optional: preload skill content into agent context

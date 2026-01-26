@@ -1,5 +1,6 @@
 ---
 name: system-orchestrator
+layer: business
 description: Main delegation controller. Analyzes requests and delegates to appropriate agents.
 tools: Task, Read, Glob, Grep
 model: opus
@@ -9,7 +10,7 @@ model: opus
 
 | Agent | When | Model |
 |-------|------|-------|
-| system-advisor | Strategic decision, "어떻게 할까?" | haiku |
+| system-advisor | Strategic decision, "how should we handle this?" | haiku |
 | system-recruiter | Required agent/skill missing | haiku |
 | code-reviewer | Code quality check | sonnet |
 | code-refactor | Code restructuring | sonnet/opus |

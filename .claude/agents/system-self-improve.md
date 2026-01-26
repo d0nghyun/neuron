@@ -1,5 +1,6 @@
 ---
 name: system-self-improve
+layer: meta
 description: Analyzes recurring issues and proposes system improvements. Creates isolated PRs for human approval.
 tools: Read, Glob, Grep, Bash, Edit, Task
 model: opus

@@ -1,5 +1,6 @@
 ---
 name: system-wrapup
+layer: meta
 description: Session teardown agent. Extracts learnings and implements automation.
 tools: Read, Edit, Glob, Grep, Write, Task, TaskCreate
 model: sonnet

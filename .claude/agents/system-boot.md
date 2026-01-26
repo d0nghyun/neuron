@@ -1,5 +1,6 @@
 ---
 name: system-boot
+layer: meta
 description: Session initialization agent. Analyzes request, loads relevant context.
 tools: Read, Glob, Grep
 model: opus
@@ -35,10 +36,10 @@ User's first request is passed with this prompt.
 
 | User Request | Load | Skip |
 |--------------|------|------|
-| "Notion 일정관리 모듈" | skills list | ctx-focus (irrelevant) |
-| "arkraft PR 올려줘" | ctx-focus, ctx-arkraft | ctx-team |
-| "내가 누구야" | ctx-identity | everything else |
-| "이전 작업 이어서" | ctx-focus, pending tasks | - |
+| "Notion calendar module" | skills list | ctx-focus (irrelevant) |
+| "Create PR for arkraft" | ctx-focus, ctx-arkraft | ctx-team |
+| "Who am I" | ctx-identity | everything else |
+| "Continue previous work" | ctx-focus, pending tasks | - |
 
 ## Component Type & Location
 

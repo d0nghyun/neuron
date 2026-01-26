@@ -1,5 +1,6 @@
 ---
 name: code-reviewer
+layer: worker
 description: Reviews code changes and updates release notes before PR. Analyzes code quality, impact, security, and test coverage.
 tools: Read, Glob, Grep, Bash, Edit
 model: sonnet
