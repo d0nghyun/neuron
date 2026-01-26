@@ -1,12 +1,12 @@
 # Schedule Module
 
-Notion 기반 일정관리 모듈.
+Notion-based schedule management module.
 
 ## Features
 
-- 오늘/주간 일정 조회
-- 일정 추가/수정/완료
-- Notion DB 연동
+- Today/weekly schedule query
+- Add/modify/complete schedules
+- Notion DB integration
 
 ## Configuration
 
@@ -14,12 +14,12 @@ Notion 기반 일정관리 모듈.
 
 ## Usage
 
-neuron에서 모듈 활성화:
+Activate module in neuron:
 ```
 /workflow-init-module schedule
 ```
 
-또는 직접 스킬 사용:
+Or use skill directly:
 ```
 /workflow-schedule-notion
 ```
@@ -28,4 +28,4 @@ neuron에서 모듈 활성화:
 
 | Skill | Description |
 |-------|-------------|
-| workflow-schedule-notion | 일정 조회, 추가, 상태 변경 |
+| workflow-schedule-notion | Query, add, update schedule status |

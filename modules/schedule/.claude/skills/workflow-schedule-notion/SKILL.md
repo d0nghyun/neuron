@@ -1,19 +1,19 @@
 ---
 name: workflow-schedule-notion
-description: Notion 일정관리. 오늘/주간 일정 조회, 일정 추가/수정/완료 처리.
+description: Notion schedule management. Query today/weekly schedules, add/modify/complete schedules.
 allowed-tools: Bash, Read
 user-invocable: true
 ---
 
-# Notion 일정관리
+# Notion Schedule Management
 
-> Notion 기반 일정 조회, 추가, 관리 workflow.
+> Notion-based schedule query, add, and management workflow.
 
 ## When to Activate
 
-- "오늘 일정", "이번주 일정" 조회
-- "일정 추가", "스케줄 등록"
-- "일정 완료", "일정 취소"
+- "today's schedule", "this week's schedule" queries
+- "add schedule", "register appointment"
+- "complete schedule", "cancel schedule"
 
 ## Configuration
 
@@ -24,12 +24,12 @@ credentials: .credentials/notion.json
 
 ## Prerequisites
 
-- api-notion credentials 설정됨
-- 일정 DB에 integration 연결됨
+- api-notion credentials configured
+- Integration connected to schedule DB
 
 ## Operations
 
-### 오늘 일정 조회
+### Query Today's Schedule
 
 ```bash
 NOTION_API_TOKEN=$(jq -r '.api_token' /Users/dhlee/Git/personal/neuron/.credentials/notion.json)
@@ -43,14 +43,14 @@ curl -s -X POST \
   https://api.notion.com/v1/databases/2f346706-90ca-8108-b838-dd5861292951/query | \
   jq '[.results[] | {
     id: .id,
-    제목: .properties.제목.title[0].plain_text,
-    날짜: .properties.날짜.date.start,
-    상태: .properties.상태.select.name,
-    카테고리: .properties.카테고리.select.name
+    title: .properties.제목.title[0].plain_text,
+    date: .properties.날짜.date.start,
+    status: .properties.상태.select.name,
+    category: .properties.카테고리.select.name
   }]'
 ```
 
-### 주간 일정 조회
+### Query Weekly Schedule
 
 ```bash
 NOTION_API_TOKEN=$(jq -r '.api_token' /Users/dhlee/Git/personal/neuron/.credentials/notion.json)
@@ -65,14 +65,14 @@ curl -s -X POST \
   https://api.notion.com/v1/databases/2f346706-90ca-8108-b838-dd5861292951/query | \
   jq '[.results[] | {
     id: .id,
-    제목: .properties.제목.title[0].plain_text,
-    날짜: .properties.날짜.date.start,
-    상태: .properties.상태.select.name,
-    카테고리: .properties.카테고리.select.name
+    title: .properties.제목.title[0].plain_text,
+    date: .properties.날짜.date.start,
+    status: .properties.상태.select.name,
+    category: .properties.카테고리.select.name
   }]'
 ```
 
-### 일정 추가
+### Add Schedule
 
 ```bash
 NOTION_API_TOKEN=$(jq -r '.api_token' /Users/dhlee/Git/personal/neuron/.credentials/notion.json)
@@ -95,13 +95,13 @@ curl -s -X POST \
 ```
 
 **Parameters:**
-- `{TITLE}`: 일정 제목 (필수)
-- `{DATE}`: 시작 날짜 YYYY-MM-DD (필수)
-- `{END_DATE}`: 종료 날짜 (선택, 없으면 제거)
-- `{CATEGORY}`: 업무 | 개인 | 미팅 | 기타
-- `{MEMO}`: 메모 (선택)
+- `{TITLE}`: Schedule title (required)
+- `{DATE}`: Start date YYYY-MM-DD (required)
+- `{END_DATE}`: End date (optional, remove if not needed)
+- `{CATEGORY}`: 업무 | 개인 | 미팅 | 기타 (Work | Personal | Meeting | Other)
+- `{MEMO}`: Memo (optional)
 
-### 일정 상태 변경
+### Update Schedule Status
 
 ```bash
 NOTION_API_TOKEN=$(jq -r '.api_token' /Users/dhlee/Git/personal/neuron/.credentials/notion.json)
@@ -114,19 +114,23 @@ curl -s -X PATCH \
   https://api.notion.com/v1/pages/{PAGE_ID}
 ```
 
-**Status options:** 예정, 진행중, 완료, 취소
+**Status options:** 예정 (Scheduled), 진행중 (In Progress), 완료 (Completed), 취소 (Cancelled)
 
 ## Output Format
 
 ```yaml
 schedule:
-  - 제목: "팀 미팅"
-    날짜: "2025-01-25"
-    상태: "예정"
-    카테고리: "미팅"
+  - title: "Team Meeting"
+    date: "2025-01-25"
+    status: "예정"
+    category: "미팅"
 ```
 
 ## Guardrails
 
 - **NEVER** delete schedules without confirmation
 - **ALWAYS** confirm before bulk operations
+
+## Note
+
+Notion DB property names are in Korean (제목, 날짜, 상태, 카테고리, 메모) as they match the actual database schema.

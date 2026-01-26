@@ -133,6 +133,20 @@ wrapup_summary:
 - **ALWAYS** implement automation directly when safe
 - **ALWAYS** delete from lessons.yaml after processing
 
+## Module Work Checklist
+
+When session involved module creation/modification, verify before wrapup:
+
+1. **Language**: All docs in English (see `knowledge/guide-module-checklist.md`)
+2. **CLAUDE.md**: Exists at module root
+3. **settings.json**: Descriptions in English
+
+```bash
+# Quick verification
+grep -r -l '[가-힣]' modules/{module}/**/*.md 2>/dev/null || echo "OK: No Korean"
+ls modules/{module}/CLAUDE.md 2>/dev/null || echo "MISSING: CLAUDE.md"
+```
+
 ## Success Criteria
 
 1. All learnings processed → appropriate destination
