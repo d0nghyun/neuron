@@ -191,10 +191,42 @@ api_developer_result:
 ```
 ```
 
+## Reference Pattern (SSOT Enforcement)
+
+Agents MUST reference external sources, never hardcode duplicated content.
+
+### What to Reference
+
+| Content Type | Reference To |
+|--------------|--------------|
+| Principles | `CLAUDE.md` |
+| Model selection | `knowledge/ref-model-routing.md` |
+| Layer/naming rules | `factory/README.md` |
+| Approval criteria | `knowledge/ref-approval-criteria.md` |
+| Domain knowledge | `knowledge/ref-*.md` or `skills/` |
+
+### Pattern
+
+```markdown
+✗ Bad (hardcoded):
+| Model | When |
+| haiku | simple tasks |
+| sonnet | complex tasks |
+
+✓ Good (reference):
+**See**: `knowledge/ref-model-routing.md` for model selection.
+```
+
+### Why This Matters
+
+- Single update propagates to all agents
+- No drift between duplicated content
+- Smaller agent files, focused on logic
+
 ## Checklist Before Creating
 
 - [ ] Does this agent already exist? (check agents/)
 - [ ] Is this judgment-based? (if not, consider Skill)
 - [ ] Is the scope well-defined?
 - [ ] Are success criteria measurable?
-- [ ] Does agent reference CLAUDE.md instead of copying principles?
+- [ ] Does agent reference instead of copying? (SSOT)
