@@ -14,4 +14,8 @@ failures:
   # fail-1769399740, fail-1769399844: MCP tool limitation - External
   # fail-1769399754: Git remote conflict - Transient
   # fail-1769400290: Submodule path conflict - Transient, resolved with --force
+  # fail-1769413950: Git submodule merge conflict - Transient (user had uncommitted changes)
+  # fail-1769414025: EISDIR error - User/tool error, not systemic
+  # fail-1769414607: Git stash warning - Transient (expected when no changes to stash)
+  # fail-1769414782: EISDIR error - User/tool error, not systemic
   # All removed: Not systemic failures that can be automated

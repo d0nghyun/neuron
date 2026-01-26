@@ -35,6 +35,8 @@
 - 2026-01-26: Changing pre-validate.sh from warn to approve for settings/destructive commands shows maturity in trust model
 - 2026-01-26: Task restoration as mandatory Step 2 in boot agent codifies cross-session handoff as first-class workflow
 - 2026-01-26: Cleaning up learn-failures.yaml by removing non-systemic errors (user/tool issues) maintains signal-to-noise ratio
+- 2026-01-26: Creating modules/shared/ directory centralizes domain-specific skills (finter-skills) following P1 SSOT - one place for Finter knowledge used across multiple modules
+- 2026-01-26: Clear documentation in modules/README.md explaining shared/ vs .claude/knowledge/ distinction prevents confusion about where domain skills belong
 
 ## Improvements
 

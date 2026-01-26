@@ -4,6 +4,9 @@
 
 ## Added
 
+- modules/shared/: Directory for domain-specific agent resources shared across modules
+- modules/shared/finter-skills/: Finter platform skills (finter-data, finter-alpha) with reference docs and templates
+- modules/README.md: Shared section documenting usage patterns and guidelines for shared resources
 - workflow-init-module skill for activating module skills/agents via symlink during session
 - learn-failures.yaml for persistent failure tracking and pattern prevention
 - arkraft-agent-insight: planner subagent for natural language request parsing (topic, universe, count extraction)

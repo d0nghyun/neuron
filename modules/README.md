@@ -23,6 +23,25 @@ Submodules registered under neuron. Named after brain parts.
 
 See `_registry.yaml` for full metadata.
 
+## Shared
+
+`shared/` is not a module. It stores domain-specific agent resources that can be referenced across modules.
+
+| Directory | Purpose |
+|-----------|---------|
+| `finter-skills/` | Finter platform skills (data loading, alpha framework) |
+
+**Usage**: Symlink to module's `.claude/skills/` or reference directly.
+
+**What goes here**:
+- Domain-specific skills (not neuron system skills)
+- E2E testing guides for specific platforms
+- Agent setup instructions for external services
+
+**What doesn't go here**:
+- Neuron system knowledge → `.claude/knowledge/`
+- Session state → `.claude/contexts/`
+
 ## Task Management
 
 Each module manages its own tasks via `TODO.md` in its repo (like release notes pattern).
