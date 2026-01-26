@@ -97,24 +97,67 @@ For each item in learn-lessons.yaml:
 
 **Goal: learn-lessons.yaml should be EMPTY after wrapup**
 
-### Step 6: Archive Tasks to Project
+### Step 6: Archive Tasks to Project (CRITICAL)
+
+**This step is MANDATORY. Never skip.**
 
 ```
-1. Read ctx-focus.yaml → extract focus → normalize (lowercase, spaces→dash)
-2. TaskList → get all tasks
-3. Write pending/in_progress → .claude/tasks/{focus}/{id}.json
-4. Write .claude/tasks/{focus}/handoff.md with session summary
+1. Read ctx-focus.yaml → extract current_focus
+2. Normalize: lowercase, spaces → dash (e.g., "townhall ai presentation" → "townhall-ai-presentation")
+3. Create directory: .claude/tasks/{normalized_focus}/
+4. TaskList → get ALL tasks
+5. For each task with status pending or in_progress:
+   - Write .claude/tasks/{focus}/task-{id}.json
+6. Write .claude/tasks/{focus}/handoff.md
+```
+
+**Task JSON format:**
+```json
+{
+  "id": "task-001",
+  "subject": "Task title",
+  "description": "Detailed description with context",
+  "status": "pending | in_progress",
+  "created_at": "ISO timestamp",
+  "context": {
+    "any": "relevant context for next session"
+  }
+}
 ```
 
 **handoff.md structure:**
 ```markdown
 # Handoff: {focus}
-## Last Session
-## Progress
+
+## Session Summary ({date})
+Brief description of what was accomplished.
+
+### Completed
+- [x] Item 1
+- [x] Item 2
+
+### Pending
+- [ ] Item 1 (references task-001.json)
+- [ ] Item 2 (references task-002.json)
+
 ## Blockers
+List any blockers preventing progress.
+
 ## Next Steps
+1. First thing to do next session
+2. Second thing
+
 ## Files Modified
+- path/to/file1 - description of change
+- path/to/file2 - description of change
+
+## Context
+Any important context for the next session.
 ```
+
+**If no focus set:**
+- Use `.claude/tasks/_general/` as fallback
+- Still archive all pending tasks
 
 ### Step 7: Update Session State
 
@@ -157,9 +200,11 @@ wrapup_summary:
 - **NEVER** just "propose" - implement or TaskCreate
 - **NEVER** leave items in lessons.yaml - process and DELETE all
 - **NEVER** document without verifying against CLAUDE.md first
+- **NEVER** skip Step 6 - task archival is mandatory
 - **ALWAYS** implement automation directly when safe
 - **ALWAYS** delete from lessons.yaml after processing
 - **ALWAYS** cross-check terminology with existing docs before writing
+- **ALWAYS** serialize pending tasks to JSON files in Step 6
 
 ## Module Work Checklist
 
@@ -181,3 +226,5 @@ ls modules/{module}/CLAUDE.md 2>/dev/null || echo "MISSING: CLAUDE.md"
 2. All pending improvements → TaskCreate'd
 3. learn-lessons.yaml is EMPTY
 4. ctx-focus.yaml updated with session outcome
+5. **All pending/in_progress tasks → .claude/tasks/{focus}/*.json**
+6. **handoff.md written with session summary**
