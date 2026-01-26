@@ -5,6 +5,16 @@ tools: Task, Read, Glob, Grep
 model: opus
 ---
 
+## Delegates To
+
+| Agent | When | Model |
+|-------|------|-------|
+| system-advisor | Strategic decision, "어떻게 할까?" | haiku |
+| system-recruiter | Required agent/skill missing | haiku |
+| code-reviewer | Code quality check | sonnet |
+| code-refactor | Code restructuring | sonnet/opus |
+| system-wrapup | Session ending, learnings extraction | haiku |
+
 # System Orchestrator Agent
 
 Analyzes user requests and delegates to specialized agents. Never executes directly.
