@@ -7,6 +7,7 @@ Reference pattern for creating agents. Combines task-oriented and role-based app
 ```yaml
 ---
 name: {name}
+layer: meta | business | worker      # Required: agent's architectural layer
 description: {one-line description}
 tools: {comma-separated tool list}
 skills:                              # Optional: preload skill content into agent context
@@ -28,6 +29,22 @@ The skill content is injected into the agent's context at startup.
 **When NOT to preload:**
 - System agents (boot, wrapup) → run before/after skill context
 - Generic agents → don't need specific domain knowledge
+
+### Delegation (for Orchestrators)
+
+When an agent coordinates other agents instead of executing directly, document delegation in the body.
+
+**See**: `pattern-orchestrator.md` for full orchestrator pattern.
+
+**Document in body section:**
+```markdown
+## Delegates To
+
+| Agent | When | Model |
+|-------|------|-------|
+| code-reviewer | Code quality check needed | sonnet |
+| system-advisor | Strategic decision needed | haiku |
+```
 
 ## Structure
 
@@ -174,10 +191,42 @@ api_developer_result:
 ```
 ```
 
+## Reference Pattern (SSOT Enforcement)
+
+Agents MUST reference external sources, never hardcode duplicated content.
+
+### What to Reference
+
+| Content Type | Reference To |
+|--------------|--------------|
+| Principles | `CLAUDE.md` |
+| Model selection | `knowledge/ref-model-routing.md` |
+| Layer/naming rules | `factory/README.md` |
+| Approval criteria | `knowledge/ref-approval-criteria.md` |
+| Domain knowledge | `knowledge/ref-*.md` or `skills/` |
+
+### Pattern
+
+```markdown
+✗ Bad (hardcoded):
+| Model | When |
+| haiku | simple tasks |
+| sonnet | complex tasks |
+
+✓ Good (reference):
+**See**: `knowledge/ref-model-routing.md` for model selection.
+```
+
+### Why This Matters
+
+- Single update propagates to all agents
+- No drift between duplicated content
+- Smaller agent files, focused on logic
+
 ## Checklist Before Creating
 
 - [ ] Does this agent already exist? (check agents/)
 - [ ] Is this judgment-based? (if not, consider Skill)
 - [ ] Is the scope well-defined?
 - [ ] Are success criteria measurable?
-- [ ] Does agent reference CLAUDE.md instead of copying principles?
+- [ ] Does agent reference instead of copying? (SSOT)

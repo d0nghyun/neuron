@@ -14,7 +14,7 @@ Do NOT respond to user requests until boot completes. No exceptions.
 
 | # | Principle | Description |
 |---|-----------|-------------|
-| 1 | **SSOT** | One source of truth. No duplication. |
+| 1 | **SSOT** | One source of truth. No duplication. Reference, don't copy. |
 | 2 | **Simplicity** | Simple solutions over complex ones. Build only what's needed now. |
 | 3 | **Modularity** | Independent, replaceable components. |
 | 4 | **Verify** | Prove it works. Don't assume. |

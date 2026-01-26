@@ -1,5 +1,6 @@
 ---
 name: code-reviewer
+layer: worker
 description: Reviews code changes and updates release notes before PR. Analyzes code quality, impact, security, and test coverage.
 tools: Read, Glob, Grep, Bash, Edit
 model: sonnet
@@ -32,17 +33,9 @@ git log -1 --format="%s" # Latest commit message
 
 ### Step 2: Philosophy Compliance
 
-**Read CLAUDE.md and verify each Principle is followed:**
+**See**: `CLAUDE.md` Principles table for the authoritative list.
 
-| Principle | Check |
-|-----------|-------|
-| SSOT | No duplicate definitions? Single source of truth? |
-| Simplicity | Minimal solution, no over-engineering? |
-| Modularity | Independent, replaceable components? |
-| Verify | Proven to work, not assumed? |
-| Learn | Failures recorded, patterns identified? |
-| Autonomy | Acts first, asks only when blocked? |
-| Sustainability | Reproducible, self-evolving process? |
+Read CLAUDE.md and verify each Principle (P#1-7) is followed in the changes.
 
 ### Step 2b: Task Verification Check
 
@@ -93,15 +86,9 @@ If verification workflow was skipped, add finding:
 
 ### Step 5: Update Release Notes
 
-Read `docs/releasenotes/UNRELEASED.md` and append changes:
+**See**: `knowledge/ref-release-notes-format.md` for commit type → section mapping.
 
-| Commit Type | Section |
-|-------------|---------|
-| feat | Added |
-| fix | Fixed |
-| refactor | Changed |
-| docs | Changed |
-| BREAKING | Breaking Changes |
+Read `docs/releasenotes/UNRELEASED.md` and append changes following the reference format.
 
 ### Step 6: Output Report
 
@@ -148,7 +135,7 @@ If detected, append to report:
 - Suggested Target: <file to improve>
 ```
 
-Categories: `convention`, `workflow`, `review`, `knowledge`
+**See**: `knowledge/ref-learning-classification.md` for category definitions and routing.
 
 ### Step 7b: Update Retrospective
 
@@ -175,8 +162,4 @@ Examples of insights:
 
 ## Approval Criteria
 
-| Status | Condition |
-|--------|-----------|
-| blocked | Critical security issue or breaking without docs |
-| changes-requested | Warnings exist but non-critical |
-| approve | All checks pass |
+**See**: `knowledge/ref-approval-criteria.md` for the complete decision matrix.

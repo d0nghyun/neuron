@@ -17,6 +17,7 @@ Analyze the request to determine the required component type:
 
 | Need | Component Type | Pattern |
 |------|----------------|---------|
+| Coordinate multiple agents | Orchestrator | pattern-orchestrator.md |
 | Judgment/reasoning/review | Agent | pattern-agent.md |
 | External API call | Skill (api-*) | pattern-skill.md |
 | Reusable workflow | Skill (workflow-*) | pattern-skill.md |
@@ -27,6 +28,7 @@ Analyze the request to determine the required component type:
 ## Decision Tree
 
 ```
+Complex multi-step task needing coordination? → Orchestrator Agent
 External service integration? → Skill (api-*)
 Judgment needed? → Agent
 Automatic execution? → Hook
@@ -79,6 +81,35 @@ Components can live at **neuron level** or **module level**.
 | pattern-context.yaml | contexts/ | Project configs |
 | pattern-hook.md | settings.json | Automatic triggers |
 | pattern-knowledge.md | knowledge/ | Reference docs, guides, lessons |
+
+## Agent Layers
+
+Agents are organized into three layers based on responsibility:
+
+| Layer | Agents | Responsibility |
+|-------|--------|----------------|
+| **meta** | boot, wrapup, updater, self-improve | Neuron lifecycle, self-management |
+| **business** | orchestrator, advisor, recruiter | User request analysis, delegation |
+| **worker** | code-reviewer, code-refactor | Domain-specific execution |
+
+### Layer Selection Guide
+
+```
+Managing Neuron itself? → meta
+Delegating/coordinating work? → business
+Executing domain tasks? → worker
+```
+
+### Layer in Frontmatter
+
+Every agent MUST declare its layer:
+
+```yaml
+---
+name: system-example
+layer: meta | business | worker
+---
+```
 
 ## Naming Conventions
 

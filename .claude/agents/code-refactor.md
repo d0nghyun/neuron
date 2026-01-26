@@ -1,5 +1,6 @@
 ---
 name: code-refactor
+layer: worker
 description: Analyzes refactoring needs and plans incremental structural changes. Prevents over-engineering while improving code quality.
 tools: Read, Glob, Grep, Bash, Task
 model: opus
