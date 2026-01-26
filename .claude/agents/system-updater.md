@@ -40,22 +40,15 @@ Glob .claude/skills/*/SKILL.md
 
 ### Step 2: Validate Frontmatter
 
-Check each agent has required fields:
+**See**: `factory/pattern-agent.md` for required frontmatter fields.
 
-| Field | Required | Valid Values |
-|-------|----------|--------------|
-| name | Yes | matches filename |
-| layer | Yes | meta, business, worker |
-| description | Yes | non-empty string |
-| tools | Yes | comma-separated list |
-| model | Yes | haiku, sonnet, opus |
+Verify each agent has: name, layer, description, tools, model.
 
 ### Step 3: Check Naming Conventions
 
-| Type | Pattern | Valid Prefixes |
-|------|---------|----------------|
-| Agent | `{prefix}-{name}.md` | system-, code-, feature-dev- |
-| Skill | `{type}-{name}/SKILL.md` | api-, workflow-, capability- |
+**See**: `factory/README.md` Naming Conventions section.
+
+Verify agents/skills follow the defined prefix patterns.
 
 ### Step 4: Detect Language Issues
 
@@ -112,11 +105,7 @@ Not safe (report only):
 
 ### Layer Assignment
 
-| Agent Prefix | Assigned Layer |
-|--------------|----------------|
-| system-boot, system-wrapup, system-updater, system-self-improve | meta |
-| system-orchestrator, system-advisor, system-recruiter | business |
-| code-* | worker |
+**See**: `factory/README.md` Agent Layers section for authoritative layer assignments.
 
 ### Frontmatter Insertion
 

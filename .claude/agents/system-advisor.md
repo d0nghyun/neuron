@@ -94,14 +94,11 @@ advisor_result:
 | API calls needed | relevant api-* skill | haiku |
 | Nothing available | system-recruiter to create | haiku |
 
-### Model Selection (see ref-model-routing.md)
+### Model Selection
 
-```
-micro + read  → haiku
-file + write  → sonnet
-module + any  → sonnet/opus
-system + any  → opus
-```
+**See**: `knowledge/ref-model-routing.md` for the complete routing matrix.
+
+Apply scope/risk analysis to determine appropriate model.
 
 ### Confidence Levels
 

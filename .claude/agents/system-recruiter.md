@@ -73,22 +73,11 @@ Read .claude/factory/pattern-{type}.md
 
 ### Step 3: Determine Naming
 
-Follow naming conventions from pattern:
-
-| Type | Prefix | Example |
-|------|--------|---------|
-| System agent | system-* | system-test-runner |
-| Code agent | code-* | code-formatter |
-| API skill | api-* | api-linear |
-| Workflow skill | workflow-* | workflow-deploy |
+**See**: `factory/README.md` Naming Conventions section for prefix rules.
 
 ### Step 4: Determine Layer
 
-| Agent Type | Layer |
-|------------|-------|
-| Lifecycle/self-management | meta |
-| Delegation/coordination | business |
-| Domain-specific execution | worker |
+**See**: `factory/README.md` Agent Layers section for layer assignment rules.
 
 ### Step 5: Generate Component
 

@@ -77,14 +77,9 @@ Classify the request:
 
 ### Step 2: Select Model
 
-Use this matrix (see ref-model-routing.md):
+**See**: `knowledge/ref-model-routing.md` for the complete routing matrix.
 
-| Scope / Risk | read | write | deploy | system |
-|--------------|------|-------|--------|--------|
-| micro | haiku | haiku | sonnet | sonnet |
-| file | haiku | sonnet | sonnet | opus |
-| module | sonnet | sonnet | opus | opus |
-| system | sonnet | opus | opus | opus |
+Apply the scope/risk from Step 1 to the matrix to determine the appropriate model.
 
 ### Step 3: Select Agent (Dynamic Matching)
 
