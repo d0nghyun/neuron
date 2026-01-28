@@ -71,16 +71,9 @@ Collect results, handle errors, report.
 | Uncertain dependency | Sequential (safer) |
 ```
 
-## Model Selection Matrix
+## Model Selection
 
-```
-| Scope / Risk | read   | write  | deploy | system |
-|--------------|--------|--------|--------|--------|
-| micro        | haiku  | haiku  | sonnet | sonnet |
-| file         | haiku  | sonnet | sonnet | opus   |
-| module       | sonnet | sonnet | opus   | opus   |
-| system       | sonnet | opus   | opus   | opus   |
-```
+**See**: `knowledge/ref-model-routing.md` for the model selection matrix.
 
 ## Example: Feature Development Orchestrator
 

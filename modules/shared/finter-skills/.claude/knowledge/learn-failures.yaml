@@ -1,0 +1,14 @@
+# Finter Alpha Hypothesis Learning Log
+#
+# Records lessons from quant-analyst judgments and their outcomes.
+# Used to improve future analysis quality.
+#
+# Schema:
+#   - date: YYYY-MM-DD
+#     hypothesis: "original hypothesis text"
+#     judgment: PROCEED | MODIFY | REJECT
+#     outcome: "backtest result or what actually happened"
+#     lesson: "what we learned from comparing judgment to outcome"
+#     category: criterion_selection | measurement_method | regime_change | other
+
+entries: []
