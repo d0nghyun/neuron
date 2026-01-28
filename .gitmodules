@@ -34,3 +34,6 @@
 [submodule "modules/arkraft/ai-infra"]
 	path = modules/arkraft/ai-infra
 	url = git@github.com:Quantit-Github/ai-infra.git
+[submodule "modules/arkraft/arkraft-agent-alpha"]
+	path = modules/arkraft/arkraft-agent-alpha
+	url = https://github.com/Quantit-Github/arkraft-agent-alpha.git
