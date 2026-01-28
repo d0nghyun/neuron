@@ -56,6 +56,20 @@ Each component is self-describing. Its `.md` file contains:
 - How to invoke it
 - What it returns
 
+## Agent Layers
+
+See `factory/README.md` for full layer model and naming conventions.
+
+| Layer | Role | Examples |
+|-------|------|---------|
+| **meta** | Session lifecycle | boot, wrapup, self-improve |
+| **business** | Delegation & creation | orchestrator, advisor, recruiter |
+| **worker** | Domain execution | feature-dev, frontend-dev |
+
+## Before Creating Components
+
+Check `factory/ref-claude-code.md` for built-in Claude Code features.
+
 ## Contexts & Knowledge
 
 **Contexts** (`contexts/`): Session state. `ctx-*.yaml` files. Loaded by `system-boot`.
