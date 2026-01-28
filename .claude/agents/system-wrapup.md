@@ -115,14 +115,21 @@ For each item in learn-lessons.yaml:
 
 3. Normalize folder name: lowercase, spaces → dash
 
-4. Create directory: .claude/tasks/{target_folder}/
+4. Check if directory exists: .claude/tasks/{target_folder}/
+   - If exists → use it (DO NOT create new folder)
+   - If not exists → create it
 
 5. TaskList → get ALL tasks
 
 6. For each task with status pending or in_progress:
    - Write .claude/tasks/{target_folder}/task-{id}.json
 
-7. Write .claude/tasks/{target_folder}/handoff.md
+7. Handle handoff.md:
+   - If .claude/tasks/{target_folder}/handoff.md exists:
+     - READ existing content first
+     - APPEND new session summary (with date header)
+     - Preserve previous session history
+   - If not exists → create new handoff.md
 ```
 
 **IMPORTANT: Match handoff to actual work, not just current_focus.**

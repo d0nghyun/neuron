@@ -16,3 +16,11 @@ _meta:
       EISDIR: illegal operation on a directory, read
     status: pending
     pattern: null
+  - id: "fail-1769587445"
+    timestamp: "2026-01-28T17:04:05+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null

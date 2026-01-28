@@ -63,6 +63,31 @@ modules:
       - signal
       - trading
 
+  arkraft/arkraft-agent-alpha:
+    repo: github.com/Quantit-Github/arkraft-agent-alpha
+    domain: work
+    status: active
+    description: Alpha strategy development agent with Jupyter MCP integration
+    registered_at: "2026-01-28"
+    tags:
+      - arkraft
+      - agent
+      - alpha
+      - jupyter
+      - mcp
+
+  arkraft/arkraft-app:
+    repo: github.com/Quantit-Github/arkraft-app
+    domain: work
+    status: active
+    description: Arkraft web application - Next.js 16 + React 19 frontend
+    registered_at: "2026-01-28"
+    tags:
+      - arkraft
+      - frontend
+      - nextjs
+      - react
+
   # ============================================
   # arkraft-legacy - Legacy project group
   # ============================================
@@ -144,6 +169,6 @@ archived:
 
 # Registry metadata
 _meta:
-  version: 4
-  updated_at: "2026-01-26"
+  version: 6
+  updated_at: "2026-01-28"
   schema: knowledge/module-protocol.md
