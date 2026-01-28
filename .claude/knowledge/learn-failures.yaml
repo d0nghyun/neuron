@@ -5,14 +5,77 @@
 failures: []
 
 _meta:
-  updated_at: "2026-01-28T23:00:00+09:00"
-  version: 18
-  note: "Agent testing wrapup: Removed transient handoff.md error (file now exists). Failures list clean."
-  - id: "fail-1769594165"
-    timestamp: "2026-01-28T18:56:05+09:00"
+  updated_at: "2026-01-28T23:05:00+09:00"
+  version: 19
+  note: "Agent testing wrapup: Removed transient EISDIR error. Failures list clean."
+  - id: "fail-1769594324"
+    timestamp: "2026-01-28T18:58:44+09:00"
     session: "unknown"
-    tool: "Read"
+    tool: "Bash"
     error: |
-      EISDIR: illegal operation on a directory, read
+      Exit code 128
+From https://github.com/Quantit-Github/arkraft
+ * branch            main       -> FETCH_HEAD
+From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
+ * branch            main       -> FETCH_HEAD
+From ssh://gitlab.quantit.io:2222/ark/finter
+ * branch            master     -> FETCH_HEAD
+From github.com:Quantit-Github/ai-infra
+   b3e5230..337aff1  main       -> origin/main
+From github.com:Quantit-Github/ai-infra
+ * branch            main       -> FETCH_HEAD
+From https://github.com/Quantit-Github/arkraft-agent-alpha
+ * branch            main       -> FETCH_HEAD
+From https://github.com/Quantit-Github/arkraft-agent-insight
+   b74c965..a3c6494  main       -> origin/main
+From https://github.com/Quantit-Github/arkraft-agent-insight
+ * branch            main       -> FETCH_HEAD
+fatal: couldn't find remote ref main
+fatal: run_command returned non-zero status for modules/arkraft/arkraft-agent-pm
+.
+
+Entering 'modules/arkraft-legacy/arkraft'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/arkraft-fe'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/finter'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+Entering 'modules/arkraft/ai-infra'
+Your branch is behind 'origin/main' by 6 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+Updating b3e5230..337aff1
+Fast-forward
+ agent-sandbox/irsa.tf                              | 118 +++++++++++++++++++++
+ .../manifests/sandboxtemplate-quanda.yaml          |   5 +
+ agent-sandbox/variables.tf                         |  16 +++
+ aws/main.tf                                        |   5 +
+ aws/rds/sg/data.tf                                 |  63 +++++++++++
+ aws/rds/sg/main.tf                                 |  84 +++++++++++++++
+ main.tf                                            |   7 ++
+ 7 files changed, 298 insertions(+)
+ create mode 100644 agent-sandbox/irsa.tf
+ create mode 100644 aws/rds/sg/data.tf
+ create mode 100644 aws/rds/sg/main.tf
+Entering 'modules/arkraft/arkraft-agent-alpha'
+M	workspace/.claude/skills/finter-explore/SKILL.md
+M	workspace/.claude/skills/finter-explore/references/ic_analysis.md
+M	workspace/.claude/skills/finter-explore/references/mental_models/signal_diagnosis.md
+M	workspace/CLAUDE.md
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft/arkraft-agent-insight'
+Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+Updating b74c965..a3c6494
+Fast-forward
+ pyproject.toml |  1 +
+ src/ping.py    | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+ create mode 100644 src/ping.py
+Entering 'modules/arkraft/arkraft-agent-pm'
+Your branch is up to date with 'origin/master'.
     status: pending
     pattern: null
