@@ -93,7 +93,7 @@ signal_win = signal.clip(
 )
 ```
 
-## Decision Tree
+## Decision Framework
 
 ```
 Signal Created
@@ -101,30 +101,29 @@ Signal Created
       ▼
   Calculate IC
       │
-      ├─ IC < 0.02 ────────────► Diagnose: noise? lookback? timing?
+      ├─ IC below expectation ──► Diagnose: noise? lookback? timing?
       │                                    │
       │                                    ▼
-      │                              Try fixes, recalculate
+      │                              Try improvements
       │                                    │
-      │                                    ├─ Still < 0.02 → STOP
-      │                                    └─ > 0.02 → Continue
+      │                                    └─ Re-evaluate in context
+      │                                       Document reasoning, decide
       │
-      ├─ Win Rate < 55% ───────► Diagnose: regime? sector? time-varying?
+      ├─ Inconsistent IC ───────► Diagnose: regime? sector? time-varying?
       │                                    │
       │                                    ▼
       │                              Analyze breakdown
       │                                    │
-      │                                    ├─ Can't fix → STOP
-      │                                    └─ Can filter → Continue
+      │                                    └─ Understand cause
+      │                                       Decide if acceptable for your strategy
       │
-      └─ Pass ─────────────────► Check turnover
+      └─ Metrics look good ─────► Check turnover and implementation cost
                                        │
-                                       ├─ > 15,000% annual → Diagnose
-                                       └─ < 15,000% annual → finter-alpha
+                                       └─ Proceed to finter-alpha
 ```
 
 ## The Golden Rule
 
-**Never implement alpha.py without completing this diagnosis.**
+**Diagnose first, but YOU make the final call.**
 
-Time spent diagnosing = Time saved debugging bad backtests.
+Numbers inform your judgment. They don't replace it.

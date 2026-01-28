@@ -57,7 +57,7 @@ signal = close.pct_change(20)
 # ✅ CORRECT - Calculate IC first
 ic = calculate_ic(signal, forward_returns)
 print(f"IC: {ic.mean():.4f}, Win rate: {(ic > 0).mean():.1%}")
-# Only proceed if IC > 0.02 and win rate > 55%
+# Interpret IC in context, then make your judgment
 ```
 
 **Mistake 2: Using wrong IC calculation**
@@ -100,8 +100,8 @@ print(f"Avg daily rank changes: {daily_changes:.0f} stocks")
 1. **Load Data**: Use `finter-data` skill
 2. **Calculate Signal**: In Jupyter notebook
 3. **Run Diagnostics**: IC, distribution, turnover, stationarity
-4. **Check Quality Gates**: IC > 0.02, win rate > 55%
-5. **Decision**: Pass → `finter-alpha` | Fail → Report & STOP
+4. **Interpret Results**: What do these numbers mean for THIS strategy?
+5. **Make Decision**: Proceed, modify, or stop - with documented reasoning
 
 ## ⚡ Quick Reference
 

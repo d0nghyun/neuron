@@ -6,36 +6,40 @@ IC measures correlation between signal (today) and returns (tomorrow).
 - **Rank IC** (Spearman): Correlation of ranks - robust to outliers
 - **Raw IC** (Pearson): Correlation of values - sensitive to outliers
 
-## Interpretation
+## Interpretation (Context-Dependent)
 
-| IC Range | Interpretation | Action |
-|----------|---------------|--------|
-| > 0.05 | Strong signal | Proceed to alpha |
-| 0.02 - 0.05 | Moderate signal | Proceed with caution |
-| 0 - 0.02 | Weak signal | Consider improvements |
-| < 0 | Inverse signal | Check for bugs or flip sign |
+| IC Range | Typical Interpretation | Context Considerations |
+|----------|----------------------|------------------------|
+| > 0.05 | Strong signal | Check for overfitting, data mining bias |
+| 0.02 - 0.05 | Moderate signal | Often sufficient for diversified strategies |
+| 0.01 - 0.02 | Weak but potentially useful | May work in multi-factor or with other edges |
+| < 0.01 | Very weak | Understand why before deciding |
+| < 0 | Inverse relationship | Intentional? Check for bugs |
+
+**Your job**: Interpret in context (universe, strategy type, holding period), then make a reasoned judgment.
 
 ## IC Sharpe (IC_IR)
 
 `IC_Sharpe = mean(IC) / std(IC) * sqrt(252)`
 
-| IC Sharpe | Interpretation |
-|-----------|---------------|
-| > 2.0 | Excellent - consistent alpha |
-| 1.0 - 2.0 | Good - reliable signal |
-| 0.5 - 1.0 | Moderate - usable |
-| < 0.5 | Weak - high variance |
+| IC Sharpe | Typical Reading | Note |
+|-----------|-----------------|------|
+| > 2.0 | Strong consistency | Rare - verify not overfit |
+| 1.0 - 2.0 | Good signal | Commonly seen in production factors |
+| 0.5 - 1.0 | Moderate | May still be useful in combination |
+| < 0.5 | High variance | Understand the source of variance |
 
 ## Win Rate
 
 `Win Rate = % of days with IC > 0`
 
-| Win Rate | Interpretation |
-|----------|---------------|
-| > 60% | Consistent |
-| 55% - 60% | Acceptable |
-| 50% - 55% | Borderline |
-| < 50% | Unreliable |
+| Win Rate | Typical Reading | Note |
+|----------|-----------------|------|
+| > 60% | High consistency | Mean-reversion often lower |
+| 50% - 60% | Normal range | Most factors fall here |
+| < 50% | Inconsistent | May still work if wins are larger |
+
+**Caveat**: Win rate alone is misleading. A 45% win rate with 2:1 reward/risk beats 60% with 1:2.
 
 ## Complete IC Analysis Code
 
@@ -69,15 +73,12 @@ def analyze_ic(signal, returns, name="Signal"):
     print(f"IC Sharpe: {rank_ic.mean() / rank_ic.std() * np.sqrt(252):.2f}")
     print(f"Win Rate: {(rank_ic > 0).mean():.1%}")
 
-    # Quality gate check
-    if rank_ic.mean() < 0.02:
-        print("\n⚠️ WEAK SIGNAL - IC < 0.02")
-        print("   Consider: different lookback, data transformation, or abandon")
-    elif (rank_ic > 0).mean() < 0.55:
-        print("\n⚠️ INCONSISTENT - Win rate < 55%")
-        print("   Consider: regime filtering or parameter tuning")
-    else:
-        print("\n✅ PASSED quality gates - proceed to finter-alpha")
+    # Interpretation guide (reference only - you decide)
+    print("\n--- Interpretation Guide ---")
+    print("IC < 0.02: Weak for single-factor, may be fine in multi-factor")
+    print("IC 0.02-0.05: Moderate - consider strategy context")
+    print("IC > 0.05: Strong - but check for overfitting")
+    print("\nYour judgment: Consider universe, strategy type, holding period")
 
     return rank_ic, raw_ic
 ```

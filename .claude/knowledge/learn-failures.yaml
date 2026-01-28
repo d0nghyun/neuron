@@ -5,11 +5,11 @@
 failures: []
 
 _meta:
-  updated_at: "2026-01-28T18:00:00+09:00"
-  version: 14
-  note: "K8s healthcheck session: Cleared transient failures (EISDIR, git conflicts) - all handled correctly by recovery procedures. No systemic issues found."
-  - id: "fail-1769589784"
-    timestamp: "2026-01-28T17:43:04+09:00"
+  updated_at: "2026-01-28T23:00:00+09:00"
+  version: 18
+  note: "Agent testing wrapup: Removed transient handoff.md error (file now exists). Failures list clean."
+  - id: "fail-1769594165"
+    timestamp: "2026-01-28T18:56:05+09:00"
     session: "unknown"
     tool: "Read"
     error: |
