@@ -12,9 +12,17 @@ They are configured in `.claude/settings.json` under the `hooks` section.
 | Type | Triggers When |
 |------|---------------|
 | `PreToolUse` | Before a tool executes |
-| `PostToolUse` | After a tool executes |
+| `PostToolUse` | After a tool succeeds |
+| `PostToolUseFailure` | After a tool fails |
+| `PermissionRequest` | When permission dialog appears |
 | `Notification` | Claude sends a notification |
-| `Stop` | Claude stops processing |
+| `UserPromptSubmit` | When user submits a message |
+| `Stop` | Claude completes response |
+| `SubagentStop` | When a subagent completes |
+| `PreCompact` | Before context compaction |
+| `Setup` | On repo init/maintenance |
+| `SessionStart` | When session starts/resumes |
+| `SessionEnd` | When session ends |
 
 ## Configuration Location
 
