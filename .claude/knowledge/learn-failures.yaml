@@ -5,19 +5,11 @@
 failures: []
 
 _meta:
-  updated_at: "2026-01-26T23:00:00+09:00"
-  version: 13
-  note: "Component refactoring session: Removed stray failure entry - was user path typo, not systemic."
-  - id: "fail-1769436283"
-    timestamp: "2026-01-26T23:04:43+09:00"
-    session: "unknown"
-    tool: "Read"
-    error: |
-      EISDIR: illegal operation on a directory, read
-    status: pending
-    pattern: null
-  - id: "fail-1769587445"
-    timestamp: "2026-01-28T17:04:05+09:00"
+  updated_at: "2026-01-28T18:00:00+09:00"
+  version: 14
+  note: "K8s healthcheck session: Cleared transient failures (EISDIR, git conflicts) - all handled correctly by recovery procedures. No systemic issues found."
+  - id: "fail-1769589784"
+    timestamp: "2026-01-28T17:43:04+09:00"
     session: "unknown"
     tool: "Read"
     error: |
