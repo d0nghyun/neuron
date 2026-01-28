@@ -127,19 +127,48 @@ Hook types:
 | `description` | When to delegate to this agent (required) |
 | `tools` | Allowed tools (inherits all if omitted) |
 | `disallowedTools` | Tools to deny from inherited list |
-| `model` | Model to use: sonnet, opus, haiku, inherit |
+| `model` | Model: opus (Opus 4.5), sonnet (Sonnet 4.5), haiku, inherit |
 | `permissionMode` | default, acceptEdits, dontAsk, bypassPermissions, plan |
 | `skills` | Skills to preload into agent context |
 | `hooks` | Lifecycle hooks (PreToolUse, PostToolUse, Stop) |
 
-## Skills Discovery
+## Skills System
 
-Skills are auto-discovered from:
-- `.claude/skills/*/SKILL.md`
-- User-invocable via `/skill-name` syntax
+Skills are auto-discovered from `.claude/skills/*/SKILL.md` and subdirectories.
 
-Skill-specific hook option:
-- `once: true` - Run hook only once per session (skills only, not agents)
+### Skill Frontmatter Fields
+
+| Field | Description |
+|-------|-------------|
+| `name` | Unique identifier (required) |
+| `description` | What the skill does (required) |
+| `user-invocable` | Show in menu, allow `/skill-name` invocation |
+| `disable-model-invocation` | Prevent auto-invocation by Claude |
+| `allowed-tools` | Restrict available tools |
+| `model` | Model to use |
+| `context: fork` | Run in forked subagent |
+| `agent` | Subagent type to use |
+| `hooks` | Skill-level hooks (PreToolUse, PostToolUse, Stop) |
+| `once: true` | Run hook only once per session |
+
+### String Substitutions
+
+| Pattern | Description |
+|---------|-------------|
+| `$ARGUMENTS` | All arguments as string |
+| `$ARGUMENTS[N]` | Nth argument (0-indexed) |
+| `$N` | Shorthand for `$ARGUMENTS[N]` |
+| `${CLAUDE_SESSION_ID}` | Current session ID |
+
+### Dynamic Context Injection
+
+Use `` !`command` `` to inject shell output into skill prompts (preprocessed before execution).
+
+## MCP Integration
+
+MCP tools follow naming: `mcp__<server>__<tool>`
+
+Hook matchers support regex: `mcp__memory__.*`, `mcp__.*__write.*`
 
 ## What NOT to Reinvent
 
@@ -161,7 +190,16 @@ Skill-specific hook option:
 | Knowledge docs | Reference materials, learnings |
 | Philosophy/principles | Decision-making framework |
 
+## Platform Support
+
+- CLI (primary)
+- VS Code extension
+- JetBrains IDEs
+- Desktop app (preview)
+- Web (Claude.ai integration)
+- GitHub Actions
+
 ---
 
-*Last updated: 2026-01*
+*Last updated: 2026-01-28*
 *Update this when Claude Code releases new features*
