@@ -102,14 +102,33 @@ For each item in learn-lessons.yaml:
 **This step is MANDATORY. Never skip.**
 
 ```
-1. Read ctx-focus.yaml → extract current_focus
-2. Normalize: lowercase, spaces → dash (e.g., "townhall ai presentation" → "townhall-ai-presentation")
-3. Create directory: .claude/tasks/{normalized_focus}/
-4. TaskList → get ALL tasks
-5. For each task with status pending or in_progress:
-   - Write .claude/tasks/{focus}/task-{id}.json
-6. Write .claude/tasks/{focus}/handoff.md
+1. Analyze session work:
+   - What files were modified?
+   - What was the actual work done?
+   - Which module/project does it belong to?
+
+2. Determine target folder:
+   - If work relates to a module → use module name (e.g., "arkraft-app")
+   - If work relates to neuron system → use "neuron-system"
+   - If work matches current_focus → use current_focus
+   - If unclear → use "_general"
+
+3. Normalize folder name: lowercase, spaces → dash
+
+4. Create directory: .claude/tasks/{target_folder}/
+
+5. TaskList → get ALL tasks
+
+6. For each task with status pending or in_progress:
+   - Write .claude/tasks/{target_folder}/task-{id}.json
+
+7. Write .claude/tasks/{target_folder}/handoff.md
 ```
+
+**IMPORTANT: Match handoff to actual work, not just current_focus.**
+- current_focus is what user WANTS to work on
+- handoff should describe what was ACTUALLY done
+- These can differ (user may do unplanned work)
 
 **Task JSON format:**
 ```json
@@ -127,7 +146,7 @@ For each item in learn-lessons.yaml:
 
 **handoff.md structure:**
 ```markdown
-# Handoff: {focus}
+# Handoff: {target_folder}
 
 ## Session Summary ({date})
 Brief description of what was accomplished.
@@ -226,5 +245,5 @@ ls modules/{module}/CLAUDE.md 2>/dev/null || echo "MISSING: CLAUDE.md"
 2. All pending improvements → TaskCreate'd
 3. learn-lessons.yaml is EMPTY
 4. ctx-focus.yaml updated with session outcome
-5. **All pending/in_progress tasks → .claude/tasks/{focus}/*.json**
+5. **All pending/in_progress tasks → .claude/tasks/{target_folder}/*.json**
 6. **handoff.md written with session summary**
