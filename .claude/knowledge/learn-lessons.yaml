@@ -16,6 +16,6 @@
 lessons: []
 
 _meta:
-  updated_at: "2026-01-28T23:10:00+09:00"
-  version: 10
-  note: "2026-01-28 wrapup: Agent testing session - Testing insights captured in ctx-arkraft.yaml (agent_alpha.testing_results). Domain knowledge already documented in ref-alpha-strategy-validation.md. Inbox empty, no new learnings to process."
+  updated_at: "2026-01-29T21:20:00+09:00"
+  version: 12
+  note: "Wrapup 2026-01-29: All domain knowledge processed to ctx-arkraft.yaml (sector momentum signals)."

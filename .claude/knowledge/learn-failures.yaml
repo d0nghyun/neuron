@@ -5,11 +5,11 @@
 failures: []
 
 _meta:
-  updated_at: "2026-01-29T13:20:00+09:00"
-  version: 21
-  note: "Wrapup 2026-01-29: UI refinement session (arkraft-app trading page). No failures encountered. Failures list clean."
-  - id: "fail-1769660657"
-    timestamp: "2026-01-29T13:24:17+09:00"
+  updated_at: "2026-01-29T21:15:00+09:00"
+  version: 23
+  note: "Wrapup 2026-01-29: All EISDIR errors resolved (attempted to Read directories - should use Glob/Bash instead)."
+  - id: "fail-1769667299"
+    timestamp: "2026-01-29T15:14:59+09:00"
     session: "unknown"
     tool: "Read"
     error: |
