@@ -16,6 +16,6 @@
 lessons: []
 
 _meta:
-  updated_at: "2026-01-29T21:20:00+09:00"
-  version: 12
-  note: "Wrapup 2026-01-29: All domain knowledge processed to ctx-arkraft.yaml (sector momentum signals)."
+  updated_at: "2026-01-29T22:35:00+09:00"
+  version: 13
+  note: "Wrapup 2026-01-29 (backtest graph debugging): All learnings processed. Finter MCP endpoint knowledge archived in ctx-arkraft.yaml. Learn-lessons inbox empty."
