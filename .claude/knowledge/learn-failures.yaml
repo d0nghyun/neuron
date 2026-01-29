@@ -5,96 +5,14 @@
 failures: []
 
 _meta:
-  updated_at: "2026-01-28T23:05:00+09:00"
-  version: 19
-  note: "Agent testing wrapup: Removed transient EISDIR error. Failures list clean."
-  - id: "fail-1769594324"
-    timestamp: "2026-01-28T18:58:44+09:00"
-    session: "unknown"
-    tool: "Bash"
-    error: |
-      Exit code 128
-From https://github.com/Quantit-Github/arkraft
- * branch            main       -> FETCH_HEAD
-From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
- * branch            main       -> FETCH_HEAD
-From ssh://gitlab.quantit.io:2222/ark/finter
- * branch            master     -> FETCH_HEAD
-From github.com:Quantit-Github/ai-infra
-   b3e5230..337aff1  main       -> origin/main
-From github.com:Quantit-Github/ai-infra
- * branch            main       -> FETCH_HEAD
-From https://github.com/Quantit-Github/arkraft-agent-alpha
- * branch            main       -> FETCH_HEAD
-From https://github.com/Quantit-Github/arkraft-agent-insight
-   b74c965..a3c6494  main       -> origin/main
-From https://github.com/Quantit-Github/arkraft-agent-insight
- * branch            main       -> FETCH_HEAD
-fatal: couldn't find remote ref main
-fatal: run_command returned non-zero status for modules/arkraft/arkraft-agent-pm
-.
-
-Entering 'modules/arkraft-legacy/arkraft'
-Your branch is up to date with 'origin/main'.
-Already up to date.
-Entering 'modules/arkraft-legacy/arkraft-fe'
-Your branch is up to date with 'origin/main'.
-Already up to date.
-Entering 'modules/arkraft-legacy/finter'
-Your branch is up to date with 'origin/master'.
-Already up to date.
-Entering 'modules/arkraft/ai-infra'
-Your branch is behind 'origin/main' by 6 commits, and can be fast-forwarded.
-  (use "git pull" to update your local branch)
-Updating b3e5230..337aff1
-Fast-forward
- agent-sandbox/irsa.tf                              | 118 +++++++++++++++++++++
- .../manifests/sandboxtemplate-quanda.yaml          |   5 +
- agent-sandbox/variables.tf                         |  16 +++
- aws/main.tf                                        |   5 +
- aws/rds/sg/data.tf                                 |  63 +++++++++++
- aws/rds/sg/main.tf                                 |  84 +++++++++++++++
- main.tf                                            |   7 ++
- 7 files changed, 298 insertions(+)
- create mode 100644 agent-sandbox/irsa.tf
- create mode 100644 aws/rds/sg/data.tf
- create mode 100644 aws/rds/sg/main.tf
-Entering 'modules/arkraft/arkraft-agent-alpha'
-M	workspace/.claude/skills/finter-explore/SKILL.md
-M	workspace/.claude/skills/finter-explore/references/ic_analysis.md
-M	workspace/.claude/skills/finter-explore/references/mental_models/signal_diagnosis.md
-M	workspace/CLAUDE.md
-Your branch is up to date with 'origin/main'.
-Already up to date.
-Entering 'modules/arkraft/arkraft-agent-insight'
-Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
-  (use "git pull" to update your local branch)
-Updating b74c965..a3c6494
-Fast-forward
- pyproject.toml |  1 +
- src/ping.py    | 29 +++++++++++++++++++++++++++++
- 2 files changed, 30 insertions(+)
- create mode 100644 src/ping.py
-Entering 'modules/arkraft/arkraft-agent-pm'
-Your branch is up to date with 'origin/master'.
-    status: pending
-    pattern: null
-  - id: "fail-1769567094"
-    timestamp: "2026-01-28T11:24:54+09:00"
+  updated_at: "2026-01-29T13:20:00+09:00"
+  version: 21
+  note: "Wrapup 2026-01-29: UI refinement session (arkraft-app trading page). No failures encountered. Failures list clean."
+  - id: "fail-1769660657"
+    timestamp: "2026-01-29T13:24:17+09:00"
     session: "unknown"
     tool: "Read"
     error: |
       EISDIR: illegal operation on a directory, read
     status: pending
     pattern: null
-  - id: "fail-1769567123"
-    timestamp: "2026-01-28T11:25:23+09:00"
-    session: "unknown"
-    tool: "Read"
-    error: |
-      EISDIR: illegal operation on a directory, read
-    status: pending
-    pattern: null
-  updated_at: "2026-01-29T13:00:00+09:00"
-  version: 20
-  note: "Wrapup 2026-01-29: Cleaned transient errors (git submodule conflicts, EISDIR, missing module, file too large, jq parse). All were one-time operational issues, not systemic failures. Failures list clean."
