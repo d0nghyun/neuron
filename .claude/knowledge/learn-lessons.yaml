@@ -16,6 +16,6 @@
 lessons: []
 
 _meta:
-  updated_at: "2026-01-29T22:35:00+09:00"
-  version: 13
-  note: "Wrapup 2026-01-29 (backtest graph debugging): All learnings processed. Finter MCP endpoint knowledge archived in ctx-arkraft.yaml. Learn-lessons inbox empty."
+  updated_at: "2026-01-29T23:45:00+09:00"
+  version: 14
+  note: "Wrapup 2026-01-29 (arkraft-agent-alpha folder restructuring): All learnings processed. Phase-based folder structure patterns archived in ctx-arkraft.yaml. Learn-lessons inbox empty."

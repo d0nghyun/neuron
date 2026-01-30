@@ -5,6 +5,6 @@
 failures: []
 
 _meta:
-  updated_at: "2026-01-29T22:35:00+09:00"
-  version: 24
-  note: "Wrapup 2026-01-29 (backtest graph debugging): All failures from previous session cleared. No new failures in this session. System operating normally."
+  updated_at: "2026-01-29T23:45:00+09:00"
+  version: 25
+  note: "Wrapup 2026-01-29 (arkraft-agent-alpha folder restructuring): All old failures cleared. No new failures in this session. Phase-based folder structure implemented successfully."
