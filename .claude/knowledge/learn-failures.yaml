@@ -2,9 +2,55 @@
 # Record failures and their resolutions to prevent recurrence
 # Once automated/resolved, entries are removed from this file
 
-failures: []
+failures:
+  - id: "fail-1769735823"
+    timestamp: "2026-01-30T10:17:03+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__read_page"
+    error: |
+      Output exceeds 50000 character limit (103584 characters). Try specifying an even smaller depth parameter or use ref_id to focus on a specific element.
+    status: pending
+    pattern: null
+  - id: "fail-1769735835"
+    timestamp: "2026-01-30T10:17:15+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__read_page"
+    error: |
+      Output exceeds 50000 character limit (103584 characters). Try specifying an even smaller depth parameter or use ref_id to focus on a specific element.
+    status: pending
+    pattern: null
+  - id: "fail-1769735850"
+    timestamp: "2026-01-30T10:17:30+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769735882"
+    timestamp: "2026-01-30T10:18:02+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
 
 _meta:
-  updated_at: "2026-01-29T23:45:00+09:00"
-  version: 25
-  note: "Wrapup 2026-01-29 (arkraft-agent-alpha folder restructuring): All old failures cleared. No new failures in this session. Phase-based folder structure implemented successfully."
+  updated_at: "2026-01-30T11:30:00+09:00"
+  version: 26
+  note: "Wrapup 2026-01-30 (Jupyter MCP migration): Fixed YAML structure. Failures logged from chrome extension testing."
+  - id: "fail-1769736440"
+    timestamp: "2026-01-30T10:27:20+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+The following paths are ignored by one of your .gitignore files:
+.claude/contexts/ctx-arkraft.yaml
+.claude/contexts/ctx-focus.yaml
+.claude/tasks
+hint: Use -f if you really want to add them.
+hint: Disable this message with "git config set advice.addIgnoredFile false"
+    status: pending
+    pattern: null
