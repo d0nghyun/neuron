@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-01-29T18:23:27.907512",
+  "n_alphas": 10,
+  "n_clusters": 7,
+  "avg_correlation": 0.4,
+  "turnover_reduction": 0.5,
+  "turnover_interpretation": "strong",
+  "categories": [
+    "size",
+    "growth",
+    "momentum",
+    "reversal",
+    "value",
+    "low_volatility",
+    "quality"
+  ],
+  "recommendations": [
+    "Use cluster-based weighting for factor diversity",
+    "Turnover reduction is strong - high-turnover alphas add value"
+  ]
+}

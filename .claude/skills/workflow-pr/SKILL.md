@@ -18,10 +18,11 @@ user-invocable: true
 1. **Check status**: Review current changes
 2. **Run code review**: Invoke workflow-code-review skill for review + release notes
 3. **Handle result**: Process review feedback
-4. **Create branch**: If on main, create feature branch
-5. **Commit**: Stage and commit with conventional format
-6. **Push**: Push branch to origin
-7. **Create PR**: Open PR via GitHub API with review summary
+4. **Rebase on main**: Sync with latest main branch
+5. **Create branch**: If on main, create feature branch
+6. **Commit**: Stage and commit with conventional format
+7. **Push**: Push branch to origin (force-with-lease after rebase)
+8. **Create PR**: Open PR via GitHub API with review summary
 
 ## Execution
 
@@ -54,7 +55,21 @@ The skill will:
 | changes-requested | Warn user. Allow proceed with confirmation. |
 | approve | Continue to PR creation. |
 
-### Step 4-7: PR Creation Flow
+### Step 4: Rebase on Main
+
+Before creating PR, always rebase on latest main:
+
+```bash
+git fetch origin main
+git rebase origin/main
+```
+
+If conflicts occur:
+1. Resolve conflicts
+2. `git add <resolved-files>`
+3. `git rebase --continue`
+
+### Step 5-8: PR Creation Flow
 
 If on main with changes, ask user for branch name.
 
@@ -64,7 +79,7 @@ git add -A
 git commit -m "<type>: <description>
 
 Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
-git push -u origin <branch-name>
+git push -u origin <branch-name> --force-with-lease
 ```
 
 Create PR with review summary (using gh CLI):

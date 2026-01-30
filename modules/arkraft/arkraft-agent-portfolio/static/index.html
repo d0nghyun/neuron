@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkraft Portfolio Agent - Dev UI</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        h1 { margin: 0 0 20px 0; font-size: 1.5rem; color: #1a1a1a; }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 0.9rem; }
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            resize: vertical;
+            font-family: inherit;
+        }
+        textarea:focus { outline: none; border-color: #0066cc; }
+        .row { display: flex; gap: 16px; align-items: flex-end; margin-top: 16px; }
+        select {
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: white;
+        }
+        button {
+            padding: 10px 24px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        button:hover { background: #0055aa; }
+        button:disabled { background: #999; cursor: not-allowed; }
+        .status { padding: 12px 16px; border-radius: 6px; font-size: 0.9rem; display: none; }
+        .status.visible { display: block; }
+        .status.running { background: #fff3cd; color: #856404; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .result-header h2 { margin: 0; font-size: 1rem; }
+        .meta { font-size: 0.85rem; color: #666; }
+        .meta span { margin-left: 16px; }
+        pre {
+            background: #1a1a1a;
+            color: #f0f0f0;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .hidden { display: none; }
+        .portfolio-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .summary-item {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+        .summary-label { font-size: 0.75rem; color: #666; margin-bottom: 4px; }
+        .summary-value { font-size: 1.2rem; font-weight: 600; color: #333; }
+        .summary-item.sharpe .summary-value { color: #28a745; }
+        .summary-item.alphas .summary-value { color: #007bff; }
+        .summary-item.reduction .summary-value { color: #6f42c1; }
+        .alpha-list { margin-top: 16px; }
+        .alpha-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .alpha-name { font-weight: 500; }
+        .alpha-meta { font-size: 0.85rem; color: #666; }
+        .alpha-weight {
+            background: #007bff;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arkraft Portfolio Agent - Dev UI</h1>
+
+    <div class="card">
+        <label for="request">Portfolio Request</label>
+        <textarea id="request" placeholder="e.g., Build optimal portfolio from us_stock alphas with diversification focus"></textarea>
+        <div class="row">
+            <div>
+                <label for="universe">Universe</label>
+                <select id="universe">
+                    <option value="us_stock" selected>us_stock</option>
+                    <option value="kr_stock">kr_stock</option>
+                    <option value="vn_stock">vn_stock</option>
+                </select>
+            </div>
+            <div>
+                <label for="maxTurns">Max Turns</label>
+                <select id="maxTurns">
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+            <button id="generateBtn" onclick="generate()">Build Portfolio</button>
+        </div>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div id="resultCard" class="card hidden">
+        <div class="result-header">
+            <h2>Portfolio Result</h2>
+            <div class="meta">
+                <span>Cost: <strong id="cost">-</strong></span>
+                <span>Turns: <strong id="turns">-</strong></span>
+            </div>
+        </div>
+
+        <div class="portfolio-summary" id="portfolioSummary">
+            <div class="summary-item sharpe">
+                <div class="summary-label">Expected Sharpe</div>
+                <div class="summary-value" id="summarySharepe">-</div>
+            </div>
+            <div class="summary-item alphas">
+                <div class="summary-label">Selected Alphas</div>
+                <div class="summary-value" id="summaryAlphas">-</div>
+            </div>
+            <div class="summary-item reduction">
+                <div class="summary-label">Turnover Reduction</div>
+                <div class="summary-value" id="summaryReduction">-</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Diversification</div>
+                <div class="summary-value" id="summaryDiversification">-</div>
+            </div>
+        </div>
+
+        <div class="alpha-list" id="alphaList"></div>
+
+        <details style="margin-top: 16px;">
+            <summary style="cursor: pointer; font-weight: 500;">Raw JSON</summary>
+            <pre id="result" style="margin-top: 8px;"></pre>
+        </details>
+    </div>
+
+    <script>
+        const requestInput = document.getElementById('request');
+        const universeSelect = document.getElementById('universe');
+        const maxTurnsSelect = document.getElementById('maxTurns');
+        const generateBtn = document.getElementById('generateBtn');
+        const statusDiv = document.getElementById('status');
+        const resultCard = document.getElementById('resultCard');
+        const resultPre = document.getElementById('result');
+        const costSpan = document.getElementById('cost');
+        const turnsSpan = document.getElementById('turns');
+
+        function setStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = `status visible ${type}`;
+        }
+
+        function renderPortfolio(data) {
+            const portfolio = data.portfolio || data;
+            const metrics = portfolio.portfolio_metrics || {};
+            const alphas = portfolio.alphas || [];
+
+            // Summary
+            document.getElementById('summarySharepe').textContent =
+                metrics.expected_sharpe ? metrics.expected_sharpe.toFixed(2) : '-';
+            document.getElementById('summaryAlphas').textContent =
+                alphas.length || '-';
+            document.getElementById('summaryReduction').textContent =
+                metrics.turnover_reduction ? `${(metrics.turnover_reduction * 100).toFixed(0)}%` : '-';
+            document.getElementById('summaryDiversification').textContent =
+                metrics.diversification_ratio ? `${metrics.diversification_ratio.toFixed(2)}x` : '-';
+
+            // Alpha list
+            const alphaList = document.getElementById('alphaList');
+            if (alphas.length > 0) {
+                alphaList.innerHTML = alphas.map(a => `
+                    <div class="alpha-item">
+                        <div>
+                            <div class="alpha-name">${a.title || a.alpha_id}</div>
+                            <div class="alpha-meta">
+                                Sharpe: ${a.sharpe_ratio?.toFixed(2) || '-'} |
+                                Cluster: ${a.cluster || '-'}
+                            </div>
+                        </div>
+                        <div class="alpha-weight">${(a.weight * 100).toFixed(1)}%</div>
+                    </div>
+                `).join('');
+            } else {
+                alphaList.innerHTML = '<div style="color: #666; text-align: center;">No alphas in portfolio</div>';
+            }
+        }
+
+        async function generate() {
+            const request = requestInput.value.trim() || `Build portfolio from ${universeSelect.value} alphas`;
+            const maxTurns = parseInt(maxTurnsSelect.value);
+
+            generateBtn.disabled = true;
+            resultCard.classList.add('hidden');
+            setStatus('Building portfolio...', 'running');
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ request, max_turns: maxTurns })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    setStatus('Portfolio built successfully!', 'success');
+                    renderPortfolio(data);
+                    resultPre.textContent = JSON.stringify(data, null, 2);
+                } else {
+                    setStatus(`Error: ${data.error || 'Build failed'}`, 'error');
+                    resultPre.textContent = JSON.stringify(data, null, 2);
+                }
+
+                costSpan.textContent = data.cost ? `$${data.cost.toFixed(4)}` : '-';
+                turnsSpan.textContent = data.turns || '-';
+                resultCard.classList.remove('hidden');
+
+            } catch (error) {
+                setStatus(`Error: ${error.message}`, 'error');
+            } finally {
+                generateBtn.disabled = false;
+            }
+        }
+
+        requestInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) generate();
+        });
+    </script>
+</body>
+</html>

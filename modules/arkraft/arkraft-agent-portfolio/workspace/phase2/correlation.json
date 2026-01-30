@@ -1,0 +1,136 @@
+{
+  "alpha_ids": [
+    "us_mom_12m_1m_reversal",
+    "us_value_ep_ratio",
+    "us_quality_roe_stability",
+    "us_low_vol_beta",
+    "us_size_small_cap",
+    "us_mom_52w_high_proximity",
+    "us_value_book_to_market",
+    "us_quality_gross_profit",
+    "us_reversal_short_term",
+    "us_growth_asset_growth"
+  ],
+  "matrix": {
+    "us_mom_12m_1m_reversal": {
+      "us_mom_12m_1m_reversal": 1.0,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.6,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_value_ep_ratio": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 1.0,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.6,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_quality_roe_stability": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 1.0,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.6,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_low_vol_beta": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 1.0,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_size_small_cap": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 1.0,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_mom_52w_high_proximity": {
+      "us_mom_12m_1m_reversal": 0.6,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 1.0,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_value_book_to_market": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.6,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 1.0,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_quality_gross_profit": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.6,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 1.0,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_reversal_short_term": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 1.0,
+      "us_growth_asset_growth": 0.2
+    },
+    "us_growth_asset_growth": {
+      "us_mom_12m_1m_reversal": 0.2,
+      "us_value_ep_ratio": 0.2,
+      "us_quality_roe_stability": 0.2,
+      "us_low_vol_beta": 0.2,
+      "us_size_small_cap": 0.2,
+      "us_mom_52w_high_proximity": 0.2,
+      "us_value_book_to_market": 0.2,
+      "us_quality_gross_profit": 0.2,
+      "us_reversal_short_term": 0.2,
+      "us_growth_asset_growth": 1.0
+    }
+  }
+}

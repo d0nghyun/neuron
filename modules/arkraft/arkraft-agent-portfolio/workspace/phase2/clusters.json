@@ -1,0 +1,42 @@
+{
+  "clusters": {
+    "1": [
+      "us_mom_12m_1m_reversal",
+      "us_mom_52w_high_proximity"
+    ],
+    "2": [
+      "us_value_ep_ratio",
+      "us_value_book_to_market"
+    ],
+    "3": [
+      "us_quality_roe_stability",
+      "us_quality_gross_profit"
+    ],
+    "4": [
+      "us_low_vol_beta"
+    ],
+    "5": [
+      "us_size_small_cap"
+    ],
+    "6": [
+      "us_reversal_short_term"
+    ],
+    "7": [
+      "us_growth_asset_growth"
+    ]
+  },
+  "alpha_clusters": {
+    "us_mom_12m_1m_reversal": 1,
+    "us_mom_52w_high_proximity": 1,
+    "us_value_ep_ratio": 2,
+    "us_value_book_to_market": 2,
+    "us_quality_roe_stability": 3,
+    "us_quality_gross_profit": 3,
+    "us_low_vol_beta": 4,
+    "us_size_small_cap": 5,
+    "us_reversal_short_term": 6,
+    "us_growth_asset_growth": 7
+  },
+  "n_clusters": 7,
+  "threshold": 0.5
+}
