@@ -1,4 +1,4 @@
-# crypto_test (Crypto Perpetuals)
+# btcusdt_spot_binance (Crypto Perpetuals)
 
 High-frequency cryptocurrency data - Binance Perpetual USDT margin (10-minute candles).
 
@@ -9,10 +9,10 @@ from finter.data import ContentFactory
 from finter.backtest import Simulator
 
 # ContentFactory
-cf = ContentFactory('crypto_test', start=20241201, end=20241210)
+cf = ContentFactory('btcusdt_spot_binance', start=20241201, end=20241210)
 
 # Simulator
-sim = Simulator('crypto_test', start=20241201, end=20241210)
+sim = Simulator('btcusdt_spot_binance', start=20241201, end=20241210)
 ```
 
 ## Available Items
@@ -146,7 +146,6 @@ cf.usage('liq_buy_volume')
 
 ## Notes
 
-- **Test universe**: Universe name may change in production release
 - **High-frequency data**: 10-min candles (144x more data than daily)
 - **Position units**: USD amounts (NOT ratios)
 - **Submit**: Currently not available (backtest only)

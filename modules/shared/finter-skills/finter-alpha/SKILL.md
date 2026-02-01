@@ -152,7 +152,7 @@ If validation fails, fix alpha.py and re-run.
 
 **Categories**: momentum | value | quality | growth | size | low_vol | technical | macro | stat_arb | event | ml | composite
 
-**Universes**: kr_stock | us_stock | us_etf | vn_stock | id_stock | crypto_test
+**Universes**: kr_stock | us_stock | us_etf | vn_stock | id_stock | btcusdt_spot_binance
 
 ## 📚 Documentation
 
@@ -192,6 +192,6 @@ close = cf.get_df("price_close")
 | us_etf | Market data only |
 | vn_stock | **PascalCase**: `ClosePrice` |
 | id_stock | Use `volume_sum` |
-| crypto_test | 8H candles, BTC only |
+| btcusdt_spot_binance | 8H candles, BTC only |
 
 See `finter-data` skill for detailed data loading guide.

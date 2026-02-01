@@ -200,7 +200,7 @@ summary = result.summary
 
 ### Market Types
 
-Supported market types: `kr_stock`, `us_stock`, `crypto_test`, and more.
+Supported market types: `kr_stock`, `us_stock`, `btcusdt_spot_binance`, and more.
 
 **See `universe_reference.md` for complete list and universe-specific details.**
 

@@ -15,7 +15,7 @@ Categories:
     momentum, value, quality, growth, size, low_vol, technical, macro, stat_arb, event, ml, composite
 
 Universes:
-    kr_stock, us_stock, vn_stock, id_stock, us_etf, crypto_test
+    kr_stock, us_stock, vn_stock, id_stock, us_etf, btcusdt_spot_binance
 
 Tags (examples):
     Selection:  top_k, bottom_k, threshold, long_short
@@ -67,7 +67,7 @@ VALID_UNIVERSES = [
     "vn_stock",
     "id_stock",
     "us_etf",
-    "crypto_test",
+    "btcusdt_spot_binance",
 ]
 
 

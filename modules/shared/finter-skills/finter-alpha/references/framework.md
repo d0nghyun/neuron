@@ -227,7 +227,7 @@ from helpers import get_start_date
 
 # Initialize
 cf = ContentFactory(
-    universe="kr_stock",  # or "us_stock", "crypto_test"
+    universe="kr_stock",  # or "us_stock", "btcusdt_spot_binance"
     start=get_start_date(start, buffer=365),
     end=end
 )

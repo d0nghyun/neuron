@@ -458,7 +458,7 @@ Examples:
             "vn_stock",
             "id_stock",
             "us_etf",
-            "crypto_test",
+            "btcusdt_spot_binance",
         ],
         help="Market universe (required)",
     )

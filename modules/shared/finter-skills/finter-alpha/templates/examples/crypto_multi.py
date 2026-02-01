@@ -14,7 +14,7 @@ Strategy Logic:
 3. Go long top-K assets with equal weight in USD
 
 Important Notes:
-- Universe: 'crypto_test' (same for ContentFactory and Simulator)
+- Universe: 'btcusdt_spot_binance' (same for ContentFactory and Simulator)
 - Data: 10-minute candles, ~378 coins
 - Position: USD amounts (NOT ratios) - e.g., $50,000 per asset
 - Time conversion: 144 periods = 1 day, 1008 periods = 1 week
@@ -68,7 +68,7 @@ class Alpha(BaseAlpha):
         """
         # Load data with buffer for lookback
         # ⚠️ NEVER use start < 20240101 (memory constraint)
-        cf = ContentFactory('crypto_test', 20240101, end)
+        cf = ContentFactory('btcusdt_spot_binance', 20240101, end)
 
         # Load closing prices (10-min candles)
         close = cf.get_df('close')
@@ -95,7 +95,7 @@ class Alpha(BaseAlpha):
 """
 from finter.backtest import Simulator
 
-# ⚠️ CRITICAL: Always use 20240101 as start for crypto_test (memory constraint)
+# ⚠️ CRITICAL: Always use 20240101 as start for btcusdt_spot_binance (memory constraint)
 
 # Generate positions
 alpha = Alpha()
@@ -108,7 +108,7 @@ positions = alpha.get(
 )
 
 # Run backtest
-sim = Simulator("crypto_test", 20240101, 20241231)  # ⚠️ Same constraint
+sim = Simulator("btcusdt_spot_binance", 20240101, 20241231)  # ⚠️ Same constraint
 result = sim.run(position=positions)
 
 # Check results

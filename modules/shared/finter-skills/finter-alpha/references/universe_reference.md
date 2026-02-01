@@ -58,7 +58,7 @@ print(price_items)  # ['AveragePrice', 'ClosePrice', 'HighestPrice', ...]
 
 **Why PascalCase?** Different data provider convention. Always `cf.search()` first!
 
-## Special Case 2: Cryptocurrency (crypto_test)
+## Special Case 2: Cryptocurrency (btcusdt_spot_binance)
 
 ### Features
 
@@ -79,21 +79,21 @@ Multi-crypto perpetual futures with high-frequency data:
 
 ```python
 # ✅ CORRECT - 1 year maximum
-cf = ContentFactory('crypto_test', 20240101, 20241231)
+cf = ContentFactory('btcusdt_spot_binance', 20240101, 20241231)
 
 # ❌ WRONG - Will cause memory crash
-cf = ContentFactory('crypto_test', 20200101, 20241231)  # 5 years = OOM!
-cf = ContentFactory('crypto_test', 20220101, 20241231)  # 3 years = OOM!
+cf = ContentFactory('btcusdt_spot_binance', 20200101, 20241231)  # 5 years = OOM!
+cf = ContentFactory('btcusdt_spot_binance', 20220101, 20241231)  # 3 years = OOM!
 ```
 
-**Rule**: Always use `20240101` as start date for crypto_test. Never load more than 1 year.
+**Rule**: Always use `20240101` as start date for btcusdt_spot_binance. Never load more than 1 year.
 
 ### Data Access
 
 ```python
 from finter.data import ContentFactory
 
-cf = ContentFactory('crypto_test', 20241201, int(datetime.now().strftime("%Y%m%d")))
+cf = ContentFactory('btcusdt_spot_binance', 20241201, int(datetime.now().strftime("%Y%m%d")))
 
 # Search works
 cf.search("volume")  # Returns volume-related items
@@ -150,7 +150,7 @@ from finter.backtest import Simulator
 
 class Alpha(BaseAlpha):
     def get(self, start: int, end: int, **kwargs):
-        cf = ContentFactory('crypto_test', 20241101, end)
+        cf = ContentFactory('btcusdt_spot_binance', 20241101, end)
         close = cf.get_df('close')
 
         # 144 periods = 1 day (10-min candles)
@@ -169,7 +169,7 @@ class Alpha(BaseAlpha):
 alpha = Alpha()
 positions = alpha.get(20241201, int(datetime.now().strftime("%Y%m%d")))
 
-simulator = Simulator("crypto_test", 20241201, int(datetime.now().strftime("%Y%m%d")))
+simulator = Simulator("btcusdt_spot_binance", 20241201, int(datetime.now().strftime("%Y%m%d")))
 result = simulator.run(position=positions)
 ```
 
@@ -204,7 +204,7 @@ data = cf.get_df("eps")  # KeyError!
 data = cf.get_df("price_earnings_ratio")  # KeyError!
 ```
 
-**Crypto (`crypto_test`)**: Search works. Use `cf.item_list` for all 17 items.
+**Crypto (`btcusdt_spot_binance`)**: Search works. Use `cf.item_list` for all 17 items.
 
 ## See Also
 

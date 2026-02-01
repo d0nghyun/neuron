@@ -23,7 +23,7 @@ Load and preprocess data from Finter platform for quantitative research.
 - ✅ **Use `cf.search()` in Jupyter** - Search items in current universe
 - ⚠️ **ENGLISH ONLY** - `cf.search('close')` ✅, `cf.search('종가')` ❌
 - ✅ **Use `cf.usage()` for guidance** - Check general or item-specific usage
-- ✅ **Crypto (`crypto_test`)** - search works, items: `price_close`, `volume`
+- ✅ **Crypto (`btcusdt_spot_binance`)** - search works, items: `price_close`, `volume`
 
 **NEVER guess item names. Always search first for DATA items!**
 
@@ -234,7 +234,7 @@ fc.apply_rolling(4, 'sum', variables=['income'])  # TTM income
 | us_etf | `trading_volume` | not available | `universes/us_etf.md` |
 | vn_stock | `TotalVolume` | not available | `universes/vn_stock.md` |
 | id_stock | `volume_sum` | ``, (no prefix) | `universes/id_stock.md` |
-| crypto_test | `price_close`, `volume` | - | `universes/crypto_test.md` |
+| btcusdt_spot_binance | `price_close`, `volume` | - | `universes/btcusdt_spot_binance.md` |
 
 ### Review Preprocessing Patterns
 **See `references/preprocessing.md` for:**

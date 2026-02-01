@@ -42,7 +42,7 @@ VALID_CATEGORIES = [
 ]
 
 VALID_UNIVERSES = [
-    "kr_stock", "us_stock", "us_etf", "vn_stock", "id_stock", "crypto_test",
+    "kr_stock", "us_stock", "us_etf", "vn_stock", "id_stock", "btcusdt_spot_binance",
 ]
 
 
