@@ -1290,3 +1290,429 @@ Found 23 warnings.
       EISDIR: illegal operation on a directory, read
     status: pending
     pattern: null
+  - id: "fail-1769951806"
+    timestamp: "2026-02-01T22:16:46+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769951811"
+    timestamp: "2026-02-01T22:16:51+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769951829"
+    timestamp: "2026-02-01T22:17:09+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769951912"
+    timestamp: "2026-02-01T22:18:32+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769953286"
+    timestamp: "2026-02-01T22:41:26+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769953306"
+    timestamp: "2026-02-01T22:41:46+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769954784"
+    timestamp: "2026-02-01T23:06:24+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769954819"
+    timestamp: "2026-02-01T23:06:59+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769960617"
+    timestamp: "2026-02-02T00:43:37+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769960620"
+    timestamp: "2026-02-02T00:43:40+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1769960695"
+    timestamp: "2026-02-02T00:44:55+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ bull-board Pulling 
+ ddad3d7c1e96 Pulling fs layer 
+ f845e0f7d73a Pulling fs layer 
+ 47d471c4d820 Pulling fs layer 
+ 1a88008f9c83 Pulling fs layer 
+ 7ff37c022912 Pulling fs layer 
+ 69ba45adc410 Pulling fs layer 
+ 77ddecddc9c4 Pulling fs layer 
+ 35a20bd7b905 Pulling fs layer 
+ 4c8f1c723357 Pulling fs layer 
+ 1a88008f9c83 Waiting 
+ 7ff37c022912 Waiting 
+ 69ba45adc410 Waiting 
+ 77ddecddc9c4 Waiting 
+ 4c8f1c723357 Waiting 
+ 35a20bd7b905 Waiting 
+ ddad3d7c1e96 Downloading [>                                                  ]  29.43kB/2.816MB
+ 47d471c4d820 Downloading [>                                                  ]  23.06kB/2.24MB
+ f845e0f7d73a Downloading [>                                                  ]  376.8kB/36.12MB
+ ddad3d7c1e96 Downloading [================>                                  ]  904.9kB/2.816MB
+ 47d471c4d820 Downloading [=====>                                             ]  234.7kB/2.24MB
+ f845e0f7d73a Downloading [=>                                                 ]  741.1kB/36.12MB
+ ddad3d7c1e96 Downloading [===================================>               ]  2.025MB/2.816MB
+ 47d471c4d820 Downloading [===============>                                   ]  712.7kB/2.24MB
+ f845e0f7d73a Downloading [===>                                               ]  2.248MB/36.12MB
+ ddad3d7c1e96 Verifying Checksum 
+ ddad3d7c1e96 Download complete 
+ ddad3d7c1e96 Extracting [>                                                  ]  32.77kB/2.816MB
+ 47d471c4d820 Downloading [================================>                  ]  1.434MB/2.24MB
+ f845e0f7d73a Downloading [=====>                                             ]  3.756MB/36.12MB
+ ddad3d7c1e96 Extracting [==================================================>]  2.816MB/2.816MB
+ ddad3d7c1e96 Extracting [==================================================>]  2.816MB/2.816MB
+ 47d471c4d820 Verifying Checksum 
+ 47d471c4d820 Download complete 
+ ddad3d7c1e96 Pull complete 
+ f845e0f7d73a Downloading [=======>                                           ]  5.246MB/36.12MB
+ f845e0f7d73a Downloading [=========>                                         ]   7.13MB/36.12MB
+ f845e0f7d73a Downloading [==========>                                        ]  7.507MB/36.12MB
+ f845e0f7d73a Downloading [============>                                      ]  9.388MB/36.12MB
+ f845e0f7d73a Downloading [===============>                                   ]  11.26MB/36.12MB
+ f845e0f7d73a Downloading [==================>                                ]  13.13MB/36.12MB
+ 1a88008f9c83 Downloading [==================================================>]     279B/279B
+ 1a88008f9c83 Verifying Checksum 
+ 1a88008f9c83 Download complete 
+ f845e0f7d73a Downloading [====================>                              ]  15.02MB/36.12MB
+ 7ff37c022912 Downloading [==================================================>]     108B/108B
+ 7ff37c022912 Verifying Checksum 
+ 7ff37c022912 Download complete 
+ f845e0f7d73a Downloading [=======================>                           ]   16.9MB/36.12MB
+ f845e0f7d73a Downloading [=========================>                         ]  18.77MB/36.12MB
+ f845e0f7d73a Downloading [============================>                      ]  20.66MB/36.12MB
+ f845e0f7d73a Downloading [===============================>                   ]  22.53MB/36.12MB
+ f845e0f7d73a Downloading [================================>                  ]  23.29MB/36.12MB
+ f845e0f7d73a Downloading [==================================>                ]  25.17MB/36.12MB
+ 69ba45adc410 Downloading [==================================================>]     420B/420B
+ 69ba45adc410 Download complete 
+ f845e0f7d73a Downloading [=====================================>             ]  27.03MB/36.12MB
+ 77ddecddc9c4 Downloading [==>                                                ]     736B/18.36kB
+ 77ddecddc9c4 Downloading [==================================================>]  18.36kB/18.36kB
+ 77ddecddc9c4 Download complete 
+ f845e0f7d73a Downloading [========================================>          ]  28.92MB/36.12MB
+ f845e0f7d73a Downloading [==========================================>        ]  30.42MB/36.12MB
+ f845e0f7d73a Downloading [=============================================>     ]  32.68MB/36.12MB
+ f845e0f7d73a Downloading [===============================================>   ]  34.56MB/36.12MB
+ f845e0f7d73a Verifying Checksum 
+ f845e0f7d73a Download complete 
+ f845e0f7d73a Extracting [>                                                  ]  393.2kB/36.12MB
+ 35a20bd7b905 Downloading [>                                                  ]  101.2kB/9.955MB
+ f845e0f7d73a Extracting [=========>                                         ]  7.078MB/36.12MB
+ 35a20bd7b905 Downloading [===>                                               ]  757.4kB/9.955MB
+ f845e0f7d73a Extracting [==================>                                ]  13.37MB/36.12MB
+ 4c8f1c723357 Downloading [>                            
+
+... [8325 characters truncated] ...
+
+d3834a243108c5903feec6ca60dc3607b03867527e15914e86f6a 0.0s done
+#7 extracting sha256:b84d38c2ed5610a9544ddba1a8feb24733822e5c9409816c26c858d2a270efa7
+#7 extracting sha256:b84d38c2ed5610a9544ddba1a8feb24733822e5c9409816c26c858d2a270efa7 done
+#7 DONE 4.9s
+
+#8 [base 2/3] RUN corepack enable && corepack prepare pnpm@9.15.0 --activate
+#8 0.695 Preparing pnpm@9.15.0 for immediate activation...
+#8 ...
+
+#9 [runner 2/5] WORKDIR /app
+#9 DONE 1.4s
+
+#8 [base 2/3] RUN corepack enable && corepack prepare pnpm@9.15.0 --activate
+#8 DONE 1.6s
+
+#10 [base 3/3] WORKDIR /app
+#10 DONE 0.1s
+
+#11 [deps 1/2] COPY package.json pnpm-lock.yaml* ./
+#11 DONE 0.0s
+
+#12 [builder 2/4] RUN pnpm install --frozen-lockfile
+#12 0.907 Lockfile is up to date, resolution step is skipped
+#12 0.947 Progress: resolved 1, reused 0, downloaded 0, added 0
+#12 1.286 Packages: +204
+#12 1.286 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#12 1.799 
+#12 1.799    ╭───────────────────────────────────────────────────────────────────╮
+#12 1.799    │                                                                   │
+#12 1.799    │                Update available! 9.15.0 → 10.28.2.                │
+#12 1.799    │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v10.28.2   │
+#12 1.799    │         Run "corepack install -g pnpm@10.28.2" to update.         │
+#12 1.799    │                                                                   │
+#12 1.799    ╰───────────────────────────────────────────────────────────────────╯
+#12 1.799 
+#12 1.949 Progress: resolved 204, reused 0, downloaded 11, added 2
+#12 2.949 Progress: resolved 204, reused 0, downloaded 41, added 30
+#12 3.949 Progress: resolved 204, reused 0, downloaded 165, added 155
+#12 4.952 Progress: resolved 204, reused 0, downloaded 204, added 202
+#12 5.080 Progress: resolved 204, reused 0, downloaded 204, added 204, done
+#12 5.135 .../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages
+#12 5.136 .../esbuild@0.27.2/node_modules/esbuild postinstall$ node install.js
+#12 5.179 .../esbuild@0.27.2/node_modules/esbuild postinstall: Done
+#12 5.194 .../node_modules/msgpackr-extract install: Done
+#12 5.384 
+#12 5.384 dependencies:
+#12 5.384 + @aws-sdk/client-s3 3.975.0
+#12 5.384 + @kubernetes/client-node 0.22.3
+#12 5.384 + bullmq 5.66.5
+#12 5.384 + ioredis 5.9.2
+#12 5.384 + zod 3.25.76
+#12 5.384 
+#12 5.384 devDependencies:
+#12 5.384 + @types/node 22.19.7
+#12 5.384 + tsx 4.21.0
+#12 5.384 + typescript 5.9.3
+#12 5.384 
+#12 5.391 Done in 5.1s
+#12 DONE 5.8s
+
+#13 [deps 2/2] RUN pnpm install --frozen-lockfile --prod
+#13 0.905 Lockfile is up to date, resolution step is skipped
+#13 0.934 Progress: resolved 1, reused 0, downloaded 0, added 0
+#13 1.223 Packages: +196
+#13 1.223 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#13 1.685 
+#13 1.685    ╭───────────────────────────────────────────────────────────────────╮
+#13 1.685    │                                                                   │
+#13 1.685    │                Update available! 9.15.0 → 10.28.2.                │
+#13 1.685    │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v10.28.2   │
+#13 1.685    │         Run "corepack install -g pnpm@10.28.2" to update.         │
+#13 1.685    │                                                                   │
+#13 1.685    ╰───────────────────────────────────────────────────────────────────╯
+#13 1.685 
+#13 1.934 Progress: resolved 196, reused 0, downloaded 14, added 4
+#13 2.935 Progress: resolved 196, reused 0, downloaded 51, added 37
+#13 3.936 Progress: resolved 196, reused 0, downloaded 152, added 144
+#13 4.939 Progress: resolved 196, reused 0, downloaded 196, added 194
+#13 5.087 Progress: resolved 196, reused 0, downloaded 196, added 196, done
+#13 5.139 .../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages
+#13 5.195 .../node_modules/msgpackr-extract install: Done
+#13 5.375 
+#13 5.375 dependencies:
+#13 5.375 + @aws-sdk/client-s3 3.975.0
+#13 5.375 + @kubernetes/client-node 0.22.3
+#13 5.375 + bullmq 5.66.5
+#13 5.375 + ioredis 5.9.2
+#13 5.375 + zod 3.25.76
+#13 5.375 
+#13 5.375 devDependencies: skipped
+#13 5.375 
+#13 5.377 Done in 5.1s
+#13 DONE 5.8s
+
+#14 [builder 3/4] COPY . .
+#14 DONE 0.1s
+
+#15 [builder 4/4] RUN pnpm run build
+#15 0.345 
+#15 0.345 > arkraft-worker@0.1.0 build /app
+#15 0.345 > tsc
+#15 0.345 
+#15 DONE 2.4s
+
+#16 [runner 3/5] COPY --from=builder /app/dist ./dist
+#16 DONE 0.1s
+
+#17 [runner 4/5] COPY --from=deps /app/node_modules ./node_modules
+#17 DONE 0.5s
+
+#18 [runner 5/5] COPY package.json ./
+#18 DONE 0.1s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.5s done
+#19 writing image sha256:6022d4635f6b77b040f0793942bbd5b948456b293d8cbb4e5545f60f26e9db5c
+#19 writing image sha256:6022d4635f6b77b040f0793942bbd5b948456b293d8cbb4e5545f60f26e9db5c done
+#19 naming to docker.io/library/arkraft-worker-worker done
+#19 DONE 0.5s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+    status: pending
+    pattern: null
+  - id: "fail-1769961839"
+    timestamp: "2026-02-02T01:03:59+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ls: /Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-app/apps/web/src/domains/alpha-builder/: No such file or directory
+    status: pending
+    pattern: null
+  - id: "fail-1769961930"
+    timestamp: "2026-02-02T01:05:30+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+src/application/use-cases/session/portfolio-callback.use-case.ts(5,10): error TS2305: Module '"../../../shared/storage/s3-client.js"' has no exported member 'savePortfolioLogs'.
+undefined
+/Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-app/apps/api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 2: tsc --noEmit
+    status: pending
+    pattern: null
+  - id: "fail-1769961956"
+    timestamp: "2026-02-02T01:05:56+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+src/infrastructure/session/portfolio-agent.service.ts:103:9 lint/style/noUnusedTemplateLiteral  FIXABLE  ━━━━━━━━━━
+
+  × Do not use template literals if interpolation and special-character handling are not needed.
+  
+    101 │         `ACCESS_TOKEN=${process.env.ACCESS_TOKEN || ''}`,
+    102 │         '--env',
+  > 103 │         `WAIT_FOR_JUPYTER=false`, // No sidecar needed for CLI usage
+        │         ^^^^^^^^^^^^^^^^^^^^^^^^
+    104 │         this.dockerImage,
+    105 │         request,
+  
+  i Unsafe fix: Replace with string literal
+  
+    101 101 │           `ACCESS_TOKEN=${process.env.ACCESS_TOKEN || ''}`,
+    102 102 │           '--env',
+    103     │ - ········`WAIT_FOR_JUPYTER=false`,·//·No·sidecar·needed·for·CLI·usage
+        103 │ + ········'WAIT_FOR_JUPYTER=false',·//·No·sidecar·needed·for·CLI·usage
+    104 104 │           this.dockerImage,
+    105 105 │           request,
+  
+
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+
+
+Checked 2 files in 27ms. No fixes applied.
+Found 1 error.
+undefined
+/Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-app/apps/api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: biome check src/infrastructure/session/portfolio-agent.service.ts src/di/container.ts
+    status: pending
+    pattern: null
+  - id: "fail-1769962180"
+    timestamp: "2026-02-02T01:09:40+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+src/presentation/routes/portfolio-builder.routes.ts format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     27  27 │       const user = c.get('user');
+     28  28 │       const portfolios = await listPortfolioBuildersUseCase.execute(user.id);
+     29     │ - ····const·data·=·portfolios.map((p:·{
+     30     │ - ······id:·string;
+     31     │ - ······objective:·string;
+     32     │ - ······universe:·string·|·null;
+     33     │ - ······status:·'pending'·|·'running'·|·'completed'·|·'failed';
+     34     │ - ······createdAt:·Date;
+     35     │ - ······updatedAt:·Date;
+     36     │ - ······metrics?:·{·alphaCount?:·number;·portfolioSharpe?:·number;·portfolioDrawdown?:·number·};
+     37     │ - ····})·=>·({
+     38     │ - ······...p,
+     39     │ - ······createdAt:·p.createdAt.toISOString(),
+     40     │ - ······updatedAt:·p.updatedAt.toISOString(),
+     41     │ - ····}));
+         29 │ + ····const·data·=·portfolios.map(
+         30 │ + ······(p:·{
+         31 │ + ········id:·string;
+         32 │ + ········objective:·string;
+         33 │ + ········universe:·string·|·null;
+         34 │ + ········status:·'pending'·|·'running'·|·'completed'·|·'failed';
+         35 │ + ········createdAt:·Date;
+         36 │ + ········updatedAt:·Date;
+         37 │ + ········metrics?:·{·alphaCount?:·number;·portfolioSharpe?:·number;·portfolioDrawdown?:·number·};
+         38 │ + ······})·=>·({
+         39 │ + ········...p,
+         40 │ + ········createdAt:·p.createdAt.toISOString(),
+         41 │ + ········updatedAt:·p.updatedAt.toISOString(),
+         42 │ + ······})
+         43 │ + ····);
+     42  44 │       return c.json({ success: true as const, data });
+     43  45 │     })
+  
+
+Checked 7 files in 122ms. No fixes applied.
+Found 1 error.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+    status: pending
+    pattern: null
+  - id: "fail-1769996073"
+    timestamp: "2026-02-02T10:34:33+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+cat: illegal option -- A
+usage: cat [-belnstuv] [file ...]
+    status: pending
+    pattern: null
+  - id: "fail-1769996987"
+    timestamp: "2026-02-02T10:49:47+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+error: error from server (NotFound): namespaces "ark" not found in namespace "ark"
+    status: pending
+    pattern: null
+  - id: "fail-1769997009"
+    timestamp: "2026-02-02T10:50:09+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+error: container arkraft-agent-manager is not valid for pod arkraft-agent-manager-65687c67cb-lhbkl
+    status: pending
+    pattern: null
