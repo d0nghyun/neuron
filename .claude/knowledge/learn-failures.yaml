@@ -2100,3 +2100,342 @@ terraform validate
       EISDIR: illegal operation on a directory, read
     status: pending
     pattern: null
+  - id: "fail-1770035258"
+    timestamp: "2026-02-02T21:27:38+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 128
+Already on 'main'
+From https://github.com/Quantit-Github/arkraft
+ * branch            main       -> FETCH_HEAD
+Already on 'main'
+From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
+ * branch            main       -> FETCH_HEAD
+error: pathspec 'main' did not match any file(s) known to git
+fatal: run_command returned non-zero status for modules/arkraft-legacy/finter
+.
+
+Entering 'modules/arkraft-legacy/arkraft'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/arkraft-fe'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/finter'
+    status: pending
+    pattern: null
+  - id: "fail-1770035327"
+    timestamp: "2026-02-02T21:28:47+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      File content (48433 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content.
+    status: pending
+    pattern: null
+  - id: "fail-1770035331"
+    timestamp: "2026-02-02T21:28:51+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770035696"
+    timestamp: "2026-02-02T21:34:56+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770035708"
+    timestamp: "2026-02-02T21:35:08+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+(eval):1: no matches found: /Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-app/apps/web/src/app/(protected)/alpha/builder
+    status: pending
+    pattern: null
+  - id: "fail-1770035712"
+    timestamp: "2026-02-02T21:35:12+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      File content (25951 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content.
+    status: pending
+    pattern: null
+  - id: "fail-1770035916"
+    timestamp: "2026-02-02T21:38:36+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      File content (25951 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content.
+    status: pending
+    pattern: null
+  - id: "fail-1770035982"
+    timestamp: "2026-02-02T21:39:42+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 2
+
+Oops! Something went wrong! :(
+
+ESLint: 9.39.2
+
+ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+
+From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+If you are using a .eslintrc.* file, please follow the migration guide
+to update your configuration file to the new format:
+
+https://eslint.org/docs/latest/use/configure/migration-guide
+
+If you still have problems after following the migration guide, please stop by
+https://eslint.org/chat/help to chat with the team.
+
+
+
+> @arkraft/api@0.4.6 lint /Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-app/apps/api
+> eslint src/
+
+/Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-app/apps/api:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @arkraft/api@0.4.6 lint: `eslint src/`
+Exit status 2
+    status: pending
+    pattern: null
+  - id: "fail-1770035986"
+    timestamp: "2026-02-02T21:39:46+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+src/application/use-cases/handle-job-completion.use-case.ts format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    421 421 │       });
+    422 422 │   
+    423     │ - ····console.log(`[alpha→report]·Report·job·${reportJob.id}·re-enqueued·for·workflow·${workflow.id}`);
+        423 │ + ····console.log(
+        424 │ + ······`[alpha→report]·Report·job·${reportJob.id}·re-enqueued·for·workflow·${workflow.id}`
+        425 │ + ····);
+    424 426 │     }
+    425 427 │   
+  
+
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+
+
+Checked 1 file in 36ms. No fixes applied.
+Found 1 error.
+    status: pending
+    pattern: null
+  - id: "fail-1770035997"
+    timestamp: "2026-02-02T21:39:57+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 127
+(eval):1: command not found: python
+    status: pending
+    pattern: null
+  - id: "fail-1770036020"
+    timestamp: "2026-02-02T21:40:20+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+TypeError: __init__() missing 3 required positional arguments: 'colors', 'typography', and 'style_name'
+
+Test 1: Scenarios component with missing target
+    status: pending
+    pattern: null
+  - id: "fail-1770036033"
+    timestamp: "2026-02-02T21:40:33+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+TypeError: __init__() missing 1 required positional argument: 'template'
+
+Test 1: Scenarios component with missing target
+    status: pending
+    pattern: null
+  - id: "fail-1770037605"
+    timestamp: "2026-02-02T22:06:45+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Unable to use a TTY - input is not a terminal or the right kind of file
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+[ioredis] Unhandled error event: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1122:18)
+    at afterConnectMultiple (node:net:1689:7)
+/app/node_modules/.pnpm/ioredis@5.9.2/node_modules/ioredis/built/redis/event_handler.js:207
+                    self.flushQueue(new errors_1.MaxRetriesPerRequestError(maxRetriesPerRequest));
+                                    ^
+
+MaxRetriesPerRequestError: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+    at Socket.<anonymous> (/app/node_modules/.pnpm/ioredis@5.9.2/node_modules/ioredis/built/redis/event_handler.js:207:37)
+    at Object.onceWrapper (node:events:639:26)
+    at Socket.emit (node:events:524:28)
+    at TCP.<anonymous> (node:net:343:12)
+
+Node.js v20.20.0
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770037643"
+    timestamp: "2026-02-02T22:07:23+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 576 (char 575)
+    status: pending
+    pattern: null
+  - id: "fail-1770081845"
+    timestamp: "2026-02-03T10:24:05+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 254
+    status: pending
+    pattern: null
+  - id: "fail-1770081881"
+    timestamp: "2026-02-03T10:24:41+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      File content (36165 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content.
+    status: pending
+    pattern: null
+  - id: "fail-1770086838"
+    timestamp: "2026-02-03T11:47:18+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770086846"
+    timestamp: "2026-02-03T11:47:26+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770086852"
+    timestamp: "2026-02-03T11:47:32+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      File content (52534 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content.
+    status: pending
+    pattern: null
+  - id: "fail-1770088415"
+    timestamp: "2026-02-03T12:13:35+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 128
+Already on 'main'
+From https://github.com/Quantit-Github/arkraft
+ * branch            main       -> FETCH_HEAD
+Already on 'main'
+From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
+ * branch            main       -> FETCH_HEAD
+error: pathspec 'main' did not match any file(s) known to git
+fatal: run_command returned non-zero status for modules/arkraft-legacy/finter
+.
+
+Entering 'modules/arkraft-legacy/arkraft'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/arkraft-fe'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/finter'
+    status: pending
+    pattern: null
