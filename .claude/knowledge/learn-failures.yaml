@@ -328,3 +328,114 @@ error: error from server (NotFound): pods "sandbox-80264ccb-a92d-4916-af1e-f20b8
       Failed to find element: 429 {"type":"error","error":{"type":"rate_limit_error","message":"{\"type\": \"exceeded_limit\", \"resetsAt\": 1770336000, \"remaining\": null, \"perModelLimit\": false, \"representativeClaim\": \"seven_day\", \"overageStatus\": null, \"overageResetsAt\": null, \"overageDisabledReason\": \"out_of_credits\", \"overageInUse\": false, \"windows\": {\"5h\": {\"status\": \"within_limit\", \"resets_at\": 1770206400, \"utilization\": 0.0}, \"7d\": {\"status\": \"exceeded_limit\", \"resets_at\": 1770336000, \"utilization\": 1.0, \"surpassed_threshold\": 1.0}}, \"debug_req_est_usage\": null, \"debug_req_actual_usage\": null}"},"request_id":"req_011CXncsGTgSDHrBHqP9YdPS"}
     status: pending
     pattern: null
+  - id: "fail-1770194131"
+    timestamp: "2026-02-04T17:35:31+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 128
+Already on 'main'
+From https://github.com/Quantit-Github/arkraft
+ * branch            main       -> FETCH_HEAD
+Already on 'main'
+From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
+ * branch            main       -> FETCH_HEAD
+error: pathspec 'main' did not match any file(s) known to git
+fatal: run_command returned non-zero status for modules/arkraft-legacy/finter
+.
+
+Entering 'modules/arkraft-legacy/arkraft'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/arkraft-fe'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/finter'
+    status: pending
+    pattern: null
+  - id: "fail-1770194195"
+    timestamp: "2026-02-04T17:36:35+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 128
+From https://github.com/Quantit-Github/arkraft
+ * branch            main       -> FETCH_HEAD
+From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
+ * branch            main       -> FETCH_HEAD
+Already on 'master'
+From ssh://gitlab.quantit.io:2222/ark/finter
+ * branch            master     -> FETCH_HEAD
+From github.com:Quantit-Github/ai-infra
+   59c4e94..9e4e501  main       -> origin/main
+From github.com:Quantit-Github/ai-infra
+ * branch            main       -> FETCH_HEAD
+From https://github.com/Quantit-Github/arkraft-agent-alpha
+   865d6cd..b3f600d  main       -> origin/main
+From https://github.com/Quantit-Github/arkraft-agent-alpha
+ * branch            main       -> FETCH_HEAD
+From https://github.com/Quantit-Github/arkraft-agent-insight
+   5883405..4a37583  main       -> origin/main
+From https://github.com/Quantit-Github/arkraft-agent-insight
+ * branch            main       -> FETCH_HEAD
+fatal: couldn't find remote ref main
+fatal: run_command returned non-zero status for modules/arkraft/arkraft-agent-pm
+.
+
+Entering 'modules/arkraft-legacy/arkraft'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/arkraft-fe'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/finter'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+Entering 'modules/arkraft/ai-infra'
+Your branch is behind 'origin/main' by 9 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+Updating 59c4e94..9e4e501
+Fast-forward
+ CLAUDE.md                                          |  6 +++---
+ Makefile                                           | 25 +++++++++++++++++++++-
+ atlantis.yaml                                      |  2 ++
+ config/terraform.tfvars                            |  2 +-
+ .../templates/nodepool/default-arm64.yaml.tpl      |  7 +++++-
+ karpenter/templates/nodepool/default-x86.yaml.tpl  |  8 ++++++-
+ main.tf                                            | 12 +++++------
+ 7 files changed, 49 insertions(+), 13 deletions(-)
+Entering 'modules/arkraft/arkraft-agent-alpha'
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+Updating 865d6cd..b3f600d
+Fast-forward
+ src/main.py                                        |  26 +++-
+ workspace/.claude/agents/portfolio-manager.md      |  59 +++++----
+ workspace/.claude/agents/quant-developer.md        |  41 ++++++
+ .../finter-alpha/references/universe_reference.md  |  42 +++---
+ .../references/universes/btcusdt_spot_binance.md   |  25 ++--
+ workspace/CLAUDE.md                                | 141 ++++++++++++++-------
+ 6 files changed, 222 insertions(+), 112 deletions(-)
+Entering 'modules/arkraft/arkraft-agent-insight'
+Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+Updating 5883405..4a37583
+Fast-forward
+ workspace/.claude/skills/insights/SKILL.md         |  67 ++++++++++----
+ .../skills/insights/reference/cross-domain.md      | 100 +++++++++++++++++++++
+ .../skills/insights/reference/quality-bar.md       |  37 ++++++--
+ 3 files changed, 181 insertions(+), 23 deletions(-)
+ create mode 100644 workspace/.claude/skills/insights/reference/cross-domain.md
+Entering 'modules/arkraft/arkraft-agent-pm'
+Your branch is up to date with 'origin/master'.
+    status: pending
+    pattern: null
+  - id: "fail-1770194562"
+    timestamp: "2026-02-04T17:42:42+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+(eval):cd:1: no such file or directory: /Users/dhlee/Git/quantit/arkraft-app
+    status: pending
+    pattern: null
