@@ -8,3 +8,323 @@ _meta:
   updated_at: "2026-02-03T22:54:00+09:00"
   version: 30
   note: "Wrapup 2026-02-03 (arkraft-app UI improvements): All failure entries cleared. Previous entries were environment-specific (psql setup, docker container unavailable) and tool-specific (chrome extension disconnects) - not system patterns. UI improvement session had no failures."
+  - id: "fail-1770166433"
+    timestamp: "2026-02-04T09:53:53+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770166486"
+    timestamp: "2026-02-04T09:54:46+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Unable to use a TTY - input is not a terminal or the right kind of file
+ERROR:  relation "workflow" does not exist
+LINE 1: ...us, current_stage, error_message, created_at FROM workflow W...
+                                                             ^
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770166491"
+    timestamp: "2026-02-04T09:54:51+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770166497"
+    timestamp: "2026-02-04T09:54:57+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ERROR:  column "status" does not exist
+LINE 1: SELECT id, status, current_stage, error_message, created_at ...
+                   ^
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770166509"
+    timestamp: "2026-02-04T09:55:09+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ERROR:  column j.stage does not exist
+LINE 1: SELECT w.id as workflow_id, w.cycle, j.stage, j.status, j.er...
+                                             ^
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770166512"
+    timestamp: "2026-02-04T09:55:12+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770166602"
+    timestamp: "2026-02-04T09:56:42+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770166608"
+    timestamp: "2026-02-04T09:56:48+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770166907"
+    timestamp: "2026-02-04T10:01:47+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 127
+(eval):1: command not found: python
+    status: pending
+    pattern: null
+  - id: "fail-1770167256"
+    timestamp: "2026-02-04T10:07:36+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770174709"
+    timestamp: "2026-02-04T12:11:49+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770174711"
+    timestamp: "2026-02-04T12:11:51+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770174974"
+    timestamp: "2026-02-04T12:16:14+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770174976"
+    timestamp: "2026-02-04T12:16:16+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770175324"
+    timestamp: "2026-02-04T12:22:04+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Traceback (most recent call last):
+  File "/Users/dhlee/Git/personal/neuron/crypto_data_export/export_crypto_data.py", line 114, in <module>
+    export_universe_info()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/dhlee/Git/personal/neuron/crypto_data_export/export_crypto_data.py", line 84, in export_universe_info
+    'start_date': str(close.index[0]),
+                      ~~~~~~~~~~~^^^
+  File "/Users/dhlee/Git/personal/neuron/modules/arkraft-legacy/finter/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 5401, in __getitem__
+    return getitem(key)
+  File "/Users/dhlee/Git/personal/neuron/modules/arkraft-legacy/finter/.venv/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 398, in __getitem__
+    result = cast("Union[Self, DTScalarOrNaT]", super().__getitem__(key))
+                                                ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/dhlee/Git/personal/neuron/modules/arkraft-legacy/finter/.venv/lib/python3.13/site-packages/pandas/core/arrays/_mixins.py", line 284, in __getitem__
+    result = self._ndarray[key]
+             ~~~~~~~~~~~~~^^^^^
+IndexError: index 0 is out of bounds for axis 0 with size 0
+
+데이터 기간: 20260105 ~ 20260204
+==================================================
+crypto_test 데이터 추출 시작
+==================================================
+
+[1/4] 유니버스 정보 추출...
+    status: pending
+    pattern: null
+  - id: "fail-1770175636"
+    timestamp: "2026-02-04T12:27:16+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 127
+(eval):1: command not found: python
+    status: pending
+    pattern: null
+  - id: "fail-1770177618"
+    timestamp: "2026-02-04T13:00:18+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770177637"
+    timestamp: "2026-02-04T13:00:37+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770177644"
+    timestamp: "2026-02-04T13:00:44+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770177650"
+    timestamp: "2026-02-04T13:00:50+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770177655"
+    timestamp: "2026-02-04T13:00:55+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770177743"
+    timestamp: "2026-02-04T13:02:23+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770177852"
+    timestamp: "2026-02-04T13:04:12+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770178751"
+    timestamp: "2026-02-04T13:19:11+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__computer"
+    error: |
+      Error capturing screenshot: Frame with ID 0 is showing error page
+    status: pending
+    pattern: null
+  - id: "fail-1770178778"
+    timestamp: "2026-02-04T13:19:38+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__computer"
+    error: |
+      Permission still required after granting
+    status: pending
+    pattern: null
+  - id: "fail-1770178791"
+    timestamp: "2026-02-04T13:19:51+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__read_page"
+    error: |
+      Permission still required after granting
+    status: pending
+    pattern: null
+  - id: "fail-1770178818"
+    timestamp: "2026-02-04T13:20:18+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770179081"
+    timestamp: "2026-02-04T13:24:41+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 127
+(eval):1: command not found: python
+    status: pending
+    pattern: null
+  - id: "fail-1770180200"
+    timestamp: "2026-02-04T13:43:20+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770180880"
+    timestamp: "2026-02-04T13:54:40+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770183104"
+    timestamp: "2026-02-04T14:31:44+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770183451"
+    timestamp: "2026-02-04T14:37:31+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770183455"
+    timestamp: "2026-02-04T14:37:35+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770184689"
+    timestamp: "2026-02-04T14:58:09+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+error: error from server (NotFound): pods "sandbox-80264ccb-a92d-4916-af1e-f20b84733590" not found in namespace "arkraft-sandbox"
+    status: pending
+    pattern: null
+  - id: "fail-1770189409"
+    timestamp: "2026-02-04T16:16:49+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__find"
+    error: |
+      Failed to find element: 429 {"type":"error","error":{"type":"rate_limit_error","message":"{\"type\": \"exceeded_limit\", \"resetsAt\": 1770336000, \"remaining\": null, \"perModelLimit\": false, \"representativeClaim\": \"seven_day\", \"overageStatus\": null, \"overageResetsAt\": null, \"overageDisabledReason\": \"out_of_credits\", \"overageInUse\": false, \"windows\": {\"5h\": {\"status\": \"within_limit\", \"resets_at\": 1770206400, \"utilization\": 0.0}, \"7d\": {\"status\": \"exceeded_limit\", \"resets_at\": 1770336000, \"utilization\": 1.0, \"surpassed_threshold\": 1.0}}, \"debug_req_est_usage\": null, \"debug_req_actual_usage\": null}"},"request_id":"req_011CXncsGTgSDHrBHqP9YdPS"}
+    status: pending
+    pattern: null
