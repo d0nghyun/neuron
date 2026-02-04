@@ -76,6 +76,18 @@ modules:
       - jupyter
       - mcp
 
+  arkraft/arkraft-agent-portfolio:
+    repo: github.com/Quantit-Github/arkraft-agent-portfolio
+    domain: work
+    status: active
+    description: Portfolio construction and optimization agent for arkraft
+    registered_at: "2026-02-04"
+    tags:
+      - arkraft
+      - agent
+      - portfolio
+      - optimization
+
   arkraft/arkraft-app:
     repo: github.com/Quantit-Github/arkraft-app
     domain: work
@@ -169,6 +181,6 @@ archived:
 
 # Registry metadata
 _meta:
-  version: 6
-  updated_at: "2026-01-28"
+  version: 7
+  updated_at: "2026-02-04"
   schema: knowledge/module-protocol.md
