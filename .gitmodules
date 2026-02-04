@@ -40,3 +40,9 @@
 [submodule "modules/arkraft/arkraft-agent-portfolio"]
 	path = modules/arkraft/arkraft-agent-portfolio
 	url = git@github.com:Quantit-Github/arkraft-agent-portfolio.git
+[submodule "modules/arkraft/arkraft-web"]
+	path = modules/arkraft/arkraft-web
+	url = git@github.com:Quantit-Github/arkraft-web.git
+[submodule "modules/arkraft/arkraft-api"]
+	path = modules/arkraft/arkraft-api
+	url = git@github.com:Quantit-Github/arkraft-api.git
