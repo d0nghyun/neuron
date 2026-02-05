@@ -793,3 +793,20 @@ Already up to date.
 Entering 'modules/arkraft-legacy/finter'
     status: pending
     pattern: null
+  - id: "fail-1770274154"
+    timestamp: "2026-02-05T15:49:14+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770274456"
+    timestamp: "2026-02-05T15:54:16+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 128
+fatal: Pathspec 'modules/arkraft/arkraft-agent-alpha/Dockerfile' is in submodule 'modules/arkraft/arkraft-agent-alpha'
+    status: pending
+    pattern: null
