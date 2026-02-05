@@ -439,3 +439,357 @@ Your branch is up to date with 'origin/master'.
 (eval):cd:1: no such file or directory: /Users/dhlee/Git/quantit/arkraft-app
     status: pending
     pattern: null
+<<<<<<< Updated upstream
+=======
+  - id: "fail-1770197542"
+    timestamp: "2026-02-04T18:32:22+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 2
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "postgres" does not exist
+command terminated with exit code 2
+    status: pending
+    pattern: null
+  - id: "fail-1770197546"
+    timestamp: "2026-02-04T18:32:26+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ERROR:  column "status" does not exist
+LINE 1: SELECT id, status, created_at FROM sessions WHERE id = '0341...
+                   ^
+HINT:  Perhaps you meant to reference the column "sessions.state".
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770197878"
+    timestamp: "2026-02-04T18:37:58+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770197905"
+    timestamp: "2026-02-04T18:38:25+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770206682"
+    timestamp: "2026-02-04T21:04:42+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770210188"
+    timestamp: "2026-02-04T22:03:08+09:00"
+    session: "unknown"
+    tool: "Read"
+    error: |
+      EISDIR: illegal operation on a directory, read
+    status: pending
+    pattern: null
+  - id: "fail-1770210459"
+    timestamp: "2026-02-04T22:07:39+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+cat: /Users/dhlee/Git/personal/neuron/modules/arkraft/pm2.config.js: No such file or directory
+    status: pending
+    pattern: null
+  - id: "fail-1770213320"
+    timestamp: "2026-02-04T22:55:20+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 127
+(eval):1: command not found: python
+    status: pending
+    pattern: null
+  - id: "fail-1770213570"
+    timestamp: "2026-02-04T22:59:30+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 5
+=== 19f0d701: Baseline 전략 ===
+# Baseline Alpha - Thinking Process
+
+## Hypothesis Recap
+Bitcoin Network Viral Loop Growth Asymmetry - network effects create asymmetric price responses (fast up, slow down).
+
+## Baseline Approach: 30-Day Simple Momentum
+
+### Natural Frequency of Signal
+- **Question**: What's the natural frequency of momentum in BTC?
+- **Answer**: Design suggests 14-90 day momentum works (from alpha-pool learnings). At 8h frequency, 30 days = 90 periods.
+- **Implication**: 90-period lookback should capture meaningful trends without being too reactive.
+
+### Smoothing & Turnover
+- **Question**: Does raw momentum need smoothing?
+- **Answer**: YES. 8-hour frequency means 3 periods/day. Raw momentum sign can flip frequently.
+- **Decision**: Weekly rebalancing (21 periods) to minimize turnover. Binary positions to avoid constant reweighting.
+- **Expected Turnover**: ~5-10% daily turnover (position changes once every 1-2 weeks)
+
+### Position Sizing
+- **Question**: Concentration vs diversification?
+- **Answer**: Single asset (BTCUSDT), so 100% long when signal positive, 0% when negative.
+- **Risk**: No diversification, but baseline should be simple. Phase 2 can explore position sizing.
+
+### Holding Period
+- **Question**: What's expected holding period?
+- **Answer**: Weekly rebalancing → average hold ~1-2 weeks. Aligns with medium-term momentum.
+
+## Implementation Details
+
+### Signal Calculation
+
+=== 19f0d701: Phase1 Design (exploration axes) ===
+    status: pending
+    pattern: null
+  - id: "fail-1770218791"
+    timestamp: "2026-02-05T00:26:31+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770218798"
+    timestamp: "2026-02-05T00:26:38+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770220212"
+    timestamp: "2026-02-05T00:50:12+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770257473"
+    timestamp: "2026-02-05T11:11:13+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+ModuleNotFoundError: No module named 'finter'
+    status: pending
+    pattern: null
+  - id: "fail-1770257580"
+    timestamp: "2026-02-05T11:13:00+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 2
+error: Failed to spawn: `ruff`
+  Caused by: No such file or directory (os error 2)
+    status: pending
+    pattern: null
+  - id: "fail-1770257585"
+    timestamp: "2026-02-05T11:13:05+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 2
+Resolved 85 packages in 4ms
+Audited 71 packages in 2ms
+error: Failed to spawn: `ruff`
+  Caused by: No such file or directory (os error 2)
+    status: pending
+    pattern: null
+  - id: "fail-1770263020"
+    timestamp: "2026-02-05T12:43:40+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770263025"
+    timestamp: "2026-02-05T12:43:45+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ERROR:  relation "builders" does not exist
+LINE 1: SELECT id, status, created_at, updated_at FROM builders WHER...
+                                                       ^
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770263035"
+    timestamp: "2026-02-05T12:43:55+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+ERROR:  column "updated_at" does not exist
+LINE 1: SELECT id, status, created_at, updated_at FROM jobs WHERE id...
+                                       ^
+HINT:  Perhaps you meant to reference the column "jobs.created_at".
+command terminated with exit code 1
+    status: pending
+    pattern: null
+  - id: "fail-1770263364"
+    timestamp: "2026-02-05T12:49:24+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 126
+    status: pending
+    pattern: null
+  - id: "fail-1770263385"
+    timestamp: "2026-02-05T12:49:45+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 127
+(eval):1: command not found: python
+    status: pending
+    pattern: null
+  - id: "fail-1770263389"
+    timestamp: "2026-02-05T12:49:49+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+Traceback (most recent call last):
+  File "/private/tmp/arkraft-test/workspace/scripts/generate_report.py", line 45, in <module>
+    def find_first_existing(*paths: str) -> str | None:
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+    status: pending
+    pattern: null
+  - id: "fail-1770263423"
+    timestamp: "2026-02-05T12:50:23+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__computer"
+    error: |
+      Error capturing screenshot: Frame with ID 0 is showing error page
+    status: pending
+    pattern: null
+  - id: "fail-1770263828"
+    timestamp: "2026-02-05T12:57:08+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+[generate_report] CWD: /Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-agent-alpha/workspace
+Traceback (most recent call last):
+  File "/Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-agent-alpha/workspace/scripts/generate_report.py", line 1720, in <module>
+    main()
+    ~~~~^^
+  File "/Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-agent-alpha/workspace/scripts/generate_report.py", line 1665, in main
+    findings = load_findings()
+  File "/Users/dhlee/Git/personal/neuron/modules/arkraft/arkraft-agent-alpha/workspace/scripts/generate_report.py", line 188, in load_findings
+    data = json.load(f)
+  File "/Users/dhlee/.local/share/uv/python/cpython-3.13.7-macos-aarch64-none/lib/python3.13/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/Users/dhlee/.local/share/uv/python/cpython-3.13.7-macos-aarch64-none/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/dhlee/.local/share/uv/python/cpython-3.13.7-macos-aarch64-none/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dhlee/.local/share/uv/python/cpython-3.13.7-macos-aarch64-none/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 54 column 17 (char 3068)
+    status: pending
+    pattern: null
+  - id: "fail-1770263857"
+    timestamp: "2026-02-05T12:57:37+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+[generate_report] CWD: /private/tmp/arkraft-test/workspace
+Traceback (most recent call last):
+  File "/private/tmp/arkraft-test/workspace/scripts/generate_report.py", line 1720, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/arkraft-test/workspace/scripts/generate_report.py", line 1675, in main
+    html = generate_html(design, findings, validation, baseline, decisions, impls, evals)
+  File "/private/tmp/arkraft-test/workspace/scripts/generate_report.py", line 1615, in generate_html
+    exploration_html += render_axis_section(axis, findings, charts, idx)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/arkraft-test/workspace/scripts/generate_report.py", line 693, in render_axis_section
+    approach = methodology.get('approach', '')
+               ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+    status: pending
+    pattern: null
+  - id: "fail-1770263890"
+    timestamp: "2026-02-05T12:58:10+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+sleep: invalid time interval: echo
+sleep: invalid time interval: Server started on http://localhost:8765/interim/report.html
+usage: sleep number[unit] [...]
+Unit can be 's' (seconds, the default), m (minutes), h (hours), or d (days).
+    status: pending
+    pattern: null
+  - id: "fail-1770264052"
+    timestamp: "2026-02-05T13:00:52+09:00"
+    session: "unknown"
+    tool: "mcp__claude-in-chrome__find"
+    error: |
+      Failed to find element: 401 {"type":"error","error":{"type":"authentication_error","message":"OAuth token has expired. Please obtain a new token or refresh your existing token."},"request_id":"req_011CXpFjYEYdgtF69W3kBVFL"}
+    status: pending
+    pattern: null
+  - id: "fail-1770264787"
+    timestamp: "2026-02-05T13:13:07+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 1
+From github.com:d0nghyun/neuron
+ * branch            main       -> FETCH_HEAD
+error: cannot rebase: You have unstaged changes.
+error: Please commit or stash them.
+    status: pending
+    pattern: null
+>>>>>>> Stashed changes
+  - id: "fail-1770265199"
+    timestamp: "2026-02-05T13:19:59+09:00"
+    session: "unknown"
+    tool: "Bash"
+    error: |
+      Exit code 128
+Already on 'main'
+From https://github.com/Quantit-Github/arkraft
+ * branch            main       -> FETCH_HEAD
+Already on 'main'
+From ssh://gitlab.quantit.io:2222/ark/arkraft/arkraft-fe
+ * branch            main       -> FETCH_HEAD
+error: pathspec 'main' did not match any file(s) known to git
+fatal: run_command returned non-zero status for modules/arkraft-legacy/finter
+.
+
+Entering 'modules/arkraft-legacy/arkraft'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/arkraft-fe'
+Your branch is up to date with 'origin/main'.
+Already up to date.
+Entering 'modules/arkraft-legacy/finter'
+    status: pending
+    pattern: null
