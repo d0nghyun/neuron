@@ -1,205 +1,197 @@
 # Claude Code Built-in Reference
 
-Reference document for Claude Code's built-in features.
 Check this before creating new components to avoid reinventing the wheel.
 
 ## Built-in Subagent Types
 
-Available via `Task` tool with `subagent_type` parameter:
+Via `Task` tool with `subagent_type`:
 
 | Type | Purpose | Tools |
 |------|---------|-------|
-| `Bash` | Command execution, git operations | Bash |
-| `general-purpose` | Multi-step tasks, code search | All |
-| `Explore` | Codebase exploration, file search | Read-only (no Write, Edit) |
-| `Plan` | Implementation planning | Read-only (no Write, Edit) |
-| `claude-code-guide` | Claude Code usage questions | Read-only + Web |
-| `statusline-setup` | Configure status line | Read, Edit |
+| `Bash` | Command execution, git ops | Bash |
+| `general-purpose` | Complex multi-step tasks | All |
+| `Explore` | Codebase exploration | Read-only |
+| `Plan` | Implementation planning | Read-only |
+| `claude-code-guide` | Claude Code questions | Read-only + Web |
 | `code-simplifier` | Code simplification | All |
-| `reviewer` | Code review, release notes | Read, Glob, Grep, Bash, Edit |
-| `wrapup` | Session teardown, learnings | Read, Edit, Glob, Grep |
-| `self-improve` | System improvements | All + Task |
-| `boot` | Session initialization | Read, Glob, Grep |
-| `refactor` | Refactoring planning | Read, Glob, Grep, Bash, Task |
-| `advisor` | Knowledge-based recommendations | Read, Glob, Grep |
 
-### Feature Development Agents
+Composite agents (colon-separated):
 
 | Type | Purpose |
 |------|---------|
+| `feature-dev` | Orchestrated feature development |
 | `feature-dev:code-reviewer` | Code review with confidence filtering |
-| `feature-dev:code-explorer` | Execution path tracing, architecture mapping |
+| `feature-dev:code-explorer` | Execution path tracing |
 | `feature-dev:code-architect` | Feature architecture design |
-
-### Agent SDK Agents
-
-| Type | Purpose |
-|------|---------|
-| `agent-sdk-dev:agent-sdk-verifier-ts` | TypeScript SDK verification |
+| `agent-sdk-dev:agent-sdk-verifier-ts` | TS SDK verification |
 | `agent-sdk-dev:agent-sdk-verifier-py` | Python SDK verification |
-| `agent-sdk-dev:new-sdk-app` | New SDK app creation |
+
+## Agent Frontmatter
+
+```yaml
+---
+name: agent-name             # Required: unique identifier
+description: When to use...  # Required: trigger conditions
+model: haiku | sonnet | opus | inherit
+color: blue                  # Optional: terminal color
+tools: ["Read", "Bash"]      # Optional: restrict (inherits all if omitted)
+disallowedTools: ["Write"]   # Optional: deny specific tools
+permissionMode: default | acceptEdits | delegate | dontAsk | bypassPermissions | plan
+maxTurns: 50                 # Optional: max agentic turns
+skills:                      # Optional: preload skill content
+  - skill-name
+mcpServers:                  # Optional: MCP servers for this agent
+  - server-name
+memory: user | project | local  # Optional: persistent memory scope
+hooks:                       # Optional: agent-level hooks
+  PreToolUse: [...]
+---
+```
+
+Tool restriction syntax: `Bash(npm *, git *)`, `Task(worker, researcher)`
+
+## Agent Teams
+
+Enable: `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`
+
+Multiple agents with independent contexts, direct messaging, shared task list.
+
+| | Subagent | Agent Team |
+|-|----------|------------|
+| Context | Returns results to caller | Fully independent |
+| Communication | Report back only | Direct inter-teammate |
+| Cost | Lower (summarized) | Higher (separate instances) |
+
+Config: `"teammateMode": "in-process" | "tmux" | "auto"`
 
 ## Built-in Tools
 
-### File Operations
-| Tool | Purpose |
-|------|---------|
-| `Read` | Read files (text, images, PDFs, notebooks) |
-| `Write` | Create/overwrite files |
-| `Edit` | Exact string replacement in files |
-| `Glob` | File pattern matching |
-| `Grep` | Content search with regex |
-| `NotebookEdit` | Jupyter notebook cell editing |
-
-### Execution
-| Tool | Purpose |
-|------|---------|
-| `Bash` | Shell command execution |
-| `Task` | Launch subagents |
-| `TaskOutput` | Get task output |
-| `TaskStop` | Stop background tasks |
+| Category | Tools |
+|----------|-------|
+| File | `Read`, `Write`, `Edit`, `Glob`, `Grep`, `NotebookEdit` |
+| Execution | `Bash`, `Task`, `TaskOutput`, `TaskStop` |
+| Tasks | `TaskCreate`, `TaskGet`, `TaskUpdate`, `TaskList` |
+| Interaction | `AskUserQuestion`, `EnterPlanMode`, `ExitPlanMode` |
+| Web | `WebFetch`, `WebSearch` |
+| Skills | `Skill` |
 
 ### Task Management
-| Tool | Purpose |
-|------|---------|
-| `TaskCreate` | Create todo items |
-| `TaskGet` | Get task details |
-| `TaskUpdate` | Update task status |
-| `TaskList` | List all tasks |
 
-### User Interaction
-| Tool | Purpose |
-|------|---------|
-| `AskUserQuestion` | Ask clarifying questions |
-| `EnterPlanMode` | Enter planning mode |
-| `ExitPlanMode` | Exit planning mode |
-
-### Web
-| Tool | Purpose |
-|------|---------|
-| `WebFetch` | Fetch URL content |
-| `WebSearch` | Search the web |
-
-### Skills
-| Tool | Purpose |
-|------|---------|
-| `Skill` | Execute registered skills |
-
-## Hooks System
-
-Event-driven automation via `.claude/settings.json`:
-
-| Hook | Trigger |
-|------|---------|
-| `SessionStart` | Session begins or resumes |
-| `UserPromptSubmit` | User submits a prompt |
-| `PreToolUse` | Before tool execution |
-| `PermissionRequest` | When permission dialog appears |
-| `PostToolUse` | After tool succeeds |
-| `PostToolUseFailure` | After tool fails |
-| `SubagentStart` | When spawning a subagent |
-| `SubagentStop` | When subagent finishes |
-| `Stop` | Claude finishes responding |
-| `PreCompact` | Before context compaction |
-| `Setup` | With `--init` or `--maintenance` flags |
-| `SessionEnd` | Session terminates |
-| `Notification` | Claude Code sends notifications |
-
-Hook types:
-- `command`: Execute shell command
-- `prompt`: LLM-based evaluation (for Stop, SubagentStop, etc.)
-
-## Agent Features
-
-| Feature | Description |
-|---------|-------------|
-| Agent resume | Continue agent with `resume` parameter using agent ID |
-| Background agents | `run_in_background: true` for async execution |
-| Parallel agents | Multiple Task calls in single message |
-| Model selection | `model: "sonnet" | "opus" | "haiku" | "inherit"` |
-| CLI-defined agents | `--agents` flag with JSON for session-only agents |
-
-### Subagent Frontmatter Fields
-
-| Field | Description |
-|-------|-------------|
-| `name` | Unique identifier (required) |
-| `description` | When to delegate to this agent (required) |
-| `tools` | Allowed tools (inherits all if omitted) |
-| `disallowedTools` | Tools to deny from inherited list |
-| `model` | Model: opus (Opus 4.5), sonnet (Sonnet 4.5), haiku, inherit |
-| `permissionMode` | default, acceptEdits, dontAsk, bypassPermissions, plan |
-| `skills` | Skills to preload into agent context |
-| `hooks` | Lifecycle hooks (PreToolUse, PostToolUse, Stop) |
+```
+TaskCreate: subject, description, activeForm (spinner text), metadata
+TaskUpdate: taskId, status (pending→in_progress→completed|deleted),
+            subject, description, owner, addBlocks, addBlockedBy
+TaskGet:    taskId → full details with dependencies
+TaskList:   → all tasks with status summary
+```
 
 ## Skills System
 
-Skills are auto-discovered from `.claude/skills/*/SKILL.md` and subdirectories.
+Auto-discovered from `.claude/skills/*/SKILL.md`.
 
-### Skill Frontmatter Fields
+### Skill Frontmatter
 
-| Field | Description |
-|-------|-------------|
-| `name` | Unique identifier (required) |
-| `description` | What the skill does (required) |
-| `user-invocable` | Show in menu, allow `/skill-name` invocation |
-| `disable-model-invocation` | Prevent auto-invocation by Claude |
-| `allowed-tools` | Restrict available tools |
-| `model` | Model to use |
-| `context: fork` | Run in forked subagent |
-| `agent` | Subagent type to use |
-| `hooks` | Skill-level hooks (PreToolUse, PostToolUse, Stop) |
-| `once: true` | Run hook only once per session |
+```yaml
+---
+name: skill-name
+description: Trigger phrases and what it does
+user-invocable: true          # Show in /command menu
+disable-model-invocation: true # Prevent auto-trigger
+allowed-tools: Read, Bash(git:*)
+model: sonnet
+argument-hint: "[arg1] [arg2]"
+context: fork                 # Run in forked subagent
+agent: subagent-type          # Which subagent to use
+hooks:                        # Skill-level hooks
+  PreToolUse: [...]
+once: true                    # Run hook only once per session
+---
+```
 
-### String Substitutions
+### Substitutions
 
 | Pattern | Description |
 |---------|-------------|
 | `$ARGUMENTS` | All arguments as string |
-| `$ARGUMENTS[N]` | Nth argument (0-indexed) |
-| `$N` | Shorthand for `$ARGUMENTS[N]` |
+| `$N` / `$ARGUMENTS[N]` | Nth positional argument |
 | `${CLAUDE_SESSION_ID}` | Current session ID |
+| `` !`command` `` | Dynamic shell output injection |
+| `@file` | File reference attachment |
 
-### Dynamic Context Injection
+## Hooks System
 
-Use `` !`command` `` to inject shell output into skill prompts (preprocessed before execution).
+Configured in `.claude/settings.json` under `hooks`:
+
+| Hook | Trigger |
+|------|---------|
+| `SessionStart` | Session begins/resumes |
+| `UserPromptSubmit` | User submits prompt |
+| `PreToolUse` | Before tool execution |
+| `PostToolUse` | After tool succeeds |
+| `PostToolUseFailure` | After tool fails |
+| `PermissionRequest` | Permission dialog appears |
+| `SubagentStart` | Subagent spawned |
+| `SubagentStop` | Subagent finishes |
+| `Stop` | Claude finishes responding |
+| `PreCompact` | Before context compaction |
+| `Setup` | `--init` or `--maintenance` |
+| `SessionEnd` | Session terminates |
+| `Notification` | Notification sent |
+
+### Hook Configuration
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{
+        "type": "command",
+        "command": "bash script.sh",
+        "timeout": 30
+      }]
+    }]
+  }
+}
+```
+
+Hook types: `command` (shell), `prompt` (LLM eval), `agent` (subagent with tools).
+
+Options: `timeout` (seconds), `async` (background), `statusMessage` (spinner text).
+
+Matcher: tool name, regex, or `*` for all.
+
+Exit codes: `0`=success (parse stdout JSON), `2`=blocking error (stderr to Claude).
+
+Env: `CLAUDE_PROJECT_DIR`, `CLAUDE_TOOL_INPUT`, `CLAUDE_TOOL_NAME`, `CLAUDE_FILE_PATH`
 
 ## MCP Integration
 
-MCP tools follow naming: `mcp__<server>__<tool>`
-
-Hook matchers support regex: `mcp__memory__.*`, `mcp__.*__write.*`
+- Tool naming: `mcp__<server>__<tool>`
+- Hook matchers support regex: `mcp__memory__.*`
+- Resources: `@server:protocol://path` for referencing MCP resources
+- Prompts: `/mcp__server__prompt` as slash commands
+- Tool Search: Auto-loads tools on demand when MCP tools > 10% of context
 
 ## What NOT to Reinvent
 
 | Claude Code Has | Don't Create |
 |-----------------|--------------|
-| `Explore` subagent | Custom codebase search agent |
-| `Plan` subagent | Custom planning agent |
-| `reviewer` subagent | Custom review agent |
-| Task tools | Custom task tracking |
-| Hooks | Custom automation triggers |
-| Skill tool | Custom skill execution |
+| `Explore` subagent | Codebase search agent |
+| `Plan` subagent | Planning agent |
+| Task tools | Task tracking system |
+| Hooks | Automation triggers |
+| Skills | Custom command system |
+| Agent Teams | Multi-agent coordination |
 
-## Neuron Adds (Not in Claude Code)
+## Neuron Adds
 
 | Component | Purpose |
 |-----------|---------|
 | Factory patterns | Standardized component generation |
-| Contexts (`ctx-*.yaml`) | Session state, module configs |
-| Knowledge docs | Reference materials, learnings |
-| Philosophy/principles | Decision-making framework |
-
-## Platform Support
-
-- CLI (primary)
-- VS Code extension
-- JetBrains IDEs
-- Desktop app (preview)
-- Web (Claude.ai integration)
-- GitHub Actions
+| Vault (`vault/`) | Private identity, projects, memory |
+| Principles | Decision-making framework |
 
 ---
 
-*Last updated: 2026-01-28*
-*Update this when Claude Code releases new features*
+*Last updated: 2026-02-13*

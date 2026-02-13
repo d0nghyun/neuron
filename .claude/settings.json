@@ -33,6 +33,17 @@
         ]
       }
     ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/cleanup-modules.sh"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Write",
@@ -40,6 +51,18 @@
           {
             "type": "command",
             "command": ".claude/hooks/pre-validate.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/validate-vault.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/validate-component.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/validate-linecount.sh"
           }
         ]
       },
@@ -49,6 +72,14 @@
           {
             "type": "command",
             "command": ".claude/hooks/pre-validate.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/validate-vault.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/validate-component.sh"
           }
         ]
       },

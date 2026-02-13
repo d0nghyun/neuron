@@ -1,98 +1,39 @@
 # Unreleased
 
-> Changes pending for the next release
+> Neuron v2 — Intent-First Architecture
 
 ## Added
 
-- workflow-code-review skill: Comprehensive code review workflow extracted from code-reviewer agent
-- workflow-code-refactor skill: Structured refactoring workflow extracted from code-refactor agent
-- workflow-code-test skill: Integration/E2E testing workflow extracted from code-tester agent
-- feature-dev agent: Judgment agent that composes code skills for feature development
-- frontend-dev agent: UI-specialized agent that composes design and code skills
-- guide-agent-vs-skill.md: Decision guide for choosing between agent vs skill
-- modules/shared/: Directory for domain-specific agent resources shared across modules
-- modules/shared/finter-skills/: Finter platform skills (finter-data, finter-alpha) with reference docs and templates
-- modules/README.md: Shared section documenting usage patterns and guidelines for shared resources
-- workflow-init-module skill for activating module skills/agents via symlink during session
-- learn-failures.yaml for persistent failure tracking and pattern prevention
-- arkraft-agent-insight: planner subagent for natural language request parsing (topic, universe, count extraction)
-- boot agent: session initialization - loads handoff, focus, and relevant lessons at session start
-- wrapup agent: session teardown - extracts facts/lessons/patterns and updates handoff at session end
-- meta/lessons.yaml: structured long-term memory storage with fact/lesson/pattern types
-- arkraft-agent-pm: specs/ knowledge cache for offline AI context loading (Confluence read-only mirror)
-- arkraft-agent-pm: /ask command for project Q&A with cache-first, API-fallback strategy
-- arkraft-agent-pm: /route command for expertise-based issue-to-assignee matching
-- arkraft-agent-pm: /sync-specs command for Confluence to specs/ synchronization
-- Task handoff system: .claude/tasks/{focus}/ directory structure for cross-session task persistence
-- system-boot: TaskCreate tool for restoring pending tasks from previous sessions
-- system-wrapup: TaskList tool and Step 6 for archiving tasks with handoff.md summary
-- .gitignore: .claude/tasks/ exclusion for session-specific task archives
-- arkraft-agent-signal: submodule for research hypothesis to backtestable trading signals conversion
-- permissionMode: bypassPermissions in agent frontmatter (boot, wrapup, code-reviewer, all workers)
+- system-reviewer agent: Quality gate for component pattern compliance, SSOT, naming
+- ARCHITECTURE.md: System map (neuron vs vault, what lives where)
+- Intent-based approach: DIRECT / DELEGATE / COLLABORATE routing
 
 ## Changed
 
-- Component architecture: Separated judgment (agents) from execution (skills) - agents now compose skills
-- workflow-pr skill: Changed from reviewer subagent to workflow-code-review skill invocation
-- agents/README.md: Updated with Agent vs Skill distinction and skill composition documentation
-- Agent naming convention standardized: role-reviewer → code-reviewer, role-refactor → code-refactor, task-self-improve → system-self-improve
-- Factory README updated with clarified naming conventions (system-*, code-*, api-*, workflow-*, capability-* prefixes)
-- Factory README: added Location Decision guide for choosing between neuron-level vs module-level component placement
-- system-boot agent: corrected glob paths from relative to absolute (.claude/agents/*.md, .claude/skills/*/SKILL.md, .claude/contexts/ctx-*.yaml)
-- CLAUDE.md: Step 3 (Component Creation) now explicitly states "MANDATORY SEQUENCE - NO EXCEPTIONS" with numbered steps
-- CLAUDE.md: Added emphasis on reading factory/pattern files and following naming conventions before component creation
-- All skill SKILL.md files updated: directory names now match YAML name field for consistency
-- All agent YAML name fields updated to match filename conventions (system-boot, system-wrapup, system-advisor, code-reviewer, code-refactor, system-self-improve)
-- learn-failures.yaml added to document recurring issues and preventions (factory-skip, prefix-inconsistency)
-- arkraft-agent-insight: simplified CLI to accept single natural language request instead of explicit topic/universe parameters
-- arkraft-agent-insight: updated README with planner architecture diagram and multilingual examples
-- CLAUDE.md: added Critical Rule #6 for mandatory session lifecycle (boot/wrapup)
-- CLAUDE.md: updated Agents table and Routing table to include boot/wrapup agents
-- CLAUDE.md: updated Session Protocol to replace manual handoff steps with agent-driven workflow
-- CLAUDE.md: added meta/lessons.yaml to Personal Context table
-- CLAUDE.md: redesigned Component Lifecycle - boot now lists available components only, main agent decides what's needed
-- CLAUDE.md: simplified Session Lifecycle to universal boot→execute→wrapup (removed conditional logic)
-- system-boot agent: changed from "required components" analysis to "available components" listing - no longer judges what's needed
-- workflow-audit-modules skill: inlined module protocol documentation (independence requirement, registry schema)
-- arkraft-agent-pm: CLAUDE.md updated with Commands section documenting /ask, /route, /sync-specs
-- arkraft-agent-pm: specs/ directory repurposed from specifications to knowledge cache
-- CLAUDE.md: restructured with critical boot/wrapup requirements section at top with warning emoji and explicit stop instructions
-- CLAUDE.md: expanded session flow documentation with mandatory boot/wrapup emphasis and layer responsibilities
-- CLAUDE.md: updated FORBIDDEN section to highlight boot/wrapup violations with consequences
-- system-boot: added mandatory task restoration step (Step 2) with TaskCreate requirement and explicit warning
-- system-boot: permissionMode bypassPermissions added for frictionless task restoration
-- system-wrapup: added Step 6 for task archiving to .claude/tasks/{focus}/ with handoff.md structure
-- system-wrapup: permissionMode bypassPermissions added for direct file operations
-- pre-validate.sh: changed all warning decisions to approve (warn → approve) for reduced friction
-- All agent frontmatter: added permissionMode: bypassPermissions to prevent permission prompts
-- factory/pattern-agent.md: added permissionMode: bypassPermissions field to agent template with examples
-- learn-failures.yaml: cleaned up non-systemic failures (EISDIR, WebFetch 403, command not found) - moved to comments
-
-## Fixed
-
--
+- enforce-claude-md.sh: Rigid protocol (BOOT → ORCHESTRATE → EXECUTE → WRAPUP) replaced with intent-first guidance
+- CLAUDE.md: Simplified to router (principles + structure + approach). No session protocol.
+- factory/README.md: Removed 3-layer hierarchy (meta/business/worker), orchestrator references
+- factory/pattern-agent.md: Removed `layer` field from frontmatter
+- agents/README.md: Replaced layer model with flat agent list + intent flow
+- system-recruiter.md: Removed orchestrator/advisor flow, layer assignment step
+- docs/diagram.md: Rewritten for intent-first architecture
 
 ## Removed
 
-- code-reviewer agent: Migrated to workflow-code-review skill
-- code-refactor agent: Migrated to workflow-code-refactor skill
-- code-tester agent: Migrated to workflow-code-test skill
-- feature-dev-builder agent: Replaced by feature-dev agent with skill composition
-- Deleted 11 obsolete knowledge files (1393 lines):
-  - git-advanced.md, git-github-settings.md, git-workflow.md (git workflows)
-  - guide-decision.md, guide-repo-setup.md (consolidated into factory patterns)
-  - protocol-module.md, protocol-self-improve.md (inlined into relevant components)
-  - workflow-release.md, workflow-spec.md, workflow-task-verification.md (replaced by skills)
-  - ref-neuron-v2-vision.md (v2 vision now implemented)
-
-## Security
-
--
+- system-boot agent: Context loading is now on-demand
+- system-orchestrator agent: Main agent does intent analysis directly
+- system-wrapup agent: Vault writes happen inline when needed
+- system-advisor agent: Removed with orchestrator
+- system-updater agent: Mechanical maintenance, rarely triggered
+- system-self-improve agent: Never triggered organically
+- feature-dev agent: Workers belong in modules, not neuron
+- frontend-dev agent: Workers belong in modules, not neuron
+- arkraft-qa-tester agent: Project-specific, belongs in module
+- factory/pattern-orchestrator.md: No separate orchestrator pattern needed
+- 3-layer hierarchy (meta/business/worker): Agents are just agents
 
 ## Breaking Changes
 
-- arkraft-agent-insight: CLI signature changed from `arkraft-insight <topic> <universe>` to `arkraft-insight <request>`. Users must update scripts accordingly.
-
----
-
-*Auto-updated by reviewer agent on PR creation.*
+- Session no longer runs BOOT → ORCHESTRATE → EXECUTE → WRAPUP
+- No `layer` field in agent frontmatter
+- Worker agents must live in their module's `.claude/agents/`, not neuron level

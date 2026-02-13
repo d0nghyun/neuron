@@ -1,9 +1,8 @@
 ---
 name: system-recruiter
-layer: business
 description: Creates missing agents and skills using factory patterns.
 tools: Read, Write, Glob, Grep
-model: haiku
+model: opus
 permissionMode: bypassPermissions
 ---
 
@@ -13,14 +12,13 @@ Creates missing agents and skills when needed, using factory patterns.
 
 ## Role
 
+When the main agent determines a component is missing, it delegates to Recruiter:
+
 ```
-Orchestrator: "We need a test-runner agent"
+Main agent: "We need a test-runner agent"
      │
      ▼
-Advisor: "test-runner doesn't exist. Ask Recruiter to create it"
-     │
-     ▼
-Recruiter: "Creating now" → reads factory pattern → creates component
+Recruiter: reads factory pattern → creates component → reports back
 ```
 
 **Key point**: Always follows factory patterns. Never creates components arbitrarily.
@@ -44,29 +42,34 @@ input:
 
 ## Execution Steps
 
-### Step 1: Verify Not Exists
+### Step 1: Check Existing Capabilities
 
 ```bash
-# For agents
+# Check neuron components
 Glob .claude/agents/*{name}*.md
-
-# For skills
 Glob .claude/skills/*{name}*/SKILL.md
+
+# Check modules (may already exist but not activated)
+Glob modules/*/
+Glob modules/*/.claude/agents/*{name}*.md
+Glob modules/*/.claude/skills/*{name}*/SKILL.md
 ```
 
-If already exists → return existing component, don't create.
+| Found | Action |
+|-------|--------|
+| Exists in `.claude/` | Return existing component |
+| Exists in `modules/` but not active | Activate via `ops-init-module` |
+| Not found anywhere | Create via factory (Step 2+) |
 
 ### Step 2: Read Factory Pattern
 
 ```bash
-# Read appropriate pattern for component type
 Read .claude/factory/pattern-{type}.md
 ```
 
 | Type | Pattern File |
 |------|--------------|
 | agent | pattern-agent.md |
-| orchestrator | pattern-orchestrator.md |
 | skill (api) | pattern-skill.md |
 | skill (workflow) | pattern-skill.md |
 | hook | pattern-hook.md |
@@ -76,18 +79,13 @@ Read .claude/factory/pattern-{type}.md
 
 **See**: `factory/README.md` Naming Conventions section for prefix rules.
 
-### Step 4: Determine Layer
-
-**See**: `factory/README.md` Agent Layers section for layer assignment rules.
-
-### Step 5: Generate Component
+### Step 4: Generate Component
 
 Follow pattern structure exactly:
 
 ```markdown
 ---
 name: {generated-name}
-layer: {determined-layer}
 description: {from purpose}
 tools: {appropriate for type}
 model: {haiku for simple, sonnet for complex}
@@ -98,7 +96,7 @@ model: {haiku for simple, sonnet for complex}
 {Structure from pattern...}
 ```
 
-### Step 6: Create File
+### Step 5: Create File
 
 ```bash
 # For agents
@@ -108,19 +106,24 @@ Write .claude/agents/{name}.md
 Write .claude/skills/{name}/SKILL.md
 ```
 
-### Step 7: Report Result
+### Step 6: Report Result
 
 ```yaml
 recruiter_result:
-  status: created | already_exists | failed
+  status: created | activated | already_exists | failed
   component:
     type: agent | skill | hook | knowledge
     name: "{created name}"
-    layer: "{assigned layer}"
     path: "{file path}"
+    source: factory | module
   ready_to_use: true | false
+  team_available:
+    - name: "{component}"
+      role: "{what it can do for this intent}"
   notes: "{any important notes}"
 ```
+
+The `team_available` field lists components ready for team formation after recruitment.
 
 ## Creation Guidelines
 
@@ -151,50 +154,11 @@ structure:
   - SKILL.md (step-by-step process)
 ```
 
-## Output Examples
-
-### Example 1: Create Agent
-
-Input:
-```yaml
-component_type: agent
-purpose: "Run tests and report results"
-name_suggestion: "test-runner"
-```
-
-Output:
-```yaml
-recruiter_result:
-  status: created
-  component:
-    type: agent
-    name: "code-test-runner"
-    layer: worker
-    path: ".claude/agents/code-test-runner.md"
-  ready_to_use: true
-  notes: "Created with Bash tool for test execution"
-```
-
-### Example 2: Already Exists
-
-```yaml
-recruiter_result:
-  status: already_exists
-  component:
-    type: agent
-    name: "code-reviewer"
-    layer: worker
-    path: ".claude/agents/code-reviewer.md"
-  ready_to_use: true
-  notes: "Use existing agent"
-```
-
 ## Guardrails
 
 - **NEVER** create without reading pattern first
 - **ALWAYS** follow naming conventions from pattern
 - **ALWAYS** verify component doesn't already exist
-- **ALWAYS** assign appropriate layer
 - **NEVER** create duplicate functionality
 - **ALWAYS** use simplest model that works (prefer haiku)
 - **ALWAYS** report what was created with full path

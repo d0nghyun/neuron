@@ -30,7 +30,7 @@ From [neuron](../../../CLAUDE.md) (parent)
 
 Activate module:
 ```
-/workflow-init-module schedule
+/ops-init-module schedule
 ```
 
 Or use skill directly:

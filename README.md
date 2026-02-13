@@ -17,16 +17,17 @@ When a new capability is needed (database, web service, etc.), a new repository 
 
 ## Philosophy
 
-See [knowledge/philosophy.md](knowledge/philosophy.md) for core principles.
+See [CLAUDE.md](CLAUDE.md) for core principles.
 
 ## Documentation
 
 | File | Audience | Purpose |
 |------|----------|---------|
 | `README.md` | Human | Project overview and usage guide |
-| `docs/diagram.md` | Human | Visual system architecture |
+| `RULES.md` | AI Agent | Enforcement rules for all components |
+| `ARCHITECTURE.md` | Both | System map, flows, and file pointers |
 | `CLAUDE.md` | AI Agent | Entry point, conventions, and context |
-| `knowledge/` | Both | Core policies and philosophy |
+| `docs/diagram.md` | Human | Visual system architecture |
 
 ## Structure
 

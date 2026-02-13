@@ -4,215 +4,178 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         NEURON (Hub)                            │
-│                     Component Factory Layer                     │
-│         "Claude Code = Framework, Neuron = Factory"             │
+│                       NEURON (Factory)                          │
+│              "Claude Code = Framework, Neuron = Patterns"       │
 └─────────────────────────────────────────────────────────────────┘
-                               │
-        ┌──────────────────────┼──────────────────────┐
-        │                      │                      │
-        ▼                      ▼                      ▼
+                              │
+       ┌──────────────────────┼──────────────────────┐
+       │                      │                      │
+       ▼                      ▼                      ▼
 ┌───────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   CLAUDE.md   │    │    modules/     │    │     .claude/    │
-│   (SSOT)      │    │   (Submodules)  │    │  (Components)   │
+│   (Router)    │    │   (Submodules)  │    │  (Components)   │
 ├───────────────┤    ├─────────────────┤    ├─────────────────┤
-│ • Philosophy  │    │ • arkraft/      │    │ • agents/       │
-│ • Principles  │    │ • modeling/     │    │ • skills/       │
-│ • Routing     │    │                 │    │ • factory/      │
-│               │    │                 │    │ • memory/       │
-│               │    │                 │    │ • knowledge/    │
+│ • Principles  │    │ • arkraft/      │    │ • agents/       │
+│ • Structure   │    │ • (others)      │    │ • skills/       │
+│ • Approach    │    │                 │    │ • factory/      │
+│               │    │ Each has own    │    │ • hooks/        │
+│               │    │ .claude/        │    │ • knowledge/    │
 └───────────────┘    └─────────────────┘    └─────────────────┘
+                              │
+                              ▼
+                     ┌─────────────────┐
+                     │     vault/      │
+                     │   (Private)     │
+                     ├─────────────────┤
+                     │ • AGENTS.md     │
+                     │ • SOUL.md       │
+                     │ • USER.md       │
+                     │ • memory/       │
+                     │ • 02-Projects/  │
+                     └─────────────────┘
 ```
 
-## Self-Evolution Pattern
+## Intent-Based Flow
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│                    SELF-EVOLUTION FLOW                           │
-└──────────────────────────────────────────────────────────────────┘
-
-  [Session Start]
-        │
-        ▼
-┌─────────────────┐
-│ system-boot.md  │  Component Resolver
-│   (registry)    │
-└───────┬─────────┘
-        │
-        ▼
-   ┌────────────┐
-   │  Missing   │
-   │ Component? │
-   └─────┬──────┘
-         │
-    ┌────┴────┐
-    │         │
-    ▼         ▼
-  [YES]      [NO]
-    │         │
-    ▼         ▼
-┌────────┐  ┌────────┐
-│Factory │  │ Ready  │
-│create()│  │ :true  │
-└────┬───┘  └────────┘
-     │
-     ▼
-┌────────────────┐
-│ Task created   │
-│ (session_      │
-│  restart)      │
-└────────┬───────┘
-         │
-         ▼
-   [Next Session]
-         │
-         ▼
-┌────────────────┐
-│ Component      │
-│ Available      │
-└────────────────┘
+┌──────────────┐
+│ User Request │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐     enforce-claude-md.sh injects
+│Intent Assess │     system-reminder on every prompt
+│              │
+│ trivial?     │──YES──▶ DIRECT (just do it)
+│ moderate?    │──YES──▶ DELEGATE (subagent)
+│ complex?     │──YES──▶ COLLABORATE (agent teams)
+└──────────────┘
 ```
 
-## Agent System
+## Factory Agents (Neuron Level Only)
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                     NEURON AGENT SYSTEM                         │
-│                  "Judgment Components"                          │
-└─────────────────────────────────────────────────────────────────┘
-
-    ┌─────────────────┐
-    │      BOOT       │  Session Start (MANDATORY)
-    │   "Initialize"  │  Load registry, focus, lessons
-    └────────┬────────┘
-             │
-             ▼
-    ┌─────────────────┐
-    │    ADVISOR      │  Pre-decision consultation
-    │   "Think First" │  Uncertainty? → Call advisor
-    └────────┬────────┘
-             │
-             ▼
-    ┌─────────────────┐
-    │    REVIEWER     │  Before PR
-    │  "Check Quality"│  Code quality, security
-    └────────┬────────┘
-             │
-             ▼ [IMPROVE] signal
-    ┌─────────────────┐
-    │  SELF-IMPROVE   │  Pattern-based improvement
-    │ "Learn & Adapt" │  System evolution
-    └────────┬────────┘
-             │
-             ▼
-    ┌─────────────────┐
-    │     WRAPUP      │  Session End (MANDATORY)
-    │ "Persist Learn" │  Extract lessons, update registry
-    └─────────────────┘
+┌─────────────────────────────────────────────────┐
+│              NEURON AGENTS                       │
+│         "Factory management, not workers"        │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  ┌─────────────────┐   ┌─────────────────┐     │
+│  │    Recruiter     │   │    Reviewer      │    │
+│  │  "Build"         │   │  "Verify"        │    │
+│  │                  │   │                  │    │
+│  │  factory/ →      │   │  Checks:         │    │
+│  │  create component│   │  • structure     │    │
+│  │  at target path  │   │  • SSOT          │    │
+│  └─────────────────┘   │  • naming        │    │
+│                         │  • file size     │    │
+│                         └─────────────────┘    │
+│                                                 │
+│  Workers live in their modules, not here.       │
+└─────────────────────────────────────────────────┘
 ```
 
-## Component Routing
+## Component Creation Flow
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        USER REQUEST                             │
-└─────────────────────────────────────────────────────────────────┘
-                               │
-         ┌─────────────────────┼─────────────────────┐
-         │                     │                     │
-         ▼                     ▼                     ▼
-┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│     AGENTS      │  │     SKILLS      │  │      HOOKS      │
-│  (Judgment)     │  │  (Execution)    │  │  (Automation)   │
-├─────────────────┤  ├─────────────────┤  ├─────────────────┤
-│ system-*        │  │ api-*           │  │ • PreToolUse    │
-│ • boot          │  │ • github        │  │ • PostToolUse   │
-│ • wrapup        │  │ • jira, slack   │  │ • SubagentStart │
-│ • advisor       │  │ capability-*    │  │                 │
-│ role-*          │  │ • ui-design     │  │                 │
-│ • reviewer      │  │ workflow-*      │  │                 │
-│ • refactor      │  │ • pr, release   │  │                 │
-│ task-*          │  │ • audit-modules │  │                 │
-│ • self-improve  │  │                 │  │                 │
-└─────────────────┘  └─────────────────┘  └─────────────────┘
+Module needs a component
+       │
+       ▼
+┌──────────────┐
+│  Component   │
+│  exists?     │
+└──────┬───────┘
+  ┌────┴────┐
+  │         │
+ YES        NO
+  │         │
+  ▼         ▼
+[Use it]  ┌──────────────┐
+          │  Recruiter   │
+          │              │
+          │  1. Read factory/pattern-*.md
+          │  2. Check naming rules
+          │  3. Create at module/.claude/
+          │  4. Report result
+          └──────┬───────┘
+                 │
+                 ▼
+          ┌──────────────┐
+          │  Reviewer    │
+          │  (optional)  │
+          │              │
+          │  Verify quality
+          └──────────────┘
 ```
 
-## Directory Structure (v2)
+## What Goes Where
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│                    WHAT COMPONENT TO USE?                       │
+└────────────────────────────────────────────────────────────────┘
+
+  Judgment/reasoning needed?
+       │
+  ┌────┴────┐
+ YES        NO
+  │         │
+  ▼         ▼
+AGENT    External API?
+            │
+       ┌────┴────┐
+      YES        NO
+       │         │
+       ▼         ▼
+  SKILL       Automated trigger?
+  (api-*)         │
+             ┌────┴────┐
+            YES        NO
+             │         │
+             ▼         ▼
+           HOOK     SKILL
+                    (workflow-*)
+```
+
+## Directory Structure
 
 ```
 neuron/
-├── CLAUDE.md              # AI entry point (SSOT)
-├── README.md
+├── CLAUDE.md              # Router: principles + approach
+├── ARCHITECTURE.md        # System map: what lives where
 │
-├── modules/               # Git submodules
-│   ├── arkraft/
-│   └── modeling/
+├── modules/               # Git submodules (each has own .claude/)
+│   └── arkraft/
+│
+├── vault/                 # Private (separate git repo, gitignored)
+│   ├── AGENTS.md, SOUL.md, USER.md
+│   ├── memory/
+│   └── 02-Projects/
 │
 ├── docs/
 │   ├── diagram.md         # This file
 │   └── releasenotes/
 │
 └── .claude/
-    ├── agents/            # Judgment (6)
-    │   ├── system-boot.md      # system-* (core lifecycle)
-    │   ├── system-wrapup.md
-    │   ├── system-advisor.md
-    │   ├── role-reviewer.md    # role-* (judgment/review)
-    │   ├── role-refactor.md
-    │   └── task-self-improve.md # task-* (task-oriented)
+    ├── agents/            # Factory management (2)
+    │   ├── system-recruiter.md
+    │   └── system-reviewer.md
     │
-    ├── skills/            # Execution (10)
-    │   ├── api-*/         # External APIs
-    │   ├── capability-*/  # Reusable workflows
-    │   └── workflow-*/    # Internal workflows (pr, release)
+    ├── skills/            # Execution workflows
+    │   ├── api-*/         # External API integrations
+    │   ├── workflow-*/    # Multi-step processes
+    │   └── capability-*/  # Domain capabilities
     │
-    ├── factory/           # Component generation
-    │   ├── templates/
-    │   └── registry.yaml  # Component SSOT
+    ├── factory/           # Component patterns
+    │   ├── pattern-agent.md
+    │   ├── pattern-skill.md
+    │   ├── pattern-hook.md
+    │   ├── pattern-knowledge.md
+    │   └── ref-claude-code.md
     │
-    ├── memory/            # Long-term state
-    │   ├── identity.yaml
-    │   ├── focus.yaml
-    │   ├── team.yaml
-    │   └── lessons.yaml
+    ├── hooks/             # Event triggers
+    │   └── enforce-claude-md.sh
     │
-    ├── knowledge/         # Reference docs
-    │   └── *.md
-    │
-    └── contexts/          # Module configs
-        └── ctx-*.yaml
-```
-
-## Decision Guide
-
-```
-┌────────────────────────────────────────────────────────────────┐
-│                   WHAT COMPONENT TO USE?                        │
-└────────────────────────────────────────────────────────────────┘
-
-  Need judgment/reasoning?
-         │
-    ┌────┴────┐
-    │         │
-   YES        NO
-    │         │
-    ▼         ▼
-┌────────┐  External API needed?
-│ AGENT  │       │
-└────────┘  ┌────┴────┐
-            │         │
-           YES        NO
-            │         │
-            ▼         ▼
-      ┌──────────┐  Automated trigger?
-      │SKILL     │       │
-      │(api-*)   │  ┌────┴────┐
-      └──────────┘  │         │
-                   YES        NO
-                    │         │
-                    ▼         ▼
-              ┌────────┐  ┌────────────┐
-              │ HOOK   │  │ SKILL      │
-              │        │  │(capability)│
-              └────────┘  └────────────┘
+    └── knowledge/         # System guides
+        └── guide-*.md
 ```

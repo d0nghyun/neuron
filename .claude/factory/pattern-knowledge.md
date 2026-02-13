@@ -5,21 +5,15 @@ Reference pattern for creating knowledge documents.
 ## What is Knowledge?
 
 Knowledge files are reference documents and accumulated learnings.
-Unlike contexts (session state), knowledge is persistent and grows over time.
-
-## Categories
-
-| Prefix | Purpose | Example |
-|--------|---------|---------|
-| `ref-*` | Reference docs, specs | ref-api-tokens.md |
-| `guide-*` | Decision guides, how-tos | guide-decision.md |
-| `protocol-*` | Procedures, standards | protocol-module.md |
-| `workflow-*` | Process specifications | workflow-release.md |
-| `learn-*` | Accumulated lessons | learn-lessons.yaml |
+They live in the private vault, not in the neuron repo.
 
 ## Location
 
-All knowledge files: `.claude/knowledge/{prefix}-{name}.md`
+| Type | Path |
+|------|------|
+| Project-specific | `vault/02-Projects/{project}/` |
+| Reference docs | `vault/04-Resources/` |
+| Session state | `vault/memory/` |
 
 ## Structure by Category
 
@@ -184,16 +178,14 @@ _meta:
 ## Decision Tree
 
 ```
-Need to document API/config? → ref-*
-Need decision flowchart? → guide-*
-Need step-by-step procedure? → protocol-*
-Need process specification? → workflow-*
-Need to record lesson? → learn-* (via wrapup agent)
+Project config/domain knowledge? → vault/02-Projects/{project}/
+General reference doc? → vault/04-Resources/
+Session state/focus? → vault/memory/
+Can be automated? → Consider hook/skill instead
 ```
 
 ## Checklist Before Creating
 
-- [ ] Does similar knowledge already exist?
-- [ ] Is the correct prefix used?
+- [ ] Does similar knowledge already exist in vault?
 - [ ] Is the scope focused (not too broad)?
 - [ ] Can this be automated instead? (consider hook/skill first)

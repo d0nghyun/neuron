@@ -16,7 +16,7 @@ Notion-based schedule management module.
 
 Activate module in neuron:
 ```
-/workflow-init-module schedule
+/ops-init-module schedule
 ```
 
 Or use skill directly:

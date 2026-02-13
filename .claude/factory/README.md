@@ -17,23 +17,21 @@ Analyze the request to determine the required component type:
 
 | Need | Component Type | Pattern |
 |------|----------------|---------|
-| Coordinate multiple agents | Orchestrator | pattern-orchestrator.md |
 | Judgment/reasoning/review | Agent | pattern-agent.md |
 | External API call | Skill (api-*) | pattern-skill.md |
-| Reusable workflow | Skill (workflow-*) | pattern-skill.md |
-| Project-specific config | Context | pattern-context.yaml |
+| Multi-step process | Skill (workflow-*) | pattern-skill.md |
+| Neuron factory operation | Skill (ops-*) | pattern-skill.md |
 | Automatic trigger | Hook | pattern-hook.md |
 | Reference docs/guides/lessons | Knowledge | pattern-knowledge.md |
 
 ## Decision Tree
 
 ```
-Complex multi-step task needing coordination? → Orchestrator Agent
 External service integration? → Skill (api-*)
 Judgment needed? → Agent
 Automatic execution? → Hook
-Project settings? → Context
-Reusable multi-step process? → Skill (workflow-*)
+Neuron factory operation? → Skill (ops-*)
+Multi-step process? → Skill (workflow-*)
 Document for reference? → Knowledge
 ```
 
@@ -47,30 +45,22 @@ Components can live at **neuron level** or **module level**.
 | Specific to one module? | `modules/{module}/.claude/` |
 | Will be reused in other projects? | Separate module → submodule |
 
-**Examples**:
-- `api-google-calendar` → neuron level (any module can use)
-- `workflow-daily-standup` → calendar module (module-specific workflow)
-- `code-review` for React project → that project's `.claude/`
-
 **When unsure**: Start at module level. Promote to neuron level only when actually needed by multiple modules.
 
 ## Usage
 
-1. Identify what's missing (via boot or manual search)
+1. Identify what's missing
 2. Read the appropriate pattern file
 3. Decide location (neuron vs module level)
 4. Create the component:
    - Agents → `{root}/.claude/agents/{type}-{name}.md` (auto-registers)
    - Skills → `{root}/.claude/skills/{type}-{name}/SKILL.md` (auto-registers)
-   - Contexts → `{root}/.claude/contexts/ctx-{name}.yaml` (loaded by boot)
    - Hooks → `{root}/.claude/settings.json` (manual registration required)
-   - Knowledge → `{root}/.claude/knowledge/{prefix}-{name}.md` (reference only)
+   - Knowledge → `vault/04-Resources/` or `vault/02-Projects/{project}/`
 
    Where `{root}` = neuron or module path
 
 **Important**: Agents and Skills auto-register when files are created. Only Hooks require manual registration in settings.json.
-
-5. Create Task with `pending: session_restart` for handoff
 
 ## Patterns
 
@@ -78,58 +68,22 @@ Components can live at **neuron level** or **module level**.
 |---------|----------|---------|
 | pattern-agent.md | agents/ | Judgment components |
 | pattern-skill.md | skills/ | API wrappers, workflows |
-| pattern-context.yaml | contexts/ | Project configs |
 | pattern-hook.md | settings.json | Automatic triggers |
-| pattern-knowledge.md | knowledge/ | Reference docs, guides, lessons |
-
-## Agent Layers
-
-Agents are organized into three layers based on responsibility:
-
-| Layer | Agents | Responsibility |
-|-------|--------|----------------|
-| **meta** | boot, wrapup, updater, self-improve | Neuron lifecycle, self-management |
-| **business** | orchestrator, advisor, recruiter | User request analysis, delegation |
-| **worker** | code-reviewer, code-refactor | Domain-specific execution |
-
-### Layer Selection Guide
-
-```
-Managing Neuron itself? → meta
-Delegating/coordinating work? → business
-Executing domain tasks? → worker
-```
-
-### Layer in Frontmatter
-
-Every agent MUST declare its layer:
-
-```yaml
----
-name: system-example
-layer: meta | business | worker
----
-```
+| pattern-knowledge.md | vault/ | Reference docs, guides |
 
 ## Naming Conventions
 
 **Agents**: `{type}-{name}.md`
-- `system-*`: Core system agents (boot, wrapup, advisor, self-improve)
+- `system-*`: Core system agents (recruiter)
 - `feature-dev-*`: Feature development agents
-- `code-*`: Code-related agents (code-review-*, code-refactor, etc.)
+- `code-*`: Code-related agents
 
-**Skills**: `{type}-{name}.md`
+**Skills**: `{type}-{name}/SKILL.md`
+- `ops-*`: Neuron factory operations (init-module, audit, release)
 - `api-*`: External API integrations
-- `workflow-*`: Multi-step processes
-- `capability-*`: Domain capabilities
+- `workflow-*`: Multi-step processes (module-level)
 
-**Contexts**: `ctx-{name}.yaml`
-- `ctx-focus.yaml`: Current priorities (always loaded)
-- `ctx-{module}.yaml`: Module-specific configs
-
-**Knowledge**: `{prefix}-{name}.md`
-- `ref-*`: Reference documents, specs
-- `guide-*`: Decision guides, how-tos
-- `protocol-*`: Procedures, standards
-- `workflow-*`: Process specifications
-- `learn-*`: Accumulated lessons (YAML)
+**Knowledge** (in `vault/`):
+- Project-specific → `vault/02-Projects/{project}/`
+- Reference docs → `vault/04-Resources/`
+- Session state → `vault/memory/`

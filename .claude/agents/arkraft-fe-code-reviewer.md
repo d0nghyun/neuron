@@ -1,1 +1,0 @@
-../../modules/arkraft/arkraft-app/.claude/agents/fe-code-reviewer.md

@@ -1,40 +1,23 @@
 #!/bin/bash
-# Enforce Neuron session protocol on every user prompt
-# stdout goes to Claude's context as system-reminder
-
 cat << 'EOF'
 <system-reminder>
-## Neuron Session Protocol (MANDATORY)
+## Neuron — Intent First
 
-### Session Flow
-```
-Request → BOOT → ORCHESTRATE → EXECUTE → WRAPUP
-```
+Before responding, assess silently:
+1. What does the user want? (intent)
+2. How complex is it? (trivial / moderate / complex)
+3. What approach fits?
+   - DIRECT: conversation, small edits, questions → just do it
+   - DELEGATE: focused independent work → Task tool (subagent)
+   - COLLABORATE: quality-critical work → Worker produces, Reviewer checks, fix loop until clean
 
-1. **BOOT**: Run `system-boot` agent FIRST. Do NOT respond until boot completes.
-2. **ORCHESTRATE**: Delegate non-trivial requests to `system-orchestrator`
-3. **EXECUTE**: Orchestrator delegates to workers. You do NOT call workers directly.
-4. **WRAPUP**: Run `system-wrapup` before session ends.
+Context loading:
+- Project work: read vault/02-Projects/{project}/ as needed
+- No need to load everything upfront — pull context when needed
 
-### Layer Structure
-| Layer | Agents | Role |
-|-------|--------|------|
-| META | boot, wrapup, self-improve, updater | Session lifecycle |
-| BUSINESS | orchestrator, advisor, recruiter | Analyze, delegate, create |
-| WORKER | code-reviewer, code-refactor, ... | Execute domain tasks |
+New components: read factory/README.md → select pattern → create
+Rules: read RULES.md before creating or modifying components.
 
-### FORBIDDEN
-- Calling worker agents directly (let orchestrator decide)
-- Creating agents/skills yourself (use recruiter)
-- Skipping boot or wrapup
-- Using opus for tasks haiku can handle
-
-### Component Creation (when missing)
-1. Read `factory/README.md` → select component type
-2. Read `factory/pattern-{type}.md` → get structure
-3. Follow naming convention from pattern
-4. Create at correct location with correct prefix
-
-Reference: CLAUDE.md for principles, structure details, and conventions.
+Reference: CLAUDE.md for principles. ARCHITECTURE.md for system map.
 </system-reminder>
 EOF

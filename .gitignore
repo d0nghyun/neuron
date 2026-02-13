@@ -22,3 +22,6 @@
 .DS_Store
 .playwright-mcp/
 .agents/
+
+# Private knowledge vault (clone or symlink your vault here)
+vault
