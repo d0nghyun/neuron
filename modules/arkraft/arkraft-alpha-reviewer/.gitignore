@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+uv.lock
+workspace/review_result.json
+workspace/fix_result.json
+workspace/submission_state.json
+workspace/logs/

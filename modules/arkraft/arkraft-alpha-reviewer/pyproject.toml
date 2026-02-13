@@ -1,0 +1,24 @@
+[project]
+name = "arkraft-alpha-reviewer"
+version = "0.1.0"
+description = "Post-alpha validation and Finter submission agent"
+requires-python = ">=3.11"
+dependencies = [
+    "claude-agent-sdk>=0.1.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+arkraft-alpha-reviewer = "src.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

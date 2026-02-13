@@ -71,17 +71,6 @@
         ]
       }
     ],
-    "PostToolUseFailure": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/failure-logger.sh"
-          }
-        ]
-      }
-    ],
     "PermissionRequest": [
       {
         "matcher": "",
