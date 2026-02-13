@@ -1,6 +1,6 @@
 #!/bin/bash
-# Hook: PreToolUse - Validate component structure on Write/Edit
-# Blocks agents/skills missing required frontmatter fields
+# Hook: PreToolUse - Validate component structure and naming on Write/Edit
+# Blocks agents/skills missing required frontmatter or violating naming conventions
 
 set -euo pipefail
 
@@ -16,6 +16,16 @@ file_path=$(echo "$input" | jq -r '.tool_input.file_path // .tool_input.filePath
 
 # --- Agent validation: .claude/agents/*.md ---
 if [[ "$file_path" == */.claude/agents/*.md && "$file_path" != */README.md ]]; then
+  basename=$(basename "$file_path" .md)
+
+  # Naming validation: must match {type}-{name} pattern
+  valid_prefixes="system|feature-dev|code"
+  if ! echo "$basename" | grep -qE "^(${valid_prefixes})-"; then
+    echo "{\"decision\": \"block\", \"reason\": \"Agent name '${basename}' has invalid prefix. Must be: system-*, feature-dev-*, or code-*. See factory/README.md § Naming Conventions.\"}"
+    exit 0
+  fi
+
+  # Frontmatter validation (Write only)
   if [ "$tool_name" = "Write" ]; then
     content=$(echo "$input" | jq -r '.tool_input.content // empty')
     [ -z "$content" ] && { echo '{"decision": "approve"}'; exit 0; }
@@ -26,7 +36,6 @@ if [[ "$file_path" == */.claude/agents/*.md && "$file_path" != */README.md ]]; t
       exit 0
     fi
 
-    # Extract frontmatter (between first and second ---)
     fm=$(echo "$content" | sed -n '2,/^---$/p' | sed '$d')
 
     for field in name description tools model; do
@@ -40,6 +49,17 @@ fi
 
 # --- Skill validation: .claude/skills/*/SKILL.md ---
 if [[ "$file_path" == */.claude/skills/*/SKILL.md ]]; then
+  # Extract skill directory name
+  skill_dir=$(basename "$(dirname "$file_path")")
+
+  # Naming validation: must match {type}-{name} pattern
+  valid_prefixes="ops|api|workflow|capability"
+  if ! echo "$skill_dir" | grep -qE "^(${valid_prefixes})-"; then
+    echo "{\"decision\": \"block\", \"reason\": \"Skill name '${skill_dir}' has invalid prefix. Must be: ops-*, api-*, workflow-*, or capability-*. See factory/README.md § Naming Conventions.\"}"
+    exit 0
+  fi
+
+  # Frontmatter validation (Write only)
   if [ "$tool_name" = "Write" ]; then
     content=$(echo "$input" | jq -r '.tool_input.content // empty')
     [ -z "$content" ] && { echo '{"decision": "approve"}'; exit 0; }

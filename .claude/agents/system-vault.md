@@ -2,7 +2,7 @@
 name: system-vault
 description: Manages vault lifecycle — initialization, health audit, and content placement guidance.
 tools: Read, Write, Glob, Grep, Bash
-model: sonnet
+model: opus
 permissionMode: bypassPermissions
 ---
 

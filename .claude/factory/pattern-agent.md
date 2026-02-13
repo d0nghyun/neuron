@@ -13,6 +13,8 @@ skills:                              # Optional: preload skill content into agen
   - {skill-name}
 model: haiku | sonnet | opus
 permissionMode: bypassPermissions    # Auto-approve all tool permissions
+quality_grade: B                     # A/B/C/D — set by ops-factory-sync
+quality_checked: 2026-01-01          # Last audit date
 ---
 ```
 
@@ -101,6 +103,8 @@ description: Validates build output before deployment
 tools: Bash, Read, Glob
 model: haiku
 permissionMode: bypassPermissions
+quality_grade: A
+quality_checked: 2026-02-13
 ---
 
 # Build Validator Agent
@@ -110,20 +114,17 @@ Validates build artifacts meet deployment requirements.
 ## Execution Steps
 
 ### Step 1: Check Build Exists
-
 ```bash
 ls -la dist/
 ```
 
 ### Step 2: Validate Bundle Size
-
 ```bash
 du -sh dist/
 # Must be < 5MB
 ```
 
 ### Step 3: Return Result
-
 ```yaml
 build_validator_result:
   status: success
@@ -132,7 +133,7 @@ build_validator_result:
 ```
 ```
 
-### Role-Oriented Agent (ongoing responsibility)
+### Role-Oriented Agent (with skill preloading)
 
 ```markdown
 ---
@@ -140,39 +141,30 @@ name: api-developer
 description: Implement API endpoints following team conventions
 tools: Read, Write, Edit, Bash
 skills:
-  - api-github        # Preloaded: agent knows GitHub API patterns
+  - api-github
 model: sonnet
 permissionMode: bypassPermissions
+quality_grade: B
+quality_checked: 2026-02-13
 ---
 
 # API Developer Agent
 
 Implements API endpoints using preloaded skill knowledge.
 
-## When to Invoke
-
-- Creating new API endpoints
-- Integrating with external services
-- Working with GitHub API operations
-
 ## Execution Steps
 
 ### Step 1: Apply Skill Knowledge
-
 Use preloaded api-github skill for authentication, rate limits, etc.
 
 ### Step 2: Implement Endpoint
-
 Follow patterns from preloaded skill.
 
 ### Step 3: Return Result
-
 ```yaml
 api_developer_result:
   status: success
   endpoint: "{created endpoint}"
-  used_skill_patterns:
-    - "{pattern from preloaded skill}"
 ```
 ```
 
@@ -180,21 +172,17 @@ api_developer_result:
 
 Agents MUST reference external sources, never hardcode duplicated content.
 
-### What to Reference
-
 | Content Type | Reference To |
 |--------------|--------------|
 | Principles | `CLAUDE.md` |
 | Naming rules | `factory/README.md` |
+| Quality grades | `factory/README.md` § Quality Grades |
 | Domain knowledge | `vault/` or `skills/` |
-
-### Pattern
 
 ```markdown
 ✗ Bad (hardcoded):
 | Model | When |
 | haiku | simple tasks |
-| sonnet | complex tasks |
 
 ✓ Good (reference):
 **See**: `CLAUDE.md` for principles.

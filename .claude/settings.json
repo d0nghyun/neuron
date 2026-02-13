@@ -80,6 +80,10 @@
           {
             "type": "command",
             "command": ".claude/hooks/validate-component.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/validate-linecount.sh"
           }
         ]
       },

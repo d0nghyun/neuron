@@ -10,6 +10,8 @@ name: {name}
 description: {one-line description}
 allowed-tools: Bash, Read, Grep, {others}
 user-invocable: true | false
+quality_grade: B                     # A/B/C/D — set by ops-factory-sync
+quality_checked: 2026-01-01          # Last audit date
 ---
 ```
 
@@ -93,19 +95,12 @@ https://api.{service}.com/v1
 ## Workflow Steps
 
 ### Step 1: {Action}
-
 {Description}
 
-```bash
-{command}
-```
-
 ### Step 2: {Action}
-
 {Description}
 
 ### Step N: Complete
-
 {Final action and output}
 
 ## Output
@@ -132,6 +127,8 @@ name: api-github
 description: GitHub REST API for issues, PRs, repos
 allowed-tools: Bash, Read, Grep
 user-invocable: true
+quality_grade: A
+quality_checked: 2026-02-13
 ---
 
 # GitHub API Skill
@@ -139,30 +136,18 @@ user-invocable: true
 > API wrapper for GitHub. Activate for GitHub operations.
 
 ## When to Activate
-
 - User mentions GitHub issues, PRs, repos
-- Need to create/read/update GitHub resources
 
 ## Authentication
-
 **Credentials File**: `.credentials/github.json`
 
-```json
-{
-  "token": "ghp_xxxxxxxxxxxx"
-}
-```
-
 ## Common Operations
-
 ### List Issues
-
 ```bash
 gh issue list --repo {owner}/{repo}
 ```
 
 ### Create PR
-
 ```bash
 gh pr create --title "{title}" --body "{body}"
 ```
@@ -176,39 +161,26 @@ name: workflow-pr
 description: Create PR with automated review
 allowed-tools: Bash, Read, Glob, Task
 user-invocable: true
+quality_grade: B
+quality_checked: 2026-02-13
 ---
 
 # PR Workflow Skill
 
 > Create PR from current changes with automated review.
 
-## When to Activate
-
-- User says "create PR" or "open PR"
-- Changes ready for review
-
 ## Workflow Steps
-
 ### Step 1: Stage Changes
-
 ```bash
-git add -A
-git status
+git add -A && git status
 ```
-
 ### Step 2: Create Commit
-
 Follow commit conventions.
-
 ### Step 3: Push & Create PR
-
 ```bash
-git push -u origin {branch}
-gh pr create
+git push -u origin {branch} && gh pr create
 ```
-
 ### Step 4: Run Reviewer
-
 Invoke reviewer subagent for automated review.
 ```
 

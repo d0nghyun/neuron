@@ -18,6 +18,8 @@ Context loading:
 New components: read factory/README.md → select pattern → create
 Rules: read RULES.md before creating or modifying components.
 
+Record: after significant work, write vault/memory/YYYY-MM-DD.md via ops-daily-memo format.
+
 Reference: CLAUDE.md for principles. ARCHITECTURE.md for system map.
 </system-reminder>
 EOF

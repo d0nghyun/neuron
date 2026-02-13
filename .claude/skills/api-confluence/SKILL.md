@@ -198,8 +198,3 @@ curl -s -u "$ATLASSIAN_USER_EMAIL:$ATLASSIAN_API_TOKEN" \
 ```
 
 This approach lets the convention evolve in Confluence without touching the skill file.
-
-## References
-
-- [Confluence REST API Docs](https://developer.atlassian.com/cloud/confluence/rest/v1/intro/)
-- [CQL Reference](https://developer.atlassian.com/cloud/confluence/advanced-searching-using-cql/)

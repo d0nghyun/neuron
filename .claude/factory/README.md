@@ -87,3 +87,15 @@ Components can live at **neuron level** or **module level**.
 - Project-specific → `vault/02-Projects/{project}/`
 - Reference docs → `vault/04-Resources/`
 - Session state → `vault/memory/`
+
+## Quality Grades
+
+Components include `quality_grade` and `quality_checked` in frontmatter.
+Grades are set by `ops-factory-sync` during scheduled audits.
+
+| Grade | Criteria |
+|-------|----------|
+| A | All frontmatter fields, <150 lines, SSOT refs, success criteria |
+| B | Required frontmatter, <200 lines, has execution steps |
+| C | Missing optional sections or approaching line limit |
+| D | Missing required fields, >200 lines, or hardcoded content |

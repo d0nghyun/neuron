@@ -72,6 +72,51 @@ Flag:
 - Components missing required structure (per RULES.md)
 - Hook enforcement out of sync with RULES.md declarations
 
+### Step 5.5: Doc Gardening (with `--doc-gardening` flag or CRON)
+
+Scan `.claude/` and `vault/` for stale docs and broken references.
+
+**Stale doc detection**:
+```bash
+# Find .md files not modified in 30+ days
+find .claude vault/ -name '*.md' -mtime +30 -not -path '*/node_modules/*'
+```
+
+**Broken reference detection**:
+- Extract internal links (e.g., `RULES.md`, `factory/README.md`, `vault/02-Projects/...`)
+- Verify each target file exists
+- Flag broken links with file:line location
+
+**Scope**: `.claude/**/*.md`, `vault/**/*.md`, root `.md` files
+
+Report stale/broken docs in the drift section with type `stale` or `broken_ref`.
+
+### Step 5.6: Assess Quality Grades
+
+For each agent and skill, compute grade per `factory/README.md § Quality Grades`:
+
+| Grade | Criteria |
+|-------|----------|
+| A | All frontmatter fields, <150 lines, SSOT refs only, success criteria present |
+| B | Required frontmatter, <200 lines, has execution steps |
+| C | Missing optional sections or 150-200 lines |
+| D | Missing required fields, >200 lines, or hardcoded content |
+
+Process:
+1. Read each component's frontmatter and content
+2. Score against criteria above
+3. Compare with existing `quality_grade` in frontmatter
+4. If grade changed: update `quality_grade` and `quality_checked` via Edit
+5. Include grade changes in report
+
+Grading checks:
+```
+line_count < 150 AND has all fields AND refs only → A
+line_count < 200 AND has required fields AND has steps → B
+missing optional OR 150 ≤ line_count ≤ 200 → C
+missing required OR line_count > 200 OR hardcoded → D
+```
+
 ### Step 6: Generate Report
 
 ```yaml
@@ -81,8 +126,15 @@ factory_sync:
     agents: {count}
     skills: {count}
     hooks: {count}
+  quality:
+    summary: {A: n, B: n, C: n, D: n}
+    changes:
+      - component: "{name}"
+        previous: "{old grade}"
+        current: "{new grade}"
+        reason: "{why}"
   drift:
-    - type: "{naming | missing | orphan | structure}"
+    - type: "{naming | missing | orphan | structure | grade | stale | broken_ref}"
       detail: "{description}"
       suggestion: "{fix}"
   status: clean | drift_detected

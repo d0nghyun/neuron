@@ -11,6 +11,7 @@ Each job maps to an ops skill executed via `claude -p`.
 |-----|----------|-------|-------------|
 | Factory sync | Daily 03:00 | `ops-factory-sync` | Audit factory patterns against actual components, update drift |
 | Vault recap | Daily 03:30 | `ops-vault-recap` | Recap session memory into vault, validate structure |
+| Doc gardening | Daily 03:45 | `ops-factory-sync` | Scan stale docs and broken refs in .claude/ and vault/ |
 | Daily report | Daily 04:00 | `ops-daily-report` | Unified maintenance report (runs after sync + recap) |
 
 ## Execution
@@ -19,6 +20,7 @@ Each job maps to an ops skill executed via `claude -p`.
 # Example crontab entries
 0  3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-factory-sync"
 30 3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-vault-recap"
+45 3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-factory-sync --doc-gardening"
 0  4 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-daily-report"
 ```
 
