@@ -15,83 +15,27 @@ user-invocable: true
 - Main agent identifies module context
 - Need module-specific commands/skills
 
-## Prerequisites
+## Execution
 
-- Module exists at `modules/{module-path}/.claude/`
-- Module has commands, skills, or agents defined
-
-## Workflow Steps
-
-### Step 1: Validate Module
+Run the init script with the module path:
 
 ```bash
-MODULE="{module-path}"  # e.g., arkraft/arkraft-agent-pm
-MODULE_CLAUDE="modules/$MODULE/.claude"
-
-[ -d "$MODULE_CLAUDE" ] || { echo "Module not found: $MODULE"; exit 1; }
+bash .claude/skills/ops-init-module/scripts/init.sh {module-path}
 ```
 
-### Step 2: Create Symlinks
+Replace `{module-path}` with the target module (e.g., `arkraft/arkraft-agent-pm`).
 
-```bash
-PREFIX="${MODULE//\//_}"  # arkraft/arkraft-agent-pm → arkraft_arkraft-agent-pm
-
-# Commands → Skills
-if [ -d "$MODULE_CLAUDE/commands" ]; then
-  for cmd in "$MODULE_CLAUDE/commands"/*.md; do
-    [ -f "$cmd" ] || continue
-    cmd_name=$(basename "$cmd" .md)
-    target=".claude/skills/${PREFIX}--${cmd_name}"
-    mkdir -p "$target"
-    ln -sf "$(pwd)/$cmd" "$target/SKILL.md"
-    echo "Linked: /${PREFIX}--${cmd_name}"
-  done
-fi
-
-# Skills
-if [ -d "$MODULE_CLAUDE/skills" ]; then
-  for skill in "$MODULE_CLAUDE/skills"/*; do
-    [ -d "$skill" ] || continue
-    skill_name=$(basename "$skill")
-    ln -sf "$(pwd)/$skill" ".claude/skills/${PREFIX}--${skill_name}"
-    echo "Linked: /${PREFIX}--${skill_name}"
-  done
-fi
-
-# Agents
-if [ -d "$MODULE_CLAUDE/agents" ]; then
-  for agent in "$MODULE_CLAUDE/agents"/*.md; do
-    [ -f "$agent" ] || continue
-    agent_name=$(basename "$agent" .md)
-    ln -sf "$(pwd)/$agent" ".claude/agents/${PREFIX}--${agent_name}.md"
-    echo "Linked agent: ${PREFIX}--${agent_name}"
-  done
-fi
-```
-
-### Step 3: Complete
-
-Report linked skills/agents to user.
-
-## Output
-
-```yaml
-init_result:
-  status: success
-  module: {module-path}
-  skills_linked: [{list}]
-  agents_linked: [{list}]
-```
+Report the output to the user.
 
 ## Guardrails
 
 - **NEVER** delete existing symlinks from other modules
-- **ALWAYS** use `ln -sf` to safely overwrite if exists
+- Uses `ln -sf` to safely overwrite if exists
 
 ## Usage Examples
 
 ```
-/init-module arkraft/arkraft-agent-pm
-/init-module arkraft/arkraft-deploy
-/init-module modeling/alpha
+/ops-init-module arkraft/arkraft-agent-pm
+/ops-init-module arkraft/arkraft-deploy
+/ops-init-module schedule
 ```

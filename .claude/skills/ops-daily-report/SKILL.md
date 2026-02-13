@@ -62,7 +62,29 @@ Read vault/memory/YYYY-MM-DD.md
 If exists, extract Done/Decisions/Follow-up sections.
 If not, note "No memo recorded today."
 
-### Step 5: Generate Unified Report
+### Step 5: Taste Pattern Detection
+
+Scan recent memory files (last 7 days) for repeated review feedback patterns:
+
+```bash
+Glob vault/memory/202*.md
+```
+
+Look for recurring themes in Follow-up sections:
+- Same type of issue mentioned 3+ times → flag as **hook promotion candidate**
+- Same naming/structure correction repeated → flag as **lint rule candidate**
+
+Add a `## Promotion Candidates` section to the report if any detected:
+
+```markdown
+## Promotion Candidates
+- [ ] "{pattern}" seen {N} times → candidate for hook/lint enforcement
+```
+
+This creates a feedback loop: review taste → documented pattern → enforceable rule.
+
+### Step 6: Generate Unified Report
+
 
 Write to `vault/memory/report-YYYY-MM-DD.md`:
 
@@ -106,7 +128,7 @@ Rules:
 - Keep each item to one line
 - One report per day (overwrite if re-run same day)
 
-### Step 6: Display Report
+### Step 7: Display Report
 
 Read back the generated report and display to user.
 

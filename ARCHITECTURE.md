@@ -31,6 +31,19 @@ git clone <your-vault-repo> vault/
 - `05-Archive/` — Completed/inactive items
 - `memory/` — Session state, daily notes
 
+### Execution Plans (`vault/02-Projects/{project}/plans/`)
+
+Plans are first-class artifacts versioned alongside the project:
+
+```
+plans/
+├── active/       # In-progress plans with progress logs
+├── completed/    # Finished plans (moved from active/)
+└── debt.md       # Technical debt tracker
+```
+
+Agents check `active/` on session start to resume context without re-parsing memory.
+
 ## Component Relationships
 
 ```
@@ -111,22 +124,23 @@ Reviewer runs sequentially after workers complete.
 ```
 
 Modules live in `modules/{name}/`. Each has its own `.claude/` for domain-specific components.
+Modules can contain sub-modules (e.g., `modules/arkraft/arkraft-agent-alpha/workspace/.claude/`).
 Neuron-level components are for cross-module concerns only.
 
 ## Hook Flow
 
-| Event | Hook | Purpose |
-|-------|------|---------|
-| UserPromptSubmit | `enforce-claude-md.sh` | Intent-first reminder on every prompt |
-| SessionStart | env loader | Loads `.env.local` into session |
-| SessionEnd | `cleanup-modules.sh` | Removes module symlinks |
-| PreToolUse (Write/Edit) | `pre-validate.sh` | Pre-write validation |
-| PreToolUse (Write/Edit) | `validate-vault.sh` | Vault structure enforcement (block) |
-| PreToolUse (Write/Edit) | `validate-component.sh` | Agent/skill frontmatter enforcement (block) |
-| PreToolUse (Write) | `validate-linecount.sh` | 200-line .md warning (suggest) |
-| PreToolUse (AskUserQuestion) | `telegram-notify.sh` | Notify on questions |
-| PermissionRequest | `telegram-notify.sh` | Notify on permission requests |
-| Stop | `telegram-notify.sh` | Notify on stop |
+| Event | Hook | Purpose | Fires |
+|-------|------|---------|-------|
+| UserPromptSubmit | `enforce-claude-md.sh` | Intent-first reminder on every prompt | Always |
+| SessionStart | env loader | Loads `.env.local` into session | Always |
+| SessionEnd | `cleanup-modules.sh` | Removes module symlinks | Always |
+| PreToolUse (Write/Edit) | `pre-validate.sh` | Pre-write validation | On write/edit |
+| PreToolUse (Write/Edit) | `validate-vault.sh` | Vault structure enforcement (block) | On write/edit |
+| PreToolUse (Write/Edit) | `validate-component.sh` | Agent/skill frontmatter enforcement (block) | On write/edit |
+| PreToolUse (Write) | `validate-linecount.sh` | 200-line .md warning (suggest) | On write |
+| PreToolUse (AskUserQuestion) | `telegram-notify.sh` | Notify on questions | On question |
+| PermissionRequest | `telegram-notify.sh` | Notify on permission requests | On permission |
+| Stop | `telegram-notify.sh` | Notify on stop | On stop |
 
 ## Session Flow
 
@@ -149,3 +163,5 @@ Neuron-level components are for cross-module concerns only.
 | Hook configuration | `.claude/settings.json` |
 | Project knowledge | `vault/02-Projects/{project}/` |
 | Session memory | `vault/memory/` |
+| Hook tests | `tests/run.sh` (scenarios in `tests/scenarios/`) |
+| Module init test | `tests/test-module-init.sh` |

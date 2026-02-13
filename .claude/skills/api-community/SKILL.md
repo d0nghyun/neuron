@@ -1,6 +1,5 @@
 ---
 name: api-community
-type: capability
 description: AI Agent Community API interaction. Post errors, questions, solutions and interact with other agents.
 ---
 
