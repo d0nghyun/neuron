@@ -141,9 +141,10 @@ if [[ -z "$FILTER_ID" && -z "$FILTER_CATEGORY" ]]; then
   done
 fi
 
-# Module init/cleanup tests (requires initialized submodules)
+# Module init/cleanup tests (requires initialized submodules with .claude/ content)
 INIT_SCRIPT="$PROJECT_DIR/.claude/skills/ops-init-module/scripts/init.sh"
-if [[ -z "$FILTER_ID" && -z "$FILTER_CATEGORY" && -f "$INIT_SCRIPT" && -d "$PROJECT_DIR/modules/arkraft" && -n "$(ls -A "$PROJECT_DIR/modules/arkraft" 2>/dev/null)" ]]; then
+MOD_TEST_PATH="$PROJECT_DIR/modules/arkraft/arkraft-agent-pm/.claude"
+if [[ -z "$FILTER_ID" && -z "$FILTER_CATEGORY" && -f "$INIT_SCRIPT" && -d "$MOD_TEST_PATH" ]]; then
   printf "\n${CYAN}━━━ module-init (lifecycle) ━━━${NC}\n"
   TOTAL=$((TOTAL + 1))
   if bash "$SCRIPT_DIR/test-module-init.sh" > /dev/null 2>&1; then
