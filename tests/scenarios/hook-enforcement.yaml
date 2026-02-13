@@ -1,0 +1,374 @@
+category: hook-enforcement
+tier: T1
+
+scenarios:
+  # === validate-vault.sh (HK-01 ~ HK-10) ===
+
+  - id: HK-01
+    hook: validate-vault.sh
+    desc: Block vault depth > 3 levels
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/001-Sub/001-Deep/001-file.md"
+      content: "---\ntype: note\nname: test\n---"
+    expect:
+      decision: block
+      reason_contains: depth
+
+  - id: HK-02
+    hook: validate-vault.sh
+    desc: Block L1 folder without ##- prefix
+    input:
+      tool_name: Write
+      file_path: "/p/vault/BadArea/001-file.md"
+      content: "---\ntype: note\nname: test\n---"
+    expect:
+      decision: block
+      reason_contains: "L1"
+
+  - id: HK-03
+    hook: validate-vault.sh
+    desc: Block L2 folder without ###- prefix
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/bad/001-file.md"
+      content: "---\ntype: note\nname: test\n---"
+    expect:
+      decision: block
+      reason_contains: "L2"
+
+  - id: HK-04
+    hook: validate-vault.sh
+    desc: Block .md filename not matching ###-name.md
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/bad-name.md"
+      content: "---\ntype: note\nname: test\n---"
+    expect:
+      decision: block
+      reason_contains: "###-"
+
+  - id: HK-05
+    hook: validate-vault.sh
+    desc: Block write missing --- frontmatter
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/001-test.md"
+      content: "Hello world no frontmatter"
+    expect:
+      decision: block
+      reason_contains: frontmatter
+
+  - id: HK-06
+    hook: validate-vault.sh
+    desc: Block write missing type field
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/001-test.md"
+      content: "---\nname: test\n---"
+    expect:
+      decision: block
+      reason_contains: type
+
+  - id: HK-07
+    hook: validate-vault.sh
+    desc: Block write missing name field
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/001-test.md"
+      content: "---\ntype: note\n---"
+    expect:
+      decision: block
+      reason_contains: name
+
+  - id: HK-08
+    hook: validate-vault.sh
+    desc: Skip memory/ paths
+    input:
+      tool_name: Write
+      file_path: "/p/vault/memory/2024-01-01.md"
+      content: "anything"
+    expect:
+      decision: approve
+
+  - id: HK-09
+    hook: validate-vault.sh
+    desc: Skip non-vault paths
+    input:
+      tool_name: Write
+      file_path: "/p/src/main.py"
+      content: "anything"
+    expect:
+      decision: approve
+
+  - id: HK-10
+    hook: validate-vault.sh
+    desc: Approve valid vault file
+    input:
+      tool_name: Write
+      file_path: "/p/vault/01-Area/001-test.md"
+      content: "---\ntype: note\nname: test\n---\ncontent here"
+    expect:
+      decision: approve
+
+  - id: HK-09b
+    hook: validate-vault.sh
+    desc: Skip hidden _internal paths
+    input:
+      tool_name: Write
+      file_path: "/p/vault/_internal/config.md"
+      content: "anything"
+    expect:
+      decision: approve
+
+  - id: HK-09c
+    hook: validate-vault.sh
+    desc: Approve non-Write/Edit tool
+    input:
+      tool_name: Read
+      file_path: "/p/vault/01-Area/001-test.md"
+    expect:
+      decision: approve
+
+  # === validate-component.sh (HK-11 ~ HK-17) ===
+
+  - id: HK-11
+    hook: validate-component.sh
+    desc: Block agent with invalid prefix
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/agents/bad-agent.md"
+      content: "---\nname: t\ndescription: t\ntools: Read\nmodel: haiku\n---"
+    expect:
+      decision: block
+      reason_contains: prefix
+
+  - id: HK-12
+    hook: validate-component.sh
+    desc: Block agent missing frontmatter
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/agents/system-test.md"
+      content: "# No frontmatter agent"
+    expect:
+      decision: block
+      reason_contains: frontmatter
+
+  - id: HK-13
+    hook: validate-component.sh
+    desc: Block agent missing tools field
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/agents/system-test.md"
+      content: "---\nname: t\ndescription: t\nmodel: haiku\n---"
+    expect:
+      decision: block
+      reason_contains: tools
+
+  - id: HK-14
+    hook: validate-component.sh
+    desc: Block agent missing model field
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/agents/system-test.md"
+      content: "---\nname: t\ndescription: t\ntools: Read\n---"
+    expect:
+      decision: block
+      reason_contains: model
+
+  - id: HK-15
+    hook: validate-component.sh
+    desc: Block skill with invalid prefix
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/skills/bad-skill/SKILL.md"
+      content: "---\nname: t\ndescription: t\n---"
+    expect:
+      decision: block
+      reason_contains: prefix
+
+  - id: HK-16
+    hook: validate-component.sh
+    desc: Block skill missing name field
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/skills/ops-test/SKILL.md"
+      content: "---\ndescription: test skill\n---"
+    expect:
+      decision: block
+      reason_contains: name
+
+  - id: HK-16b
+    hook: validate-component.sh
+    desc: Block skill missing frontmatter
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/skills/ops-test/SKILL.md"
+      content: "# No frontmatter skill"
+    expect:
+      decision: block
+      reason_contains: frontmatter
+
+  - id: HK-17
+    hook: validate-component.sh
+    desc: Approve valid agent
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/agents/system-test.md"
+      content: "---\nname: Test Agent\ndescription: A test\ntools: Read, Grep\nmodel: haiku\n---\n# Purpose"
+    expect:
+      decision: approve
+
+  - id: HK-17b
+    hook: validate-component.sh
+    desc: Approve valid skill
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/skills/ops-test/SKILL.md"
+      content: "---\nname: Test Skill\ndescription: A test skill\n---\n# Steps"
+    expect:
+      decision: approve
+
+  - id: HK-17c
+    hook: validate-component.sh
+    desc: Approve README.md in agents (exempted)
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/agents/README.md"
+      content: "# Agents directory"
+    expect:
+      decision: approve
+
+  - id: HK-17d
+    hook: validate-component.sh
+    desc: Approve non-component path
+    input:
+      tool_name: Write
+      file_path: "/p/src/main.py"
+      content: "print('hello')"
+    expect:
+      decision: approve
+
+  # === validate-linecount.sh (HK-18 ~ HK-19) ===
+
+  - id: HK-18
+    hook: validate-linecount.sh
+    desc: Block 201-line content
+    input:
+      tool_name: Write
+      file_path: "/p/test.md"
+      content_lines: 201
+    expect:
+      decision: block
+      reason_contains: "200"
+
+  - id: HK-19
+    hook: validate-linecount.sh
+    desc: Approve 200-line content
+    input:
+      tool_name: Write
+      file_path: "/p/test.md"
+      content_lines: 200
+    expect:
+      decision: approve
+
+  - id: HK-18b
+    hook: validate-linecount.sh
+    desc: Block Edit that pushes .md over 200 lines
+    input:
+      tool_name: Edit
+      file_path: "${FIXTURES}/195-lines.md"
+      old_string: "line 5"
+      new_string: "line 5a\nline 5b\nline 5c\nline 5d\nline 5e\nline 5f\nline 5g\nline 5h\nline 5i\nline 5j"
+    expect:
+      decision: block
+      reason_contains: "200"
+
+  - id: HK-18c
+    hook: validate-linecount.sh
+    desc: Approve Edit that stays under 200 lines
+    input:
+      tool_name: Edit
+      file_path: "${FIXTURES}/195-lines.md"
+      old_string: "line 5"
+      new_string: "line 5a\nline 5b\nline 5c"
+    expect:
+      decision: approve
+
+  - id: HK-19b
+    hook: validate-linecount.sh
+    desc: Approve non-.md file
+    input:
+      tool_name: Write
+      file_path: "/p/src/main.py"
+      content: "anything"
+    expect:
+      decision: approve
+
+  - id: HK-19c
+    hook: validate-linecount.sh
+    desc: Approve non-Write/Edit tool
+    input:
+      tool_name: Read
+      file_path: "/p/test.md"
+    expect:
+      decision: approve
+
+  # === pre-validate.sh (HK-20 ~ HK-22) ===
+
+  - id: HK-20
+    hook: pre-validate.sh
+    desc: Block credentials file write
+    input:
+      tool_name: Write
+      file_path: "/p/.credentials/secret.json"
+    expect:
+      decision: block
+      reason_contains: credentials
+
+  - id: HK-21
+    hook: pre-validate.sh
+    desc: Warn on settings.json modification
+    input:
+      tool_name: Write
+      file_path: "/p/.claude/settings.json"
+    expect:
+      decision: approve
+      reason_contains: settings
+
+  - id: HK-22
+    hook: pre-validate.sh
+    desc: Warn on destructive bash command
+    input:
+      tool_name: Bash
+      command: "rm -rf /tmp/test"
+    expect:
+      decision: approve
+      reason_contains: destructive
+
+  - id: HK-22b
+    hook: pre-validate.sh
+    desc: Approve safe bash command
+    input:
+      tool_name: Bash
+      command: "ls -la"
+    expect:
+      decision: approve
+
+  - id: HK-22c
+    hook: pre-validate.sh
+    desc: Approve unrelated tool
+    input:
+      tool_name: Read
+      file_path: "/p/test.md"
+    expect:
+      decision: approve
+
+# === Intentionally Not Tested ===
+# validate-vault.sh Edit path (line 12): shares Write branch for naming/structure checks.
+#   Edit only skips frontmatter validation — no separate logic to test.
+# validate-component.sh Edit path (line 10): shares Write branch for prefix/naming checks.
+#   Edit only skips frontmatter validation — no separate logic to test.
+# validate-linecount.sh Edit on non-existent file (line 29): returns approve.
+#   Defensive guard only — Edit on non-existent file is impossible in practice.
+# pre-validate.sh Edit path: shares Write branch in case statement — identical logic.

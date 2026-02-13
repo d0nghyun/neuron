@@ -4,7 +4,8 @@ Reference pattern library for component generation.
 
 ## Before Creating
 
-**Check `ref-claude-code.md` first** to avoid reinventing built-in features.
+1. **Check `ref-claude-code.md` first** to avoid reinventing built-in features.
+2. **Check existing inventory** — if existing skills/agents cover the need, use them directly (DIRECT mode). Only create when no capability exists.
 
 ## Purpose
 
@@ -82,6 +83,7 @@ Components can live at **neuron level** or **module level**.
 - `ops-*`: Neuron factory operations (init-module, audit, release)
 - `api-*`: External API integrations
 - `workflow-*`: Multi-step processes (module-level)
+- `capability-*`: Standalone capabilities (no external dependency)
 
 **Knowledge** (in `vault/`):
 - Project-specific → `vault/02-Projects/{project}/`

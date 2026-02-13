@@ -1,117 +1,33 @@
 name: Structural Test
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.claude/**'
+      - 'tests/**'
   pull_request:
     branches: [main]
     paths:
       - '.claude/**'
+      - 'tests/**'
       - 'RULES.md'
       - 'CLAUDE.md'
       - 'ARCHITECTURE.md'
 
 jobs:
-  validate:
+  hook-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check file line limits
+      - name: Install yq
         run: |
-          failed=0
-          for f in $(find .claude -name '*.md' -not -path '*/node_modules/*'); do
-            lines=$(wc -l < "$f")
-            if [ "$lines" -gt 200 ]; then
-              echo "FAIL: $f has $lines lines (max 200)"
-              failed=1
-            fi
-          done
-          exit $failed
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
 
-      - name: Validate agent naming conventions
-        run: |
-          failed=0
-          for f in .claude/agents/*.md; do
-            [ -f "$f" ] || continue
-            base=$(basename "$f" .md)
-            [ "$base" = "README" ] && continue
-            if ! echo "$base" | grep -qE '^(system|feature-dev|code)-'; then
-              echo "FAIL: Agent '$base' has invalid prefix (must be system-*, feature-dev-*, code-*)"
-              failed=1
-            fi
-          done
-          exit $failed
+      - name: Run hook enforcement tests
+        run: bash tests/run.sh
 
-      - name: Validate skill naming conventions
-        run: |
-          failed=0
-          for d in .claude/skills/*/; do
-            [ -d "$d" ] || continue
-            name=$(basename "$d")
-            if ! echo "$name" | grep -qE '^(ops|api|workflow|capability)-'; then
-              echo "FAIL: Skill '$name' has invalid prefix (must be ops-*, api-*, workflow-*, capability-*)"
-              failed=1
-            fi
-          done
-          exit $failed
-
-      - name: Validate agent frontmatter
-        run: |
-          failed=0
-          for f in .claude/agents/*.md; do
-            [ -f "$f" ] || continue
-            [ "$(basename "$f")" = "README.md" ] && continue
-            first=$(head -1 "$f")
-            if [ "$first" != "---" ]; then
-              echo "FAIL: $f missing frontmatter (must start with ---)"
-              failed=1
-              continue
-            fi
-            fm=$(sed -n '2,/^---$/p' "$f" | sed '$d')
-            for field in name description tools model; do
-              if ! echo "$fm" | grep -q "^${field}:"; then
-                echo "FAIL: $f missing required field: $field"
-                failed=1
-              fi
-            done
-          done
-          exit $failed
-
-      - name: Validate skill frontmatter
-        run: |
-          failed=0
-          for f in .claude/skills/*/SKILL.md; do
-            [ -f "$f" ] || continue
-            first=$(head -1 "$f")
-            if [ "$first" != "---" ]; then
-              echo "FAIL: $f missing frontmatter (must start with ---)"
-              failed=1
-              continue
-            fi
-            fm=$(sed -n '2,/^---$/p' "$f" | sed '$d')
-            for field in name description; do
-              if ! echo "$fm" | grep -q "^${field}:"; then
-                echo "FAIL: $f missing required field: $field"
-                failed=1
-              fi
-            done
-          done
-          exit $failed
-
-      - name: Validate hook registrations
-        run: |
-          failed=0
-          for script in .claude/hooks/*.sh; do
-            [ -f "$script" ] || continue
-            base=$(basename "$script")
-            if ! grep -q "$base" .claude/settings.json; then
-              echo "WARN: $base exists but not registered in settings.json"
-            fi
-          done
-          # Extract script paths from hook commands (ignore arguments after .sh)
-          for ref in $(grep -oE 'hooks/[^"]+\.sh' .claude/settings.json | sort -u); do
-            if [ ! -f ".claude/$ref" ]; then
-              echo "FAIL: settings.json references .claude/$ref but file missing"
-              failed=1
-            fi
-          done
-          exit $failed
+      - name: Run structural integrity tests
+        run: bash tests/test-structural.sh

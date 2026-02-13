@@ -31,8 +31,8 @@ No rigid protocol. Assess each request:
 
 | Complexity | Approach | When |
 |------------|----------|------|
-| Trivial | Direct | Conversation, small edits, lookups |
-| Moderate | Delegate | Focused work → subagent |
+| Trivial | Direct | Conversation, small edits, lookups, existing skill execution |
+| Moderate | Delegate | Focused work → subagent (new artifact creation) |
 | Complex | Collaborate | Quality-critical → Worker + Reviewer loop |
 
 Load context on demand. Pull what you need when you need it.
@@ -47,6 +47,7 @@ Load context on demand. Pull what you need when you need it.
 | Module activation | `ops-init-module` skill |
 | Component audit | `system-reviewer` agent |
 | Scheduled maintenance | `CRON.md` |
+| Hook tests | `tests/run.sh` |
 
 ## Conventions
 

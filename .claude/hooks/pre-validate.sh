@@ -13,13 +13,13 @@ case "$tool_name" in
 
     # Block writes to credentials
     if [[ "$file_path" == *".credentials"* ]]; then
-      echo '{"decision": "block", "reason": "Cannot modify credentials files directly"}'
+      echo '{"decision": "block", "reason": "Cannot modify credentials files directly. Use environment variables in .env.local or the api-* skill pattern to manage secrets."}'
       exit 0
     fi
 
     # Warn on settings modification
     if [[ "$file_path" == *"settings.json"* ]]; then
-      echo '{"decision": "approve", "reason": "Modifying settings.json - verify hooks configuration"}'
+      echo '{"decision": "approve", "reason": "Modifying settings.json - verify hook entries have correct event, matcher, and command fields. See ARCHITECTURE.md § Hook Flow."}'
       exit 0
     fi
     ;;
@@ -29,15 +29,10 @@ case "$tool_name" in
 
     # Warn on force operations
     if echo "$command" | grep -qE 'rm -rf|--force|--hard|force push'; then
-      echo '{"decision": "approve", "reason": "Potentially destructive command detected"}'
+      echo '{"decision": "approve", "reason": "Potentially destructive command detected. Verify the target path is correct. Consider non-destructive alternatives or create a backup first."}'
       exit 0
     fi
 
-    # Warn on credential access
-    if echo "$command" | grep -qE '\.credentials|api.key|secret|token' | grep -qE 'cat|echo|print'; then
-      echo '{"decision": "approve", "reason": "Command may expose credentials"}'
-      exit 0
-    fi
     ;;
 esac
 
