@@ -16,7 +16,7 @@ Private data lives in `vault/` (see ARCHITECTURE.md).
 | 2 | **Simplicity** | Simple over complex. Build what's needed now. |
 | 3 | **Modularity** | Independent, replaceable components. |
 | 4 | **Verify** | Prove it works. Don't assume. |
-| 5 | **Autonomy** | Act first. Ask only when truly blocked. |
+| 5 | **Autonomy** | Research first, act, then ask. Exhaust vault/memory/codebase before asking. Only ask what you truly cannot find. |
 
 ## Structure
 

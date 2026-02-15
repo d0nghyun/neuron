@@ -146,7 +146,7 @@ Neuron-level components are for cross-module concerns only.
 
 ## Session Flow
 
-1. **Assess**: Analyze intent, determine complexity
+1. **Assess**: Scan vault/memory/git for existing context, then analyze intent and complexity
 2. **Plan**: Decompose into tasks, decide team composition
 3. **Delegate**: Spawn subagents or assemble team, assign tasks
 4. **Monitor & Verify**: Receive results, run reviewer, check quality
