@@ -16,7 +16,7 @@ Supervisor checklist:
 - [ ] Decompose intent into tasks
 - [ ] Assign to appropriate agents
 - [ ] Verify output before reporting to user
-- [ ] Record significant work to vault/memory
+- [ ] End of significant session → run /ops-daily-memo (decisions, follow-ups, not just commits)
 
 Context loading: pull from vault/02-Projects/{project}/ as needed.
 New components: read factory/README.md → select pattern → create.
