@@ -3,7 +3,7 @@
 Scheduled maintenance jobs. Reduces entropy over time.
 
 Trigger mechanism (crontab, GH Actions, etc.) is configured externally.
-Each job maps to an ops skill executed via `claude -p`.
+Each job maps to an ops skill executed via `claude -p --dangerously-skip-permissions`.
 
 ## Jobs
 
@@ -18,12 +18,13 @@ Each job maps to an ops skill executed via `claude -p`.
 ## Execution
 
 ```bash
-# Example crontab entries
+# Example crontab entries (--dangerously-skip-permissions for headless execution)
+DSP="--dangerously-skip-permissions"
 30 2 * * * cd ~/Git/personal/neuron && bash tests/run.sh
-0  3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-factory-sync"
-30 3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-vault-recap"
-45 3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-factory-sync --doc-gardening"
-0  4 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-daily-report"
+0  3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-factory-sync" $DSP
+30 3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-vault-recap" $DSP
+45 3 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-factory-sync --doc-gardening" $DSP
+0  4 * * * cd ~/Git/personal/neuron && claude -p "Run /ops-daily-report" $DSP
 ```
 
 ## Adding Jobs
