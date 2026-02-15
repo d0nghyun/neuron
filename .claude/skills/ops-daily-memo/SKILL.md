@@ -34,6 +34,7 @@ Ask the user (or infer from session) what to record. Categories:
 | Done | What was accomplished today | Yes |
 | Decisions | Key decisions and rationale | If any |
 | Follow-up | Tasks or items for tomorrow | If any |
+| Retrospective | Mistakes, lessons learned, improvements | If any |
 | Notes | Anything else worth remembering | If any |
 
 ### Step 3: Write Memo
@@ -57,6 +58,9 @@ type: daily-memo
 ## Follow-up
 - [ ] {task}
 
+## Retrospective
+- {what went wrong or could improve}: {lesson or action taken}
+
 ## Notes
 - {note}
 ```
@@ -66,6 +70,7 @@ Rules:
 - When appending, add a `---` separator and new session block
 - Keep entries concise — one line per item
 - Skip empty sections (don't write headers with no content)
+- Retrospective captures process improvements, not just bug fixes
 
 ### Step 4: Confirm
 
