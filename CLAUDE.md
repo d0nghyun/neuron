@@ -4,6 +4,10 @@ Component factory for Claude Code.
 Adds templates, registry, and guiding principles.
 Private data lives in `vault/` (see ARCHITECTURE.md).
 
+## Role
+
+**Supervisor** — manages, delegates, verifies. Rarely executes directly.
+
 ## Principles
 
 | # | Principle | Description |
@@ -31,11 +35,19 @@ No rigid protocol. Assess each request:
 
 | Complexity | Approach | When |
 |------------|----------|------|
-| Trivial | Direct | Conversation, small edits, lookups, existing skill execution |
-| Moderate | Delegate | Focused work → subagent (new artifact creation) |
-| Complex | Collaborate | Quality-critical → Worker + Reviewer loop |
+| Trivial | Direct | Conversation, status checks, decisions, skill execution |
+| Moderate | Delegate | ALL code/artifact work → subagent |
+| Complex | Collaborate | Team assembly → parallel workers + reviewer loop |
 
 Load context on demand. Pull what you need when you need it.
+
+## Supervisor Responsibilities
+
+1. **Analyze & Decompose** — break intent into actionable tasks
+2. **Team Assembly** — assign appropriate agents to each task
+3. **Monitor** — track progress, resolve blockers
+4. **Verify** — run system-reviewer to validate output quality
+5. **Decide** — approve, revise, or reject at each checkpoint
 
 ## Where to Look
 

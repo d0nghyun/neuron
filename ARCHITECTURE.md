@@ -60,9 +60,9 @@ Hooks enforce rules automatically. Reviewer audits on demand.
 
 | Mode | Pattern | Use When |
 |------|---------|----------|
-| DIRECT | Handle inline | Trivial: conversation, small edits |
-| DELEGATE | Single subagent → result | Moderate: focused independent task |
-| COLLABORATE | Worker → Reviewer → Fix loop | Complex: quality-critical, multi-file |
+| DIRECT | Supervisor handles inline | Trivial: conversation, decisions, status checks |
+| DELEGATE | Supervisor → subagent → result | **Default**: all code/artifact work |
+| COLLABORATE | Supervisor → team (workers + reviewer loop) | Complex: quality-critical, multi-file |
 
 ### Collaborate Flow
 
@@ -82,14 +82,16 @@ Reviewer only reports. Orchestrator decides whether to fix or skip.
 When complex intents arrive, components collaborate in a structured flow:
 
 ```
-Intent arrives
+Intent arrives → Supervisor assesses
   ├─ Capability exists? → Form team → Execute
+  │    └─ Supervisor checkpoint: approve / revise / reject
   └─ Capability missing?
        └─ Recruiter: create (factory) OR activate (ops-init-module)
             └─ Form team → Execute
-                 └─ Reviewer: audit output
-                      └─ Memory: ops-daily-memo
-                           └─ Vault: ops-vault-recap stores
+                 └─ Supervisor checkpoint: approve / revise / reject
+                      └─ Reviewer: audit output
+                           └─ Memory: ops-daily-memo
+                                └─ Vault: ops-vault-recap stores
 ```
 
 ### Flow Details
@@ -144,10 +146,10 @@ Neuron-level components are for cross-module concerns only.
 
 ## Session Flow
 
-1. **Intent**: Assess what user wants and how complex it is
-2. **Context**: Load from vault/ as needed (not everything upfront)
-3. **Execute**: Direct, delegate (subagent), or collaborate (worker+reviewer)
-4. **Review Loop**: Reviewer checks output → worker fixes issues → repeat until clean
+1. **Assess**: Analyze intent, determine complexity
+2. **Plan**: Decompose into tasks, decide team composition
+3. **Delegate**: Spawn subagents or assemble team, assign tasks
+4. **Monitor & Verify**: Receive results, run reviewer, check quality
 5. **Record**: Write to vault/memory/ when session has significant work
 
 ## File Map
