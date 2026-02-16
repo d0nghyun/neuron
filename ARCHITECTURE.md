@@ -18,9 +18,9 @@ git clone <your-vault-repo> vault/
 ## What Lives Where
 
 ### Neuron (`.claude/`)
-- `agents/` — Judgment components (system-level only)
-- `skills/` — Execution components (workflows, APIs)
-- `factory/` — Patterns for component creation
+- `agents/` — Identity + judgment (system-level only)
+- `skills/` — Tool knowledge, API wrappers, workflows
+- `factory/` — Patterns for component creation (incl. team blueprint)
 - `hooks/` — Event triggers and enforcement scripts
 
 ### Vault (`vault/`)
@@ -51,6 +51,13 @@ factory/         creates →  agents/, skills/
 hooks/           enforces →  RULES.md compliance
 system-reviewer  audits  →  all components
 system-recruiter creates →  new components via factory patterns
+```
+
+```
+MECE Component Model:
+  Skill (how to use)  →  preloaded by →  Agent (who + why)
+  Agent (role)        →  composed in  →  Team (org structure)
+  Team (blueprint)    →  read by      →  Orchestrator (executes)
 ```
 
 Factory provides patterns. Recruiter uses them to generate components.
@@ -114,6 +121,8 @@ Intent arrives → Supervisor assesses
 
 ### Team Assembly
 
+Team composition lives in the orchestrator agent's CLAUDE.md.
+See `.claude/factory/pattern-team.md` for the blueprint structure.
 Workers run as Task tool subagents. Independent tasks run in parallel.
 Reviewer runs sequentially after workers complete.
 
@@ -126,7 +135,7 @@ Reviewer runs sequentially after workers complete.
 ```
 
 Modules live in `modules/{name}/`. Each has its own `.claude/` for domain-specific components.
-Modules can contain sub-modules (e.g., `modules/arkraft/arkraft-agent-alpha/workspace/.claude/`).
+Modules can contain sub-modules (e.g., `modules/{name}/{name}-{submodule}/workspace/.claude/`).
 Neuron-level components are for cross-module concerns only.
 
 ## Hook Flow
@@ -162,6 +171,7 @@ Neuron-level components are for cross-module concerns only.
 | Component creation | `.claude/factory/README.md` |
 | Agent pattern | `.claude/factory/pattern-agent.md` |
 | Skill pattern | `.claude/factory/pattern-skill.md` |
+| Team blueprint pattern | `.claude/factory/pattern-team.md` |
 | Hook configuration | `.claude/settings.json` |
 | Project knowledge | `vault/02-Projects/{project}/` |
 | Session memory | `vault/memory/` |

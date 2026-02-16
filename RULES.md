@@ -11,7 +11,12 @@ Enforcement rules for all components. Read before creating or modifying any comp
 
 **Skills** (`.claude/skills/{type}-{name}/`):
 - Must contain `SKILL.md` with clear steps
-- API skills: `api-*` | Workflow skills: `workflow-*` | Capability skills: `capability-*`
+- Types per factory README naming conventions
+
+**Teams** (in orchestrator's CLAUDE.md or agent definition):
+- Must define orchestrator + members (by agent name reference)
+- Must define phases with clear handoff artifacts
+- Composition only — no tool how-to (→ Skill) or judgment logic (→ Agent)
 
 **Hooks** (`.claude/hooks/`):
 - Must be registered in `.claude/settings.json`
@@ -29,12 +34,22 @@ See `.claude/factory/README.md` § Naming Conventions for full patterns.
 
 Do not duplicate naming rules here. Factory README is the single source.
 
+## MECE Boundary Rules
+
+Each component type has exclusive responsibility. No overlap.
+
+| Component | Contains | Does NOT Contain |
+|-----------|----------|------------------|
+| Skill | Tool how-to, best practices, gotchas | Judgment, mental model, team structure |
+| Agent | Identity, mental model, judgment criteria | Tool usage details, team composition |
+| Team (in orchestrator) | Members, phases, routing | Individual agent logic, tool details |
+
 ## Dependency Rules
 
 | Level | Allowed Components |
 |-------|-------------------|
 | neuron (`.claude/`) | Factory agents only (`system-*`, patterns, hooks) |
-| module (`modules/{name}/.claude/`) | Worker agents, domain skills |
+| module (`modules/{name}/.claude/`) | Worker agents, domain skills, team blueprints |
 
 Start at module level. Promote to neuron only when used by multiple modules.
 

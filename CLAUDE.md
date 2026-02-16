@@ -22,9 +22,9 @@ Private data lives in `vault/` (see ARCHITECTURE.md).
 
 ```
 .claude/
-├─ agents/       # Judgment components (self-describing)
-├─ skills/       # Execution components (self-describing)
-├─ factory/      # Templates for component creation
+├─ agents/       # Identity + judgment (system-level; domain agents in modules)
+├─ skills/       # Tool how-to: API wrappers, domain knowledge, workflows (SSOT)
+├─ factory/      # Patterns for component creation (incl. team blueprint)
 ├─ hooks/        # Event triggers
 vault/            # Private: identity, projects, memory (gitignored)
 ```
@@ -44,10 +44,15 @@ Load context on demand. Pull what you need when you need it.
 ## Supervisor Responsibilities
 
 1. **Analyze & Decompose** — break intent into actionable tasks
-2. **Team Assembly** — assign appropriate agents to each task
+2. **Compose** — assemble the right skills, agents, and team structure:
+   - **Skill** = tool how-to (SSOT). Reuse existing, never duplicate.
+   - **Agent** = identity + mental model + judgment. References skills by name.
+   - **Team** = orchestrator CLAUDE.md defines roles, phases, routing.
+   - Missing component? → recruit via factory pattern.
 3. **Monitor** — track progress, resolve blockers
 4. **Verify** — run system-reviewer to validate output quality
-5. **Decide** — approve, revise, or reject at each checkpoint
+5. **Retrospect** — after Moderate+ tasks, run `ops-retrospect` to review decision paths
+6. **Decide** — approve, revise, or reject at each checkpoint
 
 ## Where to Look
 
@@ -58,6 +63,8 @@ Load context on demand. Pull what you need when you need it.
 | New component | `.claude/factory/README.md` |
 | Module activation | `ops-init-module` skill |
 | Component audit | `system-reviewer` agent |
+| Team blueprint pattern | `.claude/factory/pattern-team.md` |
+| Decision path review | `ops-retrospect` skill |
 | Scheduled maintenance | `CRON.md` |
 | Hook tests | `tests/run.sh` |
 

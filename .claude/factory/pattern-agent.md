@@ -1,6 +1,6 @@
 # Agent Pattern
 
-Reference pattern for creating agents. Combines task-oriented and role-based approaches.
+Reference pattern for creating agents. Two types: task-oriented (do X) and role-oriented (be X).
 
 ## Frontmatter (Required)
 
@@ -42,6 +42,19 @@ The skill content is injected into the agent's context at startup.
 
 {2-3 sentences explaining what this agent does and when to use it}
 
+## Mental Model (Required for role-oriented agents)
+
+Identity and judgment framework. This is what makes an agent more than a script.
+
+- **Identity**: Who am I? What is my raison d'etre?
+- **Principles**: What do I believe about my domain?
+- **Judgment**: How do I decide? What thresholds do I use?
+
+Example:
+> I am a {role}. I believe {core principle}.
+> If {primary condition} is met, I proceed.
+> {Guiding philosophy for edge-case decisions}.
+
 ## Input Specification
 
 ```yaml
@@ -50,39 +63,19 @@ input:
     - name: "{param}"
       type: "{type}"
       description: "{description}"
-  optional:
-    - name: "{param}"
-      type: "{type}"
-      default: "{default}"
 ```
 
 ## Execution Steps
 
 ### Step 1: {Action Name}
-
-{Description of what to do}
-
-### Step 2: {Action Name}
-
 {Description of what to do}
 
 ### Step N: Generate Output
-
-Output format:
-
 ```yaml
 {name}_result:
   status: success | failed
   {output_fields}
-  metadata:
-    timestamp: {ISO 8601}
 ```
-
-## Success Criteria
-
-| Criterion | Validation |
-|-----------|------------|
-| {criterion} | {how to verify} |
 
 ## Guardrails
 
@@ -92,106 +85,83 @@ Output format:
 - **ALWAYS** reference "see CLAUDE.md" when mentioning principles
 ```
 
+## MECE Boundary
+
+| Concern | Lives In | NOT in Agent |
+|---------|----------|--------------|
+| How to use tools | Skill | Agent |
+| How to think/judge | Agent (mental_model) | - |
+| Team composition | Orchestrator CLAUDE.md | Agent |
+
+Agent = **identity + judgment**. It references skills by name, never duplicates tool how-to.
+
 ## Examples
 
-### Task-Oriented Agent (specific operation)
+### Task-Oriented Agent (no mental model needed)
 
 ```markdown
 ---
-name: build-validator
-description: Validates build output before deployment
+name: {task-name}
+description: {Specific operation to perform}
 tools: Bash, Read, Glob
 model: haiku
 permissionMode: bypassPermissions
-quality_grade: A
-quality_checked: 2026-02-13
 ---
 
-# Build Validator Agent
+# {Task Name} Agent
 
-Validates build artifacts meet deployment requirements.
+{What this task validates/produces.}
 
 ## Execution Steps
-
-### Step 1: Check Build Exists
-```bash
-ls -la dist/
+### Step 1: {Check preconditions}
+### Step 2: {Execute core operation}
+### Step 3: {Return result with status}
 ```
 
-### Step 2: Validate Bundle Size
-```bash
-du -sh dist/
-# Must be < 5MB
-```
-
-### Step 3: Return Result
-```yaml
-build_validator_result:
-  status: success
-  bundle_size: "2.3MB"
-  files_count: 15
-```
-```
-
-### Role-Oriented Agent (with skill preloading)
+### Role-Oriented Agent (with mental model + skills)
 
 ```markdown
 ---
-name: api-developer
-description: Implement API endpoints following team conventions
+name: {role-name}
+description: {domain role}
 tools: Read, Write, Edit, Bash
 skills:
-  - api-github
-model: sonnet
-permissionMode: bypassPermissions
-quality_grade: B
-quality_checked: 2026-02-13
+  - {domain-skill}
+model: opus
 ---
 
-# API Developer Agent
+# {Role Name} Agent
 
-Implements API endpoints using preloaded skill knowledge.
+{Purpose in domain context.}
+
+## Mental Model
+
+- **Identity**: {Who am I? Raison d'etre}
+- **Principles**: {Domain beliefs that guide decisions}
+- **Judgment**: {Thresholds for proceed/stop/escalate}
 
 ## Execution Steps
-
-### Step 1: Apply Skill Knowledge
-Use preloaded api-github skill for authentication, rate limits, etc.
-
-### Step 2: Implement Endpoint
-Follow patterns from preloaded skill.
-
-### Step 3: Return Result
-```yaml
-api_developer_result:
-  status: success
-  endpoint: "{created endpoint}"
+### Step 1: {Read inputs}
+### Step 2: {Execute using preloaded skills}
+### Step 3: {Produce output artifacts}
 ```
 ```
 
-## Reference Pattern (SSOT Enforcement)
+## SSOT Enforcement
 
-Agents MUST reference external sources, never hardcode duplicated content.
+Agents reference, never hardcode. Tool how-to lives in Skills, not in Agent.
 
-| Content Type | Reference To |
-|--------------|--------------|
+| Content | Source |
+|---------|--------|
 | Principles | `CLAUDE.md` |
-| Naming rules | `factory/README.md` |
-| Quality grades | `factory/README.md` § Quality Grades |
-| Domain knowledge | `vault/` or `skills/` |
+| Tool usage | `skills/{name}` (preloaded) |
+| Team structure | Orchestrator's CLAUDE.md |
+| Domain knowledge | `vault/` |
 
-```markdown
-✗ Bad (hardcoded):
-| Model | When |
-| haiku | simple tasks |
+## Checklist
 
-✓ Good (reference):
-**See**: `CLAUDE.md` for principles.
-```
-
-## Checklist Before Creating
-
-- [ ] Does this agent already exist? (check agents/)
-- [ ] Is this judgment-based? (if not, consider Skill)
-- [ ] Is the scope well-defined?
-- [ ] Are success criteria measurable?
-- [ ] Does agent reference instead of copying? (SSOT)
+- [ ] Agent already exists? (check agents/)
+- [ ] Judgment-based? (if not → Skill)
+- [ ] Role-oriented? → mental_model section required
+- [ ] Skills referenced by name, not duplicated?
+- [ ] No team composition logic? (that belongs in Team Blueprint)

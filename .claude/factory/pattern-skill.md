@@ -1,6 +1,6 @@
 # Skill Pattern
 
-Reference pattern for creating skills (API wrappers and workflows).
+Reference pattern for creating skills (API wrappers, domain knowledge, and workflows).
 
 ## Frontmatter (Required)
 
@@ -117,76 +117,47 @@ workflow_result:
 - **ALWAYS** {required action}
 ```
 
+## MECE Boundary
+
+| Concern | Lives In | NOT in Skill |
+|---------|----------|--------------|
+| How to use tools | Skill | - |
+| How to think/judge | Agent (mental_model) | Skill |
+| Team composition | Orchestrator CLAUDE.md | Skill |
+
 ## Examples
 
-### API Skill
+### Domain Skill (preloaded by agents)
 
 ```markdown
 ---
-name: api-github
-description: GitHub REST API for issues, PRs, repos
-allowed-tools: Bash, Read, Grep
-user-invocable: true
-quality_grade: A
-quality_checked: 2026-02-13
+name: domain-{tool-name}
+description: {Tool/platform} usage patterns
+user-invocable: false
 ---
-
-# GitHub API Skill
-
-> API wrapper for GitHub. Activate for GitHub operations.
-
-## When to Activate
-- User mentions GitHub issues, PRs, repos
-
-## Authentication
-**Credentials File**: `.credentials/github.json`
-
-## Common Operations
-### List Issues
-```bash
-gh issue list --repo {owner}/{repo}
+# {Tool Name} Skill
+## Interface
+{Core API patterns with code examples}
+## Best Practices
+- {Proven pattern}
+## Gotchas
+- {Common mistake} → {How to avoid}
+## Know-how
+- {Expert tip from experience}
 ```
 
-### Create PR
-```bash
-gh pr create --title "{title}" --body "{body}"
-```
-```
+### API Skill (`api-*`, user-invocable)
 
-### Workflow Skill
+See existing `api-github`, `api-slack` for reference.
 
-```markdown
----
-name: workflow-pr
-description: Create PR with automated review
-allowed-tools: Bash, Read, Glob, Task
-user-invocable: true
-quality_grade: B
-quality_checked: 2026-02-13
----
+### Workflow Skill (`workflow-*`, user-invocable)
 
-# PR Workflow Skill
+See existing `ops-daily-memo` for reference.
 
-> Create PR from current changes with automated review.
+## Checklist
 
-## Workflow Steps
-### Step 1: Stage Changes
-```bash
-git add -A && git status
-```
-### Step 2: Create Commit
-Follow commit conventions.
-### Step 3: Push & Create PR
-```bash
-git push -u origin {branch} && gh pr create
-```
-### Step 4: Run Reviewer
-Invoke reviewer subagent for automated review.
-```
-
-## Checklist Before Creating
-
-- [ ] Does this skill already exist? (check skills/)
-- [ ] For API: Is authentication documented?
-- [ ] For workflow: Are prerequisites clear?
-- [ ] Is user-invocable correctly set?
+- [ ] Skill already exists? (check skills/)
+- [ ] Domain skill → `user-invocable: false`, preloaded by agents
+- [ ] API skill → authentication documented?
+- [ ] Workflow skill → prerequisites clear?
+- [ ] Contains NO judgment or mental model? (that belongs in Agent)

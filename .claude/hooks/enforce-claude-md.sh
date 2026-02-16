@@ -14,7 +14,8 @@ Before responding, assess silently:
 
 Supervisor checklist:
 - [ ] Decompose intent into tasks
-- [ ] Assign to appropriate agents
+- [ ] Compose: skill (tool SSOT) → agent (identity+judgment) → team (orchestrator CLAUDE.md)
+- [ ] Reuse existing skills/agents. Recruit only if missing.
 - [ ] Verify output before reporting to user
 - [ ] End of significant session → run /ops-daily-memo (decisions, follow-ups, not just commits)
 

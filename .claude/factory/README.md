@@ -18,21 +18,25 @@ Analyze the request to determine the required component type:
 
 | Need | Component Type | Pattern |
 |------|----------------|---------|
-| Judgment/reasoning/review | Agent | pattern-agent.md |
+| Judgment/reasoning/role identity | Agent | pattern-agent.md |
+| Tool usage knowledge (SSOT) | Skill (domain-*) | pattern-skill.md |
 | External API call | Skill (api-*) | pattern-skill.md |
 | Multi-step process | Skill (workflow-*) | pattern-skill.md |
 | Neuron factory operation | Skill (ops-*) | pattern-skill.md |
+| Multi-agent collaboration | Team Blueprint | pattern-team.md |
 | Automatic trigger | Hook | pattern-hook.md |
 | Reference docs/guides/lessons | Knowledge | pattern-knowledge.md |
 
 ## Decision Tree
 
 ```
+Multiple agents collaborating? → Team Blueprint
+Judgment/identity needed? → Agent
+Tool how-to / best practices? → Skill (domain-*)
 External service integration? → Skill (api-*)
-Judgment needed? → Agent
-Automatic execution? → Hook
 Neuron factory operation? → Skill (ops-*)
 Multi-step process? → Skill (workflow-*)
+Automatic execution? → Hook
 Document for reference? → Knowledge
 ```
 
@@ -67,23 +71,26 @@ Components can live at **neuron level** or **module level**.
 
 | Pattern | Location | Creates |
 |---------|----------|---------|
-| pattern-agent.md | agents/ | Judgment components |
-| pattern-skill.md | skills/ | API wrappers, workflows |
+| pattern-agent.md | agents/ | Role identity + judgment |
+| pattern-skill.md | skills/ | Tool knowledge, API wrappers, workflows |
+| pattern-team.md | orchestrator CLAUDE.md | Multi-agent collaboration blueprints |
 | pattern-hook.md | settings.json | Automatic triggers |
 | pattern-knowledge.md | vault/ | Reference docs, guides |
 
 ## Naming Conventions
 
 **Agents**: `{type}-{name}.md`
-- `system-*`: Core system agents (recruiter)
-- `feature-dev-*`: Feature development agents
-- `code-*`: Code-related agents
+- `system-*`: Core system agents (recruiter, reviewer)
+- `{domain}-*`: Domain worker agents
 
 **Skills**: `{type}-{name}/SKILL.md`
-- `ops-*`: Neuron factory operations (init-module, audit, release)
+- `domain-*`: Tool/platform knowledge (SSOT, preloaded by agents)
 - `api-*`: External API integrations
-- `workflow-*`: Multi-step processes (module-level)
+- `ops-*`: Neuron factory operations (init-module, audit, release)
+- `workflow-*`: Multi-step processes
 - `capability-*`: Standalone capabilities (no external dependency)
+
+**Team Blueprints**: See `pattern-team.md` for structuring orchestrator agents with team composition
 
 **Knowledge** (in `vault/`):
 - Project-specific → `vault/02-Projects/{project}/`
