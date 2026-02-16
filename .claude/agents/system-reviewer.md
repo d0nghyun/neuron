@@ -1,9 +1,11 @@
 ---
 name: system-reviewer
-description: Reviews components for factory pattern compliance, SSOT, and naming conventions.
+description: Reviews components for factory pattern compliance, SSOT, MECE, and naming conventions.
 tools: Read, Glob, Grep
 model: opus
 permissionMode: bypassPermissions
+quality_grade: B
+quality_checked: 2026-02-16
 ---
 
 # Reviewer Agent

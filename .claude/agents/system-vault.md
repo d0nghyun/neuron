@@ -4,6 +4,8 @@ description: Manages vault lifecycle — initialization, health audit, and conte
 tools: Read, Write, Glob, Grep, Bash
 model: opus
 permissionMode: bypassPermissions
+quality_grade: B
+quality_checked: 2026-02-16
 ---
 
 # Vault Agent
