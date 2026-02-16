@@ -50,6 +50,7 @@ Read RULES.md                          # Enforcement rules
 Read .claude/factory/README.md        # Naming, location rules
 Read .claude/factory/pattern-agent.md  # Agent structure (if reviewing agent)
 Read .claude/factory/pattern-skill.md  # Skill structure (if reviewing skill)
+Read .claude/factory/pattern-team.md   # Team blueprint (if reviewing orchestrator)
 ```
 
 ### Step 2: Check Structure
@@ -70,6 +71,15 @@ Scan for violations:
 - Duplicated domain knowledge (should reference vault/ or skills/)
 - Copied naming rules (should reference factory/README.md)
 ```
+
+### Step 3b: Check MECE Boundary (see RULES.md § MECE)
+
+| Violation | Where to look |
+|-----------|---------------|
+| Skill contains judgment/mental model | Should be in Agent |
+| Agent duplicates tool how-to | Should be in Skill (preloaded) |
+| Agent contains team routing logic | Should be in orchestrator CLAUDE.md |
+| Factory pattern has domain-specific examples | Must use placeholders only |
 
 ### Step 4: Check Naming Convention
 
@@ -94,6 +104,7 @@ review_result:
   checks:
     structure: pass | fail
     ssot: pass | fail
+    mece: pass | fail
     naming: pass | fail
     file_size: pass | fail
   issues:
