@@ -1,9 +1,6 @@
 [submodule "modules/arkraft/pm-arkraft"]
 	path = modules/arkraft/arkraft-agent-pm
 	url = https://github.com/Quantit-Github/arkraft-agent-pm.git
-[submodule "modules/arkraft/arkraft-jupyter"]
-	path = modules/arkraft/arkraft-jupyter
-	url = git@github.com:Quantit-Github/arkraft-jupyter.git
 [submodule "modules/arkraft/arkraft-agent-report"]
 	path = modules/arkraft/arkraft-agent-report
 	url = git@github.com:Quantit-Github/arkraft-agent-report.git
@@ -49,3 +46,9 @@
 [submodule "modules/arkraft/arkraft-api"]
 	path = modules/arkraft/arkraft-api
 	url = git@github.com:Quantit-Github/arkraft-api.git
+[submodule "modules/arkraft/arkraft-agent-plugin"]
+	path = modules/arkraft-agent/arkraft-agent-plugin
+	url = https://github.com/Quantit-Github/arkraft-agent-plugin.git
+[submodule "modules/arkraft/arkraft-agent-sdk"]
+	path = modules/arkraft-agent/arkraft-agent-sdk
+	url = https://github.com/Quantit-Github/arkraft-agent-sdk.git
