@@ -58,3 +58,6 @@
 [submodule "modules/arkraft-agent/arkraft-agent-template"]
 	path = modules/arkraft-agent/arkraft-agent-template
 	url = https://github.com/Quantit-Github/arkraft-agent-template.git
+[submodule "modules/arkraft/arkraft-agent-data"]
+	path = modules/arkraft/arkraft-agent-data
+	url = git@github.com:Quantit-Github/arkraft-agent-data.git
