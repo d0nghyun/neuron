@@ -16,6 +16,10 @@
 # Task handoff (session-specific)
 .claude/tasks/
 
+# Work tracking (session-specific)
+PLAN.md
+PROGRESS.md
+
 # Python cache
 .mypy_cache/
 

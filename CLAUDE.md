@@ -54,6 +54,15 @@ Load context on demand. Pull what you need when you need it.
 5. **Retrospect** — after Moderate+ tasks, run `ops-retrospect` to review decision paths
 6. **Decide** — approve, revise, or reject at each checkpoint
 
+## Work Tracking
+
+Always track non-trivial work via root `PLAN.md` and `PROGRESS.md` (gitignored).
+
+1. **Start** — read both files. Resume unfinished work if any
+2. **Plan** — write goal, tasks, assignments to `PLAN.md`
+3. **Track** — update `PROGRESS.md` as work progresses
+4. **Close** — reset both to `No active plan/work`. If plan was large, archive to `vault/memory/` and leave path reference in `PLAN.md`
+
 ## Where to Look
 
 | Need | Read |
