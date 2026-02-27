@@ -1,184 +1,180 @@
 #!/bin/bash
 
-# Claude Code Hook - Telegram Notification
-# Usage: telegram-notify.sh [stop|question]
-# Required env vars: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+# Claude Code Hook - Telegram + OpenClaw Notification
+# Usage: telegram-notify.sh [stop|question|permission|subagent-stop|notification]
+# Env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, CLAWDBOT_WAKE
 
 MODE="${1:-stop}"
-
-# Debug log
 echo "[$(date)] Hook started (mode: $MODE)" >> /tmp/telegram-hook-debug.log
 
-# Load .env.local if exists (for Claude subprocesses)
+# Load .env.local
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 [[ -f "$PROJECT_ROOT/.env.local" ]] && source "$PROJECT_ROOT/.env.local"
 
 # Skip if env vars not set
-[[ -z "$TELEGRAM_BOT_TOKEN" || -z "$TELEGRAM_CHAT_ID" ]] && { echo "[$(date)] Missing env vars" >> /tmp/telegram-hook-debug.log; exit 0; }
+[[ -z "$TELEGRAM_BOT_TOKEN" || -z "$TELEGRAM_CHAT_ID" ]] && exit 0
 
 # Read hook input from stdin
 input=$(cat)
 
-# Extract fields from hook input
+# Extract fields
 session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
 transcript_path=$(echo "$input" | jq -r '.transcript_path // empty' 2>/dev/null)
 tool_input=$(echo "$input" | jq -r '.tool_input // empty' 2>/dev/null)
 
-# Get project info
+# Short session ID (first 8 chars)
+short_id="${session_id:0:8}"
+
+# Project info
 project_name=$(basename "$(pwd)")
 branch=$(git branch --show-current 2>/dev/null || echo "-")
 
-# Session emoji based on session_id hash (for visual distinction)
-get_session_emoji() {
+# ── Session identity (stable per tmux session name) ──
+IDENTITY_MAP_FILE="${PROJECT_ROOT}/.claude/hooks/seafood-map.json"
+
+get_identity() {
     local sid="$1"
-    local emojis=("🔵" "🟢" "🟠" "🟣" "🔴" "🟡" "⚪" "🟤")
+    # 1) Try tmux session name → fixed mapping
+    local tmux_name=""
+    tmux_name=$(tmux display-message -p '#S' 2>/dev/null || echo "")
+    if [[ -n "$tmux_name" && -f "$IDENTITY_MAP_FILE" ]]; then
+        local mapped
+        mapped=$(jq -r --arg k "$tmux_name" '.[$k] // empty' "$IDENTITY_MAP_FILE" 2>/dev/null)
+        if [[ -n "$mapped" ]]; then
+            echo "$mapped"
+            return
+        fi
+    fi
+    # 2) Fallback: hash-based
+    local names=("🦐새우맨" "🐙문어맨" "🦀게맨" "🐚조개맨" "🦈상어맨" "🐡복어맨" "🦞랍스터맨" "🐳고래맨" "🦭물범맨" "🐬돌고래맨" "🪼해파리맨" "🐠열대어맨")
     if [[ -n "$sid" ]]; then
-        # Simple hash: sum of ASCII values mod emoji count
         local hash=0
         for ((i=0; i<${#sid}; i++)); do
             hash=$((hash + $(printf '%d' "'${sid:$i:1}")))
         done
-        echo "${emojis[$((hash % ${#emojis[@]}))]}"
+        echo "${names[$((hash % ${#names[@]}))]}"
     else
-        echo "⚪"
+        echo "🐟물고기맨"
     fi
 }
 
-# Extract first user question keyword for context
-get_task_keyword() {
-    local transcript="$1"
-    if [[ -n "$transcript" && -f "$transcript" ]]; then
-        # Get FIRST user message (not last) for task context
-        local first_q=$(grep '"type":"user"' "$transcript" | \
-            grep -v '"tool_use_id"' | \
-            grep -v '"tooluseid"' | \
-            head -1 | \
-            jq -r '.message.content // empty' 2>/dev/null)
-        # Clean and extract first meaningful words (Korean/English)
-        first_q=$(echo "$first_q" | sed 's/<[^>]*>//g' | tr -d '`*_[]#\n' | sed 's/  */ /g')
-        # Take first 15 chars as keyword
-        echo "$first_q" | cut -c1-15 | sed 's/ *$//'
-    fi
-}
-
-session_emoji=$(get_session_emoji "$session_id")
-task_keyword=$(get_task_keyword "$transcript_path")
-
-# Clean text for Telegram (remove markdown, XML tags, limit length)
-clean_text() {
-    local text="$1"
-
-    # If contains <command-name>, extract just the command
+# ── Clean text (strip markdown/XML, truncate) ──
+clean() {
+    local text="$1" max="${2:-150}"
     if echo "$text" | grep -q '<command-name>'; then
         text=$(echo "$text" | sed -n 's/.*<command-name>\([^<]*\)<\/command-name>.*/\1/p')
     fi
-
-    echo "$text" | \
-        sed 's/<[^>]*>//g' | \
-        tr -d '`*_[]#' | \
-        tr '\n' ' ' | \
-        sed 's/  */ /g'
+    echo "$text" | sed 's/<[^>]*>//g' | tr -d '`*_[]#' | tr '\n' ' ' | sed 's/  */ /g' | cut -c1-"$max"
 }
 
-# Build message based on mode
-if [[ "$MODE" == "question" ]]; then
-    # Extract question from AskUserQuestion tool input
-    questions=$(echo "$tool_input" | jq -r '.questions[]?.question // empty' 2>/dev/null | head -3)
-    questions=$(clean_text "$questions" | cut -c1-200)
+# ── Extract transcript info ──
+get_last_question() {
+    [[ -z "$transcript_path" || ! -f "$transcript_path" ]] && return
+    grep '"type":"user"' "$transcript_path" | grep -v '"tool_use_id"' | grep -v '"tooluseid"' | tail -1 | \
+        jq -r '.message.content // empty' 2>/dev/null
+}
 
-    # Build header with emoji and task keyword
-    header="${session_emoji} [${project_name}] ${branch}"
-    [[ -n "$task_keyword" ]] && header="${header} | ${task_keyword}"
+get_first_question() {
+    [[ -z "$transcript_path" || ! -f "$transcript_path" ]] && return
+    grep '"type":"user"' "$transcript_path" | grep -v '"tool_use_id"' | grep -v '"tooluseid"' | head -1 | \
+        jq -r '.message.content // empty' 2>/dev/null
+}
 
-    message="❓ ${header}
+get_last_answer() {
+    [[ -z "$transcript_path" || ! -f "$transcript_path" ]] && return
+    grep '"type":"assistant"' "$transcript_path" | tail -1 | \
+        jq -r '.message.content[]? | select(.type=="text") | .text' 2>/dev/null
+}
 
-${questions:-Claude has a question}"
+identity=$(get_identity "$session_id")
 
-elif [[ "$MODE" == "permission" ]]; then
-    # Extract permission request info
-    tool_name=$(echo "$input" | jq -r '.tool_name // empty' 2>/dev/null)
-    notification_msg=$(echo "$input" | jq -r '.message // empty' 2>/dev/null)
-    notification_msg=$(clean_text "$notification_msg" | cut -c1-200)
+# ── Build message ──
+case "$MODE" in
+    question)
+        questions=$(echo "$tool_input" | jq -r '.questions[]?.question // empty' 2>/dev/null | head -3)
+        questions=$(clean "$questions" 200)
+        task=$(clean "$(get_first_question)" 30)
 
-    # Extract user question from transcript (same as stop mode)
-    user_question=""
-    if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
-        user_question=$(grep '"type":"user"' "$transcript_path" | \
-            grep -v '"tool_use_id"' | \
-            grep -v '"tooluseid"' | \
-            tail -1 | \
-            jq -r '.message.content // empty' 2>/dev/null)
-        user_question=$(clean_text "$user_question" | cut -c1-100)
-    fi
+        message="${identity} ❓ ${project_name}/${branch}
+─────────────
+${questions:-Claude has a question}
+─────────────
+📋 ${task:-task}
+🔗 claude -r ${short_id}"
+        ;;
 
-    # Build header with emoji and task keyword
-    header="${session_emoji} [${project_name}] ${branch}"
-    [[ -n "$task_keyword" ]] && header="${header} | ${task_keyword}"
+    permission)
+        tool_name=$(echo "$input" | jq -r '.tool_name // empty' 2>/dev/null)
+        perm_msg=$(echo "$input" | jq -r '.message // empty' 2>/dev/null)
+        perm_msg=$(clean "$perm_msg" 200)
+        task=$(clean "$(get_first_question)" 30)
 
-    message="⏸️ ${header}
+        message="${identity} ⏸️ ${project_name}/${branch}
+─────────────
+🔒 ${tool_name}: ${perm_msg:-Permission needed}
+─────────────
+📋 ${task:-task}
+🔗 claude -r ${short_id}"
+        ;;
 
-Q: ${user_question:-No question}
+    subagent-stop)
+        # SubAgent (Explore, Plan 등) 완료
+        agent_name=$(echo "$input" | jq -r '.agent_name // .tool_name // empty' 2>/dev/null)
+        task=$(clean "$(get_first_question)" 30)
 
-${tool_name}: ${notification_msg:-Permission needed}"
+        message="${identity} 🔄 ${project_name}/${branch}
+─────────────
+🤖 SubAgent 완료: ${agent_name:-agent}
+─────────────
+📋 ${task:-task}
+🔗 claude -r ${short_id}"
+        ;;
 
-else
-    # Stop mode - existing logic
-    # Get GitHub PR URL (if exists)
-    pr_url=$(gh pr view --json url -q '.url' 2>/dev/null || echo "")
+    notification)
+        # CCC가 보내는 일반 알림
+        notif_msg=$(echo "$input" | jq -r '.message // empty' 2>/dev/null)
+        notif_msg=$(clean "$notif_msg" 200)
+        task=$(clean "$(get_first_question)" 30)
 
-    # Extract from transcript
-    user_question=""
-    assistant_answer=""
-    if [[ -n "$transcript_path" && -f "$transcript_path" ]]; then
-        # Get last user message that's not a tool result
-        user_question=$(grep '"type":"user"' "$transcript_path" | \
-            grep -v '"tool_use_id"' | \
-            grep -v '"tooluseid"' | \
-            tail -1 | \
-            jq -r '.message.content // empty' 2>/dev/null)
-        user_question=$(clean_text "$user_question" | cut -c1-100)
+        message="${identity} 📢 ${project_name}/${branch}
+─────────────
+${notif_msg:-Notification}
+─────────────
+📋 ${task:-task}
+🔗 claude -r ${short_id}"
+        ;;
 
-        assistant_answer=$(grep '"type":"assistant"' "$transcript_path" | tail -1 | jq -r '.message.content[]? | select(.type=="text") | .text' 2>/dev/null)
-        assistant_answer=$(clean_text "$assistant_answer" | cut -c1-150)
-    fi
+    *)  # stop
+        q=$(clean "$(get_last_question)" 100)
+        a=$(clean "$(get_last_answer)" 200)
+        pr_url=$(gh pr view --json url -q '.url' 2>/dev/null || echo "")
 
-    # Build header with emoji and task keyword
-    header="${session_emoji} [${project_name}] ${branch}"
-    [[ -n "$task_keyword" ]] && header="${header} | ${task_keyword}"
+        message="${identity} ✅ ${project_name}/${branch}
+─────────────
+📝 ${q:-no task}
+💬 ${a:-done}
+─────────────"
 
-    message="✅ ${header}
+        [[ -n "$pr_url" ]] && message="${message}
+🔗 ${pr_url}"
 
-Q: ${user_question:-No question}"
-
-    if [[ -n "$assistant_answer" ]]; then
         message="${message}
+▶ claude -r ${short_id}"
+        ;;
+esac
 
-A: ${assistant_answer}"
-    fi
+# ── Send ──
+# Always send both Telegram + Wake (no CLAWDBOT_WAKE check)
+# 1) Telegram
+openclaw message send --channel telegram --target 6982701646 \
+  --message "$message" --silent 2>/dev/null &
 
-    # Add PR link only if exists
-    [[ -n "$pr_url" ]] && message="${message}
+# 2) Wake 오징어맨
+task_ctx=$(clean "$(get_first_question)" 30)
+wake_msg="[ccc:${MODE}] ${identity} ${project_name}/${branch} | ${task_ctx:-idle} | session:${short_id}"
+openclaw system event --text "$wake_msg" --mode now > /dev/null 2>&1 &
 
-PR: ${pr_url}"
-fi
-
-# Add session resume command
-if [[ -n "$session_id" ]]; then
-    message="${message}
-
-claude -r ${session_id}"
-else
-    message="${message}
-
-claude --continue"
-fi
-
-# Send to Telegram (use --data-urlencode for multiline text)
-curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-  --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-  --data-urlencode "text=${message}" \
-  --data-urlencode "disable_web_page_preview=true" \
-  > /dev/null 2>&1
+echo "[$(date)] Wake + Telegram sent via OpenClaw" >> /tmp/telegram-hook-debug.log
 
 exit 0

@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/enforce-claude-md.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/enforce-claude-md.sh"
           }
         ]
       }
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/telegram-notify.sh stop"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/telegram-notify.sh stop"
           }
         ]
       }
@@ -39,11 +39,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/cleanup-modules.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/cleanup-modules.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/memo-on-session-end.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/memo-on-session-end.sh"
           }
         ]
       }
@@ -54,19 +54,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/pre-validate.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/pre-validate.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/validate-vault.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-vault.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/validate-component.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-component.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/validate-linecount.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-linecount.sh"
           }
         ]
       },
@@ -75,19 +75,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/pre-validate.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/pre-validate.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/validate-vault.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-vault.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/validate-component.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-component.sh"
           },
           {
             "type": "command",
-            "command": ".claude/hooks/validate-linecount.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-linecount.sh"
           }
         ]
       },
@@ -96,7 +96,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/pre-validate.sh"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/pre-validate.sh"
           }
         ]
       },
@@ -105,7 +105,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/telegram-notify.sh question"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/telegram-notify.sh question"
           }
         ]
       }
@@ -116,7 +116,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/telegram-notify.sh permission"
+            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/telegram-notify.sh permission"
           }
         ]
       }

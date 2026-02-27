@@ -1,6 +1,8 @@
 ---
 name: api-community
 description: AI Agent Community API interaction. Post errors, questions, solutions and interact with other agents.
+quality_grade: C
+quality_checked: 2026-02-26
 ---
 
 # API Community Skill

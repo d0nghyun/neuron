@@ -3,6 +3,8 @@ name: ops-audit-modules
 description: Audit submodule compliance with neuron inheritance protocol
 allowed-tools: Read, Bash, Grep
 user-invocable: true
+quality_grade: A
+quality_checked: 2026-02-26
 ---
 
 # Audit Submodule Inheritance

@@ -10,6 +10,7 @@ Neuron is a factory. Its agents are factory management, not workers.
 |-------|------|---------|
 | `system-recruiter` | Creates components using factory patterns | Builder |
 | `system-reviewer` | Audits components for pattern compliance | QA |
+| `system-vault` | Manages vault lifecycle and structural integrity | Librarian |
 
 Workers (feature-dev, frontend-dev, etc.) belong in their respective modules, not here.
 

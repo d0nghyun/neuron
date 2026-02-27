@@ -153,6 +153,18 @@ modules:
       - schedule
       - productivity
 
+  sea-hub:
+    repo: local
+    domain: personal
+    status: active
+    description: Gather Town-style 2D office with seafood AI agents
+    registered_at: "2026-02-25"
+    tags:
+      - phaser
+      - nextjs
+      - 2d-world
+      - personal
+
 # Archived modules (removed from submodules but tracked)
 archived:
   hippo:
@@ -170,6 +182,6 @@ archived:
 
 # Registry metadata
 _meta:
-  version: 8
-  updated_at: "2026-02-18"
+  version: 9
+  updated_at: "2026-02-25"
   schema: knowledge/module-protocol.md
