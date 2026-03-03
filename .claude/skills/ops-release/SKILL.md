@@ -3,8 +3,8 @@ name: ops-release
 description: Create a release with version tag. Converts UNRELEASED.md to version file and creates git tag.
 allowed-tools: Read, Bash, Edit, Write
 user-invocable: true
-quality_grade: A
-quality_checked: 2026-02-27
+quality_grade: B
+quality_checked: 2026-03-02
 ---
 
 # Create Release

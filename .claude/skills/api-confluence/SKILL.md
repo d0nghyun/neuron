@@ -3,6 +3,8 @@ name: api-confluence
 description: Confluence REST API for pages, spaces, and content. Uses API token for headless/CI. Activate for Confluence operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
+quality_grade: C
+quality_checked: 2026-02-28
 ---
 
 # Confluence API Skill
@@ -170,11 +172,6 @@ space=DEV AND type=page AND label=api
 | 404 | Not found | Check page ID or space key |
 | 409 | Version conflict | Get latest version and retry |
 | 429 | Rate limited | Wait and retry |
-
-## Rate Limits
-
-- Cloud: No published limits, but implement backoff
-- Implement exponential backoff on 429 responses
 
 ## Naming Convention Discovery
 

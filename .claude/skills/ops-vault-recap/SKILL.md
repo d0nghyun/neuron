@@ -3,8 +3,8 @@ name: ops-vault-recap
 description: Recap session memory into vault and validate vault structure
 allowed-tools: Read, Glob, Grep, Bash, Write
 user-invocable: true
-quality_grade: A
-quality_checked: 2026-02-26
+quality_grade: B
+quality_checked: 2026-03-02
 ---
 
 # Vault Recap

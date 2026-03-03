@@ -3,8 +3,8 @@ name: ops-factory-sync
 description: Audit factory patterns against actual components and update drift
 allowed-tools: Read, Glob, Grep, Edit, Write
 user-invocable: true
-quality_grade: B
-quality_checked: 2026-02-27
+quality_grade: C
+quality_checked: 2026-03-01
 ---
 
 # Factory Sync

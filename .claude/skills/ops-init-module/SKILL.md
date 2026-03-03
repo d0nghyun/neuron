@@ -3,8 +3,8 @@ name: ops-init-module
 description: Activate a module's skills/agents for current session
 allowed-tools: Bash, Read
 user-invocable: true
-quality_grade: A
-quality_checked: 2026-02-27
+quality_grade: B
+quality_checked: 2026-03-02
 ---
 
 # Module Init Skill
