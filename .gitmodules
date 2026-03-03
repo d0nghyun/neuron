@@ -61,3 +61,9 @@
 [submodule "modules/arkraft/arkraft-agent-data"]
 	path = modules/arkraft/arkraft-agent-data
 	url = git@github.com:Quantit-Github/arkraft-agent-data.git
+[submodule "modules/arkraft/finter-sdk"]
+	path = modules/arkraft/finter-sdk
+	url = ssh://git@gitlab.quantit.io:2222/cc/c2_api_sdk.git
+[submodule "modules/arkraft/arkraft-legacy/cc"]
+	path = modules/arkraft/arkraft-legacy/cc
+	url = ssh://git@gitlab.quantit.io:2222/cc/cc.git

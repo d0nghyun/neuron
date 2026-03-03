@@ -165,16 +165,18 @@ ${notif_msg:-Notification}
 esac
 
 # ── Send ──
-# Always send both Telegram + Wake (no CLAWDBOT_WAKE check)
-# 1) Telegram
+# 1) Telegram (always)
 openclaw message send --channel telegram --target 6982701646 \
   --message "$message" --silent 2>/dev/null &
 
-# 2) Wake 오징어맨
-task_ctx=$(clean "$(get_first_question)" 30)
-wake_msg="[ccc:${MODE}] ${identity} ${project_name}/${branch} | ${task_ctx:-idle} | session:${short_id}"
-openclaw system event --text "$wake_msg" --mode now > /dev/null 2>&1 &
-
-echo "[$(date)] Wake + Telegram sent via OpenClaw" >> /tmp/telegram-hook-debug.log
+# 2) Wake 오징어맨 (only when CLAWDBOT_WAKE=true, i.e. bot-spawned sessions)
+if [[ "$CLAWDBOT_WAKE" == "true" ]]; then
+    task_ctx=$(clean "$(get_first_question)" 30)
+    wake_msg="[ccc:${MODE}] ${identity} ${project_name}/${branch} | ${task_ctx:-idle} | session:${short_id}"
+    openclaw system event --text "$wake_msg" --mode now > /dev/null 2>&1 &
+    echo "[$(date)] Wake + Telegram sent via OpenClaw" >> /tmp/telegram-hook-debug.log
+else
+    echo "[$(date)] Telegram only (no wake, CLAWDBOT_WAKE not set)" >> /tmp/telegram-hook-debug.log
+fi
 
 exit 0
