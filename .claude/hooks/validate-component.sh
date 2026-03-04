@@ -53,7 +53,7 @@ if [[ "$file_path" == */.claude/skills/*/SKILL.md ]]; then
   skill_dir=$(basename "$(dirname "$file_path")")
 
   # Naming validation: must match {type}-{name} pattern
-  valid_prefixes="ops|api|workflow|capability"
+  valid_prefixes="ops|api|workflow|capability|domain"
   if ! echo "$skill_dir" | grep -qE "^(${valid_prefixes})-"; then
     echo "{\"decision\": \"block\", \"reason\": \"Skill name '${skill_dir}' has invalid prefix. Must be: ops-*, api-*, workflow-*, or capability-*. See factory/README.md § Naming Conventions.\"}"
     exit 0

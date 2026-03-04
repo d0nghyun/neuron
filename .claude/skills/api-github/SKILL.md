@@ -3,8 +3,8 @@ name: api-github
 description: GitHub REST API for issues, PRs, repos. Uses PAT for headless/CI. Activate for GitHub operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
-quality_grade: C
-quality_checked: 2026-03-02
+quality_grade: B
+quality_checked: 2026-03-04
 ---
 
 # GitHub API Skill

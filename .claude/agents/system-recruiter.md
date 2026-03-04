@@ -5,7 +5,7 @@ tools: Read, Write, Glob, Grep
 model: opus
 permissionMode: bypassPermissions
 quality_grade: B
-quality_checked: 2026-03-01
+quality_checked: 2026-03-04
 ---
 
 # Recruiter Agent
