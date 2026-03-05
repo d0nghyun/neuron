@@ -4,8 +4,8 @@ description: Creates missing agents and skills using factory patterns.
 tools: Read, Write, Glob, Grep
 model: opus
 permissionMode: bypassPermissions
-quality_grade: B
-quality_checked: 2026-03-04
+quality_grade: C
+quality_checked: 2026-03-05
 ---
 
 # Recruiter Agent
