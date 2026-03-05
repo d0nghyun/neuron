@@ -67,3 +67,6 @@
 [submodule "modules/arkraft/arkraft-legacy/cc"]
 	path = modules/arkraft/arkraft-legacy/cc
 	url = ssh://git@gitlab.quantit.io:2222/cc/cc.git
+[submodule "modules/arkraft/arkraft-sdk"]
+	path = modules/arkraft/arkraft-sdk
+	url = git@github.com:Quantit-Github/arkraft-sdk.git

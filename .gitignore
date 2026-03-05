@@ -22,7 +22,10 @@ PLAN.md
 PROGRESS.md
 
 # Python cache
+__pycache__/
+*.pyc
 .mypy_cache/
+.pytest_cache/
 
 .DS_Store
 .playwright-mcp/
