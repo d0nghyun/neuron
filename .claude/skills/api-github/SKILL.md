@@ -4,7 +4,7 @@ description: GitHub REST API for issues, PRs, repos. Uses PAT for headless/CI. A
 allowed-tools: Bash, Read, Grep
 user-invocable: true
 quality_grade: B
-quality_checked: 2026-03-04
+quality_checked: 2026-03-06
 ---
 
 # GitHub API Skill

@@ -3,8 +3,8 @@ name: api-slack
 description: Slack Web API for messaging, channels, and notifications. Uses Bot token for headless/CI. Activate for Slack operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
-quality_grade: C
-quality_checked: 2026-02-28
+quality_grade: D
+quality_checked: 2026-03-06
 ---
 
 # Slack API Skill

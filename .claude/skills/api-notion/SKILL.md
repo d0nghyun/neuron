@@ -4,7 +4,7 @@ description: Notion REST API for pages, databases, blocks. Uses internal integra
 allowed-tools: Bash, Read, Grep
 user-invocable: true
 quality_grade: B
-quality_checked: 2026-03-04
+quality_checked: 2026-03-06
 ---
 
 # Notion API Skill
