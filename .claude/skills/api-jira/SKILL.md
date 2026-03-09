@@ -3,8 +3,8 @@ name: api-jira
 description: Jira REST API for issues, projects, sprints. Uses API token for headless/CI. Activate for Jira operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
-quality_grade: C
-quality_checked: 2026-03-07
+quality_grade: B
+quality_checked: 2026-03-09
 ---
 
 # Jira API Skill

@@ -3,8 +3,8 @@ name: api-confluence
 description: Confluence REST API for pages, spaces, and content. Uses API token for headless/CI. Activate for Confluence operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
-quality_grade: D
-quality_checked: 2026-03-06
+quality_grade: C
+quality_checked: 2026-03-09
 ---
 
 # Confluence API Skill

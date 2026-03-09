@@ -3,8 +3,8 @@ name: api-google-calendar
 description: Google Calendar API for events and schedules. Uses OAuth2 refresh token for headless/CI. Activate for calendar operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
-quality_grade: D
-quality_checked: 2026-03-06
+quality_grade: C
+quality_checked: 2026-03-09
 ---
 
 # Google Calendar Skill
