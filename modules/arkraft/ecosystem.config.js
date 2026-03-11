@@ -4,7 +4,7 @@ module.exports = {
     {
       name: "infra",
       script: "docker",
-      args: "compose -f arkraft-api/docker-compose.yml up postgres redis minio minio-init pgweb",
+      args: "compose -f arkraft-api/docker-compose.yml up postgres redis rabbitmq minio minio-init pgweb",
       cwd: __dirname,
       interpreter: "none",
       autorestart: false,
@@ -13,6 +13,13 @@ module.exports = {
       name: "api",
       script: "bash",
       args: "-c 'uv run uvicorn main:app --reload --port 3002'",
+      cwd: `${__dirname}/arkraft-api`,
+      interpreter: "none",
+    },
+    {
+      name: "celery",
+      script: "bash",
+      args: "-c 'uv run celery -A worker worker --beat --loglevel=info --pool=solo'",
       cwd: `${__dirname}/arkraft-api`,
       interpreter: "none",
     },
