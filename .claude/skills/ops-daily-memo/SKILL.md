@@ -3,8 +3,8 @@ name: ops-daily-memo
 description: Write daily memo to vault/memory for nightly recap consolidation
 allowed-tools: Read, Glob, Grep, Write, Bash
 user-invocable: true
-quality_grade: A
-quality_checked: 2026-03-08
+quality_grade: B
+quality_checked: 2026-03-10
 ---
 
 # Daily Memo
