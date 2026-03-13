@@ -3,8 +3,8 @@ name: api-notion
 description: Notion REST API for pages, databases, blocks. Uses internal integration token for headless/CI. Activate for Notion operations.
 allowed-tools: Bash, Read, Grep
 user-invocable: true
-quality_grade: B
-quality_checked: 2026-03-09
+quality_grade: A
+quality_checked: 2026-03-13
 ---
 
 # Notion API Skill
