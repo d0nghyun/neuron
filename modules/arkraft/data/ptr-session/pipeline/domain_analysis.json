@@ -1,0 +1,239 @@
+{
+  "data_nature": {
+    "boundedness": "lower_bounded",
+    "scale_interpretation": "level",
+    "additivity": "non_additive",
+    "reasoning": "Each row is an independent trade disclosure event with a dollar-range amount (amount_low to amount_high). Values are lower-bounded at zero (no negative trade amounts). The amount_mid is a derived midpoint, not an additive metric \u2014 summing mid-points across trades produces a portfolio estimate, not an exact total. The data is non-additive in the strict sense because each range carries uncertainty."
+  },
+  "temporal_properties": {
+    "inferred_frequency": "irregular",
+    "observation_lag_reasoning": "STOCK Act mandates disclosure within 45 days of trade execution. House members file a Periodic Transaction Report (PTR) with notification_date (median lag from trade: 20.0 days, std: 44.1 days). Senate members file to EFD system with year_filed (median lag: 24.0 days, std: 22.3 days). The trade date (transaction_date) is NOT publicly observable on that date. The earliest public actionability is the filing date.",
+    "suggested_delivery_lag": "P45D",
+    "confidence": 0.85,
+    "calendar_type": "calendar",
+    "gap_interpretation": "no_observation"
+  },
+  "cross_sectional": {
+    "entity_homogeneity": "heterogeneous",
+    "coverage_trend": "expanding",
+    "entity_count": 95,
+    "reasoning": "Dataset contains 95 unique member IDs (6 House members with structured IDs, 89 Senate filing UUIDs). Entities are heterogeneous: House members have consistent name-based IDs while Senate members have opaque UUID-based filing IDs. Coverage ratio (late/early) indicates expansion as more filings accumulate over time. Ticker-based entity view covers 364 unique tickers with 97 nulls (non-equity assets)."
+  },
+  "missing_data_semantics": {
+    "null_meaning": "not_applicable",
+    "suggested_fill_method": "nan",
+    "confidence": 0.95,
+    "reasoning": "This is an event log \u2014 there is no concept of 'missing' observations between events. Null values in amount columns indicate the field was not reported for that trade type (e.g., exchange-based assets without a clean ticker). Forward-fill would be semantically wrong (past trades do not predict future values). Nulls in ticker indicate non-publicly-traded assets (bonds, money market funds, etc.) where no ticker exists \u2014 these are genuinely not applicable, not missing."
+  },
+  "statistical_summary": {
+    "stationarity_indication": "inconclusive",
+    "autocorrelation_level": 0.0121,
+    "autocorrelation_diff": -0.5867,
+    "variance_stability": "stable",
+    "distribution_notes": "amount_mid: mean=150,820.39, median=32,500.5, skew=13.4584 (right-skewed: large trades pull mean up). amount_low: mean=65,563.79, amount_high: mean=236,076.99. Variance ratio (last Q / first Q): 0.5515. Stationarity is not meaningful for event-log data without a persistent time series entity."
+  },
+  "time_selection": {
+    "candidate_columns": [
+      "transaction_date",
+      "notification_date",
+      "year_filed"
+    ],
+    "recommended_column": "notification_date",
+    "pit_assessment": "transaction_date = when the trade occurred (not publicly actionable). notification_date = when House members filed disclosure (PIT for House). year_filed = when Senate members filed to EFD (PIT for Senate). Neither filing date column is complete for all rows \u2014 notification_date is null for Senate rows, year_filed is null for House rows. Best practice: use notification_date as primary PIT axis (House), coalesce with year_filed for Senate rows. Since Step 1 chose transaction_date (event date), this is an override \u2014 the true PIT dates are disclosure dates.",
+    "override_from_step1": true,
+    "reasoning": "Step 1 selected transaction_date as the time axis, but per the PIT-first principle, the publicly actionable date is the disclosure filing date. House notification_date: null_ratio=0.9679 (1056 nulls, Senate rows). Senate year_filed: null_ratio=0.0321 (35 nulls, House rows). Neither is universally complete, but notification_date covers the structured House subset and should be used as the primary PIT index. delivery_lag=P45D represents the statutory maximum (conservative, covers both chambers)."
+  },
+  "entity_selection": {
+    "candidate_columns": [
+      "member_id",
+      "ticker",
+      "state_district"
+    ],
+    "recommended_column": "ticker",
+    "finter_mappability": "high",
+    "override_from_step1": true,
+    "reasoning": "From the Entity Candidate Evaluation table: ticker has 94% match rate with low collision (10%) vs member_id which has 52% collision rate (event-log style). Ticker-based entity view is the most analytically useful: it allows cross-referencing with price/fundamental data. The 10% collision rate at (date, ticker) is borderline \u2014 multiple members may trade the same ticker on the same date. state_district has 0% match rate and is House-only (35% collision). member_id is the legislator identifier but has 52% collision and Senate UUIDs are not resolvable to a standard ID. Therefore: use ticker as entity axis (Finter ID mappable at 94%), and bundle member/trade attributes as dict values per (date, ticker) cell."
+  },
+  "flags": [
+    {
+      "severity": "warning",
+      "message": "PIT time axis is split across two columns: notification_date (House) and year_filed (Senate). Neither covers 100% of rows. Transform step should coalesce these into a single pit_date = COALESCE(notification_date, year_filed). Use this coalesced column as the time axis.",
+      "field_affected": "axes.time.source_column"
+    },
+    {
+      "severity": "warning",
+      "message": "ticker has 97 null values (8.9% of rows). These represent non-equity assets (bonds, money market funds, ETFs without tickers). Rows with null ticker cannot be entity-mapped and should be dropped or assigned a synthetic 'UNKNOWN' ticker in the transform step.",
+      "field_affected": "axes.entity.source_column"
+    },
+    {
+      "severity": "info",
+      "message": "member_id for Senate rows uses filing UUID (S_{uuid}), not a resolvable legislator identifier. Senate member names are not available in this dataset. This limits the usefulness of member_id as a join key for Senate rows.",
+      "field_affected": "axes.entity.id_type"
+    },
+    {
+      "severity": "info",
+      "message": "Collision rate for ticker entity is 10% \u2014 multiple members may trade the same ticker on the same day. At this level, simple pivot is feasible but some information (which member made the trade) will be lost unless dtype='dict' is used to bundle trade details per (date, ticker) cell.",
+      "field_affected": "axes.value[].dtype"
+    },
+    {
+      "severity": "info",
+      "message": "The dataset spans 2019-2025. Coverage expands over time as more members file disclosures. Earlier periods may have sparser coverage.",
+      "field_affected": "axes.time"
+    }
+  ],
+  "requires_user_input": [],
+  "_raw_stats": {
+    "descriptive_stats": {
+      "amount_low": {
+        "count": 1091,
+        "null_count": 0,
+        "null_ratio": 0.0,
+        "mean": 65563.79,
+        "std": 352102.59,
+        "min": 1001.0,
+        "max": 5000001.0,
+        "median": 15001.0,
+        "skew": 12.7977,
+        "kurtosis": 175.2624
+      },
+      "amount_high": {
+        "count": 1091,
+        "null_count": 0,
+        "null_ratio": 0.0,
+        "mean": 236076.99,
+        "std": 1733068.59,
+        "min": 15000.0,
+        "max": 25000000.0,
+        "median": 50000.0,
+        "skew": 13.5413,
+        "kurtosis": 189.6477
+      },
+      "amount_mid": {
+        "count": 1091,
+        "null_count": 0,
+        "null_ratio": 0.0,
+        "mean": 150820.39,
+        "std": 1041338.51,
+        "min": 8000.5,
+        "max": 15000000.5,
+        "median": 32500.5,
+        "skew": 13.4584,
+        "kurtosis": 188.0668
+      }
+    },
+    "null_profile_sample": {
+      "date": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "entity": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "member_id": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "chamber": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "asset_name": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "ticker": {
+        "null_count": 97,
+        "null_ratio": 0.0889
+      },
+      "asset_type": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "transaction_type": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "transaction_date": {
+        "null_count": 0,
+        "null_ratio": 0.0
+      },
+      "notification_date": {
+        "null_count": 1056,
+        "null_ratio": 0.9679
+      }
+    },
+    "unique_counts_sample": {
+      "date": 161,
+      "entity": 1091,
+      "member_id": 95,
+      "chamber": 2,
+      "asset_name": 502,
+      "ticker": 364,
+      "asset_type": 8,
+      "transaction_type": 5,
+      "transaction_date": 161,
+      "notification_date": 17
+    },
+    "time_stats": {
+      "transaction_date": {
+        "null_count": 0,
+        "null_ratio": 0.0,
+        "min_date": "2019-05-17",
+        "max_date": "2025-10-10",
+        "unique_dates": 161,
+        "gap_mode_days": 0,
+        "gap_min_days": 0,
+        "gap_max_days": 1382,
+        "gap_median_days": 0.0
+      },
+      "notification_date": {
+        "null_count": 1056,
+        "null_ratio": 0.9679,
+        "min_date": "2025-01-08",
+        "max_date": "2025-11-05",
+        "unique_dates": 17,
+        "gap_mode_days": 0,
+        "gap_min_days": 0,
+        "gap_max_days": 63,
+        "gap_median_days": 0.0
+      },
+      "year_filed": {
+        "null_count": 35,
+        "null_ratio": 0.0321,
+        "min_date": "2020-01-08",
+        "max_date": "2021-03-10",
+        "unique_dates": 68,
+        "gap_mode_days": 0,
+        "gap_min_days": 0,
+        "gap_max_days": 204,
+        "gap_median_days": 0.0
+      }
+    },
+    "entity_stats": {
+      "member_id": {
+        "unique_count": 95,
+        "collision_pairs": 155,
+        "total_pairs": 297,
+        "collision_ratio": 0.5219
+      },
+      "ticker": {
+        "unique_count": 364,
+        "null_count": 97,
+        "null_ratio": 0.0889
+      }
+    },
+    "autocorr": {
+      "global_level": 0.0121,
+      "global_diff": -0.5867,
+      "sample_entity": "S_bc6c5872-1fdd-4e99-857e-08b4ec2c85c8",
+      "sample_level": 0.2165153847083192,
+      "sample_diff": -0.35391062921860156
+    },
+    "variance_ratio": 0.5515,
+    "coverage_ratio": 0.5517,
+    "null_alignment_ratio": 1.0,
+    "house_notification_lag_median_days": 20.0,
+    "senate_year_filed_lag_median_days": 24.0
+  }
+}

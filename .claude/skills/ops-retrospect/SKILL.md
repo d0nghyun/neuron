@@ -3,8 +3,8 @@ name: ops-retrospect
 description: Counterfactual review of decision paths after Moderate+ tasks
 allowed-tools: Read, Glob, Grep, Write
 user-invocable: true
-quality_grade: A
-quality_checked: 2026-03-13
+quality_grade: B
+quality_checked: 2026-03-16
 ---
 
 # Retrospect

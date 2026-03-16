@@ -1,0 +1,92 @@
+{
+  "cm_id": "common.congress_stock_trade_disclosures",
+  "category": "event",
+  "axes": {
+    "time": {
+      "source_column": "pit_date",
+      "frequency": "daily",
+      "timezone": "America/New_York",
+      "calendar": "calendar",
+      "format": "%Y-%m-%d"
+    },
+    "entity": {
+      "source_column": "ticker",
+      "id_type": "ticker",
+      "target_id_type": "finter_id",
+      "universe": "common"
+    },
+    "value": [
+      {
+        "source_column": "trade_details",
+        "cm_name": "congress_stock_trade_disclosures",
+        "dtype": "dict",
+        "unit": "USD",
+        "description": "US congressional STOCK Act trade disclosure records per (disclosure_date, ticker). Each cell contains a JSON array of trade events filed by members of Congress. Each event includes: amount range (amount_low, amount_high, amount_mid in USD), transaction_type (Purchase/Sale), asset_name, asset_type, member_id, chamber, cap_gains flag, and owner type (self/spouse/joint). Delivery lag is P45D (STOCK Act statutory maximum).",
+        "fill_method": "nan",
+        "dict_columns": [
+          "amount_low",
+          "amount_high",
+          "amount_mid",
+          "transaction_type",
+          "asset_name",
+          "asset_type",
+          "member_id",
+          "chamber",
+          "cap_gains",
+          "owner",
+          "amount"
+        ]
+      }
+    ]
+  },
+  "point_in_time": {
+    "delivery_lag": "P45D",
+    "update_schedule": "0 6 * * *"
+  },
+  "lineage": {
+    "source_type": "file_upload",
+    "source_vendor": "house_clerk",
+    "methodology": "US congressional stock trade disclosures required under the Stop Trading on Congressional Knowledge (STOCK Act) of 2012. Each record is a Periodic Transaction Report (PTR) filed within 45 days of trade execution. House filings are timestamped with notification_date (date filed with the Clerk of the House); Senate filings are timestamped with year_filed (date filed with Senate EFD system). The time axis (pit_date) is derived as COALESCE(notification_date, year_filed) — the earliest publicly actionable date. Rows with no ticker (non-publicly-traded assets: bonds, money market funds) are excluded from the entity-indexed output. Trades are aggregated per (pit_date, ticker) as JSON arrays preserving all disclosure attributes including legislator identity, trade direction, and dollar-range amounts.",
+    "dependencies": []
+  },
+  "transforms": {
+    "pivot": {
+      "enabled": true,
+      "index": "pit_date",
+      "columns": "ticker",
+      "values": "trade_details"
+    },
+    "null_handling": {
+      "method": "nan",
+      "limit": null
+    },
+    "type_casting": {
+      "amount_low": "float64",
+      "amount_high": "float64",
+      "amount_mid": "float64",
+      "pit_date": "datetime64[ns]"
+    }
+  },
+  "_spec_notes": {
+    "pit_date_derivation": "pit_date = COALESCE(notification_date, year_filed). Transform script must create this column before pivoting. House rows (n=35): use notification_date. Senate rows (n=1056): use year_filed.",
+    "ticker_null_handling": "Drop rows where ticker IS NULL (97 rows: bonds, money market funds, ETFs without tickers). These cannot be mapped to a Finter entity.",
+    "dict_aggregation": "Group by (pit_date, ticker), aggregate dict_columns into a JSON array. Each element in the array represents one trade event.",
+    "entity_override": "Entity overridden from Step 1 member_id (52% collision) to ticker (94% Finter match rate, 10% collision). Ticker-based view enables cross-dataset joins with price/fundamental data.",
+    "time_override": "Time axis overridden from Step 1 transaction_date (event date, not PIT) to pit_date (disclosure filing date, PIT-correct). delivery_lag=P45D is the STOCK Act statutory maximum.",
+    "collision_rationale": "10% collision rate at (pit_date, ticker) reflects multiple members trading the same stock on the same disclosure date. dtype=dict preserves all individual trade records without loss.",
+    "confidence_scores": {
+      "cm_id": 0.95,
+      "category": 0.85,
+      "axes.time.source_column": 0.90,
+      "axes.time.timezone": 0.88,
+      "axes.time.frequency": 0.85,
+      "axes.entity.source_column": 0.94,
+      "axes.entity.universe": 0.95,
+      "axes.value.dtype": 0.88,
+      "axes.value.fill_method": 0.95,
+      "point_in_time.delivery_lag": 0.90,
+      "lineage.source_vendor": 1.00,
+      "lineage.source_type": 0.90
+    }
+  }
+}

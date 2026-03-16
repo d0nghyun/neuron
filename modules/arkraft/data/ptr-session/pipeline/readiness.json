@@ -1,0 +1,47 @@
+{
+  "status": "CONDITIONAL",
+  "score": 95,
+  "checks": [
+    {
+      "name": "parsability",
+      "status": "pass",
+      "score": 100,
+      "reason": "1091 rows loaded"
+    },
+    {
+      "name": "time_axis",
+      "status": "pass",
+      "score": 100,
+      "reason": "Datetime columns: ['date', 'transaction_date', 'notification_date', 'year_filed']"
+    },
+    {
+      "name": "entity_axis",
+      "status": "pass",
+      "score": 100,
+      "reason": "Entity candidates: ['entity', 'ticker']"
+    },
+    {
+      "name": "value_columns",
+      "status": "pass",
+      "score": 100,
+      "reason": "6 numeric cols: ['year', 'doc_id', 'filing_type', 'amount_low', 'amount_high', 'amount_mid']"
+    },
+    {
+      "name": "data_quality",
+      "status": "warn",
+      "score": 75,
+      "reason": "Completeness 75.0% (50-80%)"
+    },
+    {
+      "name": "volume",
+      "status": "pass",
+      "score": 100,
+      "reason": "1,091 rows"
+    }
+  ],
+  "blockers": [],
+  "warnings": [
+    "data_quality"
+  ],
+  "recommendation": "1 warning(s). May be convertible with manual review."
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "registered": 1,
+  "items": [
+    {
+      "id": "09e32921-e70a-4d0f-a3be-5605d5cf14f7",
+      "cm_id": "common.congress_stock_trade_disclosures",
+      "name": "congress_stock_trade_disclosures",
+      "status": "registered",
+      "created_at": "2026-03-06T05:56:36.519778+00:00"
+    }
+  ],
+  "source_id": "863e30fb-aa98-467b-a302-57dd60e9430a",
+  "validated_parquets": [
+    "congress_stock_trade_disclosures.parquet"
+  ],
+  "registered_at": "2026-03-06T05:56:36.549230+00:00"
+}

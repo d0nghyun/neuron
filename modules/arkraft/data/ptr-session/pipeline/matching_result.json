@@ -1,0 +1,1651 @@
+{
+  "matched": [
+    {
+      "column": "AA",
+      "finter_id": "02763801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AAON",
+      "finter_id": "02154201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AAPL",
+      "finter_id": "00169001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ABBV",
+      "finter_id": "01610101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ABT",
+      "finter_id": "00107801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ACA",
+      "finter_id": "32879501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ACN",
+      "finter_id": "14335701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ADBE",
+      "finter_id": "01254001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ADM",
+      "finter_id": "00172201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ADP",
+      "finter_id": "00189101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AEP",
+      "finter_id": "00144001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AFL",
+      "finter_id": "00144901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AGCO",
+      "finter_id": "02518001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AGN",
+      "finter_id": "02784501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AIG",
+      "finter_id": "00148701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AIZ",
+      "finter_id": "15705701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AJRD",
+      "finter_id": "00501801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ALB",
+      "finter_id": "02975101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMAT",
+      "finter_id": "00170401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMD",
+      "finter_id": "00116101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMGN",
+      "finter_id": "00160201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMLP",
+      "finter_id": "18544701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMT",
+      "finter_id": "10536501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMX",
+      "finter_id": "14224890",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AMZN",
+      "finter_id": "06476801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ANET",
+      "finter_id": "02074801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "APD",
+      "finter_id": "00120901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "APO",
+      "finter_id": "18425401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AQN",
+      "finter_id": "11504401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ARCC",
+      "finter_id": "16196601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ARE",
+      "finter_id": "06482101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ARNA",
+      "finter_id": "13812201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ATO",
+      "finter_id": "00438301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AVGO",
+      "finter_id": "18071101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AXTA",
+      "finter_id": "02213401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "AZO",
+      "finter_id": "02380901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BA",
+      "finter_id": "00228501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BABA",
+      "finter_id": "02053090",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BAC",
+      "finter_id": "00764701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BAH",
+      "finter_id": "18588101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BAM",
+      "finter_id": "04181701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BAX",
+      "finter_id": "00208601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BFAM",
+      "finter_id": "06527502",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BIV",
+      "finter_id": "17714201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BK",
+      "finter_id": "00201901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BKNG",
+      "finter_id": "11931401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BLK",
+      "finter_id": "12443401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BMY",
+      "finter_id": "00240301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BOTZ",
+      "finter_id": "02806301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BP",
+      "finter_id": "00241090",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BRY",
+      "finter_id": "01343103",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BX",
+      "finter_id": "17708801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "BYND",
+      "finter_id": "03444701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "C",
+      "finter_id": "00324301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CAG",
+      "finter_id": "00336201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CAH",
+      "finter_id": "00275101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CARR",
+      "finter_id": "03619101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CAT",
+      "finter_id": "00281701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CB",
+      "finter_id": "02803401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CDLX",
+      "finter_id": "03293501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CEF",
+      "finter_id": "13518401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CEQP",
+      "finter_id": "16289401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CFA",
+      "finter_id": "02102901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CFG",
+      "finter_id": "02182501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CGNX",
+      "finter_id": "01618801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CHD",
+      "finter_id": "00302601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CIBR",
+      "finter_id": "02505701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CL",
+      "finter_id": "00317001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CLX",
+      "finter_id": "00312101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CMCSA",
+      "finter_id": "00322601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CME",
+      "finter_id": "14907001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "COP",
+      "finter_id": "00854901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "COST",
+      "finter_id": "02902801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CR",
+      "finter_id": "00358001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CRSP",
+      "finter_id": "02811301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CRWD",
+      "finter_id": "03518201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CSCO",
+      "finter_id": "02077901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CTSH",
+      "finter_id": "11186401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CTVA",
+      "finter_id": "03516801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CTXS",
+      "finter_id": "06167601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CVS",
+      "finter_id": "00724101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CVX",
+      "finter_id": "00299101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "CZR",
+      "finter_id": "02180801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DAL",
+      "finter_id": "00385103",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DCP",
+      "finter_id": "16546601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DD",
+      "finter_id": "00406001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DDOG",
+      "finter_id": "03562001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DFS",
+      "finter_id": "17737602",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DG",
+      "finter_id": "00401602",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DGX",
+      "finter_id": "06416601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DHR",
+      "finter_id": "00373501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DIS",
+      "finter_id": "00398001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DLR",
+      "finter_id": "16099101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DNKN",
+      "finter_id": "17422201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DOCU",
+      "finter_id": "03330101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DOW",
+      "finter_id": "03444301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DPZ",
+      "finter_id": "16021102",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DRI",
+      "finter_id": "03184601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DVN",
+      "finter_id": "01493401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "DXCM",
+      "finter_id": "16288701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EAF",
+      "finter_id": "06115303",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EBAY",
+      "finter_id": "11452401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EEFT",
+      "finter_id": "06453601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EEM",
+      "finter_id": "15356801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EMR",
+      "finter_id": "00432101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ENB",
+      "finter_id": "00613501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ENTG",
+      "finter_id": "13757301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EPD",
+      "finter_id": "11287601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EQM",
+      "finter_id": "17074801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ET",
+      "finter_id": "16564901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ETN",
+      "finter_id": "00419901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "EXR",
+      "finter_id": "16047901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "F",
+      "finter_id": "00483901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FB",
+      "finter_id": "05199501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FDN",
+      "finter_id": "17493001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FDX",
+      "finter_id": "00459801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FEMS",
+      "finter_id": "17074301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FHB",
+      "finter_id": "02766501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FINX",
+      "finter_id": "02806501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FIS",
+      "finter_id": "16599301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FITB",
+      "finter_id": "00464001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FOX",
+      "finter_id": "03463602",
+      "match_type": "ticker"
+    },
+    {
+      "column": "FOXA",
+      "finter_id": "03463601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GBIL",
+      "finter_id": "02799401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GE",
+      "finter_id": "00504701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GEL",
+      "finter_id": "06406301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GEM",
+      "finter_id": "02625901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GIS",
+      "finter_id": "00507101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GLD",
+      "finter_id": "16235301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GLW",
+      "finter_id": "00353201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GM",
+      "finter_id": "00507319",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GME",
+      "finter_id": "14504901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GOOG",
+      "finter_id": "16032903",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GOOGL",
+      "finter_id": "16032901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GPK",
+      "finter_id": "02538903",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GS",
+      "finter_id": "11462801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "GSK",
+      "finter_id": "00518090",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HAL",
+      "finter_id": "00543901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HBI",
+      "finter_id": "17531901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HCA",
+      "finter_id": "02226004",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HD",
+      "finter_id": "00568001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HELE",
+      "finter_id": "00557201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HIG",
+      "finter_id": "06173901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HON",
+      "finter_id": "00130001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HPQ",
+      "finter_id": "00560601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "HUN",
+      "finter_id": "16240101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IAT",
+      "finter_id": "17517901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IBM",
+      "finter_id": "00606601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ICE",
+      "finter_id": "16361001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IDV",
+      "finter_id": "17768501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ILMN",
+      "finter_id": "13820501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "INTC",
+      "finter_id": "00600801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "INTU",
+      "finter_id": "02792801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IP",
+      "finter_id": "00610401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IPHI",
+      "finter_id": "18511201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IR",
+      "finter_id": "03009802",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IRM",
+      "finter_id": "06237401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IVV",
+      "finter_id": "13660401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IWD",
+      "finter_id": "13642401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IWM",
+      "finter_id": "13638401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "IWN",
+      "finter_id": "13824201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "JCI",
+      "finter_id": "00626801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "JD",
+      "finter_id": "01974490",
+      "match_type": "ticker"
+    },
+    {
+      "column": "JNJ",
+      "finter_id": "00626601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "JPM",
+      "finter_id": "00296801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "K",
+      "finter_id": "00637501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KEY",
+      "finter_id": "00978301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KEYS",
+      "finter_id": "02023201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KHC",
+      "finter_id": "00556804",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KL",
+      "finter_id": "10566101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KLAC",
+      "finter_id": "00630401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KMI",
+      "finter_id": "00631004",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KNX",
+      "finter_id": "03086101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KO",
+      "finter_id": "00314401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KR",
+      "finter_id": "00650201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KSS",
+      "finter_id": "02528301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "KWEB",
+      "finter_id": "01847601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LHX",
+      "finter_id": "00549201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LLY",
+      "finter_id": "00673001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LMND",
+      "finter_id": "03669201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LMT",
+      "finter_id": "00677401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LNG",
+      "finter_id": "02945301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LOW",
+      "finter_id": "00682901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LULU",
+      "finter_id": "17801501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "LYV",
+      "finter_id": "16574601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "M",
+      "finter_id": "00461102",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MA",
+      "finter_id": "16022501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MAR",
+      "finter_id": "02893002",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MCD",
+      "finter_id": "00715401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MDLZ",
+      "finter_id": "14295301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MDT",
+      "finter_id": "00722801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MET",
+      "finter_id": "13376801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MMM",
+      "finter_id": "00743501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MMP",
+      "finter_id": "14223001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MNDY",
+      "finter_id": "03882201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MO",
+      "finter_id": "00854301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MPC",
+      "finter_id": "18698901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MPLX",
+      "finter_id": "01229401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MRK",
+      "finter_id": "00725701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MSFT",
+      "finter_id": "01214101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MSM",
+      "finter_id": "06173201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MTCH",
+      "finter_id": "02606101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "MU",
+      "finter_id": "00734301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NET",
+      "finter_id": "03560401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NFLX",
+      "finter_id": "14757901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NKE",
+      "finter_id": "00790601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NSC",
+      "finter_id": "00792301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NTAP",
+      "finter_id": "06159101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NVDA",
+      "finter_id": "11776801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NVO",
+      "finter_id": "00802090",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NWS",
+      "finter_id": "01804302",
+      "match_type": "ticker"
+    },
+    {
+      "column": "NWSA",
+      "finter_id": "01804301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "OKE",
+      "finter_id": "00815101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ORCL",
+      "finter_id": "01214201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ORLY",
+      "finter_id": "02818001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "OTIS",
+      "finter_id": "03619001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PAA",
+      "finter_id": "11602901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PAGP",
+      "finter_id": "01846801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PANW",
+      "finter_id": "17106701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PBA",
+      "finter_id": "13061801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PENN",
+      "finter_id": "03025901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PEP",
+      "finter_id": "00847901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PFE",
+      "finter_id": "00853001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PG",
+      "finter_id": "00876201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PGR",
+      "finter_id": "01334101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PII",
+      "finter_id": "01431101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PKG",
+      "finter_id": "12897801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PM",
+      "finter_id": "17962101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PNQI",
+      "finter_id": "18019801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PODD",
+      "finter_id": "17722701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PPL",
+      "finter_id": "00845501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PRU",
+      "finter_id": "14335601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PSQ",
+      "finter_id": "17489401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PSX",
+      "finter_id": "17084101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PSXP",
+      "finter_id": "01793301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PTNQ",
+      "finter_id": "02423101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "PYPL",
+      "finter_id": "02461601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "QCOM",
+      "finter_id": "02480001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "QSR",
+      "finter_id": "16447102",
+      "match_type": "ticker"
+    },
+    {
+      "column": "QTEC",
+      "finter_id": "17408101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "REZI",
+      "finter_id": "03405301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RF",
+      "finter_id": "00467401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RL",
+      "finter_id": "06489101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RMD",
+      "finter_id": "03188701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RODM",
+      "finter_id": "02316801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ROKU",
+      "finter_id": "03238201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ROL",
+      "finter_id": "00922501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "ROST",
+      "finter_id": "00924801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RPM",
+      "finter_id": "00890201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RTN",
+      "finter_id": "00897201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "RTX",
+      "finter_id": "01098301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SAP",
+      "finter_id": "10348790",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SBIO",
+      "finter_id": "02269601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SBUX",
+      "finter_id": "02543401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SCHW",
+      "finter_id": "01398801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SH",
+      "finter_id": "17489101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SHLX",
+      "finter_id": "02094401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SHOP",
+      "finter_id": "02365001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SIEGY",
+      "finter_id": "01934991",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SLB",
+      "finter_id": "00946501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SO",
+      "finter_id": "00985001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SPY",
+      "finter_id": "10813201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SRVR",
+      "finter_id": "03352501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "STAG",
+      "finter_id": "18533901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "STT",
+      "finter_id": "01003501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "STZ",
+      "finter_id": "00271002",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SU",
+      "finter_id": "01507001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SUN",
+      "finter_id": "01289201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SWKS",
+      "finter_id": "00132701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SYK",
+      "finter_id": "01011501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "SYY",
+      "finter_id": "01024701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "T",
+      "finter_id": "00989901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TCP",
+      "finter_id": "12079401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TDG",
+      "finter_id": "14834901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TEL",
+      "finter_id": "17726702",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TEX",
+      "finter_id": "00799101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TFC",
+      "finter_id": "01185601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TGT",
+      "finter_id": "00381301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TJX",
+      "finter_id": "01167201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TMO",
+      "finter_id": "01053001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TRGP",
+      "finter_id": "18553201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TRIP",
+      "finter_id": "19935601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TROW",
+      "finter_id": "01213801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TRP",
+      "finter_id": "01067101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TRV",
+      "finter_id": "06268905",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TSLA",
+      "finter_id": "18499601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "TSN",
+      "finter_id": "01079301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UAA",
+      "finter_id": "16505201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UBER",
+      "finter_id": "03507701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UHAL",
+      "finter_id": "00139301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UL",
+      "finter_id": "01084691",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UN",
+      "finter_id": "01084690",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UNH",
+      "finter_id": "01090301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "UPS",
+      "finter_id": "01092001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "URBN",
+      "finter_id": "02915001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "URI",
+      "finter_id": "06606501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "USB",
+      "finter_id": "00472301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "V",
+      "finter_id": "17953401",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VAC",
+      "finter_id": "19125501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VEA",
+      "finter_id": "17801301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VFC",
+      "finter_id": "01106001",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VIAV",
+      "finter_id": "02924101",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VMC",
+      "finter_id": "01122801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VOD",
+      "finter_id": "01489490",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VOO",
+      "finter_id": "18553301",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VRM",
+      "finter_id": "03651201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VTR",
+      "finter_id": "11017901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VTRS",
+      "finter_id": "00763701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VWO",
+      "finter_id": "16363201",
+      "match_type": "ticker"
+    },
+    {
+      "column": "VZ",
+      "finter_id": "00213601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WDC",
+      "finter_id": "01139901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WES",
+      "finter_id": "01622501",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WFC",
+      "finter_id": "00800701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WM",
+      "finter_id": "01447701",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WMB",
+      "finter_id": "01150601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WMS",
+      "finter_id": "02012601",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WMT",
+      "finter_id": "01125901",
+      "match_type": "ticker"
+    },
+    {
+      "column": "WPX",
+      "finter_id": "18712801",
+      "match_type": "ticker"
+    },
+    {
+      "column": "XOM",
+      "finter_id": "00450301",
+      "match_type": "ticker"
+    }
+  ],
+  "unmatched": [
+    "ANTM",
+    "BIF",
+    "BLL",
+    "BMEZ",
+    "BOIVF",
+    "BRK-B",
+    "BSTZ",
+    "CAIFX",
+    "CTAA",
+    "ETY",
+    "EVOP",
+    "FCPIX",
+    "FEYE",
+    "FIMKX",
+    "FNKO",
+    "FPL",
+    "FRIAX",
+    "GDV",
+    "GEMIX",
+    "GGSM",
+    "GLAD",
+    "GLNCY",
+    "GRUB",
+    "GSMYX",
+    "GTX",
+    "HQL",
+    "IRBT",
+    "LGF-B",
+    "LGI",
+    "LMACU",
+    "LUBFX",
+    "MBXIX",
+    "NNVC",
+    "OAYIX",
+    "PRJAX",
+    "QLEIX",
+    "RDS-B",
+    "SOJA",
+    "TCEHY",
+    "TGBAX",
+    "UTX",
+    "VFIJX",
+    "VIAC",
+    "WCMIX",
+    "XCAPX"
+  ],
+  "total": 364,
+  "match_rate": 0.8763736263736264,
+  "is_mixed": false,
+  "error": null,
+  "user_choice": "with_raw"
+}

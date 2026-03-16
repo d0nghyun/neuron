@@ -1,0 +1,20 @@
+[
+  {
+    "script": "normalize_script.py",
+    "duration_sec": 1.323,
+    "cpu_user_sec": 1.311,
+    "cpu_system_sec": 0.09,
+    "cpu_total_sec": 1.401,
+    "peak_memory_mb": 193.9,
+    "timestamp": "2026-03-06T05:43:17.589801+00:00"
+  },
+  {
+    "script": "transform_script.py",
+    "duration_sec": 2.562,
+    "cpu_user_sec": 2.591,
+    "cpu_system_sec": 0.071,
+    "cpu_total_sec": 2.662,
+    "peak_memory_mb": 193.8,
+    "timestamp": "2026-03-06T05:55:50.992110+00:00"
+  }
+]

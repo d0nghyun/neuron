@@ -73,3 +73,6 @@
 [submodule "modules/arkraft/arkraft-agent-insightv2"]
 	path = modules/arkraft/arkraft-agent-insightv2
 	url = git@github.com:Quantit-Github/arkraft-agent-insightv2.git
+[submodule "modules/arkraft/arkraft-agent-portfoliov2"]
+	path = modules/arkraft/arkraft-agent-portfoliov2
+	url = git@github.com:Quantit-Github/arkraft-agent-portfoliov2.git

@@ -1,0 +1,116 @@
+{
+  "orientation": "long_event_log",
+  "header_type": "single",
+  "column_mapping": {
+    "time": "transaction_date",
+    "entity": "entity (composite: member_id__r{row_idx})",
+    "values": [
+      "amount_low",
+      "amount_high",
+      "amount_mid"
+    ]
+  },
+  "normalization": {
+    "method": "event_log_with_amount_parsing",
+    "input_shape": [
+      1091,
+      21
+    ],
+    "output_shape": [
+      1091,
+      24
+    ]
+  },
+  "detected_entities": [
+    "H_Aderholt_Robert B._AL04",
+    "H_Allen_Richard W._GA12",
+    "H_Auchincloss_Jake_MA04",
+    "H_Bentz_Cliff_OR02",
+    "H_Biggs_Sheri_SC03",
+    "H_Bresnahan_Rob_PA08",
+    "S_4a942198-2478-4da7-b598-c98a9fe676da",
+    "S_79a6c9ae-2a6a-4194-86d8-ab66885bdb3b",
+    "S_9b46abe5-1ef6-418d-811e-fbd5f56a1f49",
+    "S_d4c51c35-fa7f-4def-8317-fb6317e21160"
+  ],
+  "detected_dates": {
+    "min": "2019-05-17",
+    "max": "2025-10-10",
+    "count": 161
+  },
+  "preserved_columns": [
+    "member_id",
+    "chamber",
+    "asset_name",
+    "ticker",
+    "asset_type",
+    "transaction_type",
+    "transaction_date",
+    "notification_date",
+    "year_filed",
+    "amount",
+    "cap_gains",
+    "year",
+    "last_name",
+    "first_name",
+    "state_district",
+    "doc_id",
+    "pdf_url",
+    "filing_type",
+    "owner"
+  ],
+  "time_candidates": [
+    {
+      "column": "transaction_date",
+      "role": "event_date",
+      "pit_reasoning": "The date the congressional member actually executed the trade. This is NOT publicly actionable on this date \u2014 disclosure happens later. Do not use as the PIT index."
+    },
+    {
+      "column": "notification_date",
+      "role": "index",
+      "pit_reasoning": "House records only. The date the trade disclosure was filed with the Clerk of the House \u2014 first moment the trade is publicly observable. This is the true PIT date for House data."
+    },
+    {
+      "column": "year_filed",
+      "role": "index",
+      "pit_reasoning": "Senate records only. The date the periodic transaction report (PTR) was filed with the Senate EFD system \u2014 first moment the trade is publicly observable. This is the true PIT date for Senate data."
+    }
+  ],
+  "entity_candidates": [
+    {
+      "column": "member_id",
+      "unique_count": 95,
+      "id_pattern": "composite_key",
+      "is_composite": true,
+      "source_columns": [
+        "chamber",
+        "last_name",
+        "first_name",
+        "state_district",
+        "pdf_url"
+      ],
+      "notes": "Semantic legislator/filing identifier. House: 'H_{last_name}_{first_name}_{district}' (6 unique members). Senate: 'S_{filing_uuid}' (89 unique filings; senator name unavailable). Collision rate >50% at (transaction_date, member_id) \u2014 multiple trades per member per day is expected. Spec step should use dtype='dict'."
+    },
+    {
+      "column": "ticker",
+      "unique_count": 364,
+      "id_pattern": "ticker",
+      "is_composite": false,
+      "source_columns": [
+        "ticker"
+      ],
+      "notes": "Exchange ticker symbol. 97 nulls (bonds, funds, non-public assets)."
+    },
+    {
+      "column": "state_district",
+      "unique_count": 6,
+      "id_pattern": "custom",
+      "is_composite": false,
+      "source_columns": [
+        "state_district"
+      ],
+      "notes": "House congressional district code (AL04, GA12, \u2026). Null for all Senate rows."
+    }
+  ],
+  "event_log_notes": "This is a STOCK Act congressional trade disclosure dataset. Each row is an independent trade event. There is no traditional time-series entity \u2014 (date, member) collisions are inherent (>50% collision rate). The composite entity key 'member_id__r{row_idx}' ensures (date,entity) uniqueness for the normalized parquet while preserving member_id for Step 3 override. Step 3 should override entity to member_id and set dtype='dict' on value columns."
+}

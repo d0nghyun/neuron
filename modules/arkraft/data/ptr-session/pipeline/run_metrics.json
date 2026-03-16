@@ -1,0 +1,23 @@
+{
+  "session_id": "1276305a-90f2-4ca9-9c8c-b6afb2f5024a",
+  "run_id": "470bfa26-924f-4197-9d6d-a47c3c44b69a",
+  "cm_id": "",
+  "mode": "history",
+  "steps": [
+    {
+      "step_name": "transform",
+      "started_at": "2026-03-06T05:54:37.664417+00:00",
+      "completed_at": "2026-03-06T05:56:22.249148+00:00",
+      "duration_sec": 104.585,
+      "status": "success",
+      "input_rows": 0,
+      "output_rows": 0,
+      "error": "",
+      "peak_memory_mb": 194.18,
+      "user_cpu_sec": 0.845,
+      "system_cpu_sec": 0.062
+    }
+  ],
+  "total_duration_sec": 104.585,
+  "data_profile": {}
+}

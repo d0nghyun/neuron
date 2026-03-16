@@ -3,8 +3,8 @@ name: domain-alpha-discovery-ops
 description: Alpha discovery local testing and production monitoring
 allowed-tools: Bash, Read, Grep, Glob
 user-invocable: false
-quality_grade: A
-quality_checked: 2026-03-13
+quality_grade: B
+quality_checked: 2026-03-16
 ---
 
 # Alpha Discovery Ops Skill

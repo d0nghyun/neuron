@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "input_rows": 1091,
+  "output_rows": 62,
+  "output_columns": 364,
+  "value_columns": [
+    "congress_stock_trade_disclosures"
+  ],
+  "output_files": [
+    "congress_stock_trade_disclosures.parquet"
+  ],
+  "entity_count": 364,
+  "date_range": [
+    "2020-01-08",
+    "2025-11-05"
+  ],
+  "dropped_rows": 97,
+  "null_filled": 21889,
+  "duplicates_removed": 0,
+  "idmap": {
+    "action": "with_raw",
+    "renamed": 319,
+    "dropped": [],
+    "total_matched": 319,
+    "total_unmatched": 45
+  }
+}

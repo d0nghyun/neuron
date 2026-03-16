@@ -3,8 +3,8 @@ name: ops-daily-report
 description: Unified daily maintenance report. Orchestrates factory-sync, vault-recap, and daily-memo into one output.
 allowed-tools: Read, Glob, Grep, Write, Bash, Task
 user-invocable: true
-quality_grade: A
-quality_checked: 2026-03-13
+quality_grade: B
+quality_checked: 2026-03-16
 ---
 
 # Daily Report

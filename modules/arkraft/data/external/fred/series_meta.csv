@@ -1,0 +1,13 @@
+series,desc,rows,start,end
+DFF,Fed Funds Rate,0,FAILED,
+DGS10,10-Year Treasury Yield,0,FAILED,
+DGS2,2-Year Treasury Yield,0,FAILED,
+T10Y2Y,10Y-2Y Yield Spread,0,FAILED,
+CPIAUCSL,CPI (All Urban),312,2000-01-01,2026-01-01
+UNRATE,Unemployment Rate,312,2000-01-01,2026-01-01
+DEXKOUS,KRW/USD Exchange Rate,0,FAILED,
+VIXCLS,VIX (CBOE),0,FAILED,
+BAMLH0A0HYM2,HY OAS Spread,0,FAILED,
+DCOILWTICO,WTI Crude Oil,0,FAILED,
+GOLDPMGBD228NLBM,Gold Price London PM Fix,0,FAILED,
+M2SL,M2 Money Supply,0,FAILED,
