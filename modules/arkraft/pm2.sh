@@ -9,7 +9,7 @@
 
 cd "$(dirname "$0")"
 
-DEFAULT_APPS="infra,api,web"
+DEFAULT_APPS="infra,api,celery,web"
 PROD_APPS="ssm-rds,pgweb-prod"
 
 case "${1:-default}" in
@@ -35,6 +35,8 @@ case "${1:-default}" in
     ;;
   default|"")
     echo "Starting default (infra, api, web)..."
+    # Stop Docker API server if running (avoid port 3002 conflict with pm2 uvicorn --reload)
+    docker compose -f arkraft-api/docker-compose.yml stop server celery-worker celery-beat flower 2>/dev/null
     pm2 start ecosystem.config.js --only "$DEFAULT_APPS"
     ;;
   *)
