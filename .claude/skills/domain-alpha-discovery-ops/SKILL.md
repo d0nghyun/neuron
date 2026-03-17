@@ -4,7 +4,7 @@ description: Alpha discovery local testing and production monitoring
 allowed-tools: Bash, Read, Grep, Glob
 user-invocable: false
 quality_grade: B
-quality_checked: 2026-03-16
+quality_checked: 2026-03-17
 ---
 
 # Alpha Discovery Ops Skill
@@ -76,7 +76,7 @@ Requires: external `arkraft` Docker network.
 |----------|--------------|---------|
 | `CLAUDE_OAUTH_TOKEN_{1,2,3}` | — | OAuth tokens (rotation) |
 | `AVAILABLE_TOKENS` | `1,2,3` | Token indices |
-| `S3_BUCKET` | `arkraft.quantit.ai` | Output bucket |
+| `S3_BUCKET` | `arkraft-production` | Output bucket |
 | `AWS_REGION` | `ap-northeast-2` | AWS region |
 | `REDIS_URL` | `redis://localhost:6379` | Event pub/sub |
 | `RABBITMQ_URL` | `amqp://arkraft:arkraft@rabbitmq:5672/arkraft` | Callback queue |

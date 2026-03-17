@@ -40,7 +40,7 @@ DB_URL = "postgresql://arkraft:arkraft@localhost:5432/arkraft"
 REDIS_URL = "redis://localhost:6379/0"
 RABBITMQ_URL = "amqp://arkraft:arkraft@localhost:5672/arkraft"
 MINIO_ENDPOINT = "http://localhost:9000"
-S3_BUCKET = "arkraft.quantit.ai"
+S3_BUCKET = "arkraft-production"
 API_URL = "http://localhost:3002"
 
 # Test fixtures
