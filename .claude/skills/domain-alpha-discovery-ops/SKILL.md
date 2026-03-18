@@ -4,7 +4,7 @@ description: Alpha discovery local testing and production monitoring
 allowed-tools: Bash, Read, Grep, Glob
 user-invocable: false
 quality_grade: B
-quality_checked: 2026-03-17
+quality_checked: 2026-03-19
 ---
 
 # Alpha Discovery Ops Skill

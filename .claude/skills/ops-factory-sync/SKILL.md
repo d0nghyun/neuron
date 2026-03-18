@@ -4,7 +4,7 @@ description: Audit factory patterns against actual components and update drift
 allowed-tools: Read, Glob, Grep, Edit, Write
 user-invocable: true
 quality_grade: C
-quality_checked: 2026-03-16
+quality_checked: 2026-03-18
 ---
 
 # Factory Sync

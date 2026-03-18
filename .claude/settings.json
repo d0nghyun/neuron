@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/enforce-claude-md.sh"
+            "command": ".claude/hooks/enforce-claude-md.sh"
           }
         ]
       }
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/telegram-notify.sh stop"
+            "command": ".claude/hooks/telegram-notify.sh stop"
           }
         ]
       }
@@ -39,11 +39,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/cleanup-modules.sh"
+            "command": ".claude/hooks/cleanup-modules.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/memo-on-session-end.sh"
+            "command": ".claude/hooks/memo-on-session-end.sh"
           }
         ]
       }
@@ -54,19 +54,23 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/pre-validate.sh"
+            "command": ".claude/hooks/pre-validate.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-vault.sh"
+            "command": ".claude/hooks/validate-vault.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-component.sh"
+            "command": ".claude/hooks/validate-component.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-linecount.sh"
+            "command": ".claude/hooks/validate-linecount.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/module-dispatcher.sh"
           }
         ]
       },
@@ -75,19 +79,23 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/pre-validate.sh"
+            "command": ".claude/hooks/pre-validate.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-vault.sh"
+            "command": ".claude/hooks/validate-vault.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-component.sh"
+            "command": ".claude/hooks/validate-component.sh"
           },
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/validate-linecount.sh"
+            "command": ".claude/hooks/validate-linecount.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/module-dispatcher.sh"
           }
         ]
       },
@@ -96,7 +104,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/pre-validate.sh"
+            "command": ".claude/hooks/pre-validate.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/module-dispatcher.sh"
           }
         ]
       },
@@ -105,7 +117,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/telegram-notify.sh question"
+            "command": ".claude/hooks/telegram-notify.sh question"
           }
         ]
       }
@@ -116,12 +128,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/dhlee/projects/personal/neuron/.claude/hooks/telegram-notify.sh permission"
+            "command": ".claude/hooks/telegram-notify.sh permission"
           }
         ]
       }
     ],
-    "PostToolUse": []
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/module-dispatcher-post.sh"
+          }
+        ]
+      }
+    ]
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,

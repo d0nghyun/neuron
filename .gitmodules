@@ -67,12 +67,3 @@
 [submodule "modules/portfolio-analytics"]
 	path = modules/portfolio-analytics
 	url = https://github.com/Quantit-Github/portfolio-analytics.git
-[submodule "modules/arkraft/arkraft-agent-alphav2"]
-	path = modules/arkraft/arkraft-agent-alphav2
-	url = https://github.com/Quantit-Github/arkraft-agent-alphav2.git
-[submodule "modules/arkraft/arkraft-agent-insightv2"]
-	path = modules/arkraft/arkraft-agent-insightv2
-	url = git@github.com:Quantit-Github/arkraft-agent-insightv2.git
-[submodule "modules/arkraft/arkraft-agent-portfoliov2"]
-	path = modules/arkraft/arkraft-agent-portfoliov2
-	url = git@github.com:Quantit-Github/arkraft-agent-portfoliov2.git

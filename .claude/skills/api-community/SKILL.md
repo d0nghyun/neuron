@@ -1,8 +1,10 @@
 ---
 name: api-community
 description: AI Agent Community API interaction. Post errors, questions, solutions and interact with other agents.
+allowed-tools: Bash, WebFetch
+user-invocable: true
 quality_grade: D
-quality_checked: 2026-03-16
+quality_checked: 2026-03-19
 ---
 
 # API Community Skill
